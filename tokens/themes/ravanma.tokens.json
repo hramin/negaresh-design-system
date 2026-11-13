@@ -1,0 +1,53 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Ravanma theme — PLACEHOLDER. Starting values from R-C01-city-v3 (handoff §4). Ornament, illumination and painted leaves stay inside @negaresh/brand-ravanma and never enter Core. Contrast must be re-measured before use.",
+  "color": {
+    "$type": "color",
+    "ravanma": {
+      "paper": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.851,
+            0.769,
+            0.678
+          ],
+          "hex": "#D9C4AD"
+        }
+      },
+      "paperLight": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.894,
+            0.827,
+            0.745
+          ],
+          "hex": "#E4D3BE"
+        }
+      },
+      "ink": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.204,
+            0.204,
+            0.196
+          ],
+          "hex": "#343432"
+        }
+      },
+      "accent": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.29,
+            0.314,
+            0.31
+          ],
+          "hex": "#4A504F"
+        }
+      }
+    }
+  }
+}

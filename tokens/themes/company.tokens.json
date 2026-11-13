@@ -1,0 +1,24 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Company theme (Negaresh site, Registry, Test platform). Maps semantic/color.{light,dark} and adds component defaults. Accent and logo colours may change after the logo redesign; only this file and the accent ramp change.",
+  "component": {
+    "button": {
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.pill}"
+      }
+    },
+    "field": {
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.md}"
+      }
+    },
+    "surface": {
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.lg}"
+      }
+    }
+  }
+}
