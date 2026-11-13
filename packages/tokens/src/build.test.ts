@@ -68,7 +68,10 @@ describe('build output', () => {
   });
 
   it('writes well-formed comments (no stray */ from globs in the header)', async () => {
-    for (const css of [themeCss(await collectTokens('company')), themeCss(await collectTokens('ravanma'), 'note')]) {
+    for (const css of [
+      themeCss(await collectTokens('company')),
+      themeCss(await collectTokens('ravanma'), 'note'),
+    ]) {
       expect(css.replaceAll(/\/\*[\s\S]*?\*\//g, '')).not.toMatch(/\*\/|\/\*/);
       expect(css.split('{').length).toBe(css.split('}').length);
     }

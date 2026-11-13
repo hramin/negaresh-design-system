@@ -1,0 +1,22 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/tokens/**"],
+      "outputs": ["dist/**"]
+    },
+    "check": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/tokens/**"],
+      "outputs": ["dist/**"]
+    },
+    "test": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/tokens/**",
+        "$TURBO_ROOT$/reference/registry-activation/*.css"
+      ],
+      "outputs": []
+    }
+  }
+}

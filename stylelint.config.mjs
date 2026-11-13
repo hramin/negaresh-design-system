@@ -1,21 +1,53 @@
 // NDS CSS rules (CLAUDE.md §3): logical properties only; no raw colours outside tokens.
 const physical = [
-  'left', 'right', 'top', 'bottom',
-  'margin-left', 'margin-right', 'margin-top', 'margin-bottom',
-  'padding-left', 'padding-right', 'padding-top', 'padding-bottom',
-  'border-left', 'border-right', 'border-top', 'border-bottom',
+  'left',
+  'right',
+  'top',
+  'bottom',
+  'margin-left',
+  'margin-right',
+  'margin-top',
+  'margin-bottom',
+  'padding-left',
+  'padding-right',
+  'padding-top',
+  'padding-bottom',
+  'border-left',
+  'border-right',
+  'border-top',
+  'border-bottom',
   '/^border-(left|right|top|bottom)-/',
   '/^border-(top|bottom)-(left|right)-radius$/',
-  'width', 'height', 'min-width', 'max-width', 'min-height', 'max-height',
-  'overflow-x', 'overflow-y', 'scroll-margin-left', 'scroll-margin-right',
-  'scroll-padding-left', 'scroll-padding-right',
+  'width',
+  'height',
+  'min-width',
+  'max-width',
+  'min-height',
+  'max-height',
+  'overflow-x',
+  'overflow-y',
+  'scroll-margin-left',
+  'scroll-margin-right',
+  'scroll-padding-left',
+  'scroll-padding-right',
 ];
 
 /** @type {import('stylelint').Config} */
 export default {
-  ignoreFiles: ['**/dist/**', '**/.output/**', '**/node_modules/**', 'reference/**', '**/coverage/**', '**/test-results/**', '**/playwright-report/**'],
+  ignoreFiles: [
+    '**/dist/**',
+    '**/.output/**',
+    '**/node_modules/**',
+    'reference/**',
+    '**/coverage/**',
+    '**/test-results/**',
+    '**/playwright-report/**',
+  ],
   rules: {
-    'property-disallowed-list': [physical, { message: (p) => `Use the logical property instead of "${p}" (CLAUDE.md §3).` }],
+    'property-disallowed-list': [
+      physical,
+      { message: (p) => `Use the logical property instead of "${p}" (CLAUDE.md §3).` },
+    ],
     'declaration-property-value-disallowed-list': [
       {
         float: ['left', 'right'],

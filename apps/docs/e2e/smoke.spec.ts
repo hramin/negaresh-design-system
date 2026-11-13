@@ -59,6 +59,9 @@ test('theme switch persists in a cookie and survives reload', async ({ page }) =
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(page.getByRole('radio', { name: 'تیره' })).toBeChecked();
+  // The switch needs hydration (it writes a cookie); wait before interacting again.
+  await page.waitForLoadState('networkidle');
   await page.getByRole('radio', { name: 'سیستم' }).check();
   await expect(page.locator('html')).not.toHaveAttribute('data-theme', /./);
   await page.reload();

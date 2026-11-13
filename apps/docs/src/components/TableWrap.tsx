@@ -16,10 +16,10 @@ export function TableWrap({
   children: ReactNode;
 }) {
   return (
-    // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable regions must be keyboard-reachable
     <section
       className={desktopOnly ? `${styles.tableWrap} ${styles.desktopOnly}` : styles.tableWrap}
       aria-label={label}
+      // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable regions must be keyboard-reachable
       tabIndex={0}
     >
       {children}

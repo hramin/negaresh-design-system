@@ -39,6 +39,9 @@ D-05 (light only) → D-82. Phase-1 cold theme (D-07, D-08, D-42–D-49) → not
 | D-88 | Name: **Negaresh Design System (NDS)**, Persian «دیزاین سیستم نگرش». Package scope `@negaresh/*`, CSS prefix `--nds-` | — |
 | D-89 | Repository on GitHub; work happens in Claude Code (web) phase by phase, using Context7 for library docs | `CLAUDE.md` |
 | D-90 | Breakpoint for mobile composition: below 900 px (inherits v3's 899 px) | `foundations/layout.md` |
+| D-91 | CSS variable names follow the approved reference page: `--nds-text-*` (font sizes, in rem), `--nds-leading-*`, `--nds-weight-*`, `--nds-font-*`, `--nds-dur-*`, `--nds-ease[-enter\|-exit]`, `--nds-control-*`, `--nds-touch`, `--nds-topbar`, `--nds-border-width-*` (widths; `--nds-border-*` stays colour), component defaults `--nds-{component}-{property}` written as `var()` of the primitive (P1) | The mapping lives in `packages/tokens/src/naming.ts`; a test keeps the output equal to `reference/registry-activation` |
+| D-92 | Primitive colour ramps are not emitted as CSS variables; only semantic roles are (P1) | Components cannot reach a primitive by accident. The docs site reads ramp values from `tokens.json` |
+| D-93 | TypeScript 6.0 for now, not 7.0 (P1) | TS 7 (native) is stable but tooling that needs the compiler API (props tables from TS, P7) has to be checked first. Revisit before P7 |
 
 ## Open
 
@@ -50,3 +53,4 @@ D-05 (light only) → D-82. Phase-1 cold theme (D-07, D-08, D-42–D-49) → not
 | Q-04 | Block editor (Tiptap, Editor.js, Lexical) — Negaresh PRD phase 1 | NDS renders blocks; the editor UI is a later pattern. Proposal: Tiptap (headless, React, structured JSON) |
 | Q-05 | Product reviews and ratings on the shop | Rating component specified but not built |
 | Q-06 | Comments on blog items | Not built |
+| Q-07 | Package registry for `@negaresh/*`: GitHub Packages or self-hosted Verdaccio (P1 scope) | Nothing is published yet (all packages `private`). GitHub Packages if product builds run on GitHub Actions; Verdaccio if they run on-prem without reliable access to GitHub |
