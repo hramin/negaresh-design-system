@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HealthzRouteImport } from './routes/healthz'
 import { Route as TokensRouteImport } from './routes/tokens'
 import { Route as FoundationsColorRouteImport } from './routes/foundations/color'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthzRoute = HealthzRouteImport.update({
+  id: '/healthz',
+  path: '/healthz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TokensRoute = TokensRouteImport.update({
@@ -31,30 +37,34 @@ const FoundationsColorRoute = FoundationsColorRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
   '/foundations/color': typeof FoundationsColorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
   '/foundations/color': typeof FoundationsColorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
   '/foundations/color': typeof FoundationsColorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/tokens' | '/foundations/color'
+  fullPaths: '/' | '/healthz' | '/tokens' | '/foundations/color'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/tokens' | '/foundations/color'
-  id: '__root__' | '/' | '/tokens' | '/foundations/color'
+  to: '/' | '/healthz' | '/tokens' | '/foundations/color'
+  id: '__root__' | '/' | '/healthz' | '/tokens' | '/foundations/color'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HealthzRoute: typeof HealthzRoute
   TokensRoute: typeof TokensRoute
   FoundationsColorRoute: typeof FoundationsColorRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/healthz': {
+      id: '/healthz'
+      path: '/healthz'
+      fullPath: '/healthz'
+      preLoaderRoute: typeof HealthzRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tokens': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HealthzRoute: HealthzRoute,
   TokensRoute: TokensRoute,
   FoundationsColorRoute: FoundationsColorRoute,
 }

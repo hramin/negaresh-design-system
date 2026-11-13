@@ -46,6 +46,11 @@ export function Shell({ children }: { children: ReactNode }) {
       <main id="main" className={styles.main} tabIndex={-1}>
         {children}
       </main>
+      <footer className={styles.footer}>
+        <code className={styles.build} dir="ltr" data-testid="build-info">
+          {m.build(__NDS_BUILD__.branch, __NDS_BUILD__.sha)}
+        </code>
+      </footer>
     </div>
   );
 }

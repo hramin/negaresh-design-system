@@ -1,0 +1,14 @@
+# NDS docs site. Run from the repo root on any branch:
+#   GIT_SHA=$(git rev-parse HEAD) GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD) docker compose up --build
+services:
+  docs:
+    build:
+      context: .
+      dockerfile: apps/docs/Dockerfile
+      args:
+        GIT_SHA: ${GIT_SHA:-unknown}
+        GIT_BRANCH: ${GIT_BRANCH:-local}
+    image: nds-docs:local
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

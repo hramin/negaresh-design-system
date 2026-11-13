@@ -64,6 +64,9 @@ Checked on 13 Nov 2026 against the npm registry; API usage checked with Context7
 | turbo / pnpm / @changesets/cli / typescript | 2.11.11 / 12.18.0 / 3.0.3 / 6.0.3 | npm | 13 Nov 2026 | Installed. pnpm via Corepack (`packageManager`). **TypeScript 6.0.3, not 7.0** (see D-93) |
 | @biomejs/biome / stylelint | 2.6.7 / 18.0.0 | npm | 13 Nov 2026 | Installed. Biome 2.6 uses `"preset": "recommended"` |
 | Node.js | 22.22.2+ | — | 13 Nov 2026 | `.nvmrc`; stylelint 18 needs ≥ 22.22.2 |
+| Docker base image | node:22.23.5-alpine | Docker Hub | 13 Nov 2026 | `apps/docs/Dockerfile` (`ARG NODE_IMAGE`). Runtime holds only `dist/` + srvx; the SSR build bundles every dependency (`ssr.noExternal` in production) |
+| docker/build-push-action · setup-buildx-action · login-action · metadata-action | v7 · v4 · v4 · v6 | Context7 + GitHub tags | 13 Nov 2026 | `.github/workflows/docs-image.yml`; GHA layer cache (`type=gha,mode=max`) |
+| actions/checkout · setup-node · upload-artifact, pnpm/action-setup | v7 · v7 · v7, v6 | GitHub tags | 13 Nov 2026 | `.github/workflows/ci.yml` |
 | Vazirmatn | 33.0.3 (npm `vazirmatn`) | npm | 13 Nov 2026 | Variable TTF subset with fonttools 4.60.1 (`packages/theme-company/scripts/subset-font.sh`) |
 
 ### Surprises
