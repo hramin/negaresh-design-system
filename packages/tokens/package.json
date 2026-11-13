@@ -1,0 +1,34 @@
+{
+  "name": "@negaresh/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "description": "NDS design tokens: DTCG 2025.10 source built with Style Dictionary v5 into CSS variables, a typed TS export and a flat JSON list.",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/tokens.d.ts",
+      "default": "./dist/tokens.js"
+    },
+    "./company.css": "./dist/company.css",
+    "./ravanma.css": "./dist/ravanma.css",
+    "./tokens.json": "./dist/tokens.json",
+    "./contrast.json": "./dist/contrast.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node src/build.ts",
+    "check": "node src/build.ts && node src/check.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome lint ."
+  },
+  "devDependencies": {
+    "style-dictionary": "5.8.0",
+    "vitest": "5.1.0"
+  }
+}

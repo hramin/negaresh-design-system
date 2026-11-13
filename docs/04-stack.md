@@ -42,17 +42,36 @@ Vazirmatn variable (OFL), self-hosted woff2, `font-display: swap`, subset to Ara
 
 Evergreen browsers, last two versions; Safari 16.4+. Graceful degradation: without `:has()` the choice cards still work (native radio visible state), without container queries components fall back to their narrow layout.
 
-## Pinned versions (fill in P1)
+## Pinned versions
+
+Checked on 13 Nov 2026 against the npm registry; API usage checked with Context7 (Style Dictionary, TanStack Start, `@internationalized/date`). Exact versions, no ranges. "Installed" packages are in a `package.json` now; the others are the versions to start from when their phase begins (re-check then).
 
 | Package | Version | Checked via | Date | Note |
 | --- | --- | --- | --- | --- |
-| react / react-dom | | Context7 | | |
-| @tanstack/react-start / react-router | | | | pin together |
-| react-aria-components / react-aria / react-stately | | | | |
-| @internationalized/date | | | | |
-| style-dictionary | | | | |
-| vite / vitest / @playwright/test / axe-core | | | | |
-| d3-scale / d3-shape | | | | |
-| @inlang/paraglide-js | | | | |
-| keycloakify | | | | |
-| turbo / pnpm / @changesets/cli / typescript | | | | |
+| react / react-dom | 19.3.1 | npm + Context7 | 13 Nov 2026 | Installed (docs) |
+| @types/react / @types/react-dom | 19.3.0 | npm | 13 Nov 2026 | Installed |
+| @tanstack/react-start / react-router | 1.169.5 / 1.170.46 | npm + Context7 | 13 Nov 2026 | Installed. Start 1.169.5 depends on exactly router 1.170.46, so they are pinned together. Post-1.0 API: `tanstackStart()` Vite plugin, `getRouter()`, `shellComponent`, `createIsomorphicFn`, `getCookie` from `@tanstack/react-start/server` |
+| srvx | 1.0.8 | npm + Context7 | 13 Nov 2026 | Installed. Serves the Vite build (`dist/server/server.js` + `dist/client`) on Node; Start's hosting guide uses it |
+| react-aria-components / react-aria / react-stately | 1.22.1 / 3.53.1 / 3.51.0 | npm | 13 Nov 2026 | P2 |
+| @internationalized/date | 3.12.4 | npm + Context7 | 13 Nov 2026 | Installed (utils): `PersianCalendar`, `CalendarDateTime`, `toZoned` |
+| style-dictionary | 5.8.0 | npm + Context7 | 13 Nov 2026 | Installed. `usesDtcg`, custom `parsers`, `getPlatformTokens()` |
+| vite / @vitejs/plugin-react | 8.3.8 / 6.3.0 | npm + Context7 | 13 Nov 2026 | Installed. Vite 8 bundles with Rolldown and minifies CSS with Lightning CSS (stricter: a stray `*/` in a comment fails the build) |
+| vitest / @vitest/coverage-v8 | 5.1.0 | npm | 13 Nov 2026 | Installed |
+| @playwright/test / @axe-core/playwright / axe-core | 1.65.0 / 4.14.0 / 4.14.0 | npm | 13 Nov 2026 | Installed |
+| d3-scale / d3-shape | 4.0.3 / 3.2.1 | npm | 13 Nov 2026 | P5 |
+| @inlang/paraglide-js | 3.2.2 | npm | 13 Nov 2026 | **Now 3.x, not 2.x** as the status table above says; re-check the TanStack integration before adopting (first strings catalogue) |
+| keycloakify | 11.16.4 | npm | 13 Nov 2026 | P6 |
+| turbo / pnpm / @changesets/cli / typescript | 2.11.11 / 12.18.0 / 3.0.3 / 6.0.3 | npm | 13 Nov 2026 | Installed. pnpm via Corepack (`packageManager`). **TypeScript 6.0.3, not 7.0** (see D-93) |
+| @biomejs/biome / stylelint | 2.6.7 / 18.0.0 | npm | 13 Nov 2026 | Installed. Biome 2.6 uses `"preset": "recommended"` |
+| Node.js | 22.22.2+ | — | 13 Nov 2026 | `.nvmrc`; stylelint 18 needs ≥ 22.22.2 |
+| Docker base image | node:22.23.5-alpine | Docker Hub | 13 Nov 2026 | `apps/docs/Dockerfile` (`ARG NODE_IMAGE`). Runtime holds only `dist/` + srvx; the SSR build bundles every dependency (`ssr.noExternal` in production) |
+| docker/build-push-action · setup-buildx-action · login-action · metadata-action | v7 · v4 · v4 · v6 | Context7 + GitHub tags | 13 Nov 2026 | `.github/workflows/docs-image.yml`; GHA layer cache (`type=gha,mode=max`) |
+| actions/checkout · setup-node · upload-artifact, pnpm/action-setup | v7 · v7 · v7, v6 | GitHub tags | 13 Nov 2026 | `.github/workflows/ci.yml` |
+| Vazirmatn | 33.0.3 (npm `vazirmatn`) | npm | 13 Nov 2026 | Variable TTF subset with fonttools 4.60.1 (`packages/theme-company/scripts/subset-font.sh`) |
+
+### Surprises
+
+- Paraglide JS moved to 3.x (Nov 2026); the "2.x" note in the status table is out of date.
+- TypeScript 7.0 (the native compiler) is stable since July 2026. We stay on 6.0 for P1 (D-93).
+- pnpm 12 asks before letting packages install "agent skills" (`pnpm approve`). We approved none; nothing in the build needs them.
+- Context7's MCP server ran out of anonymous quota during P1 (the repo's `.mcp.json` has no key); the `ctx7` CLI kept working. In this cloud environment Node's built-in fetch needs `NODE_USE_ENV_PROXY=1` to reach Context7.

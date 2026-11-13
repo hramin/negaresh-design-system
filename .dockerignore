@@ -1,0 +1,14 @@
+# Build context for apps/docs/Dockerfile (context = repo root)
+**/node_modules
+**/dist
+**/.output
+**/.turbo
+**/coverage
+**/playwright-report
+**/test-results
+**/screenshots
+.git
+**/*.log
+**/.env*
+.github
+reference/shots

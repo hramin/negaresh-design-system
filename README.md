@@ -50,6 +50,46 @@ reference/              Approved reference pages (static) and screenshots
 docs/                   Everything written
 ```
 
+## Run locally with Docker
+
+Builds and runs the docs site from whatever branch is checked out. Needs Docker with Compose v2 (BuildKit, Dockerfile 1.7+ syntax). Run from the repo root:
+
+```bash
+git checkout <branch>
+```
+
+```bash
+GIT_SHA=$(git rev-parse HEAD) GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD) docker compose up --build -d
+```
+
+Open http://localhost:3000. The footer shows `build <branch>@<short sha>`, so you always know which branch is running. Add `?theme=dark` or `?theme=light` to any page to force a mode.
+
+```bash
+curl -s http://localhost:3000/healthz
+```
+
+```bash
+docker compose down
+```
+
+Without Compose:
+
+```bash
+docker build -f apps/docs/Dockerfile -t nds-docs --build-arg GIT_SHA=$(git rev-parse HEAD) --build-arg GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD) .
+```
+
+```bash
+docker run --rm -p 3000:3000 nds-docs
+```
+
+Images built from `main` are also published as `ghcr.io/hramin/negaresh-design-system-docs:latest` (and `:<short sha>`):
+
+```bash
+docker run --rm -p 3000:3000 ghcr.io/hramin/negaresh-design-system-docs:latest
+```
+
+Behind a proxy that inspects TLS, add `--build-arg HTTPS_PROXY=<proxy url> --secret id=extra_ca,src=<ca bundle>` to `docker build`; neither ends up in the image.
+
 ## Working in this repo
 
 The repo is built phase by phase with Claude Code. [CLAUDE.md](CLAUDE.md) holds the rules every session follows; each phase file in [docs/phases/](docs/phases/) has a scope and a "done when" list, and a phase is closed only after the owner approves it.

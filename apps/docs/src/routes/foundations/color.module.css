@@ -1,0 +1,56 @@
+@layer nds.patterns {
+  .swatchCell {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-space-3);
+  }
+
+  .modeFrame {
+    display: block;
+    padding: var(--nds-space-1);
+    border-radius: var(--nds-radius-md);
+    background: var(--nds-bg-canvas);
+  }
+
+  .swatchMeta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-1);
+  }
+
+  .ramp {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-3);
+    margin: 0;
+  }
+
+  .rampTitle {
+    display: flex;
+    gap: var(--nds-space-2);
+    align-items: baseline;
+    font-weight: var(--nds-weight-semibold);
+  }
+
+  .rampList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(var(--nds-space-24) - var(--nds-space-2)), 1fr));
+    gap: var(--nds-space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .rampStep {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-1);
+    font-size: var(--nds-text-xs);
+  }
+
+  .rampChip {
+    display: block;
+    block-size: var(--nds-control-md);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-sm);
+  }
+}

@@ -1,0 +1,283 @@
+@layer nds.patterns {
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-10);
+    max-inline-size: var(--nds-content-default);
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-3);
+  }
+
+  .title {
+    font-size: var(--nds-text-3xl);
+    font-weight: var(--nds-weight-heavy);
+    line-height: var(--nds-leading-tight);
+  }
+
+  .lead {
+    max-inline-size: 66ch;
+    font-size: var(--nds-text-lg);
+    line-height: var(--nds-leading-text);
+    color: var(--nds-fg-muted);
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-4);
+  }
+
+  .h2 {
+    font-size: var(--nds-text-xl);
+    font-weight: var(--nds-weight-bold);
+    line-height: var(--nds-leading-tight);
+  }
+
+  .h3 {
+    font-size: var(--nds-text-lg);
+    font-weight: var(--nds-weight-bold);
+    line-height: var(--nds-leading-tight);
+  }
+
+  .text {
+    max-inline-size: 66ch;
+    line-height: var(--nds-leading-text);
+    color: var(--nds-fg-muted);
+  }
+
+  .surface {
+    padding: var(--nds-space-6);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-surface-radius);
+    background: var(--nds-bg-surface);
+  }
+
+  .tableWrap {
+    overflow: auto;
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-surface-radius);
+    background: var(--nds-bg-surface);
+  }
+
+  .table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--nds-text-sm);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .table caption {
+    padding: var(--nds-space-4) var(--nds-space-4) 0;
+    text-align: start;
+    color: var(--nds-fg-subtle);
+    font-size: var(--nds-text-xs);
+  }
+
+  .table th,
+  .table td {
+    padding: var(--nds-space-3) var(--nds-space-4);
+    text-align: start;
+    vertical-align: middle;
+    border-block-end: var(--nds-border-width-hairline) solid var(--nds-border-default);
+  }
+
+  .table tbody tr:last-child > * {
+    border-block-end: 0;
+  }
+
+  .table thead th {
+    color: var(--nds-fg-subtle);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-semibold);
+    white-space: nowrap;
+    background: var(--nds-bg-sunken);
+  }
+
+  .code {
+    font-family: var(--nds-font-code);
+    font-size: var(--nds-text-xs);
+    direction: ltr;
+    unicode-bidi: isolate;
+    white-space: nowrap;
+    color: var(--nds-fg-default);
+  }
+
+  .muted {
+    color: var(--nds-fg-subtle);
+  }
+
+  .swatch {
+    display: block;
+    inline-size: var(--nds-control-sm);
+    block-size: var(--nds-control-sm);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-strong);
+    border-radius: var(--nds-radius-sm);
+  }
+
+  .bar {
+    display: block;
+    block-size: var(--nds-space-3);
+    border-radius: var(--nds-radius-sm);
+    background: var(--nds-accent-default);
+  }
+
+  .radiusSample {
+    display: block;
+    inline-size: var(--nds-control-sm);
+    block-size: var(--nds-control-sm);
+    border: var(--nds-border-width-thick) solid var(--nds-accent-default);
+    background: var(--nds-accent-subtle);
+  }
+
+  .cellActions {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-space-2);
+  }
+
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--nds-space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .toc a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--nds-touch);
+    padding-inline: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-bg-surface);
+    color: var(--nds-accent-fg);
+    font-weight: var(--nds-weight-medium);
+    text-decoration: none;
+  }
+
+  .toc a:hover {
+    background: var(--nds-bg-hover);
+  }
+
+  .link {
+    color: var(--nds-accent-fg);
+    text-underline-offset: 0.25em;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--nds-space-1);
+    padding-inline: var(--nds-space-2);
+    border-radius: var(--nds-radius-pill);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-semibold);
+    white-space: nowrap;
+  }
+
+  .statusPass {
+    background: var(--nds-success-bg);
+    color: var(--nds-success-fg);
+  }
+
+  .statusFail {
+    background: var(--nds-danger-bg);
+    color: var(--nds-danger-fg);
+  }
+
+  .icon {
+    inline-size: var(--nds-icon-sm);
+    block-size: var(--nds-icon-sm);
+    flex: none;
+  }
+
+  /* Mobile composition: tables become stacked cards below 900 px (CLAUDE.md §3). */
+  .mobileOnly {
+    display: none;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+    padding: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-surface-radius);
+    background: var(--nds-bg-surface);
+    min-inline-size: 0;
+  }
+
+  .cardHead {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-space-3);
+    min-inline-size: 0;
+  }
+
+  .cardHead > code {
+    flex: 1;
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .cardRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--nds-space-1) var(--nds-space-3);
+    font-size: var(--nds-text-sm);
+  }
+
+  .cardRow > code {
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .label {
+    color: var(--nds-fg-subtle);
+    font-size: var(--nds-text-xs);
+  }
+
+  .modes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--nds-space-3);
+  }
+
+  @media (width < 900px) {
+    .desktopOnly {
+      display: none;
+    }
+
+    .mobileOnly {
+      display: block;
+    }
+
+    .page {
+      gap: var(--nds-space-8);
+    }
+
+    .title {
+      font-size: var(--nds-text-2xl);
+    }
+
+    .lead {
+      font-size: var(--nds-text-md);
+    }
+  }
+}

@@ -1,0 +1,95 @@
+name: Docs image
+
+# Builds the docs-site container on every PR and push to main; on main it is also
+# pushed to ghcr.io/hramin/negaresh-design-system-docs as `latest` and the short SHA.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: docs-image-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  IMAGE: ghcr.io/hramin/negaresh-design-system-docs
+
+jobs:
+  image:
+    name: Build${{ github.event_name == 'push' && ' and push' || '' }} docs image
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write # push to GHCR (main only)
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: docker/setup-buildx-action@v4
+
+      - name: Image tags
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ env.IMAGE }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=short,prefix=
+
+      - name: Build (and load for the smoke test)
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: apps/docs/Dockerfile
+          load: true
+          tags: nds-docs:ci
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            GIT_SHA=${{ github.event.pull_request.head.sha || github.sha }}
+            GIT_BRANCH=${{ github.head_ref || github.ref_name }}
+          cache-from: type=gha,scope=docs-image
+          cache-to: type=gha,scope=docs-image,mode=max
+
+      - name: Smoke test the container
+        run: |
+          docker run -d --name nds-docs -p 3000:3000 nds-docs:ci
+          for i in $(seq 1 30); do
+            [ "$(docker inspect --format '{{.State.Health.Status}}' nds-docs)" = healthy ] && break
+            sleep 2
+          done
+          docker inspect --format 'health: {{.State.Health.Status}}' nds-docs
+          for path in / /foundations/color '/foundations/color?theme=light' '/foundations/color?theme=dark' /healthz; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:3000$path")
+            echo "$code $path"
+            [ "$code" = 200 ] || exit 1
+          done
+          curl -s 'http://localhost:3000/foundations/color?theme=dark' | grep -q 'data-theme="dark"'
+          curl -s 'http://localhost:3000/foundations/color?theme=light' | grep -q 'data-theme="light"'
+          docker image inspect nds-docs:ci --format 'image size: {{.Size}} bytes'
+          docker rm -f nds-docs
+
+      - name: Log in to GHCR
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push (main only; layers come from the cache above)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: apps/docs/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            GIT_SHA=${{ github.sha }}
+            GIT_BRANCH=${{ github.ref_name }}
+          cache-from: type=gha,scope=docs-image
