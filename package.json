@@ -1,0 +1,20 @@
+{
+  "name": "negaresh-design-system",
+  "private": true,
+  "type": "module",
+  "description": "Negaresh Design System (NDS) — دیزاین سیستم نگرش",
+  "scripts": {
+    "dev": "turbo run dev --filter=@negaresh/docs",
+    "build": "turbo run build",
+    "tokens": "turbo run build --filter=@negaresh/tokens",
+    "tokens:check": "turbo run check --filter=@negaresh/tokens",
+    "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e --filter=@negaresh/docs",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "//": "Dependencies and packageManager are added and pinned in P1 after a Context7 lookup (see docs/04-stack.md)."
+}

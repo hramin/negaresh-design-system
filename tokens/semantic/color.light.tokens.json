@@ -1,0 +1,153 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Company theme \u2014 light mode. Aliases only; no raw values except dark status backgrounds.",
+  "color": {
+    "$type": "color",
+    "bg": {
+      "canvas": {
+        "$value": "{color.sand.50}"
+      },
+      "surface": {
+        "$value": "{color.sand.0}"
+      },
+      "sunken": {
+        "$value": "{color.sand.100}"
+      },
+      "hover": {
+        "$value": "{color.sand.100}"
+      },
+      "selected": {
+        "$value": "{color.teal.50}"
+      },
+      "inverse": {
+        "$value": "{color.sand.900}"
+      }
+    },
+    "fg": {
+      "default": {
+        "$value": "{color.sand.950}"
+      },
+      "muted": {
+        "$value": "{color.sand.700}"
+      },
+      "subtle": {
+        "$value": "{color.sand.600}"
+      },
+      "disabled": {
+        "$value": "{color.sand.400}"
+      },
+      "inverse": {
+        "$value": "{color.sand.50}"
+      }
+    },
+    "border": {
+      "default": {
+        "$value": "{color.sand.150}"
+      },
+      "strong": {
+        "$value": "{color.sand.200}"
+      },
+      "control": {
+        "$value": "{color.sand.500}"
+      }
+    },
+    "accent": {
+      "default": {
+        "$value": "{color.teal.600}"
+      },
+      "hover": {
+        "$value": "{color.teal.700}"
+      },
+      "pressed": {
+        "$value": "{color.teal.800}"
+      },
+      "subtle": {
+        "$value": "{color.teal.50}"
+      },
+      "fg": {
+        "$value": "{color.teal.600}"
+      },
+      "on": {
+        "$value": "{color.sand.0}"
+      }
+    },
+    "focus": {
+      "ring": {
+        "$value": "{color.teal.500}"
+      }
+    },
+    "success": {
+      "fg": {
+        "$value": "{color.sage.700}"
+      },
+      "bg": {
+        "$value": "{color.sage.100}"
+      },
+      "border": {
+        "$value": "{color.sage.300}"
+      }
+    },
+    "warning": {
+      "fg": {
+        "$value": "{color.ochre.700}"
+      },
+      "bg": {
+        "$value": "{color.ochre.100}"
+      },
+      "border": {
+        "$value": "{color.ochre.300}"
+      }
+    },
+    "danger": {
+      "fg": {
+        "$value": "{color.rose.700}"
+      },
+      "bg": {
+        "$value": "{color.rose.100}"
+      },
+      "border": {
+        "$value": "{color.rose.300}"
+      }
+    },
+    "info": {
+      "fg": {
+        "$value": "{color.slate.700}"
+      },
+      "bg": {
+        "$value": "{color.slate.100}"
+      },
+      "border": {
+        "$value": "{color.slate.300}"
+      }
+    },
+    "viz": {
+      "1": {
+        "$value": "{color.teal.600}"
+      },
+      "2": {
+        "$value": "{color.ochre.500}"
+      },
+      "3": {
+        "$value": "{color.slate.500}"
+      },
+      "4": {
+        "$value": "{color.clay.500}"
+      },
+      "5": {
+        "$value": "{color.mauve.500}"
+      },
+      "6": {
+        "$value": "{color.sage.500}"
+      },
+      "ref": {
+        "$value": "{color.sand.500}"
+      },
+      "band": {
+        "$value": "{color.sand.150}"
+      },
+      "grid": {
+        "$value": "{color.sand.150}"
+      }
+    }
+  }
+}

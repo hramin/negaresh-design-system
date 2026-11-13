@@ -1,0 +1,119 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "sans": {
+        "$value": [
+          "Vazirmatn",
+          "system-ui",
+          "sans-serif"
+        ],
+        "$description": "Interim (D-61). Abar Pro replaces this single token when licensed (D-19, D-33)."
+      },
+      "code": {
+        "$value": [
+          "ui-monospace",
+          "SF Mono",
+          "Menlo",
+          "Consolas",
+          "monospace"
+        ],
+        "$description": "Serials, system codes, activation codes, IDs only."
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": {
+        "$value": 400
+      },
+      "medium": {
+        "$value": 500
+      },
+      "semibold": {
+        "$value": 600
+      },
+      "bold": {
+        "$value": 700
+      },
+      "heavy": {
+        "$value": 800
+      }
+    },
+    "size": {
+      "$type": "dimension",
+      "2xs": {
+        "$value": {
+          "value": 12,
+          "unit": "px"
+        }
+      },
+      "xs": {
+        "$value": {
+          "value": 13,
+          "unit": "px"
+        }
+      },
+      "sm": {
+        "$value": {
+          "value": 14,
+          "unit": "px"
+        }
+      },
+      "md": {
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        }
+      },
+      "lg": {
+        "$value": {
+          "value": 18,
+          "unit": "px"
+        }
+      },
+      "xl": {
+        "$value": {
+          "value": 21,
+          "unit": "px"
+        }
+      },
+      "2xl": {
+        "$value": {
+          "value": 25,
+          "unit": "px"
+        }
+      },
+      "3xl": {
+        "$value": {
+          "value": 32,
+          "unit": "px"
+        }
+      },
+      "4xl": {
+        "$value": {
+          "value": 40,
+          "unit": "px"
+        }
+      },
+      "5xl": {
+        "$value": {
+          "value": 50,
+          "unit": "px"
+        }
+      }
+    },
+    "lineHeight": {
+      "$type": "number",
+      "tight": {
+        "$value": 1.35
+      },
+      "ui": {
+        "$value": 1.6
+      },
+      "text": {
+        "$value": 1.9
+      }
+    }
+  }
+}

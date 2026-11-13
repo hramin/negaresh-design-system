@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>فعال‌سازی نرم‌افزار — رجیستری نگارش برتر</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="nds.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.5v.01"/></symbol>
+  <symbol id="i-err" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+  <symbol id="i-app" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.4M12 17v.01"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+</svg>
+
+<a class="vh skip" href="#main">پرش به محتوا</a>
+
+<header class="topbar">
+  <div class="topbar__in">
+    <a class="brand" href="#" aria-label="رجیستری نگارش برتر، صفحهٔ اصلی">
+      <span class="brand__slot" aria-hidden="true">لوگو</span>
+      <span class="brand__name">نگارش برتر</span>
+      <span class="brand__sep" aria-hidden="true"></span>
+      <span class="brand__product">رجیستری</span>
+    </a>
+    <nav class="nav" aria-label="بخش‌های رجیستری">
+      <a href="#" aria-current="page">فعال‌سازی</a>
+      <a href="#">فعال‌سازی‌های من</a>
+      <a href="#">خریدها</a>
+      <a href="#">پشتیبانی</a>
+    </nav>
+    <div class="topbar__end">
+      <button class="btn btn--ghost btn--icon" id="themeBtn" aria-label="تغییر به حالت تیره"><svg class="i"><use href="#i-moon"/></svg></button>
+      <button class="user" aria-haspopup="menu">
+        <span class="user__label ltr">۰۹۱۲ ••• ۴۵۶۷</span>
+        <span class="user__avatar"><svg class="i i--sm"><use href="#i-user"/></svg></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <div class="main">
+    <div class="page-head">
+      <p class="eyebrow"><span class="badge badge--accent"><svg class="i i--sm"><use href="#i-link"/></svg> باز شده از برنامه</span></p>
+      <h1 data-title>فعال‌سازی نرم‌افزار</h1>
+      <p data-lede></p>
+    </div>
+
+    <!-- form / error -->
+    <section class="surface" data-for="form error" aria-labelledby="f-title">
+      <form novalidate onsubmit="event.preventDefault();go('success')">
+        <div class="surface__body stack" style="gap:var(--nds-space-6)">
+          <div>
+            <h2 class="h2" id="f-title">سریال را وارد کنید</h2>
+            <p class="sub">نام محصول و کد سیستم از برنامه آمده‌اند؛ فقط سریال لازم است.</p>
+          </div>
+          <div class="fields-2">
+            <div class="field">
+              <label class="field__label" for="serial">سریال <small>روی جعبه یا پیامک خرید</small></label>
+              <input class="input input--code ltr" id="serial" autocomplete="off" spellcheck="false" placeholder="XXXXX-XXXXX" value="N25AG-EMV0K" aria-describedby="serial-h serial-e">
+              <p class="field__hint" id="serial-h" data-for="form">بزرگی و کوچکی حروف، خط تیره و فاصله مهم نیست.</p>
+              <p class="field__error" id="serial-e" data-for="error" role="alert"><svg class="i i--sm"><use href="#i-err"/></svg>این سریال برای «نگارش تست هوش ۴» نیست. سریال همین برنامه را وارد کنید.</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="syscode">کد سیستم <small>از برنامه</small></label>
+              <input class="input input--code ltr" id="syscode" value="882859354" readonly aria-describedby="syscode-h">
+              <p class="field__hint" id="syscode-h">برنامه این کد را از سخت‌افزار رایانه می‌سازد.</p>
+            </div>
+          </div>
+        </div>
+        <div class="surface__section surface__section--sunken mobile-hide">
+          <div class="actions">
+            <button class="btn btn--primary" type="submit">ساخت کد فعال‌سازی</button>
+            <span class="muted">کد روی صفحه نمایش داده می‌شود و با پیامک و ایمیل هم می‌آید.</span>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- success -->
+    <section class="surface" data-for="success" aria-labelledby="s-title" hidden>
+      <div class="surface__body stack">
+        <div class="alert alert--success" role="status">
+          <svg class="i"><use href="#i-check"/></svg>
+          <div><span class="alert__title" id="s-title">کد فعال‌سازی ساخته شد</span>همین کد را در پنجرهٔ فعال‌سازی برنامه وارد کنید. یک نسخه با پیامک و ایمیل هم فرستاده شد.</div>
+        </div>
+        <div class="codebox">
+          <span class="codebox__label" id="code-l">کد فعال‌سازی</span>
+          <output class="codebox__value ltr" id="code" aria-labelledby="code-l">4417 9082 6153</output>
+          <button class="btn btn--primary" data-copy="#code"><svg class="i"><use href="#i-copy"/></svg> کپی کد</button>
+        </div>
+      </div>
+      <div class="surface__section">
+        <dl class="kv">
+          <dt>محصول</dt><dd>نگارش تست هوش ۴</dd>
+          <dt>سریال</dt><dd class="code ltr">N25AG-EMV0K</dd>
+          <dt>کد سیستم</dt><dd class="code ltr">882859354</dd>
+          <dt>زمان</dt><dd>۲۲ آبان ۱۴۰۵، ساعت ۱۷:۰۴</dd>
+        </dl>
+      </div>
+      <div class="surface__section surface__section--sunken">
+        <div class="actions">
+          <a class="btn btn--secondary btn--sm" href="#">فعال‌سازی‌های من</a>
+          <button class="btn btn--ghost btn--sm">ارسال دوبارهٔ پیامک</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- limit -->
+    <section class="surface" data-for="limit" aria-labelledby="l-title" hidden>
+      <div class="surface__body stack">
+        <div class="alert alert--warning">
+          <svg class="i"><use href="#i-alert"/></svg>
+          <div><span class="alert__title" id="l-title">سقف فعال‌سازی این سریال پر شده است</span>این سریال پیش‌تر روی رایانهٔ دیگری فعال شده است. اگر همان رایانه را دوباره نصب کرده‌اید، از همان‌جا اقدام کنید؛ رایگان است.</div>
+        </div>
+        <div class="meter meter--full">
+          <div class="meter__row"><span>رایانه‌های فعال‌شده</span><b>۱ از ۱</b></div>
+          <div class="meter__track" aria-hidden="true"><span class="meter__seg" data-on></span></div>
+          <p class="meter__note">سقف پیش‌فرض محصول</p>
+        </div>
+      </div>
+      <div class="surface__section stack">
+        <div class="row">
+          <div>
+            <h3 class="h3">یک فعال‌سازی دیگر بخرید</h3>
+            <p class="sub">بعد از پرداخت، کد برای همین رایانه ساخته می‌شود.</p>
+          </div>
+          <div class="price" aria-label="۹۵ هزار تومان"><span class="price__amount">۹۵٬۰۰۰</span><span class="price__unit">تومان</span></div>
+        </div>
+        <fieldset class="choices">
+          <legend>درگاه پرداخت</legend>
+          <label class="choice"><input type="radio" name="gw" checked> به‌پرداخت ملت</label>
+          <label class="choice"><input type="radio" name="gw"> زرین‌پال</label>
+          <label class="choice"><input type="radio" name="gw"> زیبال</label>
+        </fieldset>
+      </div>
+      <div class="surface__section surface__section--sunken mobile-hide">
+        <div class="actions">
+          <button class="btn btn--primary"><svg class="i"><use href="#i-lock"/></svg> پرداخت و ساخت کد</button>
+          <a class="btn btn--ghost" href="#">تماس با پشتیبانی</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <aside class="aside" aria-label="جزئیات فعال‌سازی">
+    <section class="surface aside-product">
+      <div class="surface__body">
+        <div class="product">
+          <span class="product__thumb"><svg class="i"><use href="#i-app"/></svg></span>
+          <div><div class="product__name">نگارش تست هوش ۴</div><div class="product__meta">ویندوز · نسخهٔ دانلودی</div></div>
+        </div>
+      </div>
+      <div class="surface__section desk-only" data-for="form error success">
+        <div class="meter">
+          <div class="meter__row"><span>سقف این سریال</span><b data-meter>۰ از ۱</b></div>
+          <div class="meter__track" aria-hidden="true"><span class="meter__seg" data-meter-seg></span></div>
+          <p class="meter__note">نصب دوباره روی همین رایانه رایگان است و سقف را مصرف نمی‌کند.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="aside-help">
+      <button class="btn btn--ghost btn--sm help-toggle" aria-expanded="false" aria-controls="help" onclick="toggleHelp(this)">
+        <svg class="i i--sm"><use href="#i-help"/></svg> راهنمای فعال‌سازی <svg class="i i--sm"><use href="#i-down"/></svg>
+      </button>
+      <div class="surface" id="help">
+        <div class="surface__body">
+          <h2 class="h3 desk-only" style="margin-block-end:var(--nds-space-5)">سه گام تا فعال‌سازی</h2>
+          <ol class="steps">
+            <li data-done><span><b>باز کردن از برنامه.</b> دکمهٔ «فعال‌سازی آنلاین» برنامه همین صفحه را باز می‌کند.</span></li>
+            <li data-step="2"><span><b>وارد کردن سریال.</b> سریال روی جعبه یا در پیامک خرید است.</span></li>
+            <li data-step="3"><span><b>وارد کردن کد در برنامه.</b> کد را کپی و در پنجرهٔ فعال‌سازی برنامه وارد کنید.</span></li>
+          </ol>
+        </div>
+        <div class="surface__section">
+          <p class="muted" style="display:flex;gap:var(--nds-space-2);align-items:flex-start;line-height:var(--nds-leading-text)">
+            <svg class="i i--sm" style="margin-block-start:4px"><use href="#i-phone"/></svg>
+            <span>پشتیبانی <a class="link ltr" href="tel:+982191012345">۰۲۱ ۹۱۰۱ ۲۳۴۵</a><br>شنبه تا چهارشنبه، ۹ تا ۱۷</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<div class="mobile-bar">
+  <button class="btn btn--primary btn--block" data-for="form error" onclick="go('success')">ساخت کد فعال‌سازی</button>
+  <button class="btn btn--primary btn--block" data-for="limit" hidden><svg class="i"><use href="#i-lock"/></svg> پرداخت ۹۵٬۰۰۰ تومان</button>
+  <button class="btn btn--primary btn--block" data-for="success" data-copy="#code" hidden><svg class="i"><use href="#i-copy"/></svg> کپی کد</button>
+</div>
+
+<div class="toast" role="status" aria-live="polite" id="toast"><svg class="i i--sm"><use href="#i-check"/></svg><span>کد کپی شد</span></div>
+
+<div class="review" aria-label="ابزار بازبینی؛ جزو طرح نیست">
+  <b>بازبینی</b>
+  <select id="rv-state" aria-label="حالت">
+    <option value="form">فرم</option><option value="error">خطای سریال</option>
+    <option value="success">کد ساخته شد</option><option value="limit">سقف پر</option>
+  </select>
+  <select id="rv-theme" aria-label="حالت رنگ"><option value="light">روشن</option><option value="dark">تیره</option></select>
+</div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const q=new URLSearchParams(location.search), root=document.documentElement;
+const copy={
+  form:['فعال‌سازی نرم‌افزار','سریالی را که خریده‌اید وارد کنید تا کد فعال‌سازی ساخته شود. کد را در برنامه وارد می‌کنید و کار تمام است.'],
+  error:['فعال‌سازی نرم‌افزار','سریالی را که خریده‌اید وارد کنید تا کد فعال‌سازی ساخته شود. کد را در برنامه وارد می‌کنید و کار تمام است.'],
+  success:['برنامه آمادهٔ فعال‌سازی است','کد زیر را در پنجرهٔ فعال‌سازی برنامه وارد کنید. بعداً هم در «فعال‌سازی‌های من» در دسترس است.'],
+  limit:['فعال‌سازی روی رایانهٔ تازه','سقف این سریال پر شده است. می‌توانید یک فعال‌سازی دیگر بخرید یا با پشتیبانی تماس بگیرید.']};
+function go(state){
+  $$('[data-for]').forEach(el=>el.hidden=!el.dataset.for.split(' ').includes(state));
+  $('#serial').setAttribute('aria-invalid',state==='error');
+  $('[data-title]').textContent=copy[state][0]; $('[data-lede]').textContent=copy[state][1];
+  const done=state==='success';
+  $('[data-meter]').textContent=(done?'۱':'۰')+' از ۱'; $('[data-meter-seg]').toggleAttribute('data-on',done);
+  $$('.steps li[data-step]').forEach(li=>li.removeAttribute('aria-current'));
+  const cur=$(`.steps li[data-step="${done?3:2}"]`); cur.setAttribute('aria-current','step');
+  $('.steps li[data-step="2"]').toggleAttribute('data-done',done);
+  $('#rv-state').value=state;
+}
+function theme(t){root.dataset.theme=t;$('#themeBtn').innerHTML=`<svg class="i"><use href="#i-${t==='dark'?'sun':'moon'}"/></svg>`;
+  $('#themeBtn').setAttribute('aria-label',t==='dark'?'تغییر به حالت روشن':'تغییر به حالت تیره');$('#rv-theme').value=t}
+function toggleHelp(b){const o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',!o);$('#help').hidden=o}
+$('#themeBtn').onclick=()=>theme(root.dataset.theme==='dark'?'light':'dark');
+$('#rv-state').onchange=e=>go(e.target.value);
+$('#rv-theme').onchange=e=>theme(e.target.value);
+$$('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText($(b.dataset.copy).textContent.replace(/\s/g,''))}catch{}
+  const t=$('#toast');t.toggleAttribute('data-open',true);setTimeout(()=>t.removeAttribute('data-open'),1800);
+}));
+if(matchMedia('(max-width:899px)').matches) $('#help').hidden=true;
+theme(q.get('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')); go(q.get('state')||'form');
+if(q.has('shot')) root.dataset.shot='';
+if(q.has('help')){const b=$('.help-toggle');b.setAttribute('aria-expanded','true');$('#help').hidden=false}
+</script>
+</body>
+</html>

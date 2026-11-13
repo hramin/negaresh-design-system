@@ -1,0 +1,52 @@
+# 01 · Decisions
+
+Numbering continues the Ravanma decision log. D-01 … D-76 come from `RAVANMA_ACTIVE_DECISIONS.md` and `RAVANMA_HANDOFF_2.md`; only those still binding for NDS are listed. New decisions start at D-77. Format: decision → consequence.
+
+## Inherited and still binding
+
+| # | Decision | Consequence for NDS |
+| --- | --- | --- |
+| D-19, D-33, D-61 | One typeface across products; target Abar Pro; Vazirmatn (OFL) until it is licensed | Typeface is one token (`font.family.sans`). Abar Pro must pass: tabular figures for Persian and Latin digits, legibility at 12–14 px, Enterprise licence covering SSR, PDF and desktop |
+| D-24 | Painted art is separate from measurable UI; icons are SVG on a fixed grid with tokenised stroke | `@negaresh/icons`; no icon or text cut from paintings |
+| D-26 | Prices in Toman only; backend converts for gateways | Components never convert units. Registry PRD's "rials" is display-overridden to Toman |
+| D-28 | Backend is FastAPI + PostgreSQL; the only frontend/backend boundary is OpenAPI | NDS has no backend dependency |
+| D-29 | One fast, modern frontend stack for all products | See `04-stack.md` |
+| D-30 | Only Ravanma is bilingual (fa/en); the three company products are Persian RTL only | NDS supports LTR, tested on Ravanma later |
+| D-31, D-32 | One shared theme for the three company products; previous colours, fonts and stacks (green #00a379, IRANSansX, HTMX, Next.js) are not a reference | Company theme defined here |
+| D-37, D-14 | Brand identity is a separate stage; Core only defines the logo slot | `LogoSlot` component with sizes and clear space |
+| D-41 | WCAG 2.2 AA for all products | See `foundations/accessibility.md` |
+| D-51, D-62 | Current product documents win over older design artefacts | PRDs are the requirement source |
+| D-74, D-76 | UI is built in code; image models make art only. NDS is extracted from a real page | Reference-page-first workflow |
+
+## Superseded by NDS decisions
+
+D-05 (light only) → D-82. Phase-1 cold theme (D-07, D-08, D-42–D-49) → not used; phase-1 behaviour and accessibility rules are kept.
+
+## NDS decisions
+
+| # | Decision | Consequence |
+| --- | --- | --- |
+| D-77 | No illumination, frames, corner pieces, cartouches, shamseh or diamond markers in Core or the company theme. Surfaces separate by tone, spacing and one hairline | Ornament can only live in `@negaresh/brand-ravanma` |
+| D-78 | Accent is the deep teal; it may later move toward the current logo green when the logo is redrawn, but is never replaced by an unrelated hue | Accent is one ramp; adjusting it is a token change |
+| D-79 | First reference page: Registry activation | `reference/registry-activation` |
+| D-80, D-84 | Core is React only, on React Aria Components. All four products are (re)built on the new stack | No CSS-only/HTMX layer. Keycloak login via Keycloakify |
+| D-81 | Interim typeface Vazirmatn | See D-19 |
+| D-82 | Company theme ships light **and** dark in v1; dark is a calm, low-glare blue-green slate ("ink") suited to psychology and business use — no black, no brown | Every semantic token has two values; every snapshot runs in both |
+| D-83 | The test platform first moves from the monolith to the new frontend stack, then adopts NDS. No work on the current Jinja templates for NDS | Assessment kit targets the React client against the existing `/api/v1` JSON twins |
+| D-85 | Company palette: warm "sand" neutrals for light, calm "ink" blue-green slate for dark, deep teal accent (#1D6B66, approved on the first reference; plum was tried and rejected); status colours sage/ochre/rose/slate, kept clearly apart from the accent | `foundations/color.md` |
+| D-86 | Display digits Persian; codes (serial, system code, activation code, order number, phone input) in Latin digits, LTR | `<Ltr>`, `<Code>` primitives; `@negaresh/utils` |
+| D-87 | The NDS site replaces Storybook: one TanStack Start app is documentation, playground and visual-test target | `docs-site.md` |
+| D-88 | Name: **Negaresh Design System (NDS)**, Persian «دیزاین سیستم نگرش». Package scope `@negaresh/*`, CSS prefix `--nds-` | — |
+| D-89 | Repository on GitHub; work happens in Claude Code (web) phase by phase, using Context7 for library docs | `CLAUDE.md` |
+| D-90 | Breakpoint for mobile composition: below 900 px (inherits v3's 899 px) | `foundations/layout.md` |
+
+## Open
+
+| # | Question | Default until answered |
+| --- | --- | --- |
+| Q-01 | Abar Pro licence and files | Vazirmatn |
+| Q-02 | New logos for Negaresh, Registry, Test platform | `LogoSlot` placeholder |
+| Q-03 | Who sees an adolescent's result (teen, parent, clinician)? (Test platform brief) | Ship both views: professional and calm |
+| Q-04 | Block editor (Tiptap, Editor.js, Lexical) — Negaresh PRD phase 1 | NDS renders blocks; the editor UI is a later pattern. Proposal: Tiptap (headless, React, structured JSON) |
+| Q-05 | Product reviews and ratings on the shop | Rating component specified but not built |
+| Q-06 | Comments on blog items | Not built |
