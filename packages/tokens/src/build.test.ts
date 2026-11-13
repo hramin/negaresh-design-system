@@ -67,6 +67,13 @@ describe('build output', () => {
     expect(entries.find((e) => e.path === 'color.sand.50')?.cssVar).toBeNull();
   });
 
+  it('writes well-formed comments (no stray */ from globs in the header)', async () => {
+    for (const css of [themeCss(await collectTokens('company')), themeCss(await collectTokens('ravanma'), 'note')]) {
+      expect(css.replaceAll(/\/\*[\s\S]*?\*\//g, '')).not.toMatch(/\*\/|\/\*/);
+      expect(css.split('{').length).toBe(css.split('}').length);
+    }
+  });
+
   it('adds Ravanma primitives to the placeholder theme only', async () => {
     const ravanma = themeCss(await collectTokens('ravanma'), 'placeholder');
     expect(ravanma).toContain('--nds-ravanma-paper:#D9C4AD;');

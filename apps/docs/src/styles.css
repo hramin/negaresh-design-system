@@ -1,0 +1,16 @@
+/* Docs site global styles: company theme (tokens, Vazirmatn, base layers) + site basics. */
+@import "@negaresh/theme-company";
+
+@layer nds.utilities {
+  .nds-ltr {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  .nds-code {
+    font-family: var(--nds-font-code);
+    font-size: 0.9em;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+}

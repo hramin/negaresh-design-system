@@ -14,7 +14,8 @@
     },
     "./company.css": "./dist/company.css",
     "./ravanma.css": "./dist/ravanma.css",
-    "./tokens.json": "./dist/tokens.json"
+    "./tokens.json": "./dist/tokens.json",
+    "./contrast.json": "./dist/contrast.json"
   },
   "files": [
     "dist"
