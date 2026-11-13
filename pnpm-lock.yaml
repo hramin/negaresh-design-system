@@ -199,6 +199,12 @@ importers:
 
   packages/react: {}
 
+  packages/theme-company:
+    dependencies:
+      '@negaresh/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+
   packages/theme-ravanma: {}
 
   packages/tokens:

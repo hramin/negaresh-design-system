@@ -1,0 +1,22 @@
+{
+  "name": "@negaresh/theme-company",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Company theme for Negaresh main site, Registry and Test platform: token CSS, self-hosted Vazirmatn subset, base layers. Light and dark.",
+  "type": "module",
+  "sideEffects": ["*.css"],
+  "exports": {
+    ".": "./src/index.css",
+    "./index.css": "./src/index.css",
+    "./fonts.css": "./src/fonts.css",
+    "./base.css": "./src/base.css",
+    "./fonts/*": "./fonts/*"
+  },
+  "files": ["src", "fonts"],
+  "scripts": {
+    "lint": "stylelint \"src/**/*.css\""
+  },
+  "dependencies": {
+    "@negaresh/tokens": "workspace:*"
+  }
+}

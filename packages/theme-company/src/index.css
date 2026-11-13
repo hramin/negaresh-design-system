@@ -1,0 +1,4 @@
+/* @negaresh/theme-company: tokens (light, dark, OS default) + Vazirmatn + base layers. */
+@import "@negaresh/tokens/company.css";
+@import "./fonts.css";
+@import "./base.css";

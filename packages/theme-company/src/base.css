@@ -1,0 +1,88 @@
+/* NDS cascade layers. Apps put their own CSS after these layers (CLAUDE.md §6). */
+@layer nds.reset, nds.foundation, nds.components, nds.patterns, nds.utilities;
+
+@layer nds.reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd,
+  ol,
+  ul,
+  fieldset {
+    margin: 0;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  img,
+  svg,
+  video {
+    display: block;
+    max-inline-size: 100%;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@layer nds.foundation {
+  html {
+    font-family: var(--nds-font-sans);
+    font-size: 100%;
+    line-height: var(--nds-leading-ui);
+    color: var(--nds-fg-default);
+    background: var(--nds-bg-canvas);
+    accent-color: var(--nds-accent-default);
+  }
+
+  body {
+    min-block-size: 100dvh;
+  }
+
+  :focus-visible {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  ::selection {
+    background: var(--nds-accent-subtle);
+    color: var(--nds-fg-default);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 1ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

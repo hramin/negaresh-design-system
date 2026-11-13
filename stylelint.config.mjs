@@ -13,7 +13,7 @@ const physical = [
 
 /** @type {import('stylelint').Config} */
 export default {
-  ignoreFiles: ['**/dist/**', '**/.output/**', '**/node_modules/**', 'reference/**', 'coverage/**'],
+  ignoreFiles: ['**/dist/**', '**/.output/**', '**/node_modules/**', 'reference/**', '**/coverage/**', '**/test-results/**', '**/playwright-report/**'],
   rules: {
     'property-disallowed-list': [physical, { message: (p) => `Use the logical property instead of "${p}" (CLAUDE.md §3).` }],
     'declaration-property-value-disallowed-list': [
