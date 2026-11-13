@@ -1,0 +1,124 @@
+@layer nds.patterns {
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-6);
+    padding: var(--nds-space-6);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-surface-radius);
+    background: var(--nds-bg-surface);
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-3);
+  }
+
+  .rowItems {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--nds-space-5);
+  }
+
+  .state {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--nds-space-2);
+    margin: 0;
+    min-inline-size: 0;
+  }
+
+  .stateBody {
+    display: flex;
+    align-items: center;
+    min-block-size: var(--nds-control-md);
+  }
+
+  .caption {
+    color: var(--nds-fg-subtle);
+    font-size: var(--nds-text-2xs);
+  }
+
+  /* Room for the focus ring (2 px + 2 px offset) in interaction snapshots. */
+  .capture {
+    display: inline-block;
+    padding: var(--nds-space-2);
+  }
+
+  .block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-3);
+  }
+
+  .table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--nds-text-sm);
+  }
+
+  .table th,
+  .table td {
+    padding: var(--nds-space-3) var(--nds-space-4);
+    text-align: start;
+    vertical-align: top;
+    border-block-end: var(--nds-border-width-hairline) solid var(--nds-border-default);
+  }
+
+  .table thead th {
+    color: var(--nds-fg-subtle);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-semibold);
+    background: var(--nds-bg-sunken);
+    white-space: nowrap;
+  }
+
+  .table tbody tr:last-child > * {
+    border-block-end: 0;
+  }
+
+  .code {
+    font-family: var(--nds-font-code);
+    font-size: var(--nds-text-xs);
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+    max-inline-size: 66ch;
+    margin: 0;
+    padding-inline-start: var(--nds-space-5);
+    color: var(--nds-fg-muted);
+    line-height: var(--nds-leading-text);
+  }
+
+  .doDont {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--nds-space-4);
+  }
+
+  .example {
+    padding: var(--nds-space-8);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-surface-radius);
+    background: var(--nds-bg-canvas);
+  }
+
+  @media (width < 900px) {
+    .doDont {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .gallery,
+    .example {
+      padding: var(--nds-space-4);
+    }
+  }
+}

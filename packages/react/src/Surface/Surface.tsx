@@ -1,8 +1,11 @@
 import type { ElementType, ReactNode, Ref } from 'react';
+
+/** `data-*` attributes are forwarded to the root (test hooks, analytics). */
+type DataAttributes = { [key: `data-${string}`]: string | undefined };
 import { cx } from '../internal/cx.ts';
 import styles from './Surface.module.css';
 
-export interface SurfaceProps {
+export interface SurfaceProps extends DataAttributes {
   /** `default`: surface tone, hairline, radius. `plain`: no background or border (layout only). */
   variant?: 'default' | 'plain';
   /** Element to render. Default `section`; pass `aria-labelledby` to name it. */
@@ -39,7 +42,7 @@ export function Surface({
   );
 }
 
-export interface SectionProps {
+export interface SectionProps extends DataAttributes {
   /** `sunken` for a footer with actions. Default `default`. */
   tone?: 'default' | 'sunken';
   as?: ElementType;
@@ -58,9 +61,16 @@ export function Section({
   className,
   children,
   ref,
+  ...data
 }: SectionProps) {
   return (
-    <As ref={ref} data-nds="Section" data-tone={tone} className={cx(styles.section, className)}>
+    <As
+      {...data}
+      ref={ref}
+      data-nds="Section"
+      data-tone={tone}
+      className={cx(styles.section, className)}
+    >
       {children}
     </As>
   );

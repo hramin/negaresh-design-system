@@ -12,7 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HealthzRouteImport } from './routes/healthz'
 import { Route as TokensRouteImport } from './routes/tokens'
+import { Route as ComponentsIndexRouteImport } from './routes/components/index'
+import { Route as ComponentsSlugRouteImport } from './routes/components/$slug'
 import { Route as FoundationsColorRouteImport } from './routes/foundations/color'
+import { Route as FoundationsIconsRouteImport } from './routes/foundations/icons'
+import { Route as ReferenceRegistryActivationRouteImport } from './routes/reference/registry-activation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,44 +33,106 @@ const TokensRoute = TokensRouteImport.update({
   path: '/tokens',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsIndexRoute = ComponentsIndexRouteImport.update({
+  id: '/components/',
+  path: '/components/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsSlugRoute = ComponentsSlugRouteImport.update({
+  id: '/components/$slug',
+  path: '/components/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FoundationsColorRoute = FoundationsColorRouteImport.update({
   id: '/foundations/color',
   path: '/foundations/color',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FoundationsIconsRoute = FoundationsIconsRouteImport.update({
+  id: '/foundations/icons',
+  path: '/foundations/icons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferenceRegistryActivationRoute =
+  ReferenceRegistryActivationRouteImport.update({
+    id: '/reference/registry-activation',
+    path: '/reference/registry-activation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
+  '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
+  '/foundations/icons': typeof FoundationsIconsRoute
+  '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/components/': typeof ComponentsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
+  '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
+  '/foundations/icons': typeof FoundationsIconsRoute
+  '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/components': typeof ComponentsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
+  '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
+  '/foundations/icons': typeof FoundationsIconsRoute
+  '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/components/': typeof ComponentsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/healthz' | '/tokens' | '/foundations/color'
+  fullPaths:
+    | '/'
+    | '/healthz'
+    | '/tokens'
+    | '/components/$slug'
+    | '/foundations/color'
+    | '/foundations/icons'
+    | '/reference/registry-activation'
+    | '/components/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/healthz' | '/tokens' | '/foundations/color'
-  id: '__root__' | '/' | '/healthz' | '/tokens' | '/foundations/color'
+  to:
+    | '/'
+    | '/healthz'
+    | '/tokens'
+    | '/components/$slug'
+    | '/foundations/color'
+    | '/foundations/icons'
+    | '/reference/registry-activation'
+    | '/components'
+  id:
+    | '__root__'
+    | '/'
+    | '/healthz'
+    | '/tokens'
+    | '/components/$slug'
+    | '/foundations/color'
+    | '/foundations/icons'
+    | '/reference/registry-activation'
+    | '/components/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HealthzRoute: typeof HealthzRoute
   TokensRoute: typeof TokensRoute
+  ComponentsSlugRoute: typeof ComponentsSlugRoute
   FoundationsColorRoute: typeof FoundationsColorRoute
+  FoundationsIconsRoute: typeof FoundationsIconsRoute
+  ReferenceRegistryActivationRoute: typeof ReferenceRegistryActivationRoute
+  ComponentsIndexRoute: typeof ComponentsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,11 +158,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TokensRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/': {
+      id: '/components/'
+      path: '/components'
+      fullPath: '/components/'
+      preLoaderRoute: typeof ComponentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/$slug': {
+      id: '/components/$slug'
+      path: '/components/$slug'
+      fullPath: '/components/$slug'
+      preLoaderRoute: typeof ComponentsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/foundations/color': {
       id: '/foundations/color'
       path: '/foundations/color'
       fullPath: '/foundations/color'
       preLoaderRoute: typeof FoundationsColorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/icons': {
+      id: '/foundations/icons'
+      path: '/foundations/icons'
+      fullPath: '/foundations/icons'
+      preLoaderRoute: typeof FoundationsIconsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reference/registry-activation': {
+      id: '/reference/registry-activation'
+      path: '/reference/registry-activation'
+      fullPath: '/reference/registry-activation'
+      preLoaderRoute: typeof ReferenceRegistryActivationRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -106,7 +200,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HealthzRoute: HealthzRoute,
   TokensRoute: TokensRoute,
+  ComponentsSlugRoute: ComponentsSlugRoute,
   FoundationsColorRoute: FoundationsColorRoute,
+  FoundationsIconsRoute: FoundationsIconsRoute,
+  ReferenceRegistryActivationRoute: ReferenceRegistryActivationRoute,
+  ComponentsIndexRoute: ComponentsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

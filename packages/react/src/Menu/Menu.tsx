@@ -47,19 +47,22 @@ export interface MenuProps<T extends object>
     | 'autoFocus'
   > {
   children: RacMenuProps<T>['children'];
-  /** Popover placement relative to the trigger (logical). Default `bottom start`. */
+  /**
+   * Popover placement relative to the trigger (logical). Leave unset: React Aria uses
+   * `bottom start` under MenuTrigger and `end top` for submenus.
+   */
   placement?: 'bottom start' | 'bottom end' | 'top start' | 'top end' | 'start top' | 'end top';
   className?: string | undefined;
 }
 
 /** The menu popover (floating layer: shadow allowed). Use inside MenuTrigger or SubmenuTrigger. */
-export function Menu<T extends object>({
-  placement = 'bottom start',
-  className,
-  ...rest
-}: MenuProps<T>) {
+export function Menu<T extends object>({ placement, className, ...rest }: MenuProps<T>) {
   return (
-    <Popover placement={placement} offset={4} className={cx(styles.popover)} data-nds="MenuPopover">
+    <Popover
+      {...(placement ? { placement } : {})}
+      className={cx(styles.popover)}
+      data-nds="MenuPopover"
+    >
       <RacMenu {...rest} data-nds="Menu" className={cx(styles.menu, className)} />
     </Popover>
   );

@@ -18,7 +18,7 @@
     "test:e2e": {
       "dependsOn": ["build"],
       "outputs": ["playwright-report/**", "screenshots/**"],
-      "passThroughEnv": ["PW_CHROMIUM_PATH", "SCREENSHOTS"]
+      "passThroughEnv": ["PW_CHROMIUM_PATH", "SCREENSHOTS", "NDS_VISUAL"]
     },
     "lint": {},
     "typecheck": {

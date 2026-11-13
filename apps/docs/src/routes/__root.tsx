@@ -1,17 +1,24 @@
 /// <reference types="vite/client" />
-import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router';
+import {
+  createRootRoute,
+  HeadContent,
+  Outlet,
+  Scripts,
+  useRouterState,
+} from '@tanstack/react-router';
+import { parseThemeChoice, ThemeProvider, themeAttribute } from '@negaresh/react';
+import { faMessages } from '@negaresh/react/messages/fa';
 import type { ReactNode } from 'react';
 import page from '../components/Page.module.css';
 import { Shell } from '../components/Shell.tsx';
-import { ThemeProvider } from '../components/ThemeProvider.tsx';
 import { m } from '../lib/messages.ts';
-import { parseTheme, readThemeCookie, themeAttribute } from '../lib/theme.ts';
+import { readThemeCookie, writeThemeCookie } from '../lib/theme.ts';
 import appCss from '../styles.css?url';
 
 export const Route = createRootRoute({
   beforeLoad: ({ location }) => {
     const search = location.search as Record<string, unknown>;
-    return { theme: parseTheme(search.theme) ?? readThemeCookie() ?? 'system' };
+    return { theme: parseThemeChoice(search.theme) ?? readThemeCookie() ?? 'system' };
   },
   head: () => ({
     meta: [
@@ -59,11 +66,17 @@ function RootDocument({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { theme } = Route.useRouteContext();
+  // Reference rebuilds render full-bleed, without the docs chrome, to compare with the static pages.
+  const bare = useRouterState({ select: (s) => s.location.pathname.startsWith('/reference/') });
   return (
-    <ThemeProvider initial={theme}>
-      <Shell>
+    <ThemeProvider messages={faMessages} defaultTheme={theme} onThemeChange={writeThemeCookie}>
+      {bare ? (
         <Outlet />
-      </Shell>
+      ) : (
+        <Shell>
+          <Outlet />
+        </Shell>
+      )}
     </ThemeProvider>
   );
 }

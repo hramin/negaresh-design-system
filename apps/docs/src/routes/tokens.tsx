@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import type { CSSProperties } from 'react';
-import { CopyButton } from '../components/CopyButton.tsx';
+import { CopyButton } from '@negaresh/react';
 import { TableWrap } from '../components/TableWrap.tsx';
 import styles from '../components/Page.module.css';
 import { cssTokens, type TokenEntry, tsPath } from '../lib/tokens.ts';
@@ -105,7 +105,12 @@ function TokenGroup({ group }: { group: Group }) {
                   <th scope="row">
                     <span className={styles.cellActions}>
                       <code className={styles.code}>{t.cssVar}</code>
-                      <CopyButton value={`var(${t.cssVar})`} label="کپی" done="کپی شد" />
+                      <CopyButton
+                        value={`var(${t.cssVar})`}
+                        size="sm"
+                        variant="ghost"
+                        aria-label={`کپی ${t.cssVar}`}
+                      />
                     </span>
                   </th>
                   <td>
@@ -139,7 +144,12 @@ function TokenGroup({ group }: { group: Group }) {
               <div className={styles.cardHead}>
                 {className && <span className={className} style={style} />}
                 <code className={styles.code}>{t.cssVar}</code>
-                <CopyButton value={`var(${t.cssVar})`} label="کپی" done="کپی شد" />
+                <CopyButton
+                  value={`var(${t.cssVar})`}
+                  size="sm"
+                  variant="ghost"
+                  aria-label={`کپی ${t.cssVar}`}
+                />
               </div>
               <div className={styles.cardRow}>
                 <span className={styles.label}>نام در TS</span>

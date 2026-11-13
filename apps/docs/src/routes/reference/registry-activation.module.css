@@ -1,0 +1,170 @@
+/*
+ * Page-level composition for the reference rebuild. Components bring their own styles;
+ * this file holds the page grid and the two pieces that have no component yet:
+ * the top bar frame + nav links (navigation, P4) and the account pill (account pattern, P6).
+ */
+@layer nds.patterns {
+  .frame {
+    min-block-size: 100dvh;
+    background: var(--nds-bg-canvas);
+  }
+
+  .mainLandmark {
+    display: block;
+  }
+
+  .topbar {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: var(--nds-z-sticky);
+    block-size: var(--nds-topbar);
+    background: color-mix(in oklab, var(--nds-bg-canvas) 88%, transparent);
+    backdrop-filter: blur(calc(var(--nds-space-3) + var(--nds-space-1) / 2));
+    border-block-end: var(--nds-border-width-hairline) solid var(--nds-border-default);
+  }
+
+  .topbarIn {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-space-8);
+    block-size: 100%;
+  }
+
+  .brand {
+    display: flex;
+    color: inherit;
+    text-decoration: none;
+    border-radius: var(--nds-radius-sm);
+  }
+
+  .nav {
+    display: flex;
+    gap: var(--nds-space-1);
+  }
+
+  .navLink {
+    display: flex;
+    align-items: center;
+    min-block-size: var(--nds-touch);
+    padding: var(--nds-space-2) var(--nds-space-3);
+    border-radius: var(--nds-radius-sm);
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+    font-weight: var(--nds-weight-medium);
+    text-decoration: none;
+  }
+
+  .navLink:hover {
+    background: var(--nds-bg-hover);
+    color: var(--nds-fg-default);
+  }
+
+  .navLink[aria-current="page"] {
+    background: var(--nds-bg-sunken);
+    color: var(--nds-fg-default);
+  }
+
+  .end {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-space-2);
+    margin-inline-start: auto;
+  }
+
+  /* Account pill (P6 pattern) composed on Button. */
+  .user {
+    gap: var(--nds-space-2);
+    min-block-size: var(--nds-touch);
+    padding-block: var(--nds-space-1);
+    padding-inline: var(--nds-space-1) var(--nds-space-3);
+    border-color: var(--nds-border-default);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-medium);
+  }
+
+  .avatar {
+    display: grid;
+    place-items: center;
+    inline-size: var(--nds-space-8);
+    block-size: var(--nds-space-8);
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-bg-sunken);
+    color: var(--nds-fg-muted);
+  }
+
+  .page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) calc(var(--nds-space-24) * 3.75);
+    gap: var(--nds-space-10);
+    align-items: start;
+    padding-block: var(--nds-space-10) var(--nds-space-16);
+  }
+
+  .main {
+    display: grid;
+    gap: var(--nds-space-6);
+    min-inline-size: 0;
+  }
+
+  .pageHead {
+    padding-block-end: var(--nds-space-2);
+  }
+
+  .lede {
+    max-inline-size: 62ch;
+  }
+
+  .codebox {
+    display: grid;
+    justify-items: center;
+    padding-block: var(--nds-space-4);
+  }
+
+  .mobileBar {
+    display: none;
+  }
+
+  @media (width < 900px) {
+    .nav,
+    .userLabel {
+      display: none;
+    }
+
+    .topbarIn {
+      gap: var(--nds-space-3);
+    }
+
+    .user {
+      padding: 0;
+      border: 0;
+      background: none;
+    }
+
+    .page {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--nds-space-5);
+      padding-block: var(--nds-space-6) var(--nds-space-8);
+    }
+
+    .lede {
+      font-size: var(--nds-text-sm);
+      line-height: var(--nds-leading-ui);
+    }
+
+    .actionsSection,
+    .codebox {
+      display: none;
+    }
+
+    .mobileBar {
+      position: sticky;
+      inset-block-end: 0;
+      z-index: var(--nds-z-dropdown);
+      display: flex;
+      padding: var(--nds-space-3) var(--nds-space-4) calc(var(--nds-space-3) + env(safe-area-inset-bottom));
+      background: color-mix(in oklab, var(--nds-bg-canvas) 92%, transparent);
+      backdrop-filter: blur(calc(var(--nds-space-3) + var(--nds-space-1) / 2));
+      border-block-start: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    }
+  }
+}

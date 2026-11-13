@@ -162,10 +162,9 @@
     --_h: var(--nds-touch);
   }
 
+  /* No box of its own: text lays out exactly like a bare label (reference parity). */
   .label {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--nds-space-2);
+    display: contents;
   }
 
   @media (prefers-reduced-motion: reduce) {
