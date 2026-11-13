@@ -1,0 +1,54 @@
+@layer nds.components {
+  .surface {
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+    background: var(--nds-bg-surface);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-surface-radius);
+  }
+
+  .surface[data-variant="plain"] {
+    background: transparent;
+    border: 0;
+  }
+
+  .section {
+    padding: var(--nds-space-6) var(--nds-space-8);
+    border-block-start: var(--nds-border-width-hairline) solid var(--nds-border-default);
+  }
+
+  .section:first-child {
+    padding: var(--nds-space-8);
+    border-block-start: 0;
+  }
+
+  .section[data-tone="sunken"] {
+    background: var(--nds-bg-sunken);
+  }
+
+  .section:first-child[data-tone="sunken"] {
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+  }
+
+  .section:last-child[data-tone="sunken"] {
+    border-end-start-radius: inherit;
+    border-end-end-radius: inherit;
+  }
+
+  .surface[data-variant="plain"] > .section {
+    padding-inline: 0;
+  }
+
+  @media (width < 900px) {
+    .surface {
+      border-radius: var(--nds-radius-md);
+    }
+
+    .section,
+    .section:first-child {
+      padding: var(--nds-space-5);
+    }
+  }
+}

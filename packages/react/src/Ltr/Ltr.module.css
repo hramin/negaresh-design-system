@@ -1,0 +1,27 @@
+@layer nds.components {
+  .ltr {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  .code {
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-family: var(--nds-font-code);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .code[data-size="display"] {
+    font-size: var(--nds-text-4xl);
+    font-weight: var(--nds-weight-semibold);
+    letter-spacing: 0.12em;
+  }
+
+  @media (width < 900px) {
+    .code[data-size="display"] {
+      font-size: var(--nds-text-2xl);
+      letter-spacing: 0.06em;
+    }
+  }
+}

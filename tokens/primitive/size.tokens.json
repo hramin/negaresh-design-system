@@ -47,6 +47,11 @@
           "value": 24,
           "unit": "px"
         }
+      },
+      "stroke": {
+        "$type": "number",
+        "$value": 1.6,
+        "$description": "Icon stroke width in px on the 24 grid (docs/foundations/motion-icons.md)."
       }
     },
     "topbar": {

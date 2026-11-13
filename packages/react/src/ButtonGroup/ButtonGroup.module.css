@@ -1,0 +1,39 @@
+@layer nds.components {
+  .group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--nds-space-3);
+  }
+
+  .group[data-justify="end"] {
+    justify-content: flex-end;
+  }
+
+  .group[data-justify="between"] {
+    justify-content: space-between;
+  }
+
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--nds-space-1);
+  }
+
+  .toolbar[data-orientation="vertical"] {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  @media (width < 600px) {
+    .group[data-stack] {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .group[data-stack] > * {
+      inline-size: 100%;
+    }
+  }
+}

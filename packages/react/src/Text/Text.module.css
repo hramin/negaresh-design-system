@@ -1,0 +1,58 @@
+@layer nds.components {
+  .text {
+    margin: 0;
+    font-style: normal;
+    letter-spacing: normal;
+  }
+
+  .heading {
+    text-wrap: balance;
+  }
+
+  .text[data-size="2xs"] { font-size: var(--nds-text-2xs); }
+  .text[data-size="xs"] { font-size: var(--nds-text-xs); }
+  .text[data-size="sm"] { font-size: var(--nds-text-sm); }
+  .text[data-size="md"] { font-size: var(--nds-text-md); }
+  .text[data-size="lg"] { font-size: var(--nds-text-lg); }
+  .text[data-size="xl"] { font-size: var(--nds-text-xl); }
+  .text[data-size="2xl"] { font-size: var(--nds-text-2xl); }
+  .text[data-size="3xl"] { font-size: var(--nds-text-3xl); }
+  .text[data-size="4xl"] { font-size: var(--nds-text-4xl); }
+  .text[data-size="5xl"] { font-size: var(--nds-text-5xl); }
+
+  .text[data-weight="regular"] { font-weight: var(--nds-weight-regular); }
+  .text[data-weight="medium"] { font-weight: var(--nds-weight-medium); }
+  .text[data-weight="semibold"] { font-weight: var(--nds-weight-semibold); }
+  .text[data-weight="bold"] { font-weight: var(--nds-weight-bold); }
+  .text[data-weight="heavy"] { font-weight: var(--nds-weight-heavy); }
+
+  .text[data-tone="default"] { color: var(--nds-fg-default); }
+  .text[data-tone="muted"] { color: var(--nds-fg-muted); }
+  .text[data-tone="subtle"] { color: var(--nds-fg-subtle); }
+  .text[data-tone="disabled"] { color: var(--nds-fg-disabled); }
+  .text[data-tone="accent"] { color: var(--nds-accent-fg); }
+  .text[data-tone="success"] { color: var(--nds-success-fg); }
+  .text[data-tone="warning"] { color: var(--nds-warning-fg); }
+  .text[data-tone="danger"] { color: var(--nds-danger-fg); }
+  .text[data-tone="info"] { color: var(--nds-info-fg); }
+  .text[data-tone="inverse"] { color: var(--nds-fg-inverse); }
+
+  .text[data-leading="tight"] { line-height: var(--nds-leading-tight); }
+  .text[data-leading="ui"] { line-height: var(--nds-leading-ui); }
+  .text[data-leading="text"] { line-height: var(--nds-leading-text); }
+
+  .text[data-tabular] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .text[data-measure] {
+    max-inline-size: 66ch;
+  }
+
+  /* Page titles step down one size on mobile (typography.md). */
+  @media (width < 900px) {
+    .text[data-size="5xl"] { font-size: var(--nds-text-3xl); }
+    .text[data-size="4xl"] { font-size: var(--nds-text-2xl); }
+    .text[data-size="3xl"] { font-size: var(--nds-text-2xl); }
+  }
+}

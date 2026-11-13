@@ -1,0 +1,148 @@
+/**
+ * Generates src/icons.ts from the NDS-drawn glyphs below and a chosen subset of
+ * lucide-static (ISC, see LICENSE). Run: `pnpm --filter @negaresh/icons import`.
+ *
+ * Icons are authored left-to-right. `mirrored` icons flip in RTL, so their names are
+ * logical: `chevronEnd` points to the inline end (left in Persian).
+ */
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { dirname, join } from 'node:path';
+
+const require = createRequire(import.meta.url);
+const LUCIDE = join(dirname(require.resolve('lucide-static/package.json')), 'icons');
+const LUCIDE_VERSION = (require('lucide-static/package.json') as { version: string }).version;
+
+/** NDS-drawn glyphs from the approved reference page (reference/registry-activation). */
+const NDS: Record<string, string> = {
+  copy: '<rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/>',
+  check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  warning: '<path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.5v.01"/>',
+  error: '<circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/>',
+  moon: '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
+  user: '<circle cx="12" cy="8.5" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/>',
+  app: '<rect x="3.5" y="4.5" width="17" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/>',
+  help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.4M12 17v.01"/>',
+  phone:
+    '<path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/>',
+  lock: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/>',
+  link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+};
+
+/** NDS name → [lucide file, mirrored in RTL]. */
+const FROM_LUCIDE: Record<string, [string, boolean]> = {
+  close: ['x', false],
+  chevronDown: ['chevron-down', false],
+  chevronUp: ['chevron-up', false],
+  chevronEnd: ['chevron-right', true],
+  chevronStart: ['chevron-left', true],
+  arrowEnd: ['arrow-right', true],
+  arrowStart: ['arrow-left', true],
+  arrowUp: ['arrow-up', false],
+  arrowDown: ['arrow-down', false],
+  externalLink: ['external-link', true],
+  search: ['search', false],
+  menu: ['menu', false],
+  more: ['ellipsis', false],
+  moreVertical: ['ellipsis-vertical', false],
+  plus: ['plus', false],
+  minus: ['minus', false],
+  edit: ['pencil', false],
+  trash: ['trash-2', false],
+  download: ['download', false],
+  upload: ['upload', false],
+  file: ['file-text', false],
+  folder: ['folder', false],
+  settings: ['settings', false],
+  users: ['users', false],
+  signIn: ['log-in', true],
+  signOut: ['log-out', true],
+  unlock: ['lock-open', false],
+  key: ['key-round', false],
+  shield: ['shield-check', false],
+  eye: ['eye', false],
+  eyeOff: ['eye-off', false],
+  bell: ['bell', false],
+  mail: ['mail', false],
+  message: ['message-square', false],
+  info: ['info', false],
+  success: ['circle-check', false],
+  danger: ['circle-x', false],
+  monitor: ['monitor', false],
+  home: ['house', false],
+  calendar: ['calendar', false],
+  clock: ['clock', false],
+  refresh: ['refresh-cw', false],
+  undo: ['undo-2', true],
+  redo: ['redo-2', true],
+  filter: ['funnel', false],
+  sort: ['arrow-up-down', false],
+  cart: ['shopping-cart', false],
+  card: ['credit-card', false],
+  receipt: ['receipt', false],
+  tag: ['tag', false],
+  gift: ['gift', false],
+  book: ['book-open', false],
+  course: ['graduation-cap', false],
+  brain: ['brain', false],
+  test: ['clipboard-list', false],
+  chart: ['chart-column', false],
+  print: ['printer', false],
+  share: ['share-2', false],
+  send: ['send', true],
+  star: ['star', false],
+  play: ['play', false],
+  image: ['image', false],
+  globe: ['globe', false],
+  laptop: ['laptop', false],
+};
+
+function lucideBody(file: string): string {
+  const svg = readFileSync(join(LUCIDE, `${file}.svg`), 'utf8');
+  const inner = /<svg[^>]*>([\s\S]*?)<\/svg>/.exec(svg)?.[1];
+  if (!inner) throw new Error(`Cannot read lucide icon ${file}`);
+  return inner
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean)
+    .join('')
+    .replaceAll(' />', '/>');
+}
+
+const pascal = (s: string) => s[0]?.toUpperCase() + s.slice(1);
+const entries: { name: string; body: string; mirrored: boolean; source: string }[] = [
+  ...Object.entries(NDS).map(([name, body]) => ({ name, body, mirrored: false, source: 'nds' })),
+  ...Object.entries(FROM_LUCIDE).map(([name, [file, mirrored]]) => ({
+    name,
+    body: lucideBody(file),
+    mirrored,
+    source: `lucide:${file}`,
+  })),
+].sort((a, b) => a.name.localeCompare(b.name));
+
+const out = [
+  `// Generated by scripts/import-lucide.ts from NDS glyphs and lucide-static ${LUCIDE_VERSION} (ISC). Do not edit.`,
+  "import type { IconDefinition } from './types.ts';",
+  '',
+  ...entries.map(
+    (e) =>
+      `/** ${e.name}${e.mirrored ? ' (mirrored in RTL)' : ''} — ${e.source} */\nexport const icon${pascal(e.name)}: IconDefinition = ${JSON.stringify({ name: e.name, mirrored: e.mirrored, body: e.body })};`,
+  ),
+  '',
+].join('\n');
+writeFileSync(new URL('../src/icons.ts', import.meta.url), out);
+
+const all = [
+  '// Generated by scripts/import-lucide.ts. Do not edit.',
+  "import * as defs from './icons.ts';",
+  "import type { IconDefinition } from './types.ts';",
+  '',
+  '/** Every icon by name (docs grid, search). Import single icons from the main entry instead. */',
+  'export const allIcons: readonly IconDefinition[] = Object.values(defs);',
+  '',
+].join('\n');
+writeFileSync(new URL('../src/all.ts', import.meta.url), all);
+console.log(
+  `@negaresh/icons: ${entries.length} icons (${Object.keys(NDS).length} NDS, ${Object.keys(FROM_LUCIDE).length} Lucide ${LUCIDE_VERSION})`,
+);

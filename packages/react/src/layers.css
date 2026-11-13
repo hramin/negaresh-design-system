@@ -1,0 +1,2 @@
+/* Cascade layer order (CLAUDE.md §6). Declared first so it holds whatever the import order. */
+@layer nds.reset, nds.foundation, nds.components, nds.patterns, nds.utilities;

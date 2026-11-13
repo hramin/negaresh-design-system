@@ -1,0 +1,28 @@
+@layer nds.components {
+  .skip {
+    position: absolute;
+    inset-block-start: var(--nds-space-2);
+    inset-inline-start: var(--nds-space-2);
+    z-index: var(--nds-z-toast);
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--nds-touch);
+    padding-inline: var(--nds-space-4);
+    border-radius: var(--nds-radius-sm);
+    background: var(--nds-bg-surface);
+    color: var(--nds-fg-default);
+    font-weight: var(--nds-weight-semibold);
+    text-decoration: none;
+    box-shadow: var(--nds-shadow-overlay);
+    clip-path: inset(50%);
+    opacity: 0;
+  }
+
+  .skip:focus-visible,
+  .skip:focus {
+    clip-path: none;
+    opacity: 1;
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+}
