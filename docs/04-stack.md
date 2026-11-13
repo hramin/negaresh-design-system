@@ -52,12 +52,16 @@ Checked on 13 Nov 2026 against the npm registry; API usage checked with Context7
 | @types/react / @types/react-dom | 19.3.0 | npm | 13 Nov 2026 | Installed |
 | @tanstack/react-start / react-router | 1.169.5 / 1.170.46 | npm + Context7 | 13 Nov 2026 | Installed. Start 1.169.5 depends on exactly router 1.170.46, so they are pinned together. Post-1.0 API: `tanstackStart()` Vite plugin, `getRouter()`, `shellComponent`, `createIsomorphicFn`, `getCookie` from `@tanstack/react-start/server` |
 | srvx | 1.0.8 | npm + Context7 | 13 Nov 2026 | Installed. Serves the Vite build (`dist/server/server.js` + `dist/client`) on Node; Start's hosting guide uses it |
-| react-aria-components / react-aria / react-stately | 1.22.1 / 3.53.1 / 3.51.0 | npm | 13 Nov 2026 | P2 |
+| react-aria-components (react-aria 3.53.1, react-stately 3.51.0 as its deps) | 1.22.1 | npm + Context7 | 13 Nov 2026 | Installed (P2). Only `react-aria-components` is a direct dependency. **No Persian strings**: a few built-in hidden labels (e.g. the popover «Dismiss» button) fall back to English |
 | @internationalized/date | 3.12.4 | npm + Context7 | 13 Nov 2026 | Installed (utils): `PersianCalendar`, `CalendarDateTime`, `toZoned` |
 | style-dictionary | 5.8.0 | npm + Context7 | 13 Nov 2026 | Installed. `usesDtcg`, custom `parsers`, `getPlatformTokens()` |
 | vite / @vitejs/plugin-react | 8.3.8 / 6.3.0 | npm + Context7 | 13 Nov 2026 | Installed. Vite 8 bundles with Rolldown and minifies CSS with Lightning CSS (stricter: a stray `*/` in a comment fails the build) |
 | vitest / @vitest/coverage-v8 | 5.1.0 | npm | 13 Nov 2026 | Installed |
 | @playwright/test / @axe-core/playwright / axe-core | 1.65.0 / 4.14.0 / 4.14.0 | npm | 13 Nov 2026 | Installed |
+| lucide-static | 1.72.0 | npm | 13 Nov 2026 | Dev dependency of `@negaresh/icons` (ISC); source for 64 icons |
+| @testing-library/react / user-event / dom, jsdom | 16.3.3 / 14.6.10 / 10.4.2, 31.0.1 | npm | 13 Nov 2026 | Component tests in `@negaresh/react` (with axe-core 4.14.0) |
+| pixelmatch / pngjs | 8.0.0 / 7.0.0 | npm | 13 Nov 2026 | Reference-parity test (`apps/docs/e2e/reference.spec.ts`) |
+| Playwright image | mcr.microsoft.com/playwright:v1.65.0-noble | Docker | 13 Nov 2026 | Visual baselines and CI e2e (D-96) |
 | d3-scale / d3-shape | 4.0.3 / 3.2.1 | npm | 13 Nov 2026 | P5 |
 | @inlang/paraglide-js | 3.2.2 | npm | 13 Nov 2026 | **Now 3.x, not 2.x** as the status table above says; re-check the TanStack integration before adopting (first strings catalogue) |
 | keycloakify | 11.16.4 | npm | 13 Nov 2026 | P6 |

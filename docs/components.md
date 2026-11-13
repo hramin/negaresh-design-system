@@ -1,6 +1,6 @@
 # Components
 
-Status: `planned` → `building` → `review` → `approved`. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
+Status: `planned` → `building` → `review` → `approved`. P2 components are `review` until the owner approves the phase; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
 
 Every component documents: anatomy, props, all applicable states (default, hover, focus-visible, pressed, disabled, loading, invalid, empty, read-only), keyboard map, ARIA notes, RTL notes, do/don't, and a mobile example.
 
@@ -8,27 +8,27 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Variants / notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| ThemeProvider | — | Sets `data-theme`, density, locale (RAC `I18nProvider locale="fa-IR-u-ca-persian"`), reads theme cookie | all | planned |
-| Stack, Inline, Grid, Container | — | Logical gaps; Grid auto-fill min width | all | planned |
-| Surface, Section | — | `plain`, `default`, `sunken` footer; no shadow | all | planned |
-| Divider | `Separator` | horizontal / vertical | all | planned |
-| Text, Heading | — | size, weight, tone tokens only | all | planned |
-| Ltr, Code | — | LTR isolate; monospace + Latin digits | all | planned |
-| VisuallyHidden, SkipLink | — | — | all | planned |
-| Icon | — | size 16/20/24, `mirrored` | all | planned |
-| LogoSlot | — | sizes, clear space, product label | all | planned |
+| ThemeProvider | — | Sets `data-theme`, density, locale (RAC `I18nProvider locale="fa-IR-u-ca-persian"`), reads theme cookie | all | review |
+| Stack, Inline, Grid, Container | — | Logical gaps; Grid auto-fill min width | all | review |
+| Surface, Section | — | Surface `default`/`plain`; Section `default`/`sunken` footer; no shadow | all | review |
+| Divider | `Separator` | horizontal / vertical | all | review |
+| Text, Heading | — | size, weight, tone tokens only | all | review |
+| Ltr, Code | — | LTR isolate; monospace + Latin digits | all | review |
+| VisuallyHidden, SkipLink | — | — | all | review |
+| Icon | — | size 16/20/24, `mirrored` | all | review |
+| LogoSlot | — | sizes, clear space, product label | all | review |
 
 ## Actions (P2)
 
 | Component | Base | Variants | Products | Status |
 | --- | --- | --- | --- | --- |
-| Button | `Button` | primary, secondary, ghost, danger; sm/md/lg; icon start/end; `isPending` | all | planned |
-| IconButton | `Button` | ghost, secondary; required `aria-label` | all | planned |
-| Link | `Link` | inline, standalone, external (icon + sr text) | all | planned |
-| ButtonGroup, Toolbar | `Toolbar` | — | all | planned |
-| ToggleButton, ToggleButtonGroup | `ToggleButton(Group)` | — | N, T | planned |
-| CopyButton | `Button` + clipboard | success feedback via toast/live region | R, N, T | planned |
-| Menu, MenuTrigger | `Menu` | with sections, submenus, shortcuts | all | planned |
+| Button, LinkButton | `Button`, `Link` | primary, secondary, ghost, danger; sm/md/lg; icon start/end; `isPending`; `fullWidth` | all | review |
+| IconButton | `Button` | ghost, secondary; required `aria-label` | all | review |
+| Link | `Link` | inline, standalone, external (icon + sr text) | all | review |
+| ButtonGroup, Toolbar | `Toolbar` | — | all | review |
+| ToggleButton, ToggleButtonGroup | `ToggleButton(Group)` | — | N, T | review |
+| CopyButton | `Button` + clipboard | success feedback via toast/live region | R, N, T | review |
+| Menu, MenuTrigger | `Menu` | with sections, submenus, shortcuts | all | review |
 
 ## Inputs (P3)
 
