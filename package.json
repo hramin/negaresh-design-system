@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "description": "Negaresh Design System (NDS) — دیزاین سیستم نگرش",
+  "packageManager": "pnpm@12.18.0",
   "scripts": {
     "dev": "turbo run dev --filter=@negaresh/docs",
     "build": "turbo run build",
@@ -10,11 +11,19 @@
     "tokens:check": "turbo run check --filter=@negaresh/tokens",
     "test": "turbo run test",
     "test:e2e": "turbo run test:e2e --filter=@negaresh/docs",
-    "lint": "turbo run lint",
+    "lint": "biome lint . && stylelint \"**/*.css\"",
+    "format": "biome format --write .",
     "typecheck": "turbo run typecheck"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.22.2"
   },
-  "//": "Dependencies and packageManager are added and pinned in P1 after a Context7 lookup (see docs/04-stack.md)."
+  "devDependencies": {
+    "@biomejs/biome": "2.6.7",
+    "@changesets/cli": "3.0.3",
+    "@types/node": "22.20.5",
+    "stylelint": "18.0.0",
+    "turbo": "2.11.11",
+    "typescript": "6.0.3"
+  }
 }

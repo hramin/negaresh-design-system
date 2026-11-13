@@ -1,0 +1,35 @@
+// NDS CSS rules (CLAUDE.md §3): logical properties only; no raw colours outside tokens.
+const physical = [
+  'left', 'right', 'top', 'bottom',
+  'margin-left', 'margin-right', 'margin-top', 'margin-bottom',
+  'padding-left', 'padding-right', 'padding-top', 'padding-bottom',
+  'border-left', 'border-right', 'border-top', 'border-bottom',
+  '/^border-(left|right|top|bottom)-/',
+  '/^border-(top|bottom)-(left|right)-radius$/',
+  'width', 'height', 'min-width', 'max-width', 'min-height', 'max-height',
+  'overflow-x', 'overflow-y', 'scroll-margin-left', 'scroll-margin-right',
+  'scroll-padding-left', 'scroll-padding-right',
+];
+
+/** @type {import('stylelint').Config} */
+export default {
+  ignoreFiles: ['**/dist/**', '**/.output/**', '**/node_modules/**', 'reference/**', 'coverage/**'],
+  rules: {
+    'property-disallowed-list': [physical, { message: (p) => `Use the logical property instead of "${p}" (CLAUDE.md §3).` }],
+    'declaration-property-value-disallowed-list': [
+      {
+        float: ['left', 'right'],
+        clear: ['left', 'right'],
+        'text-align': ['left', 'right'],
+        resize: ['horizontal', 'vertical'],
+      },
+      { message: 'Use logical values (inline-start/inline-end, start/end).' },
+    ],
+    'color-no-hex': [true, { message: 'Raw colours are not allowed; use var(--nds-*).' }],
+    'color-named': ['never', { message: 'Named colours are not allowed; use var(--nds-*).' }],
+    'function-disallowed-list': [
+      ['rgb', 'rgba', 'hsl', 'hsla', 'hwb', 'lab', 'lch', 'oklab', 'oklch'],
+      { message: 'Raw colour functions are not allowed; use var(--nds-*).' },
+    ],
+  },
+};
