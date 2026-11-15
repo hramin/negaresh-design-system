@@ -106,6 +106,15 @@
     color: var(--nds-fg-default);
   }
 
+  /* Code that may wrap (lists of names in running text). */
+  .codeWrap {
+    font-family: var(--nds-font-code);
+    font-size: var(--nds-text-xs);
+    direction: ltr;
+    unicode-bidi: isolate;
+    overflow-wrap: anywhere;
+  }
+
   .muted {
     color: var(--nds-fg-subtle);
   }

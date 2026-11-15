@@ -1,0 +1,45 @@
+@layer nds.components {
+  .link {
+    color: var(--nds-accent-fg);
+    text-decoration: underline;
+    text-decoration-thickness: var(--nds-border-width-hairline);
+    text-underline-offset: 0.25em;
+    cursor: pointer;
+    border-radius: var(--nds-radius-sm);
+    outline: none;
+    transition: color var(--nds-dur-fast) var(--nds-ease);
+  }
+
+  .link[data-hovered] {
+    color: var(--nds-accent-hover);
+    text-decoration-thickness: var(--nds-border-width-thick);
+  }
+
+  .link[data-pressed] {
+    color: var(--nds-accent-pressed);
+  }
+
+  .link[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .link[data-disabled] {
+    color: var(--nds-fg-disabled);
+    cursor: not-allowed;
+    text-decoration-style: dotted;
+  }
+
+  .link[data-variant="standalone"] {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--nds-space-1);
+    min-block-size: var(--nds-touch);
+    font-weight: var(--nds-weight-semibold);
+  }
+
+  .externalIcon {
+    margin-inline-start: var(--nds-space-1);
+    vertical-align: -0.125em;
+  }
+}

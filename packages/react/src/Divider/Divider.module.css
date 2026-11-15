@@ -1,0 +1,21 @@
+@layer nds.components {
+  .divider {
+    flex: none;
+    margin: 0;
+    border: 0;
+    background: var(--nds-border-default);
+    block-size: var(--nds-border-width-hairline);
+    inline-size: 100%;
+  }
+
+  .divider[aria-orientation="vertical"] {
+    align-self: stretch;
+    inline-size: var(--nds-border-width-hairline);
+    block-size: auto;
+    min-block-size: var(--nds-space-4);
+  }
+
+  .divider[data-tone="strong"] {
+    background: var(--nds-border-strong);
+  }
+}

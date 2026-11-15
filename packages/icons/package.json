@@ -2,7 +2,7 @@
   "name": "@negaresh/icons",
   "version": "0.0.0",
   "private": true,
-  "description": "SVG icon set (planned, P2).",
+  "description": "NDS icon set: Lucide-derived SVG definitions on a 24 grid (ISC), plain data with a mirrored flag for RTL. Rendered by <Icon> in @negaresh/react.",
   "type": "module",
   "sideEffects": false,
   "exports": {
@@ -10,14 +10,26 @@
       "@negaresh/source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./all": {
+      "@negaresh/source": "./src/all.ts",
+      "types": "./dist/all.d.ts",
+      "default": "./dist/all.js"
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
-    "lint": "biome lint ."
+    "lint": "biome lint .",
+    "import": "node scripts/import-lucide.ts",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "lucide-static": "1.72.0",
+    "vitest": "5.1.0"
   }
 }

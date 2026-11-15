@@ -1,23 +1,49 @@
+import { SkipLink, ToggleButton, ToggleButtonGroup, useTheme } from '@negaresh/react';
 import { Link } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
+import { COMPONENT_DOCS } from '../docs/registry.tsx';
 import { m } from '../lib/messages.ts';
 import { THEME_CHOICES } from '../lib/theme.ts';
 import styles from './Shell.module.css';
-import { useTheme } from './ThemeProvider.tsx';
 
-const NAV = [
-  { to: '/', label: m.nav.overview },
-  { to: '/tokens', label: m.nav.tokens },
-  { to: '/foundations/color', label: m.nav.color },
-] as const;
+const NAV: {
+  title: string;
+  items: { to: string; params?: Record<string, string>; label: string }[];
+}[] = [
+  {
+    title: m.navGroups.start,
+    items: [{ to: '/', label: m.nav.overview }],
+  },
+  {
+    title: m.navGroups.foundations,
+    items: [
+      { to: '/foundations/color', label: m.nav.color },
+      { to: '/foundations/icons', label: m.nav.icons },
+      { to: '/tokens', label: m.nav.tokens },
+    ],
+  },
+  {
+    title: m.navGroups.components,
+    items: [
+      { to: '/components', label: m.nav.components },
+      ...COMPONENT_DOCS.map((d) => ({
+        to: '/components/$slug',
+        params: { slug: d.slug },
+        label: d.title,
+      })),
+    ],
+  },
+  {
+    title: m.navGroups.reference,
+    items: [{ to: '/reference/registry-activation', label: m.nav.reference }],
+  },
+];
 
 /** RTL site shell: skip link, top bar with theme switch, side navigation, main content. */
 export function Shell({ children }: { children: ReactNode }) {
   return (
     <div className={styles.shell}>
-      <a className={styles.skip} href="#main">
-        {m.skipToContent}
-      </a>
+      <SkipLink />
       <header className={styles.topbar}>
         <Link to="/" className={styles.brand}>
           {m.siteName}
@@ -28,20 +54,26 @@ export function Shell({ children }: { children: ReactNode }) {
         <ThemeSwitch />
       </header>
       <nav className={styles.nav} aria-label={m.navLabel}>
-        <ul>
-          {NAV.map((item) => (
-            <li key={item.to}>
-              <Link
-                to={item.to}
-                className={styles.navLink}
-                activeOptions={{ exact: true, includeSearch: false }}
-                activeProps={{ 'aria-current': 'page' }}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {NAV.map((group) => (
+          <div key={group.title} className={styles.navGroup}>
+            <p className={styles.navTitle}>{group.title}</p>
+            <ul>
+              {group.items.map((item) => (
+                <li key={item.to + (item.params?.slug ?? '')}>
+                  <Link
+                    to={item.to}
+                    {...(item.params ? { params: item.params } : {})}
+                    className={styles.navLink}
+                    activeOptions={{ exact: true, includeSearch: false }}
+                    activeProps={{ 'aria-current': 'page' }}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </nav>
       <main id="main" className={styles.main} tabIndex={-1}>
         {children}
@@ -58,20 +90,20 @@ export function Shell({ children }: { children: ReactNode }) {
 function ThemeSwitch() {
   const { theme, setTheme } = useTheme();
   return (
-    <fieldset className={styles.themeSwitch}>
-      <legend className={styles.visuallyHidden}>{m.theme.legend}</legend>
+    <ToggleButtonGroup
+      aria-label={m.theme.legend}
+      selectedKeys={[theme]}
+      disallowEmptySelection
+      onSelectionChange={(keys) => {
+        const [next] = [...keys];
+        if (next === 'light' || next === 'dark' || next === 'system') setTheme(next);
+      }}
+    >
       {THEME_CHOICES.map((choice) => (
-        <label key={choice} className={styles.themeOption}>
-          <input
-            type="radio"
-            name="nds-theme"
-            value={choice}
-            checked={theme === choice}
-            onChange={() => setTheme(choice)}
-          />
-          <span>{m.theme[choice]}</span>
-        </label>
+        <ToggleButton key={choice} id={choice} size="sm">
+          {m.theme[choice]}
+        </ToggleButton>
       ))}
-    </fieldset>
+    </ToggleButtonGroup>
   );
 }

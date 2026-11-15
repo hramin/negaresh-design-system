@@ -1,6 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
-import { ROUTES, THEMES } from './routes.ts';
+import { ROUTES, THEMES, withTheme } from './routes.ts';
 
 for (const route of ROUTES) {
   for (const theme of THEMES) {
@@ -14,7 +14,7 @@ for (const route of ROUTES) {
         page.on('console', (msg) => {
           if (msg.type() === 'error') errors.push(msg.text());
         });
-        const response = await page.goto(`${route}?theme=${theme}`);
+        const response = await page.goto(withTheme(route, theme));
         expect(response?.status()).toBe(200);
         const html = page.locator('html');
         await expect(html).toHaveAttribute('dir', 'rtl');
@@ -23,10 +23,16 @@ for (const route of ROUTES) {
         await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
         await page.waitForLoadState('networkidle');
         expect(errors, 'no console errors or hydration warnings').toEqual([]);
+        // Mobile is its own composition: nothing may push the page wider than the viewport.
+        const [scrollWidth, clientWidth] = await page.evaluate(() => [
+          document.documentElement.scrollWidth,
+          document.documentElement.clientWidth,
+        ]);
+        expect(scrollWidth, 'no horizontal page scroll').toBeLessThanOrEqual(clientWidth);
       });
 
       test('has no axe violations', async ({ page }) => {
-        await page.goto(`${route}?theme=${theme}`);
+        await page.goto(withTheme(route, theme));
         await page.waitForLoadState('networkidle');
         const results = await new AxeBuilder({ page })
           .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'])
