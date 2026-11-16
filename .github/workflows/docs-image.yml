@@ -1,12 +1,12 @@
 name: Docs image
 
-# Builds the docs-site container on every PR and push to main; on main it is also
+# Builds the docs-site container on every PR and push to main or nds-development; on main it is also
 # pushed to ghcr.io/hramin/negaresh-design-system-docs as `latest` and the short SHA.
 
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, nds-development]
 
 concurrency:
   group: docs-image-${{ github.ref }}
