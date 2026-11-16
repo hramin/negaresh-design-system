@@ -31,6 +31,16 @@ import {
   ToggleButtonGroup,
   Toolbar,
   VisuallyHidden,
+  TextField,
+  TextArea,
+  SearchField,
+  PhoneField,
+  SerialField,
+  CodeField,
+  PasswordField,
+  Form,
+  FieldGroup,
+  FormErrorSummary,
 } from './index.ts';
 import { faMessages } from './messages/fa.ts';
 
@@ -67,6 +77,24 @@ describe('server rendering', () => {
               </Surface>
             </Grid>
             <Divider />
+            <Form validationErrors={{ email: 'نشانی را بررسی کنید' }}>
+              <FormErrorSummary errors={[{ id: 'ssr-email', message: 'نشانی را بررسی کنید' }]} />
+              <FieldGroup label="مشخصات تماس" description="راه ارتباطی">
+                <TextField
+                  id="ssr-email"
+                  name="email"
+                  label="ایمیل"
+                  type="email"
+                  showCharacterCount
+                />
+                <TextArea label="پیام" defaultValue="درخواست راهنمایی" />
+                <PhoneField label="تلفن" name="phone" defaultValue="۰۹۱۲۱۲۳۴۵۶۷" />
+              </FieldGroup>
+              <SearchField label="جست‌وجو" defaultValue="نگرش" />
+              <SerialField label="سریال" defaultValue="n25ag emv0k" />
+              <CodeField label="کد سیستم" defaultValue="882859354" />
+              <PasswordField label="گذرواژه" />
+            </Form>
             <Link href="https://negaresh.ir" external>
               نگارش
             </Link>
@@ -98,6 +126,16 @@ describe('server rendering', () => {
       'Link',
       'Toolbar',
       'ToggleButtonGroup',
+      'TextField',
+      'TextArea',
+      'SearchField',
+      'PhoneField',
+      'SerialField',
+      'CodeField',
+      'PasswordField',
+      'Form',
+      'FieldGroup',
+      'FormErrorSummary',
     ]) {
       expect(html, name).toContain(`data-nds="${name}"`);
     }

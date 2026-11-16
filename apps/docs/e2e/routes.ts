@@ -14,6 +14,13 @@ export const COMPONENT_SLUGS = [
   'toggle-button',
   'copy-button',
   'menu',
+  'text-field',
+  'text-area',
+  'search-field',
+  'phone-field',
+  'serial-field',
+  'password-field',
+  'form',
 ] as const;
 
 export const ROUTES = [

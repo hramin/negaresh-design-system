@@ -13,6 +13,13 @@ import { themeProviderDoc } from './pages/theme-provider.tsx';
 import { toggleButtonDoc } from './pages/toggle-button.tsx';
 import { typographyDoc } from './pages/typography.tsx';
 import type { ComponentDoc } from './types.ts';
+import { textFieldDoc } from './pages/text-field.tsx';
+import { textAreaDoc } from './pages/text-area.tsx';
+import { searchFieldDoc } from './pages/search-field.tsx';
+import { phoneFieldDoc } from './pages/phone-field.tsx';
+import { serialFieldDoc } from './pages/serial-field.tsx';
+import { passwordFieldDoc } from './pages/password-field.tsx';
+import { formDoc } from './pages/form.tsx';
 
 /** Component documentation pages, in navigation order. */
 export const COMPONENT_DOCS: readonly ComponentDoc[] = [
@@ -30,6 +37,13 @@ export const COMPONENT_DOCS: readonly ComponentDoc[] = [
   toggleButtonDoc,
   copyButtonDoc,
   menuDoc,
+  textFieldDoc,
+  textAreaDoc,
+  searchFieldDoc,
+  phoneFieldDoc,
+  serialFieldDoc,
+  passwordFieldDoc,
+  formDoc,
 ];
 
 export function findDoc(slug: string): ComponentDoc | undefined {

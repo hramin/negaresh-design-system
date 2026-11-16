@@ -1,0 +1,8 @@
+@layer nds.components {
+  .form {
+    display: grid;
+    gap: var(--nds-space-6);
+    min-inline-size: 0;
+    inline-size: 100%;
+  }
+}

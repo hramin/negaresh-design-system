@@ -39,6 +39,29 @@ for (const theme of THEMES) {
     await snap(page.locator('[data-gallery="icons"]'), `icons-${theme}.png`);
   });
 
+  for (const slug of [
+    'text-field',
+    'text-area',
+    'search-field',
+    'phone-field',
+    'serial-field',
+    'password-field',
+  ]) {
+    test(`field ${slug} hover and focus-visible (${theme})`, async ({ page }) => {
+      await open(page, `/components/${slug}?theme=${theme}`);
+      const region = page.locator(`[data-interactive="${slug}"]`);
+      const input = region.locator('input:not([type="hidden"]), textarea').first();
+      await input.hover();
+      await snap(region, `${slug}-hover-${theme}.png`);
+      await page.mouse.move(0, 0);
+      await input.focus();
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Tab');
+      await expect(input).toHaveAttribute('data-focus-visible', 'true');
+      await snap(region, `${slug}-focus-${theme}.png`);
+    });
+  }
+
   test.describe('interaction states', () => {
     test.skip(({ isMobile }) => isMobile, 'pointer and keyboard states are captured on desktop');
 

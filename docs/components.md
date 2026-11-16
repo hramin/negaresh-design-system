@@ -34,14 +34,14 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| TextField | `TextField` | label, description, error, prefix/suffix, character count | all | planned |
-| TextArea | `TextField` multiline | auto-grow | all | planned |
+| TextField | `TextField` | label, description, error, prefix/suffix, character count | all | review |
+| TextArea | `TextField` multiline | auto-grow | all | review |
 | NumberField | `NumberField` | Persian display, Latin input accepted | all | planned |
-| SearchField | `SearchField` | clear, shortcut hint | all | planned |
-| PhoneField | `TextField` + utils | normalises to +989…; LTR | all | planned |
-| SerialField / CodeField | `TextField` + utils | LTR monospace; pattern hint; normalise | R, N, T | planned |
+| SearchField | `SearchField` | clear, shortcut hint | all | review |
+| PhoneField | `TextField` + utils | normalises to +989…; LTR | all | review |
+| SerialField / CodeField | `TextField` + utils | LTR monospace; pattern hint; normalise | R, N, T | review |
 | OTPField | `TextField` ×6 pattern | paste, auto-advance, `autocomplete="one-time-code"`, resend countdown | all | planned |
-| PasswordField | `TextField` | show/hide, strength hint | all | planned |
+| PasswordField | `TextField` | show/hide, strength hint | all | review |
 | Select | `Select` | single, multiple; RTL arrow | all | planned |
 | ComboBox / Autocomplete | `ComboBox` | async, create-new | N, T | planned |
 | Checkbox, CheckboxGroup | `Checkbox(Group)` | indeterminate | all | planned |
@@ -54,7 +54,7 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | TimeField | `TimeField` | 24 h | N | planned |
 | FileUpload, DropZone | `FileTrigger`, `DropZone` | CSV/TXT, images; progress; errors | R, N, T | planned |
 | TagGroup / TagField | `TagGroup` | removable tags | N | planned |
-| Form, FieldGroup, FormErrorSummary | `Form` | server errors mapping | all | planned |
+| Form, FieldGroup, FormErrorSummary | `Form` | server errors mapping | all | review |
 
 ## Feedback and status (P4)
 

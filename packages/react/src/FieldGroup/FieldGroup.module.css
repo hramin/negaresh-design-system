@@ -1,0 +1,53 @@
+@layer nds.components {
+  .group {
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .legend {
+    max-inline-size: 100%;
+    margin-block-end: var(--nds-space-3);
+    padding: 0;
+    color: var(--nds-fg-default);
+    font-size: var(--nds-text-md);
+    font-weight: var(--nds-weight-semibold);
+    line-height: var(--nds-leading-ui);
+    overflow-wrap: anywhere;
+  }
+
+  .fields {
+    display: grid;
+    gap: var(--nds-space-4);
+    min-inline-size: 0;
+  }
+
+  .description,
+  .error {
+    margin: 0;
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+    overflow-wrap: anywhere;
+  }
+
+  .description {
+    margin-block-end: var(--nds-space-3);
+  }
+
+  .error {
+    margin-block-start: var(--nds-space-2);
+    color: var(--nds-danger-fg);
+  }
+
+  .group:disabled .legend {
+    color: var(--nds-fg-disabled);
+  }
+
+  @media (forced-colors: active) {
+    .group:disabled .legend {
+      color: GrayText;
+    }
+  }
+}
