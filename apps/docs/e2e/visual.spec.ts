@@ -19,18 +19,35 @@ async function open(page: Page, path: string) {
   await page.mouse.move(0, 0);
 }
 
-const snap = (locator: Locator, name: string) =>
+const WAVE1_SLUGS = new Set([
+  'text-field',
+  'text-area',
+  'search-field',
+  'phone-field',
+  'serial-field',
+  'password-field',
+  'form',
+]);
+
+const snap = (locator: Locator, name: string, hidePageHeader = false) =>
   expect(locator).toHaveScreenshot(name, {
     animations: 'disabled',
     caret: 'hide',
     maxDiffPixelRatio: 0.001,
+    // Tall new galleries must remain fully visible beneath the sticky page chrome.
+    // Existing P2 captures keep their original settings and baselines.
+    ...(hidePageHeader ? { style: 'header { visibility: hidden !important; }' } : {}),
   });
 
 for (const theme of THEMES) {
   for (const slug of COMPONENT_SLUGS) {
     test(`gallery ${slug} (${theme})`, async ({ page }) => {
       await open(page, `/components/${slug}?theme=${theme}`);
-      await snap(page.locator(`[data-gallery="${slug}"]`), `${slug}-${theme}.png`);
+      await snap(
+        page.locator(`[data-gallery="${slug}"]`),
+        `${slug}-${theme}.png`,
+        WAVE1_SLUGS.has(slug),
+      );
     });
   }
 
@@ -52,13 +69,13 @@ for (const theme of THEMES) {
       const region = page.locator(`[data-interactive="${slug}"]`);
       const input = region.locator('input:not([type="hidden"]), textarea').first();
       await input.hover();
-      await snap(region, `${slug}-hover-${theme}.png`);
+      await snap(region, `${slug}-hover-${theme}.png`, true);
       await page.mouse.move(0, 0);
       await input.focus();
       await page.keyboard.press('Shift+Tab');
       await page.keyboard.press('Tab');
       await expect(input).toHaveAttribute('data-focus-visible', 'true');
-      await snap(region, `${slug}-focus-${theme}.png`);
+      await snap(region, `${slug}-focus-${theme}.png`, true);
     });
   }
 

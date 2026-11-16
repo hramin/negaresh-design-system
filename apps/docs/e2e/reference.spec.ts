@@ -104,9 +104,9 @@ function compare(a: PNG, b: PNG, name: string) {
 
 async function open(page: Page, url: string) {
   await page.goto(url);
-  // The static HTTP reference is ready at load + fonts; some managed browser
-  // network observers never report networkidle for a separate loopback server.
-  if (!process.env.NDS_REFERENCE_URL || !url.startsWith(REFERENCE.origin)) {
+  // The static reference has synchronous scripts and is ready at load + fonts.
+  // Waiting for networkidle adds an unrelated browser-network timing dependency.
+  if (!url.startsWith(REFERENCE.href)) {
     await page.waitForLoadState('networkidle');
   }
   await page.evaluate(() => document.fonts.ready);
