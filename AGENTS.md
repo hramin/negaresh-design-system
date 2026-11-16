@@ -91,4 +91,89 @@ At the end of a phase, report:
 - Open questions and known limitations
 - Items requiring owner approval
 
-Then stop.
+
+## Owner-approved development workflow
+
+This section defines the repository workflow from P3 onward.
+It changes how work is delivered, not the scope or
+acceptance criteria of any existing phase.
+
+### Branch policy
+
+- `main` is frozen after the approved P2 merge.
+- The permanent development branch is `nds-development`.
+- All future phase work must happen on `nds-development`.
+- Never merge, push, rebase, cherry-pick, or sync
+  development changes into `main`.
+- Never create a pull request targeting `main`.
+- Before changing code, verify the active Git branch.
+- Stop if the active branch is not `nds-development`.
+- Do not create additional persistent development branches.
+
+### Four-wave phase workflow
+
+Every remaining phase, P3 through P9, is executed
+in exactly four waves.
+
+- Follow the original phase file and its existing scope.
+- The four waves are execution checkpoints,
+  not new project phases.
+- Each wave must produce at least one named
+  checkpoint commit on `nds-development`.
+- Push each completed wave to `nds-development`.
+- Do not start the next wave before the owner
+  has reviewed the current wave.
+- Fix failed checks within the current wave.
+- Additional fix commits are allowed when necessary.
+- Owner approval is required to close the entire phase.
+- Never mark a phase Approved automatically.
+
+Because the owner requires only two permanent branches,
+small reviewed wave commits replace the previous
+per-component-family PR delivery workflow.
+All original quality gates remain mandatory.
+
+### Documentation authority
+
+The GitHub repository is the authoritative source
+for the project roadmap, design decisions and scope.
+
+Follow:
+- CLAUDE.md
+- docs/01-decisions.md
+- docs/02-requirements.md
+- docs/03-architecture.md
+- docs/04-stack.md
+- docs/components.md
+- docs/quality.md
+- docs/phases/P*.md
+
+External documents provided for background context
+must not silently change the approved repository plan.
+
+### Context7
+
+Use Context7 before implementing code against
+third-party libraries.
+
+Look up documentation relevant to the exact
+installed or pinned library version.
+
+Do not silently upgrade dependencies.
+If the exact version is unavailable in Context7,
+inspect installed package documentation and types,
+and report the limitation.
+
+### Wave acceptance
+
+Each completed wave must include:
+- Implemented scope and changed files
+- Commit SHA
+- Executed tests and their results
+- Accessibility and RTL verification
+- SSR verification
+- Visual screenshots in both themes and viewports
+- Deviations or unresolved questions
+
+Stop after each wave for owner review.
+
