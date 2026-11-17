@@ -14,7 +14,7 @@
 
   .label {
     font-size: var(--nds-text-sm);
-    font-weight: var(--nds-weight-medium);
+    font-weight: var(--nds-weight-semibold);
     line-height: var(--nds-leading-ui);
   }
 

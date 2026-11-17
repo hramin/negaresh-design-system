@@ -23,6 +23,35 @@ function ControlledPhoneExample() {
 }
 
 describe('PhoneField', () => {
+  it('preserves middle-edit selection with a controlled canonical value', async () => {
+    renderNds(<ControlledPhoneExample />);
+    await userEvent.click(screen.getByRole('button', { name: 'شماره دیگر' }));
+    const input = screen.getByRole('textbox') as HTMLInputElement;
+    await userEvent.click(input);
+    input.setSelectionRange(2, 3);
+    await userEvent.keyboard('۳');
+    expect(input.value).toBe('0932 123 4567');
+    expect(input.selectionStart).toBe(3);
+    await userEvent.keyboard('{Backspace}');
+    expect(input.value).toBe('092 123 4567');
+  });
+
+  it.each(['۳', '٣'])(
+    'preserves the caret when a middle digit is replaced with %s',
+    async (digit) => {
+      renderNds(<PhoneField label="موبایل" defaultValue="09121234567" />);
+      const input = screen.getByRole('textbox') as HTMLInputElement;
+      await userEvent.click(input);
+      input.setSelectionRange(2, 3);
+      await userEvent.keyboard(digit);
+      expect(input.value).toBe('0932 123 4567');
+      expect(input.selectionStart).toBe(3);
+      await userEvent.keyboard('{Backspace}');
+      expect(input.value).toBe('092 123 4567');
+      expect(input.selectionStart).toBe(2);
+    },
+  );
+
   it('retains incomplete input and emits canonical complete numbers', async () => {
     const onChange = vi.fn();
     renderNds(<PhoneField label="موبایل" onChange={onChange} />);

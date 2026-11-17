@@ -11,6 +11,7 @@ import {
 } from 'react-aria-components';
 import { Icon } from '../Icon/Icon.tsx';
 import { cx } from '../internal/cx.ts';
+import { fieldValidationMessage } from '../internal/field.tsx';
 import { useNdsMessages } from '../ThemeProvider/ThemeProvider.tsx';
 import styles from './SearchField.module.css';
 
@@ -105,19 +106,11 @@ export function SearchField({
               {isPending && <span role="status">{m.pending}</span>}
             </Text>
           )}
-          <div className={cx(styles.validation)}>
+          <div className={cx(styles.validation)} data-field-error-slot>
             <FieldError className={cx(styles.error)}>
-              {({ validationDetails, validationErrors }) => {
-                if (errorMessage != null) return errorMessage;
-                if (validationDetails.customError && validationErrors.length)
-                  return validationErrors.join(' ');
-                if (validationDetails.valueMissing) return m.fieldRequired;
-                if (validationDetails.tooShort) return m.fieldTooShort;
-                if (validationDetails.tooLong) return m.fieldTooLong;
-                if (validationDetails.patternMismatch) return m.fieldPatternMismatch;
-                if (validationDetails.typeMismatch) return m.fieldTypeMismatch;
-                return m.fieldInvalid;
-              }}
+              {(result) => (
+                <span role="alert">{errorMessage ?? fieldValidationMessage(result, m)}</span>
+              )}
             </FieldError>
           </div>
         </>

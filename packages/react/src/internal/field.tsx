@@ -35,7 +35,10 @@ export interface FieldPresentationProps {
   className?: string | undefined;
 }
 
-function validationMessage(result: FieldErrorRenderProps, messages: NdsMessages): ReactNode {
+export function fieldValidationMessage(
+  result: FieldErrorRenderProps,
+  messages: NdsMessages,
+): ReactNode {
   const { validationDetails: details, validationErrors } = result;
   // Custom validators and server errors carry product-specific messages.
   if (details.customError && validationErrors.length) return validationErrors.join(' ');
@@ -88,7 +91,7 @@ export function FieldParts({
       <div className={styles.errorSlot} data-field-error-slot>
         <FieldError className={cx(styles.error)}>
           {(result) => (
-            <span role="alert">{errorMessage ?? validationMessage(result, messages)}</span>
+            <span role="alert">{errorMessage ?? fieldValidationMessage(result, messages)}</span>
           )}
         </FieldError>
       </div>

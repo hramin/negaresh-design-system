@@ -60,7 +60,7 @@ export function FieldGroup({
       )}
       <div className={styles.fields}>{children}</div>
       {invalid && errorMessage && (
-        <p id={errorId} className={styles.error}>
+        <p id={errorId} role="alert" className={styles.error}>
           {errorMessage}
         </p>
       )}

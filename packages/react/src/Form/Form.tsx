@@ -56,22 +56,32 @@ export function Form({
   useEffect(() => {
     if (!submission || !focusAfterSubmit.current) return;
     // Native invalid submissions are handled by the browser before onSubmit.
-    // This covers app/server errors added in response to a submitted form.
-    const controls = formRef.current?.querySelectorAll<HTMLElement>(
-      'input:not([type="hidden"]):not(:disabled), textarea:not(:disabled), select:not(:disabled), [role="combobox"]:not([aria-disabled="true"]), [role="spinbutton"]:not([aria-disabled="true"])',
-    );
-    const invalid = Array.from(controls ?? []).find(
-      (control) =>
-        control.getAttribute('aria-invalid') === 'true' ||
-        ('name' in control &&
-          typeof control.name === 'string' &&
-          !!validationErrors?.[control.name]?.length),
-    );
-    if (invalid) {
+    // Application errors may arrive asynchronously, including in a child that
+    // does not rerender this Form. Wait for RAC's committed invalid state.
+    const form = formRef.current;
+    if (!form) return;
+    const focusInvalid = () => {
+      if (!focusAfterSubmit.current) return false;
+      const invalid = form.querySelector<HTMLElement>(
+        'input[aria-invalid="true"]:not([type="hidden"]):not(:disabled), textarea[aria-invalid="true"]:not(:disabled), select[aria-invalid="true"]:not(:disabled), [role="combobox"][aria-invalid="true"]:not([aria-disabled="true"]), [role="spinbutton"][aria-invalid="true"]:not([aria-disabled="true"])',
+      );
+      if (!invalid) return false;
       focusAfterSubmit.current = false;
       invalid.focus();
-    }
-  }, [submission, validationErrors]);
+      return true;
+    };
+    if (focusInvalid()) return;
+    const observer = new MutationObserver(() => {
+      if (focusInvalid() || !focusAfterSubmit.current) observer.disconnect();
+    });
+    observer.observe(form, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ['aria-invalid'],
+    });
+    return () => observer.disconnect();
+  }, [submission]);
 
   return (
     <RacForm

@@ -43,6 +43,32 @@ describe('SerialField and CodeField', () => {
     expect(input.value).toBe('ABZXC-DE12345');
   });
 
+  it('keeps the caret at an edited separator instead of deleting the last character', async () => {
+    renderNds(<SerialField label="سریال" defaultValue="ABCDE12345" />);
+    const input = screen.getByRole('textbox') as HTMLInputElement;
+    await userEvent.click(input);
+    input.setSelectionRange(6, 6);
+    await userEvent.keyboard('{Backspace}');
+    expect(input.value).toBe('ABCDE-12345');
+    expect(input.selectionStart).toBe(5);
+    await userEvent.keyboard('{Backspace}');
+    expect(input.value).toBe('ABCD1-2345');
+    expect(input.selectionStart).toBe(4);
+  });
+
+  it('keeps forward deletion at the separator next to the second group', async () => {
+    renderNds(<SerialField label="سریال" defaultValue="ABCDE12345" />);
+    const input = screen.getByRole('textbox') as HTMLInputElement;
+    await userEvent.click(input);
+    input.setSelectionRange(5, 5);
+    await userEvent.keyboard('{Delete}');
+    expect(input.value).toBe('ABCDE-12345');
+    expect(input.selectionStart).toBe(6);
+    await userEvent.keyboard('{Delete}');
+    expect(input.value).toBe('ABCDE-2345');
+    expect(input.selectionStart).toBe(6);
+  });
+
   it('supports paste and controlled canonical values without replacing look-alike letters', async () => {
     renderNds(<ControlledSerialExample />);
     const input = screen.getByRole('textbox', { name: 'سریال' }) as HTMLInputElement;

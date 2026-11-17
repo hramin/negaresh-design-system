@@ -59,6 +59,25 @@ test('phone accepts Persian digits and preserves incomplete editing', async ({ p
   await expect(input).toHaveValue('');
 });
 
+test('phone preserves middle editing while normalizing Persian and Arabic digits', async ({
+  page,
+}) => {
+  await page.goto('/components/phone-field');
+  await page.waitForLoadState('networkidle');
+  const input = page.locator(example('phone-field')).getByRole('textbox').first();
+  for (const digit of ['۳', '٣']) {
+    await input.fill('09121234567');
+    await input.evaluate((element: HTMLInputElement) => element.setSelectionRange(2, 3));
+    await page.keyboard.insertText(digit);
+    await expect(input).toHaveValue('09321234567');
+    await expect
+      .poll(() => input.evaluate((element: HTMLInputElement) => element.selectionStart))
+      .toBe(3);
+    await input.press('Backspace');
+    await expect(input).toHaveValue('0921234567');
+  }
+});
+
 test('serial normalizes pasted values without changing lookalike characters', async ({ page }) => {
   await page.goto('/components/serial-field');
   await page.waitForLoadState('networkidle');
@@ -68,6 +87,28 @@ test('serial normalizes pasted values without changing lookalike characters', as
   await expect(input).toHaveAttribute('dir', 'ltr');
   await input.fill('oi1ls 01234');
   await expect(input).toHaveValue('OI1LS-01234');
+});
+
+test('serial separator deletion keeps subsequent edits beside the separator', async ({ page }) => {
+  await page.goto('/components/serial-field');
+  await page.waitForLoadState('networkidle');
+  const input = page.locator(example('serial-field')).getByRole('textbox').first();
+  await input.fill('ABCDE12345');
+  await input.evaluate((element: HTMLInputElement) => element.setSelectionRange(6, 6));
+  await input.press('Backspace');
+  await expect
+    .poll(() => input.evaluate((element: HTMLInputElement) => element.selectionStart))
+    .toBe(5);
+  await input.press('Backspace');
+  await expect(input).toHaveValue('ABCD1-2345');
+  await input.fill('ABCDE12345');
+  await input.evaluate((element: HTMLInputElement) => element.setSelectionRange(5, 5));
+  await input.press('Delete');
+  await expect
+    .poll(() => input.evaluate((element: HTMLInputElement) => element.selectionStart))
+    .toBe(6);
+  await input.press('Delete');
+  await expect(input).toHaveValue('ABCDE-2345');
 });
 
 test('password reveal preserves the value and remains keyboard accessible', async ({ page }) => {

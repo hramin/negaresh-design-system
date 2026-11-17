@@ -14,6 +14,19 @@ function ControlledSearch() {
 }
 
 describe('SearchField', () => {
+  it('announces newly added errors and removes the alert when validation clears', () => {
+    const { rerender } = renderNds(<SearchField label="جست‌وجو" />);
+    expect(screen.queryByRole('alert')).toBeNull();
+    rerender(<SearchField label="جست‌وجو" isInvalid errorMessage="جست‌وجو انجام نشد" />);
+    const error = screen.getByRole('alert');
+    expect(error.textContent).toBe('جست‌وجو انجام نشد');
+    expect(screen.getByRole('searchbox').getAttribute('aria-describedby')?.split(' ')).toContain(
+      error.parentElement?.id,
+    );
+    rerender(<SearchField label="جست‌وجو" />);
+    expect(screen.queryByRole('alert')).toBeNull();
+  });
+
   it('submits a query and clears it with RAC while keeping input focus', async () => {
     const onSubmit = vi.fn();
     const onClear = vi.fn();
@@ -94,7 +107,7 @@ describe('SearchField', () => {
       </Form>,
     );
     const error = screen.getByText('این جست‌وجو در دسترس نیست');
-    const validationSlot = error.parentElement;
+    const validationSlot = error.closest('[data-field-error-slot]');
     expect(screen.getByRole('status').textContent).toBe('در حال انجام');
     expect(screen.getByRole('searchbox').getAttribute('aria-busy')).toBe('true');
     fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'نو' } });

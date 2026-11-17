@@ -7,14 +7,13 @@ import {
   Text,
   TextField,
 } from '@negaresh/react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import type { ComponentDoc } from '../types.ts';
 import { GalleryRow, State } from '../ui.tsx';
 import styles from './fields.module.css';
 
 function Example() {
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const emailRef = useRef<HTMLInputElement>(null);
   return (
     <div className={styles.example} data-interactive="form">
       <Form
@@ -23,7 +22,6 @@ function Example() {
         onSubmit={(event) => {
           event.preventDefault();
           setErrors({ email: 'این نشانی قبلاً ثبت شده است؛ نشانی دیگری وارد کنید.' });
-          emailRef.current?.focus();
         }}
         onReset={() => setErrors({})}
       >
@@ -51,7 +49,6 @@ function Example() {
                 dir="ltr"
                 isRequired
                 autoComplete="email"
-                ref={emailRef}
                 description="برای دریافت پاسخ درخواست."
               />
             </Stack>
@@ -173,7 +170,7 @@ export const formDoc: ComponentDoc = {
     do: [
       'برای خطای سرور، کلید خطا را برابر name همان فیلد قرار دهید.',
       'در فرم بلند، خلاصه را در بالا و خطای مشخص را کنار هر فیلد نگه دارید.',
-      'با اعتبارسنجی مدیریت‌شده، فوکوس نخستین ورودی خطادار را نیز مدیریت کنید.',
+      'با اعتبارسنجی مدیریت‌شده، isInvalid و errorMessage را روی فیلد تنظیم کنید؛ فرم پس از ارسال نخستین ورودی خطادار را فوکوس می‌کند.',
     ],
     dont: [
       'خطا را فقط با رنگ یا پیام کلی «نامعتبر» نشان ندهید.',
@@ -273,7 +270,7 @@ export const formDoc: ComponentDoc = {
   a11y: [
     'گروه‌ها fieldset و legend دارند و خطای گروه با aria-describedby مرتبط می‌شود.',
     'خطاهای تک‌فیلد به همان ورودی متصل‌اند؛ خلاصه با پیوند نام‌دار دسترسی سریع می‌دهد.',
-    'در رفتار native، مرورگر و React Aria نخستین فیلد نامعتبر را فوکوس می‌کنند؛ در اعتبارسنجی مدیریت‌شده این کار مسئولیت برنامه است.',
+    'در رفتار native، مرورگر و React Aria نخستین فیلد نامعتبر را فوکوس می‌کنند؛ Form خطاهای برنامه و سرور را پس از ارسال، حتی با پاسخ دیرتر، یک بار فوکوس می‌کند.',
   ],
   rtl: [
     'ترتیب خواندن و ناوبری فرم RTL است؛ ایمیل و کدها در ورودی‌های LTR مستقل قرار می‌گیرند.',

@@ -6,6 +6,23 @@ import { renderNds } from '../test/render.tsx';
 import { FieldGroup } from './FieldGroup.tsx';
 
 describe('FieldGroup', () => {
+  it('announces a newly added group error without leaving an empty alert', () => {
+    const { rerender } = renderNds(<FieldGroup label="حساب">اطلاعات حساب</FieldGroup>);
+    expect(screen.queryByRole('alert')).toBeNull();
+    rerender(
+      <FieldGroup label="حساب" errorMessage="اطلاعات حساب را بررسی کنید">
+        اطلاعات حساب
+      </FieldGroup>,
+    );
+    const error = screen.getByRole('alert');
+    expect(error.textContent).toBe('اطلاعات حساب را بررسی کنید');
+    expect(screen.getByRole('group').getAttribute('aria-describedby')?.split(' ')).toContain(
+      error.id,
+    );
+    rerender(<FieldGroup label="حساب">اطلاعات حساب</FieldGroup>);
+    expect(screen.queryByRole('alert')).toBeNull();
+  });
+
   it('uses a visible legend and associates shared instructions and errors', async () => {
     const ref = createRef<HTMLFieldSetElement>();
     const { container } = renderNds(

@@ -5,7 +5,7 @@ import {
   SERIAL_GROUPS,
   serialPattern,
 } from '@negaresh/utils';
-import { type Ref, useCallback, useEffect, useRef, useState } from 'react';
+import { type Ref, useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { cx } from '../internal/cx.ts';
 import { TextField, type TextFieldProps } from '../TextField/TextField.tsx';
 import { useNdsMessages } from '../ThemeProvider/ThemeProvider.tsx';
@@ -48,7 +48,9 @@ function CodeInput({
   const canonical = normalizeSerial(value ?? localValue);
   const display = groups ? formatSerial(canonical, groups) : canonical;
   const input = useRef<HTMLInputElement>(null);
-  const caret = useRef<number | null>(null);
+  const caret = useRef<{ offset: number; afterSeparator: boolean } | null>(null);
+  const inputType = useRef('');
+  const [edit, recordEdit] = useReducer((count: number) => count + 1, 0);
   const inputRef = useCallback(
     (element: HTMLInputElement | null) => {
       input.current = element;
@@ -57,14 +59,26 @@ function CodeInput({
     [ref],
   );
   useEffect(() => {
-    if (caret.current === null || !input.current) return;
+    const element = input.current;
+    if (!element) return;
+    // Native editing stays with the input. Remember forward deletion only to
+    // restore the caret on the correct side of an automatically restored dash.
+    const beforeInput = (event: InputEvent) => {
+      inputType.current = event.inputType;
+    };
+    element.addEventListener('beforeinput', beforeInput);
+    return () => element.removeEventListener('beforeinput', beforeInput);
+  }, []);
+  useEffect(() => {
+    if (!edit || caret.current === null || !input.current) return;
     if (input.current.ownerDocument.activeElement === input.current) {
-      const prefix = canonical.slice(0, caret.current);
-      const position = groups ? formatSerial(prefix, groups).length : prefix.length;
+      const prefix = canonical.slice(0, caret.current.offset);
+      let position = groups ? formatSerial(prefix, groups).length : prefix.length;
+      if (caret.current.afterSeparator && input.current.value[position] === '-') position += 1;
       input.current.setSelectionRange(position, position);
     }
     caret.current = null;
-  }, [canonical, groups]);
+  }, [canonical, groups, edit]);
 
   const hint = showPatternHint && groups ? messages.serialHint(serialPattern(groups)) : null;
   return (
@@ -93,7 +107,13 @@ function CodeInput({
       }
       onChange={(text) => {
         const position = input.current?.selectionStart ?? text.length;
-        caret.current = normalizeSerial(text.slice(0, position)).length;
+        const prefix = text.slice(0, position);
+        caret.current = {
+          offset: normalizeSerial(prefix).length,
+          afterSeparator: prefix.endsWith('-') || inputType.current === 'deleteContentForward',
+        };
+        inputType.current = '';
+        recordEdit();
         const next = normalizeSerial(text);
         setLocalValue(next);
         onChange?.(next);
