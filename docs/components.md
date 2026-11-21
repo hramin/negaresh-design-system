@@ -86,8 +86,8 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| TopBar, TopBarBrand, TopBarNav, TopBarNavLink | `Link` | logo slot, nav links, actions, optional `mobileMenu` slot (pulled forward in P2 follow-up; `Sheet` mobile drawer integrates in P4) | all | review |
-| AccountPill | `Button` | masked phone / display name + avatar trigger for `TopBar`; required `aria-label`; 44 px mobile target (pulled forward in P2 follow-up; reused by P4 `UserMenu` and P6 `AccountShell`) | all | review |
+| TopBar, TopBarBrand, TopBarNav, TopBarNavLink | `Link` | logo slot, nav links, actions, optional `mobileMenu` slot (pulled forward in P2 follow-up; `Sheet` mobile drawer integrates in P4) | all | approved |
+| AccountPill | `Button` | masked phone / display name + avatar trigger for `TopBar`; required `aria-label`; 44 px mobile target (pulled forward in P2 follow-up; reused by P4 `UserMenu` and P6 `AccountShell`) | all | approved |
 | SideNav | `Tree`/list | groups, badges, role-filtered; → TabStrip under 900 | R, N, T | planned |
 | TabStrip (mobile nav) | `Tabs` | scrollable | R, N, T | planned |
 | Tabs | `Tabs` | horizontal, vertical (Ravanma leaf 3) | all | planned |
