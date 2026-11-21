@@ -1,0 +1,268 @@
+@layer nds.components {
+  .field {
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+    color: var(--nds-fg-default);
+  }
+
+  .field[data-disabled] {
+    color: var(--nds-fg-disabled);
+  }
+
+  .card {
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--nds-space-3);
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-block-size: var(--nds-control-lg);
+    padding-block: var(--nds-space-4);
+    padding-inline: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-surface-radius);
+    background: var(--nds-bg-surface);
+    color: inherit;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background var(--nds-dur-fast) var(--nds-ease),
+      border-color var(--nds-dur-fast) var(--nds-ease);
+  }
+
+  .card[data-hovered]:not([data-disabled]) {
+    border-color: var(--nds-border-control);
+    background: var(--nds-bg-hover);
+  }
+
+  .card[data-selected] {
+    border-color: var(--nds-accent-default);
+    background: var(--nds-bg-selected);
+  }
+
+  .card[data-hovered][data-selected]:not([data-disabled]) {
+    border-color: var(--nds-accent-hover);
+  }
+
+  .card[data-pressed]:not([data-disabled]) {
+    border-color: var(--nds-accent-pressed);
+  }
+
+  .card[data-invalid] {
+    border-color: var(--nds-danger-fg);
+  }
+
+  .card[data-disabled] {
+    border-color: var(--nds-border-default);
+    background: var(--nds-bg-sunken);
+    cursor: not-allowed;
+  }
+
+  .card[data-readonly] {
+    cursor: default;
+  }
+
+  .card[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .indicator {
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: var(--nds-icon-md);
+    block-size: var(--nds-icon-md);
+    margin-block-start: calc(var(--nds-space-1) / 2);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-control);
+    background: var(--nds-bg-surface);
+    color: var(--nds-accent-on);
+  }
+
+  .indicator[data-control="radio"] {
+    border-radius: var(--nds-radius-pill);
+  }
+
+  .indicator[data-control="checkbox"] {
+    border-radius: calc(var(--nds-radius-sm) / 2);
+  }
+
+  .card[data-selected] .indicator[data-control="radio"] {
+    border-width: var(--nds-border-width-thick);
+    border-color: var(--nds-accent-default);
+  }
+
+  .radioDot {
+    inline-size: var(--nds-space-2);
+    block-size: var(--nds-space-2);
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-accent-default);
+    opacity: 0;
+    transform: scale(0.5);
+    transition:
+      opacity var(--nds-dur-fast) var(--nds-ease),
+      transform var(--nds-dur-fast) var(--nds-ease);
+  }
+
+  .card[data-selected] .radioDot {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .card[data-selected] .indicator[data-control="checkbox"],
+  .card[data-indeterminate] .indicator[data-control="checkbox"] {
+    border-color: var(--nds-accent-default);
+    background: var(--nds-accent-default);
+  }
+
+  .card[data-disabled] .indicator {
+    border-color: var(--nds-border-default);
+    background: var(--nds-bg-sunken);
+    color: var(--nds-fg-disabled);
+  }
+
+  .card[data-disabled] .radioDot {
+    background: var(--nds-fg-disabled);
+  }
+
+  .iconWrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    inline-size: var(--nds-space-10);
+    block-size: var(--nds-space-10);
+    border-radius: var(--nds-radius-sm);
+    background: var(--nds-bg-sunken);
+    color: var(--nds-accent-fg);
+  }
+
+  .card[data-selected] .iconWrap {
+    background: var(--nds-bg-surface);
+  }
+
+  .card[data-disabled] .iconWrap {
+    color: var(--nds-fg-disabled);
+  }
+
+  .body {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+  }
+
+  .textGroup {
+    display: flex;
+    flex: 1 1 calc(var(--nds-space-24) * 1.5);
+    flex-direction: column;
+    gap: var(--nds-space-1);
+    min-inline-size: 0;
+  }
+
+  .titleRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--nds-space-2);
+  }
+
+  .title {
+    font-size: var(--nds-text-md);
+    font-weight: var(--nds-weight-semibold);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding-block: calc(var(--nds-space-1) / 2);
+    padding-inline: var(--nds-space-2);
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-accent-subtle);
+    color: var(--nds-accent-fg);
+    font-size: var(--nds-text-2xs);
+    font-weight: var(--nds-weight-semibold);
+    line-height: var(--nds-leading-tight);
+  }
+
+  .card[data-disabled] .badge {
+    background: var(--nds-bg-sunken);
+    color: var(--nds-fg-disabled);
+  }
+
+  .description {
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .card[data-disabled] .description {
+    color: var(--nds-fg-disabled);
+  }
+
+  .price {
+    flex: none;
+    color: var(--nds-fg-default);
+    font-size: var(--nds-text-md);
+    font-weight: var(--nds-weight-bold);
+    line-height: var(--nds-leading-ui);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .card[data-disabled] .price {
+    color: var(--nds-fg-disabled);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    .radioDot {
+      transition: none;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .card {
+      border-color: currentColor;
+    }
+
+    .card[data-selected] {
+      border-width: var(--nds-border-width-thick);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .card {
+      border-color: ButtonText;
+    }
+
+    .card[data-selected] {
+      border-color: Highlight;
+    }
+
+    .card[data-focus-visible] {
+      outline-color: Highlight;
+    }
+
+    .card[data-selected] .indicator[data-control="radio"] {
+      border-color: Highlight;
+    }
+
+    .card[data-selected] .radioDot {
+      background: Highlight;
+    }
+
+    .card[data-selected] .indicator[data-control="checkbox"],
+    .card[data-indeterminate] .indicator[data-control="checkbox"] {
+      border-color: Highlight;
+      background: Highlight;
+      color: HighlightText;
+    }
+  }
+}

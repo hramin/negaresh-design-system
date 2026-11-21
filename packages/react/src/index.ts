@@ -36,3 +36,8 @@ export * from './PasswordField/index.ts';
 export * from './Form/index.ts';
 export * from './FieldGroup/index.ts';
 export * from './FormErrorSummary/index.ts';
+export * from './Checkbox/index.ts';
+export * from './RadioGroup/index.ts';
+export * from './ChoiceCard/index.ts';
+export * from './SegmentedControl/index.ts';
+export * from './Switch/index.ts';
