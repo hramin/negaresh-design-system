@@ -41,3 +41,6 @@ export * from './RadioGroup/index.ts';
 export * from './ChoiceCard/index.ts';
 export * from './SegmentedControl/index.ts';
 export * from './Switch/index.ts';
+export * from './Select/index.ts';
+export * from './ComboBox/index.ts';
+export * from './TagGroup/index.ts';

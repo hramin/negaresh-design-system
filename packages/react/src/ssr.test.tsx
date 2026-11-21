@@ -47,6 +47,22 @@ import {
   Form,
   FieldGroup,
   FormErrorSummary,
+  Select,
+  SelectItem,
+  ComboBox,
+  Autocomplete,
+  ComboBoxItem,
+  Checkbox,
+  CheckboxGroup,
+  RadioGroup,
+  Radio,
+  ChoiceCard,
+  SegmentedControl,
+  SegmentedControlItem,
+  Switch,
+  TagGroup,
+  Tag,
+  TagField,
 } from './index.ts';
 import { faMessages } from './messages/fa.ts';
 
@@ -119,6 +135,31 @@ describe('server rendering', () => {
                 <SerialField label="سریال" defaultValue="n25ag emv0k" />
                 <CodeField label="کد سیستم" defaultValue="882859354" />
                 <PasswordField label="گذرواژه" />
+                <Select label="استان" defaultValue="tehran">
+                  <SelectItem id="tehran">تهران</SelectItem>
+                </Select>
+                <ComboBox label="آزمون">
+                  <ComboBoxItem id="neo">نئو</ComboBoxItem>
+                </ComboBox>
+                <Autocomplete label="تخصص">
+                  <ComboBoxItem id="cbt">شناختی</ComboBoxItem>
+                </Autocomplete>
+                <CheckboxGroup label="کانال" defaultValue={['sms']}>
+                  <Checkbox value="sms">پیامک</Checkbox>
+                </CheckboxGroup>
+                <RadioGroup label="بسته" defaultValue="pro">
+                  <Radio value="base">پایه</Radio>
+                  <ChoiceCard value="pro" title="کلینیک" price={250000} />
+                </RadioGroup>
+                <SegmentedControl label="نما" defaultValue="pro">
+                  <SegmentedControlItem id="pro">حرفه‌ای</SegmentedControlItem>
+                  <SegmentedControlItem id="calm">آرام</SegmentedControlItem>
+                </SegmentedControl>
+                <Switch defaultSelected>ارسال خودکار</Switch>
+                <TagGroup label="برچسب‌ها">
+                  <Tag id="t1">روان‌سنجی</Tag>
+                </TagGroup>
+                <TagField label="کلیدواژه" defaultValue={['آزمون']} />
               </Form>
               <Link href="https://negaresh.ir" external>
                 نگارش
@@ -167,10 +208,24 @@ describe('server rendering', () => {
       'Form',
       'FieldGroup',
       'FormErrorSummary',
+      'Select',
+      'ComboBox',
+      'Checkbox',
+      'CheckboxGroup',
+      'RadioGroup',
+      'Radio',
+      'ChoiceCard',
+      'SegmentedControl',
+      'SegmentedControlItem',
+      'Switch',
+      'TagGroup',
+      'Tag',
+      'TagField',
     ]) {
       expect(html, name).toContain(`data-nds="${name}"`);
     }
     expect(html).toContain('N25AG-EMV0K');
+    expect(html).toContain('۲۵۰٬۰۰۰ تومان');
     expect(html).toContain('nonce="ssr-nonce"');
     expect(html).toContain('react-aria.i18n.strings');
     expect(html).toContain('بستن');
