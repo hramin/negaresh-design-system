@@ -3,6 +3,7 @@ import { iconCopy, iconLock, iconUser } from '@negaresh/icons';
 import { renderToString } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import {
+  AccountPill,
   Button,
   ButtonGroup,
   Code,
@@ -31,6 +32,10 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Toolbar,
+  TopBar,
+  TopBarBrand,
+  TopBarNav,
+  TopBarNavLink,
   VisuallyHidden,
   TextField,
   TextArea,
@@ -53,6 +58,23 @@ describe('server rendering', () => {
         <ReactAriaLocalizationScript nonce="ssr-nonce" />
         <ThemeProvider messages={faMessages}>
           <SkipLink />
+          <TopBar
+            brand={
+              <TopBarBrand href="/" aria-label="رجیستری نگارش برتر">
+                <LogoSlot name="نگارش برتر" product="رجیستری" />
+              </TopBarBrand>
+            }
+            nav={
+              <TopBarNav aria-label="بخش‌های رجیستری">
+                <TopBarNavLink href="#main" isCurrent>
+                  فعال‌سازی
+                </TopBarNavLink>
+              </TopBarNav>
+            }
+            actions={
+              <AccountPill label="۰۹۱۲ ••• ۴۵۶۷" ltr aria-label="حساب کاربری ۰۹۱۲ ••• ۴۵۶۷" />
+            }
+          />
           <Container>
             <Stack>
               <LogoSlot name="نگارش برتر" product="رجیستری" />
@@ -120,6 +142,11 @@ describe('server rendering', () => {
     );
     for (const name of [
       'SkipLink',
+      'TopBar',
+      'TopBarBrand',
+      'TopBarNav',
+      'TopBarNavLink',
+      'AccountPill',
       'LogoSlot',
       'Code',
       'Icon',

@@ -1,5 +1,6 @@
-// @negaresh/react — Core components (P2 approved; P3 Wave 1 fields and forms).
+// @negaresh/react — Core components (P2 approved + follow-up; P3 Wave 1 fields and forms).
 import './layers.css';
+export * from './AccountPill/index.ts';
 export * from './Button/index.ts';
 export * from './ButtonGroup/index.ts';
 export * from './CopyButton/index.ts';
@@ -24,6 +25,7 @@ export * from './Surface/index.ts';
 export * from './Text/index.ts';
 export * from './ThemeProvider/index.ts';
 export * from './ToggleButton/index.ts';
+export * from './TopBar/index.ts';
 export * from './VisuallyHidden/index.ts';
 export * from './TextField/index.ts';
 export * from './TextArea/index.ts';
