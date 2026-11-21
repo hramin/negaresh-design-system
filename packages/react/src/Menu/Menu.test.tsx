@@ -79,4 +79,37 @@ describe('Menu', () => {
     expect(dark.querySelector('svg')).toBeTruthy();
     await userEvent.keyboard('{Escape}');
   });
+
+  it('localizes React Aria popover dismiss and long-press labels to Persian with no axe violations', async () => {
+    renderNds(
+      <MenuTrigger trigger="longPress">
+        <Button iconStart={iconUser}>حساب</Button>
+        <Menu aria-label="حساب کاربری">
+          <MenuItem id="profile">ویرایش نمایه</MenuItem>
+        </Menu>
+      </MenuTrigger>,
+    );
+    const trigger = screen.getByRole('button', { name: 'حساب' });
+    const descriptionId = trigger.getAttribute('aria-describedby');
+    expect(descriptionId).toBeTruthy();
+    const descriptionEl = descriptionId ? document.getElementById(descriptionId) : null;
+    expect(descriptionEl?.textContent).toContain('برای باز کردن منو');
+    expect(descriptionEl?.textContent).not.toContain('Long press');
+
+    trigger.focus();
+    await userEvent.keyboard('{Alt>}{ArrowDown}{/Alt}');
+    const menu = screen.getByRole('menu', { name: 'حساب' });
+    const popover = menu.closest('[data-nds="MenuPopover"]');
+    expect(popover).toBeTruthy();
+
+    const dismissButtons = screen.getAllByRole('button', { name: 'بستن' });
+    expect(dismissButtons.length).toBeGreaterThan(0);
+    expect(screen.queryByRole('button', { name: 'Dismiss' })).toBeNull();
+    if (popover instanceof HTMLElement) {
+      await expectNoAxeViolations(popover);
+    }
+
+    await userEvent.click(dismissButtons[0]!);
+    expect(screen.queryByRole('menu')).toBeNull();
+  });
 });

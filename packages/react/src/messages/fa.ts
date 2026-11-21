@@ -28,3 +28,16 @@ export const faMessages: NdsMessages = {
   serialInvalid: 'سریال را مطابق الگوی راهنما وارد کنید.',
   errorSummaryTitle: 'بخش‌های مشخص‌شده را بررسی کنید',
 };
+
+export {
+  faReactAriaStrings,
+  getReactAriaLocalizationScript,
+  installReactAriaPersianStrings,
+  isPersianLocale,
+  ReactAriaLocalizationScript,
+  type ReactAriaFormatter,
+  type ReactAriaLocalizationScriptProps,
+  type ReactAriaLocalizedMessage,
+  type ReactAriaStringDictionary,
+  type ReactAriaVariables,
+} from './react-aria-fa.ts';

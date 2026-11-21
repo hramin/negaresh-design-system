@@ -8,6 +8,7 @@ import {
   useState,
 } from 'react';
 import { I18nProvider } from 'react-aria-components';
+import { installReactAriaPersianStrings } from '../messages/react-aria-fa.ts';
 import type { NdsMessages } from '../messages/types.ts';
 
 export type ThemeChoice = 'light' | 'dark' | 'system';
@@ -49,6 +50,7 @@ export function ThemeProvider({
   locale = 'fa-IR-u-ca-persian',
   children,
 }: ThemeProviderProps) {
+  installReactAriaPersianStrings(locale);
   const [theme, setThemeState] = useState<ThemeChoice>(defaultTheme);
 
   useEffect(() => {

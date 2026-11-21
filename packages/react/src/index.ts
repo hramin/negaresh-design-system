@@ -11,6 +11,14 @@ export * from './LogoSlot/index.ts';
 export * from './Ltr/index.ts';
 export * from './Menu/index.ts';
 export type { NdsMessages } from './messages/types.ts';
+export {
+  faReactAriaStrings,
+  getReactAriaLocalizationScript,
+  installReactAriaPersianStrings,
+  ReactAriaLocalizationScript,
+  type ReactAriaLocalizationScriptProps,
+  type ReactAriaStringDictionary,
+} from './messages/react-aria-fa.ts';
 export * from './SkipLink/index.ts';
 export * from './Surface/index.ts';
 export * from './Text/index.ts';
