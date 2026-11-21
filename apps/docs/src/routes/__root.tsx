@@ -6,7 +6,12 @@ import {
   Scripts,
   useRouterState,
 } from '@tanstack/react-router';
-import { parseThemeChoice, ThemeProvider, themeAttribute } from '@negaresh/react';
+import {
+  parseThemeChoice,
+  ReactAriaLocalizationScript,
+  ThemeProvider,
+  themeAttribute,
+} from '@negaresh/react';
 import { faMessages } from '@negaresh/react/messages/fa';
 import type { ReactNode } from 'react';
 import page from '../components/Page.module.css';
@@ -55,6 +60,7 @@ function RootDocument({ children }: { children: ReactNode }) {
     <html lang="fa" dir="rtl" data-theme={themeAttribute(theme)}>
       <head>
         <HeadContent />
+        <ReactAriaLocalizationScript />
       </head>
       <body>
         {children}

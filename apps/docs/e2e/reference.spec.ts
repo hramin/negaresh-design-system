@@ -7,7 +7,11 @@ import { PNG } from 'pngjs';
  * without visual change. Compares the static page (reference/registry-activation) with
  * the rebuild (/reference/registry-activation) region by region.
  */
-const REFERENCE = new URL('../../../reference/registry-activation/index.html', import.meta.url);
+// Managed browsers may disallow file:// navigation. The same immutable reference
+// can be served over loopback HTTP; CI keeps the original file-based default.
+const REFERENCE = process.env.NDS_REFERENCE_URL
+  ? new URL(process.env.NDS_REFERENCE_URL)
+  : new URL('../../../reference/registry-activation/index.html', import.meta.url);
 const MAX_DIFF_RATIO = 0.005; // 0.5 % of pixels may differ (anti-aliasing)
 
 /**
@@ -100,7 +104,11 @@ function compare(a: PNG, b: PNG, name: string) {
 
 async function open(page: Page, url: string) {
   await page.goto(url);
-  await page.waitForLoadState('networkidle');
+  // The static reference has synchronous scripts and is ready at load + fonts.
+  // Waiting for networkidle adds an unrelated browser-network timing dependency.
+  if (!url.startsWith(REFERENCE.href)) {
+    await page.waitForLoadState('networkidle');
+  }
   await page.evaluate(() => document.fonts.ready);
   // Neutral pointer: hover states must not leak into the comparison.
   await page.mouse.move(0, 0);

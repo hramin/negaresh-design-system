@@ -1,0 +1,166 @@
+@layer nds.components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+    color: var(--nds-fg-default);
+    --_field-height: var(--nds-control-md);
+  }
+
+  .root[data-size="sm"] {
+    --_field-height: var(--nds-touch);
+  }
+
+  .root[data-size="lg"] {
+    --_field-height: var(--nds-control-lg);
+  }
+
+  .label {
+    font-size: var(--nds-text-sm);
+    font-weight: var(--nds-weight-semibold);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .control {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+    min-block-size: var(--_field-height);
+    padding-inline: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-control);
+    border-radius: var(--nds-field-radius);
+    background: var(--nds-bg-surface);
+  }
+
+  .control:has(.input[data-hovered]):not(:has(.input[data-disabled])) {
+    border-color: var(--nds-fg-muted);
+  }
+
+  .control:has(.input[data-invalid]) {
+    border-color: var(--nds-danger-fg);
+  }
+
+  .control:has(.input[data-disabled]),
+  .root[data-readonly] .control,
+  .root[data-pending] .control {
+    background: var(--nds-bg-sunken);
+  }
+
+  .root[data-disabled] {
+    color: var(--nds-fg-disabled);
+  }
+
+  .input {
+    box-sizing: border-box;
+    flex: 1;
+    min-inline-size: 0;
+    inline-size: 100%;
+    min-block-size: var(--_field-height);
+    margin: 0;
+    padding-block: var(--nds-space-2);
+    padding-inline: 0;
+    border: 0;
+    border-radius: var(--nds-field-radius);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: var(--nds-text-md);
+    line-height: var(--nds-leading-ui);
+    outline: none;
+  }
+
+  .input::placeholder {
+    color: var(--nds-fg-subtle);
+    opacity: 1;
+  }
+
+  .input[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .input[data-disabled] {
+    cursor: not-allowed;
+  }
+
+  .textarea {
+    resize: block;
+    line-height: var(--nds-leading-text);
+  }
+
+  .root:has(.textarea) .control {
+    align-items: flex-start;
+  }
+
+  .affix {
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+  }
+
+  .description {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--nds-space-2);
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .count {
+    margin-inline-start: auto;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Keep the next control in place when blur clears a validation message. */
+  .errorSlot {
+    min-block-size: calc(var(--nds-text-sm) * var(--nds-leading-ui));
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .error {
+    color: var(--nds-danger-fg);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .pending {
+    display: grid;
+    flex: none;
+    place-items: center;
+    color: var(--nds-fg-muted);
+  }
+
+  .pending > span {
+    inline-size: var(--nds-icon-md);
+    block-size: var(--nds-icon-md);
+    border: var(--nds-border-width-thick) solid currentColor;
+    border-inline-end-color: transparent;
+    border-radius: var(--nds-radius-pill);
+    animation: nds-field-spin var(--nds-dur-slow) linear infinite;
+  }
+
+  @keyframes nds-field-spin {
+    to { rotate: 1turn; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pending > span { animation: none; }
+  }
+
+  @media (prefers-contrast: more) {
+    .control { border-color: currentColor; }
+  }
+
+  @media (forced-colors: active) {
+    .control { border-color: ButtonText; }
+    .input[data-focus-visible] { outline-color: Highlight; }
+    .error { color: CanvasText; }
+  }
+}

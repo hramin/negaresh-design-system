@@ -19,18 +19,35 @@ async function open(page: Page, path: string) {
   await page.mouse.move(0, 0);
 }
 
-const snap = (locator: Locator, name: string) =>
+const WAVE1_SLUGS = new Set([
+  'text-field',
+  'text-area',
+  'search-field',
+  'phone-field',
+  'serial-field',
+  'password-field',
+  'form',
+]);
+
+const snap = (locator: Locator, name: string, hidePageHeader = false) =>
   expect(locator).toHaveScreenshot(name, {
     animations: 'disabled',
     caret: 'hide',
     maxDiffPixelRatio: 0.001,
+    // Tall new galleries must remain fully visible beneath the sticky page chrome.
+    // Existing P2 captures keep their original settings and baselines.
+    ...(hidePageHeader ? { style: 'header { visibility: hidden !important; }' } : {}),
   });
 
 for (const theme of THEMES) {
   for (const slug of COMPONENT_SLUGS) {
     test(`gallery ${slug} (${theme})`, async ({ page }) => {
       await open(page, `/components/${slug}?theme=${theme}`);
-      await snap(page.locator(`[data-gallery="${slug}"]`), `${slug}-${theme}.png`);
+      await snap(
+        page.locator(`[data-gallery="${slug}"]`),
+        `${slug}-${theme}.png`,
+        WAVE1_SLUGS.has(slug),
+      );
     });
   }
 
@@ -38,6 +55,29 @@ for (const theme of THEMES) {
     await open(page, `/foundations/icons?theme=${theme}`);
     await snap(page.locator('[data-gallery="icons"]'), `icons-${theme}.png`);
   });
+
+  for (const slug of [
+    'text-field',
+    'text-area',
+    'search-field',
+    'phone-field',
+    'serial-field',
+    'password-field',
+  ]) {
+    test(`field ${slug} hover and focus-visible (${theme})`, async ({ page }) => {
+      await open(page, `/components/${slug}?theme=${theme}`);
+      const region = page.locator(`[data-interactive="${slug}"]`);
+      const input = region.locator('input:not([type="hidden"]), textarea').first();
+      await input.hover();
+      await snap(region, `${slug}-hover-${theme}.png`, true);
+      await page.mouse.move(0, 0);
+      await input.focus();
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Tab');
+      await expect(input).toHaveAttribute('data-focus-visible', 'true');
+      await snap(region, `${slug}-focus-${theme}.png`, true);
+    });
+  }
 
   test.describe('interaction states', () => {
     test.skip(({ isMobile }) => isMobile, 'pointer and keyboard states are captured on desktop');
@@ -111,6 +151,37 @@ for (const theme of THEMES) {
         caret: 'hide',
         maxDiffPixelRatio: 0.001,
       });
+    });
+
+    test(`top-bar nav link hover / focus-visible (${theme})`, async ({ page }) => {
+      await open(page, `/components/top-bar?theme=${theme}`);
+      const state = page.locator('[data-interactive="top-bar-link"]');
+      const link = state.getByRole('link');
+      await link.hover();
+      await snap(state, `top-bar-link-hover-${theme}.png`);
+      await page.mouse.move(0, 0);
+      await link.focus();
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Tab');
+      await expect(link).toHaveAttribute('data-focus-visible', 'true');
+      await snap(state, `top-bar-link-focus-${theme}.png`);
+    });
+
+    test(`account-pill hover / pressed / focus-visible (${theme})`, async ({ page }) => {
+      await open(page, `/components/account-pill?theme=${theme}`);
+      const state = page.locator('[data-interactive="account-pill"]');
+      const button = state.getByRole('button');
+      await button.hover();
+      await snap(state, `account-pill-hover-${theme}.png`);
+      await page.mouse.down();
+      await snap(state, `account-pill-pressed-${theme}.png`);
+      await page.mouse.up();
+      await page.mouse.move(0, 0);
+      await button.focus();
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Tab');
+      await expect(button).toHaveAttribute('data-focus-visible', 'true');
+      await snap(state, `account-pill-focus-${theme}.png`);
     });
   });
 }

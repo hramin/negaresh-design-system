@@ -1,0 +1,6 @@
+@layer nds.components {
+  .code input:not([type="hidden"]) {
+    font-family: var(--nds-font-code);
+    unicode-bidi: isolate;
+  }
+}

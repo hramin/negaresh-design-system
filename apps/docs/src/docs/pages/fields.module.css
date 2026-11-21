@@ -1,0 +1,21 @@
+@layer nds.patterns {
+  .field {
+    inline-size: min(100%, calc(var(--nds-space-24) * 3));
+    min-inline-size: 0;
+  }
+
+  .example {
+    inline-size: min(100%, calc(var(--nds-space-24) * 6));
+    min-inline-size: 0;
+  }
+
+  .capture {
+    padding: var(--nds-space-2);
+    min-inline-size: 0;
+  }
+
+  .output {
+    overflow-wrap: anywhere;
+    min-inline-size: 0;
+  }
+}

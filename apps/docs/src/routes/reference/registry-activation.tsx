@@ -3,18 +3,17 @@
  * header and actions only (P2). Fields, alerts, meter and choice cards arrive in P3–P4.
  * `e2e/reference.spec.ts` compares these regions with the static page pixel by pixel.
  */
-import { iconLock, iconMoon, iconSun, iconUser } from '@negaresh/icons';
+import { iconLock, iconMoon, iconSun } from '@negaresh/icons';
 import {
+  AccountPill,
   Button,
   ButtonGroup,
   Container,
   CopyButton,
   Heading,
-  Icon,
   IconButton,
   LinkButton,
   LogoSlot,
-  Ltr,
   Menu,
   MenuItem,
   MenuTrigger,
@@ -23,6 +22,10 @@ import {
   Stack,
   Surface,
   Text,
+  TopBar,
+  TopBarBrand,
+  TopBarNav,
+  TopBarNavLink,
   useTheme,
 } from '@negaresh/react';
 import { maskPhone } from '@negaresh/utils';
@@ -159,48 +162,43 @@ function RegistryActivation() {
 function RegistryHeader() {
   const { theme, setTheme } = useTheme();
   const isDark = theme === 'dark';
+  const maskedPhone = maskPhone('09121234567');
   return (
-    <header className={styles.topbar} data-region="header">
-      <Container className={styles.topbarIn}>
-        <a
-          className={styles.brand}
+    <TopBar
+      data-region="header"
+      brand={
+        <TopBarBrand
           href="/reference/registry-activation"
           aria-label="رجیستری نگارش برتر، صفحهٔ اصلی"
         >
           <LogoSlot name="نگارش برتر" product="رجیستری" />
-        </a>
-        <nav className={styles.nav} aria-label="بخش‌های رجیستری">
+        </TopBarBrand>
+      }
+      nav={
+        <TopBarNav aria-label="بخش‌های رجیستری">
           {NAV.map(([label, href], i) => (
-            <a
-              key={label}
-              href={href}
-              className={styles.navLink}
-              {...(i === 0 ? { 'aria-current': 'page' as const } : {})}
-            >
+            <TopBarNavLink key={label} href={href} isCurrent={i === 0}>
               {label}
-            </a>
+            </TopBarNavLink>
           ))}
-        </nav>
-        <div className={styles.end}>
+        </TopBarNav>
+      }
+      actions={
+        <>
           <IconButton
             icon={isDark ? iconSun : iconMoon}
             aria-label={isDark ? 'تغییر به حالت روشن' : 'تغییر به حالت تیره'}
             onPress={() => setTheme(isDark ? 'light' : 'dark')}
           />
           <MenuTrigger>
-            <Button className={styles.user} aria-label={`حساب کاربری ${maskPhone('09121234567')}`}>
-              <Ltr className={styles.userLabel}>{maskPhone('09121234567')}</Ltr>
-              <span className={styles.avatar}>
-                <Icon icon={iconUser} size="sm" />
-              </span>
-            </Button>
+            <AccountPill label={maskedPhone} ltr aria-label={`حساب کاربری ${maskedPhone}`} />
             <Menu placement="bottom end">
               <MenuItem id="activations">فعال‌سازی‌های من</MenuItem>
               <MenuItem id="signout">خروج</MenuItem>
             </Menu>
           </MenuTrigger>
-        </div>
-      </Container>
-    </header>
+        </>
+      }
+    />
   );
 }

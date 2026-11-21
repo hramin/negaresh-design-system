@@ -79,3 +79,18 @@ test('unknown routes return 404', async ({ page }) => {
   expect(response?.status()).toBe(404);
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 });
+
+test('React Aria popover dismiss label is localized to Persian in the browser', async ({
+  page,
+}) => {
+  await page.goto('/reference/registry-activation');
+  await page.waitForLoadState('networkidle');
+  await page.locator('[data-nds="AccountPill"]').click();
+  await expect(page.getByRole('menu')).toBeVisible();
+  await expect(
+    page.locator('[data-nds="MenuPopover"] button[aria-label="بستن"]').first(),
+  ).toBeAttached();
+  await expect(page.locator('[data-nds="MenuPopover"] button[aria-label="Dismiss"]')).toHaveCount(
+    0,
+  );
+});

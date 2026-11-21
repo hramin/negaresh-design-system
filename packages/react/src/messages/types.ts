@@ -16,4 +16,20 @@ export interface NdsMessages {
   pending: string;
   /** LogoSlot placeholder text until real logos exist (Q-02). */
   logoPlaceholder: string;
+  /** Field validation messages (native browser text is not reliably Persian). */
+  fieldRequired: string;
+  fieldInvalid: string;
+  fieldTooShort: string;
+  fieldTooLong: string;
+  fieldPatternMismatch: string;
+  fieldTypeMismatch: string;
+  /** Character counter, including the optional maximum. */
+  characterCount: (count: number, maximum?: number) => string;
+  searchClear: string;
+  showPassword: string;
+  hidePassword: string;
+  serialHint: (pattern: string) => string;
+  phoneInvalid: string;
+  serialInvalid: string;
+  errorSummaryTitle: string;
 }
