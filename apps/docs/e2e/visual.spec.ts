@@ -152,5 +152,36 @@ for (const theme of THEMES) {
         maxDiffPixelRatio: 0.001,
       });
     });
+
+    test(`top-bar nav link hover / focus-visible (${theme})`, async ({ page }) => {
+      await open(page, `/components/top-bar?theme=${theme}`);
+      const state = page.locator('[data-interactive="top-bar-link"]');
+      const link = state.getByRole('link');
+      await link.hover();
+      await snap(state, `top-bar-link-hover-${theme}.png`);
+      await page.mouse.move(0, 0);
+      await link.focus();
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Tab');
+      await expect(link).toHaveAttribute('data-focus-visible', 'true');
+      await snap(state, `top-bar-link-focus-${theme}.png`);
+    });
+
+    test(`account-pill hover / pressed / focus-visible (${theme})`, async ({ page }) => {
+      await open(page, `/components/account-pill?theme=${theme}`);
+      const state = page.locator('[data-interactive="account-pill"]');
+      const button = state.getByRole('button');
+      await button.hover();
+      await snap(state, `account-pill-hover-${theme}.png`);
+      await page.mouse.down();
+      await snap(state, `account-pill-pressed-${theme}.png`);
+      await page.mouse.up();
+      await page.mouse.move(0, 0);
+      await button.focus();
+      await page.keyboard.press('Shift+Tab');
+      await page.keyboard.press('Tab');
+      await expect(button).toHaveAttribute('data-focus-visible', 'true');
+      await snap(state, `account-pill-focus-${theme}.png`);
+    });
   });
 }

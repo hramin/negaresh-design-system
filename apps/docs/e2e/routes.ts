@@ -14,6 +14,8 @@ export const COMPONENT_SLUGS = [
   'toggle-button',
   'copy-button',
   'menu',
+  'top-bar',
+  'account-pill',
   'text-field',
   'text-area',
   'search-field',
