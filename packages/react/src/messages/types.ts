@@ -32,4 +32,19 @@ export interface NdsMessages {
   phoneInvalid: string;
   serialInvalid: string;
   errorSummaryTitle: string;
+  /** Default Select placeholder when none is supplied. */
+  selectPlaceholder: string;
+  /** Compact summary when multiple options are selected in Select. */
+  selectSelectedCount: (count: number) => string;
+  /** ComboBox / Autocomplete listbox empty, loading, toggle, and create-new labels. */
+  comboBoxNoResults: string;
+  comboBoxLoading: string;
+  comboBoxToggle: string;
+  comboBoxCreateOption: (query: string) => string;
+  /** TagField placeholder, live announcements, and validation errors. */
+  tagFieldPlaceholder: string;
+  tagAdded: (tag: string) => string;
+  tagRemoved: (tag: string) => string;
+  tagDuplicate: string;
+  tagLimitReached: (max: number) => string;
 }

@@ -27,6 +27,17 @@ export const faMessages: NdsMessages = {
   phoneInvalid: 'شمارهٔ همراه ایران را با قالب راهنما وارد کنید.',
   serialInvalid: 'سریال را مطابق الگوی راهنما وارد کنید.',
   errorSummaryTitle: 'بخش‌های مشخص‌شده را بررسی کنید',
+  selectPlaceholder: 'موردی را انتخاب کنید',
+  selectSelectedCount: (count) => `${toPersianDigits(count)} مورد انتخاب‌شده`,
+  comboBoxNoResults: 'موردی یافت نشد',
+  comboBoxLoading: 'در حال بارگذاری…',
+  comboBoxToggle: 'نمایش گزینه‌ها',
+  comboBoxCreateOption: (query) => `افزودن «${query}»`,
+  tagFieldPlaceholder: 'برچسب تازه بنویسید و Enter بزنید',
+  tagAdded: (tag) => `برچسب «${tag}» افزوده شد.`,
+  tagRemoved: (tag) => `برچسب «${tag}» حذف شد.`,
+  tagDuplicate: 'این برچسب قبلاً افزوده شده است.',
+  tagLimitReached: (max) => `حداکثر ${toPersianDigits(max)} برچسب مجاز است.`,
 };
 
 export {

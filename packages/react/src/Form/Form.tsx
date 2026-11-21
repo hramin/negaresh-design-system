@@ -63,7 +63,7 @@ export function Form({
     const focusInvalid = () => {
       if (!focusAfterSubmit.current) return false;
       const invalid = form.querySelector<HTMLElement>(
-        'input[aria-invalid="true"]:not([type="hidden"]):not(:disabled), textarea[aria-invalid="true"]:not(:disabled), select[aria-invalid="true"]:not(:disabled), [role="combobox"][aria-invalid="true"]:not([aria-disabled="true"]), [role="spinbutton"][aria-invalid="true"]:not([aria-disabled="true"])',
+        'input[aria-invalid="true"]:not([type="hidden"]):not(:disabled), textarea[aria-invalid="true"]:not(:disabled), select[aria-invalid="true"]:not(:disabled), [role="combobox"][aria-invalid="true"]:not([aria-disabled="true"]), [role="spinbutton"][aria-invalid="true"]:not([aria-disabled="true"]), [data-nds="Select"][data-invalid="true"] button:not(:disabled), [data-invalid="true"] input:not([type="hidden"]):not(:disabled)',
       );
       if (!invalid) return false;
       focusAfterSubmit.current = false;
@@ -78,7 +78,7 @@ export function Form({
       subtree: true,
       childList: true,
       attributes: true,
-      attributeFilter: ['aria-invalid'],
+      attributeFilter: ['aria-invalid', 'data-invalid'],
     });
     return () => observer.disconnect();
   }, [submission]);
