@@ -1,6 +1,6 @@
 # Components
 
-Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
+Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), and P3 Wave 1 components are `approved` following owner confirmation on 21 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
 
 Every component documents: anatomy, props, all applicable states (default, hover, focus-visible, pressed, disabled, loading, invalid, empty, read-only), keyboard map, ARIA notes, RTL notes, do/don't, and a mobile example.
 
@@ -34,14 +34,14 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| TextField | `TextField` | label, description, error, prefix/suffix, character count | all | review |
-| TextArea | `TextField` multiline | auto-grow | all | review |
+| TextField | `TextField` | label, description, error, prefix/suffix, character count | all | approved |
+| TextArea | `TextField` multiline | auto-grow | all | approved |
 | NumberField | `NumberField` | Persian display, Latin input accepted | all | planned |
-| SearchField | `SearchField` | clear, shortcut hint | all | review |
-| PhoneField | `TextField` + utils | normalises to +989…; LTR | all | review |
-| SerialField / CodeField | `TextField` + utils | LTR monospace; pattern hint; normalise | R, N, T | review |
+| SearchField | `SearchField` | clear, shortcut hint | all | approved |
+| PhoneField | `TextField` + utils | normalises to +989…; LTR | all | approved |
+| SerialField / CodeField | `TextField` + utils | LTR monospace; pattern hint; normalise | R, N, T | approved |
 | OTPField | `TextField` ×6 pattern | paste, auto-advance, `autocomplete="one-time-code"`, resend countdown | all | planned |
-| PasswordField | `TextField` | show/hide, strength hint | all | review |
+| PasswordField | `TextField` | show/hide, strength hint | all | approved |
 | Select | `Select` | single, multiple; RTL arrow | all | planned |
 | ComboBox / Autocomplete | `ComboBox` | async, create-new | N, T | planned |
 | Checkbox, CheckboxGroup | `Checkbox(Group)` | indeterminate | all | planned |
@@ -54,7 +54,7 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | TimeField | `TimeField` | 24 h | N | planned |
 | FileUpload, DropZone | `FileTrigger`, `DropZone` | CSV/TXT, images; progress; errors | R, N, T | planned |
 | TagGroup / TagField | `TagGroup` | removable tags | N | planned |
-| Form, FieldGroup, FormErrorSummary | `Form` | server errors mapping | all | review |
+| Form, FieldGroup, FormErrorSummary | `Form` | server errors mapping | all | approved |
 
 ## Feedback and status (P4)
 
