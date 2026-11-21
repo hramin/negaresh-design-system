@@ -42,18 +42,18 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | SerialField / CodeField | `TextField` + utils | LTR monospace; pattern hint; normalise | R, N, T | approved |
 | OTPField | `TextField` ×6 pattern | paste, auto-advance, `autocomplete="one-time-code"`, resend countdown | all | planned |
 | PasswordField | `TextField` | show/hide, strength hint | all | approved |
-| Select | `Select` | single, multiple; RTL arrow | all | planned |
-| ComboBox / Autocomplete | `ComboBox` | async, create-new | N, T | planned |
-| Checkbox, CheckboxGroup | `Checkbox(Group)` | indeterminate | all | planned |
-| RadioGroup | `RadioGroup` | vertical, horizontal | all | planned |
-| ChoiceCard (radio/checkbox card) | `Radio`/`Checkbox` | with description, icon, price | R, N, T | planned |
-| SegmentedControl | `ToggleButtonGroup` | 2–5 options (from Ravanma v3) | N, T, V | planned |
-| Switch | `Switch` | — | all | planned |
+| Select | `Select` | single, multiple; RTL arrow | all | review |
+| ComboBox / Autocomplete | `ComboBox` | async, create-new | N, T | review |
+| Checkbox, CheckboxGroup | `Checkbox(Group)` | indeterminate | all | review |
+| RadioGroup | `RadioGroup` | vertical, horizontal | all | review |
+| ChoiceCard (radio/checkbox card) | `Radio`/`Checkbox` | with description, icon, price | R, N, T | review |
+| SegmentedControl | `ToggleButtonGroup` | 2–5 options (from Ravanma v3) | N, T, V | review |
+| Switch | `Switch` | — | all | review |
 | Slider, RangeSlider | `Slider` | Persian ticks | T, V | planned |
 | DatePicker (Jalali), DateRangePicker, Calendar | `DatePicker` + `PersianCalendar` | Saturday start; min/max; Tehran tz | R, N, T | planned |
 | TimeField | `TimeField` | 24 h | N | planned |
 | FileUpload, DropZone | `FileTrigger`, `DropZone` | CSV/TXT, images; progress; errors | R, N, T | planned |
-| TagGroup / TagField | `TagGroup` | removable tags | N | planned |
+| TagGroup / TagField | `TagGroup` | removable tags | N | review |
 | Form, FieldGroup, FormErrorSummary | `Form` | server errors mapping | all | approved |
 
 ## Feedback and status (P4)
