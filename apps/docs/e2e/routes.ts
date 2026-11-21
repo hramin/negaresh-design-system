@@ -23,6 +23,14 @@ export const COMPONENT_SLUGS = [
   'serial-field',
   'password-field',
   'form',
+  'select',
+  'combobox',
+  'checkbox',
+  'radio-group',
+  'choice-card',
+  'segmented-control',
+  'switch',
+  'tag-group',
 ] as const;
 
 export const ROUTES = [

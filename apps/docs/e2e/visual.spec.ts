@@ -19,7 +19,7 @@ async function open(page: Page, path: string) {
   await page.mouse.move(0, 0);
 }
 
-const WAVE1_SLUGS = new Set([
+const HIDE_HEADER_SLUGS = new Set([
   'text-field',
   'text-area',
   'search-field',
@@ -27,6 +27,14 @@ const WAVE1_SLUGS = new Set([
   'serial-field',
   'password-field',
   'form',
+  'select',
+  'combobox',
+  'checkbox',
+  'radio-group',
+  'choice-card',
+  'segmented-control',
+  'switch',
+  'tag-group',
 ]);
 
 const snap = (locator: Locator, name: string, hidePageHeader = false) =>
@@ -46,7 +54,7 @@ for (const theme of THEMES) {
       await snap(
         page.locator(`[data-gallery="${slug}"]`),
         `${slug}-${theme}.png`,
-        WAVE1_SLUGS.has(slug),
+        HIDE_HEADER_SLUGS.has(slug),
       );
     });
   }
@@ -79,8 +87,75 @@ for (const theme of THEMES) {
     });
   }
 
+  test(`select open listbox (${theme})`, async ({ page }) => {
+    await open(page, `/components/select?theme=${theme}`);
+    const region = page.locator('[data-interactive="select"]');
+    const trigger = region.getByRole('button', { name: /استان ارسال/ });
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.click();
+    await expect(page.getByRole('listbox')).toBeVisible();
+    const popover = page.locator('[data-nds="SelectPopover"]');
+    await expect(page.locator('[data-nds="SelectPopover"][data-entering]')).toHaveCount(0);
+    const box = await popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect);
+    const x = Math.max(0, Math.floor(box.x));
+    const y = Math.max(0, Math.floor(box.y));
+    const width = Math.ceil(box.x + box.width) - x;
+    const height = Math.ceil(box.y + box.height) - y;
+    await expect(page).toHaveScreenshot(`select-open-${theme}.png`, {
+      clip: { x, y, width, height },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`combobox open create-new listbox (${theme})`, async ({ page }) => {
+    await open(page, `/components/combobox?theme=${theme}`);
+    const region = page.locator('[data-interactive="combobox"]');
+    const input = region.getByRole('combobox');
+    await input.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await input.click();
+    await input.fill('روان‌سنجی نوجوان');
+    await expect(page.getByRole('option', { name: /افزودن «روان‌سنجی نوجوان»/ })).toBeVisible();
+    const popover = page.locator('[data-nds="ComboBoxPopover"]');
+    await expect(page.locator('[data-nds="ComboBoxPopover"][data-entering]')).toHaveCount(0);
+    const box = await popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect);
+    const x = Math.max(0, Math.floor(box.x));
+    const y = Math.max(0, Math.floor(box.y));
+    const width = Math.ceil(box.x + box.width) - x;
+    const height = Math.ceil(box.y + box.height) - y;
+    await expect(page).toHaveScreenshot(`combobox-open-${theme}.png`, {
+      clip: { x, y, width, height },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
   test.describe('interaction states', () => {
     test.skip(({ isMobile }) => isMobile, 'pointer and keyboard states are captured on desktop');
+
+    test(`wave2 focus-visible states (${theme})`, async ({ page }) => {
+      for (const item of [
+        { slug: 'segmented-control', selector: '[data-nds="SegmentedControlItem"]' },
+        { slug: 'switch', selector: 'input[type="checkbox"]' },
+        { slug: 'choice-card', selector: 'input[type="radio"]' },
+      ] as const) {
+        await open(page, `/components/${item.slug}?theme=${theme}`);
+        const region = page.locator(`[data-interactive="${item.slug}"]`);
+        const target = region.locator(item.selector).first();
+        await target.focus();
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Tab');
+        await snap(region, `${item.slug}-focus-${theme}.png`, true);
+      }
+    });
 
     for (const variant of ['primary', 'secondary', 'ghost'] as const) {
       test(`button ${variant} hover / pressed / focus-visible (${theme})`, async ({ page }) => {
