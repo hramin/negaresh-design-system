@@ -1,0 +1,116 @@
+@layer nds.components {
+  .control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+    min-block-size: var(--_field-height);
+    padding-inline: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-control);
+    border-radius: var(--nds-field-radius);
+    background: var(--nds-bg-surface);
+  }
+
+  .control[data-hovered]:not([data-disabled]) {
+    border-color: var(--nds-fg-muted);
+  }
+
+  .root[data-invalid] .control {
+    border-color: var(--nds-danger-fg);
+  }
+
+  .root[data-disabled] .control,
+  .root[data-readonly] .control,
+  .root[data-pending] .control {
+    background: var(--nds-bg-sunken);
+  }
+
+  .root[data-disabled] {
+    color: var(--nds-fg-disabled);
+  }
+
+  .segments {
+    display: inline-flex;
+    align-items: center;
+    flex: 1;
+    min-inline-size: 0;
+    min-block-size: var(--_field-height);
+    direction: ltr;
+    justify-content: flex-end;
+    font-size: var(--nds-text-md);
+    font-variant-numeric: tabular-nums;
+    line-height: var(--nds-leading-ui);
+    outline: none;
+  }
+
+  .segment {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 1ch;
+    padding-block: calc(var(--nds-space-1) / 2);
+    padding-inline: calc(var(--nds-space-1) / 2);
+    border-radius: calc(var(--nds-radius-sm) / 2);
+    color: var(--nds-fg-default);
+    outline: none;
+    caret-color: transparent;
+  }
+
+  .segment[data-type="literal"] {
+    padding-inline: 0;
+    color: var(--nds-fg-muted);
+  }
+
+  .segment[data-placeholder] {
+    color: var(--nds-fg-subtle);
+  }
+
+  .segment[data-focused] {
+    background: var(--nds-accent-default);
+    color: var(--nds-accent-on);
+  }
+
+  .segment[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .segment[data-disabled] {
+    color: var(--nds-fg-disabled);
+    cursor: not-allowed;
+  }
+
+  .end {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--nds-space-2);
+    flex: none;
+    color: var(--nds-fg-muted);
+  }
+
+  .root[data-disabled] .end {
+    color: var(--nds-fg-disabled);
+  }
+
+  @media (prefers-contrast: more) {
+    .control {
+      border-color: currentColor;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .control {
+      border-color: ButtonText;
+    }
+
+    .segment[data-focused] {
+      background: Highlight;
+      color: HighlightText;
+    }
+
+    .segment[data-focus-visible] {
+      outline-color: Highlight;
+    }
+  }
+}

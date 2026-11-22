@@ -44,3 +44,6 @@ export * from './Switch/index.ts';
 export * from './Select/index.ts';
 export * from './ComboBox/index.ts';
 export * from './TagGroup/index.ts';
+export * from './NumberField/index.ts';
+export * from './Slider/index.ts';
+export * from './TimeField/index.ts';
