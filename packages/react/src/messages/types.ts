@@ -47,4 +47,16 @@ export interface NdsMessages {
   tagRemoved: (tag: string) => string;
   tagDuplicate: string;
   tagLimitReached: (max: number) => string;
+  /** Numeric/date/time constraint validation messages. */
+  fieldRangeUnderflow: string;
+  fieldRangeOverflow: string;
+  fieldStepMismatch: string;
+  /** Default RangeSlider thumb labels and shared range separator («تا»). */
+  sliderRangeStart: string;
+  sliderRangeEnd: string;
+  rangeSeparator: string;
+  /** Jalali Calendar / DatePicker trigger and month navigation labels. */
+  openCalendar: string;
+  previousMonth: string;
+  nextMonth: string;
 }

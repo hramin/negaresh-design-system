@@ -38,6 +38,15 @@ export const faMessages: NdsMessages = {
   tagRemoved: (tag) => `برچسب «${tag}» حذف شد.`,
   tagDuplicate: 'این برچسب قبلاً افزوده شده است.',
   tagLimitReached: (max) => `حداکثر ${toPersianDigits(max)} برچسب مجاز است.`,
+  fieldRangeUnderflow: 'مقدار واردشده کمتر از حد مجاز است.',
+  fieldRangeOverflow: 'مقدار واردشده بیشتر از حد مجاز است.',
+  fieldStepMismatch: 'مقدار را مطابق گام مجاز وارد کنید.',
+  sliderRangeStart: 'حد پایین',
+  sliderRangeEnd: 'حد بالا',
+  rangeSeparator: 'تا',
+  openCalendar: 'باز کردن تقویم',
+  previousMonth: 'ماه قبل',
+  nextMonth: 'ماه بعد',
 };
 
 export {

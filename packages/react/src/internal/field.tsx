@@ -47,6 +47,9 @@ export function fieldValidationMessage(
   if (details.tooShort) return messages.fieldTooShort;
   if (details.tooLong) return messages.fieldTooLong;
   if (details.patternMismatch) return messages.fieldPatternMismatch;
+  if (details.rangeUnderflow) return messages.fieldRangeUnderflow;
+  if (details.rangeOverflow) return messages.fieldRangeOverflow;
+  if (details.stepMismatch) return messages.fieldStepMismatch;
   return validationErrors.length ? validationErrors.join(' ') : messages.fieldInvalid;
 }
 

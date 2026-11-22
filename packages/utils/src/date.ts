@@ -3,14 +3,28 @@
  * Iran has had no daylight saving since 2022 — always format with `Asia/Tehran`, never
  * the browser zone (docs/04-stack.md).
  */
-import { CalendarDateTime, PersianCalendar, toZoned } from '@internationalized/date';
+import {
+  type CalendarDate,
+  CalendarDateTime,
+  GregorianCalendar,
+  getDayOfWeek,
+  PersianCalendar,
+  parseDate,
+  parseTime,
+  type Time,
+  toCalendar,
+  today,
+  toZoned,
+} from '@internationalized/date';
 import { toLatinDigits, toPersianDigits } from './digits.ts';
 
 export const TEHRAN = 'Asia/Tehran';
 
 export type DateInput = Date | string | number;
+export type { CalendarDate, Time };
 
 const persian = new PersianCalendar();
+const gregorian = new GregorianCalendar();
 
 function toDate(input: DateInput): Date {
   const d = input instanceof Date ? input : new Date(input);
@@ -119,4 +133,51 @@ export function formatRelative(input: DateInput, now: DateInput = Date.now()): s
   if (abs < MINUTE) return rtf.format(0, 'second');
   if (abs < HOUR) return rtf.format(Math.trunc(diff / MINUTE), 'minute');
   return rtf.format(Math.trunc(diff / HOUR), 'hour');
+}
+
+/** Creates a Persian (Jalali) calendar instance for React Aria date components. */
+export function createPersianCalendar(): PersianCalendar {
+  return new PersianCalendar();
+}
+
+/** Parses a canonical Gregorian ISO date (`YYYY-MM-DD`) into a Jalali-calendar CalendarDate. */
+export function parseIsoDate(iso: string): CalendarDate | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) return null;
+  try {
+    return toCalendar(parseDate(iso), persian);
+  } catch {
+    return null;
+  }
+}
+
+/** Converts any CalendarDate (Jalali or Gregorian) to canonical Gregorian ISO (`YYYY-MM-DD`). */
+export function toIsoDate(date: CalendarDate): string {
+  return toCalendar(date, gregorian).toString();
+}
+
+/** Returns today's canonical Gregorian ISO date (`YYYY-MM-DD`) in `Asia/Tehran` (or the given zone). */
+export function getTodayIsoDate(timeZone: string = TEHRAN): string {
+  return today(timeZone).toString();
+}
+
+/** Returns true when a CalendarDate falls on Friday (جمعه), the Iranian weekend day. */
+export function isPersianWeekend(date: CalendarDate): boolean {
+  return getDayOfWeek(date, 'fa-IR') === 6;
+}
+
+/** Parses a 24-hour ISO time string (`HH:mm` or `HH:mm:ss`) into an `@internationalized/date` Time. */
+export function parseIsoTime(value: string): Time | null {
+  if (!/^\d{2}:\d{2}(?::\d{2})?$/.test(value)) return null;
+  try {
+    return parseTime(value);
+  } catch {
+    return null;
+  }
+}
+
+/** Formats an `@internationalized/date` Time as canonical 24-hour `HH:mm` or `HH:mm:ss`. */
+export function toIsoTime(time: Time, includeSeconds = false): string {
+  const pad = (n: number) => String(n).padStart(2, '0');
+  const base = `${pad(time.hour)}:${pad(time.minute)}`;
+  return includeSeconds ? `${base}:${pad(time.second)}` : base;
 }
