@@ -35,6 +35,10 @@ const HIDE_HEADER_SLUGS = new Set([
   'segmented-control',
   'switch',
   'tag-group',
+  'number-field',
+  'slider',
+  'date-picker',
+  'time-field',
 ]);
 
 const snap = (locator: Locator, name: string, hidePageHeader = false) =>
@@ -138,6 +142,60 @@ for (const theme of THEMES) {
     });
   });
 
+  test(`date-picker open Jalali calendar popover (${theme})`, async ({ page }) => {
+    await open(page, `/components/date-picker?theme=${theme}`);
+    const region = page.locator('[data-interactive="date-picker"]');
+    const trigger = region
+      .locator('[data-nds="DatePicker"]')
+      .getByRole('button', { name: /باز کردن تقویم/ });
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.click();
+    const popover = page.locator('[data-nds="DatePickerPopover"]');
+    await expect(popover).toBeVisible();
+    await expect(page.locator('[data-nds="DatePickerPopover"][data-entering]')).toHaveCount(0);
+    const box = await popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect);
+    const x = Math.max(0, Math.floor(box.x));
+    const y = Math.max(0, Math.floor(box.y));
+    const width = Math.ceil(box.x + box.width) - x;
+    const height = Math.ceil(box.y + box.height) - y;
+    await expect(page).toHaveScreenshot(`date-picker-open-${theme}.png`, {
+      clip: { x, y, width, height },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`date-range-picker open Jalali calendar popover (${theme})`, async ({ page }) => {
+    await open(page, `/components/date-picker?theme=${theme}`);
+    const region = page.locator('[data-interactive="date-picker"]');
+    const trigger = region
+      .locator('[data-nds="DateRangePicker"]')
+      .getByRole('button', { name: /باز کردن تقویم/ });
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.click();
+    const popover = page.locator('[data-nds="DateRangePickerPopover"]');
+    await expect(popover).toBeVisible();
+    await expect(page.locator('[data-nds="DateRangePickerPopover"][data-entering]')).toHaveCount(0);
+    const box = await popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect);
+    const x = Math.max(0, Math.floor(box.x));
+    const y = Math.max(0, Math.floor(box.y));
+    const width = Math.ceil(box.x + box.width) - x;
+    const height = Math.ceil(box.y + box.height) - y;
+    await expect(page).toHaveScreenshot(`date-range-picker-open-${theme}.png`, {
+      clip: { x, y, width, height },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
   test.describe('interaction states', () => {
     test.skip(({ isMobile }) => isMobile, 'pointer and keyboard states are captured on desktop');
 
@@ -146,6 +204,22 @@ for (const theme of THEMES) {
         { slug: 'segmented-control', selector: '[data-nds="SegmentedControlItem"]' },
         { slug: 'switch', selector: 'input[type="checkbox"]' },
         { slug: 'choice-card', selector: 'input[type="radio"]' },
+      ] as const) {
+        await open(page, `/components/${item.slug}?theme=${theme}`);
+        const region = page.locator(`[data-interactive="${item.slug}"]`);
+        const target = region.locator(item.selector).first();
+        await target.focus();
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Tab');
+        await snap(region, `${item.slug}-focus-${theme}.png`, true);
+      }
+    });
+
+    test(`wave3 focus-visible states (${theme})`, async ({ page }) => {
+      for (const item of [
+        { slug: 'number-field', selector: 'input:not([type="hidden"])' },
+        { slug: 'slider', selector: 'input[type="range"]' },
+        { slug: 'time-field', selector: '[role="spinbutton"]' },
       ] as const) {
         await open(page, `/components/${item.slug}?theme=${theme}`);
         const region = page.locator(`[data-interactive="${item.slug}"]`);

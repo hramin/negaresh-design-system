@@ -31,6 +31,10 @@ export const COMPONENT_SLUGS = [
   'segmented-control',
   'switch',
   'tag-group',
+  'number-field',
+  'slider',
+  'date-picker',
+  'time-field',
 ] as const;
 
 export const ROUTES = [
