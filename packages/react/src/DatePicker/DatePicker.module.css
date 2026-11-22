@@ -50,7 +50,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--nds-space-2);
+    gap: var(--nds-space-1);
     flex: 1;
     min-inline-size: 0;
     padding-block: var(--nds-space-1);
@@ -61,10 +61,15 @@
     align-items: center;
     min-inline-size: 0;
     direction: ltr;
-    font-size: var(--nds-text-md);
+    font-size: var(--nds-text-sm);
     font-variant-numeric: tabular-nums;
     line-height: var(--nds-leading-ui);
     outline: none;
+  }
+
+  .rangeSegments .segment {
+    min-inline-size: auto;
+    padding-inline: 0;
   }
 
   .separator {

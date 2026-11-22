@@ -59,4 +59,7 @@ export interface NdsMessages {
   openCalendar: string;
   previousMonth: string;
   nextMonth: string;
+  /** Accessible stepper prefixes for NumberField (SSR-safe). */
+  numberIncrement: string;
+  numberDecrement: string;
 }

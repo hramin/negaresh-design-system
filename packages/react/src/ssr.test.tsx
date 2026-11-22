@@ -257,6 +257,8 @@ describe('server rendering', () => {
     expect(html).toContain('N25AG-EMV0K');
     expect(html).toContain('۲۵۰٬۰۰۰ تومان');
     expect(html).toContain('آبان ۱۴۰۵');
+    expect(html).toContain('افزایش ظرفیت');
+    expect(html).toContain('کاهش ظرفیت');
     expect(html).toContain('nonce="ssr-nonce"');
     expect(html).toContain('react-aria.i18n.strings');
     expect(html).toContain('بستن');

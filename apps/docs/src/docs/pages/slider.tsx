@@ -61,7 +61,7 @@ export const sliderDoc: ComponentDoc = {
       <GalleryRow title="لغزندهٔ تکی و بازه‌ای">
         <State label="تکی با درجه‌بندی فارسی">
           <Slider
-            className={styles.field}
+            className={styles.slider}
             label="حجم صدا"
             defaultValue={65}
             ticks={[0, 25, 50, 75, 100]}
@@ -70,7 +70,7 @@ export const sliderDoc: ComponentDoc = {
         </State>
         <State label="بازه‌ای دو دستگیره">
           <RangeSlider
-            className={styles.field}
+            className={styles.slider}
             label="بازهٔ سنی مراجعان"
             defaultValue={[18, 45]}
             minValue={10}
@@ -84,7 +84,7 @@ export const sliderDoc: ComponentDoc = {
       <GalleryRow title="حالت‌ها و جهت عمودی">
         <State label="غیرفعال">
           <Slider
-            className={styles.field}
+            className={styles.slider}
             label="حد ثابت سیستم"
             defaultValue={40}
             ticks={[0, 50, 100]}
@@ -93,7 +93,7 @@ export const sliderDoc: ComponentDoc = {
         </State>
         <State label="بدون نمایش خروجی">
           <Slider
-            className={styles.field}
+            className={styles.slider}
             label="شدت فیلتر"
             defaultValue={30}
             showValue={false}

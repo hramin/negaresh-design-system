@@ -145,9 +145,20 @@ export function NumberField({
   ...rest
 }: NumberFieldProps) {
   const messages = useNdsMessages();
+  const fieldLabelText =
+    rest['aria-label'] ?? (typeof label === 'string' ? label : '');
+  const incrementAriaLabel = fieldLabelText
+    ? `${messages.numberIncrement} ${fieldLabelText}`
+    : messages.numberIncrement;
+  const decrementAriaLabel = fieldLabelText
+    ? `${messages.numberDecrement} ${fieldLabelText}`
+    : messages.numberDecrement;
+
   return (
     <RacNumberField
       {...rest}
+      incrementAriaLabel={incrementAriaLabel}
+      decrementAriaLabel={decrementAriaLabel}
       {...(formatOptions !== undefined ? { formatOptions } : {})}
       isReadOnly={Boolean(isReadOnly || isPending)}
       data-nds="NumberField"

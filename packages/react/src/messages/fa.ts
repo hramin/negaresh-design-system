@@ -47,6 +47,8 @@ export const faMessages: NdsMessages = {
   openCalendar: 'باز کردن تقویم',
   previousMonth: 'ماه قبل',
   nextMonth: 'ماه بعد',
+  numberIncrement: 'افزایش',
+  numberDecrement: 'کاهش',
 };
 
 export {
