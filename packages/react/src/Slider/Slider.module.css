@@ -15,7 +15,7 @@
   }
 
   .root[data-disabled] {
-    color: var(--nds-fg-disabled);
+    color: var(--nds-fg-subtle);
   }
 
   .header {
@@ -35,7 +35,7 @@
   }
 
   .root[data-disabled] .output {
-    color: var(--nds-fg-disabled);
+    color: var(--nds-fg-subtle);
   }
 
   .track {
@@ -140,7 +140,7 @@
   }
 
   .root[data-disabled] .ticks {
-    color: var(--nds-fg-disabled);
+    color: var(--nds-fg-subtle);
   }
 
   .tick {
