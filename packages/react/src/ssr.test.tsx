@@ -63,6 +63,14 @@ import {
   TagGroup,
   Tag,
   TagField,
+  NumberField,
+  Slider,
+  RangeSlider,
+  Calendar,
+  RangeCalendar,
+  DatePicker,
+  DateRangePicker,
+  TimeField,
 } from './index.ts';
 import { faMessages } from './messages/fa.ts';
 
@@ -160,6 +168,20 @@ describe('server rendering', () => {
                   <Tag id="t1">روان‌سنجی</Tag>
                 </TagGroup>
                 <TagField label="کلیدواژه" defaultValue={['آزمون']} />
+                <NumberField label="ظرفیت" defaultValue={12} suffix="نفر" />
+                <Slider label="میزان" defaultValue={40} ticks={[0, 50, 100]} />
+                <RangeSlider label="بازهٔ قیمت" defaultValue={[20, 80]} />
+                <Calendar aria-label="تقویم جلسه" defaultValue="2026-11-13" />
+                <RangeCalendar
+                  aria-label="بازهٔ تقویم"
+                  defaultValue={{ start: '2026-11-11', end: '2026-11-15' }}
+                />
+                <DatePicker label="تاریخ شروع" defaultValue="2026-11-13" />
+                <DateRangePicker
+                  label="بازهٔ برگزاری"
+                  defaultValue={{ start: '2026-11-11', end: '2026-11-17' }}
+                />
+                <TimeField label="ساعت جلسه" defaultValue="14:30" />
               </Form>
               <Link href="https://negaresh.ir" external>
                 نگارش
@@ -221,11 +243,20 @@ describe('server rendering', () => {
       'TagGroup',
       'Tag',
       'TagField',
+      'NumberField',
+      'Slider',
+      'RangeSlider',
+      'Calendar',
+      'RangeCalendar',
+      'DatePicker',
+      'DateRangePicker',
+      'TimeField',
     ]) {
       expect(html, name).toContain(`data-nds="${name}"`);
     }
     expect(html).toContain('N25AG-EMV0K');
     expect(html).toContain('۲۵۰٬۰۰۰ تومان');
+    expect(html).toContain('آبان ۱۴۰۵');
     expect(html).toContain('nonce="ssr-nonce"');
     expect(html).toContain('react-aria.i18n.strings');
     expect(html).toContain('بستن');

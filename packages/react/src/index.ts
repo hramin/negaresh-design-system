@@ -46,4 +46,6 @@ export * from './ComboBox/index.ts';
 export * from './TagGroup/index.ts';
 export * from './NumberField/index.ts';
 export * from './Slider/index.ts';
+export * from './Calendar/index.ts';
+export * from './DatePicker/index.ts';
 export * from './TimeField/index.ts';
