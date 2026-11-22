@@ -1,6 +1,6 @@
 # Components
 
-Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), and P3 Wave 1 components are `approved` following owner confirmation on 21 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
+Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), and P3 Wave 1 and Wave 2 components are `approved` following owner confirmation on 21 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
 
 Every component documents: anatomy, props, all applicable states (default, hover, focus-visible, pressed, disabled, loading, invalid, empty, read-only), keyboard map, ARIA notes, RTL notes, do/don't, and a mobile example.
 
@@ -42,18 +42,18 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | SerialField / CodeField | `TextField` + utils | LTR monospace; pattern hint; normalise | R, N, T | approved |
 | OTPField | `TextField` ×6 pattern | paste, auto-advance, `autocomplete="one-time-code"`, resend countdown | all | planned |
 | PasswordField | `TextField` | show/hide, strength hint | all | approved |
-| Select | `Select` | single, multiple; RTL arrow | all | review |
-| ComboBox / Autocomplete | `ComboBox` | async, create-new | N, T | review |
-| Checkbox, CheckboxGroup | `Checkbox(Group)` | indeterminate | all | review |
-| RadioGroup | `RadioGroup` | vertical, horizontal | all | review |
-| ChoiceCard (radio/checkbox card) | `Radio`/`Checkbox` | with description, icon, price | R, N, T | review |
-| SegmentedControl | `ToggleButtonGroup` | 2–5 options (from Ravanma v3) | N, T, V | review |
-| Switch | `Switch` | — | all | review |
+| Select | `Select` | single, multiple; RTL arrow | all | approved |
+| ComboBox / Autocomplete | `ComboBox` | async, create-new | N, T | approved |
+| Checkbox, CheckboxGroup | `Checkbox(Group)` | indeterminate | all | approved |
+| RadioGroup | `RadioGroup` | vertical, horizontal | all | approved |
+| ChoiceCard (radio/checkbox card) | `Radio`/`Checkbox` | with description, icon, price | R, N, T | approved |
+| SegmentedControl | `ToggleButtonGroup` | 2–5 options (from Ravanma v3) | N, T, V | approved |
+| Switch | `Switch` | — | all | approved |
 | Slider, RangeSlider | `Slider` | Persian ticks | T, V | planned |
 | DatePicker (Jalali), DateRangePicker, Calendar | `DatePicker` + `PersianCalendar` | Saturday start; min/max; Tehran tz | R, N, T | planned |
 | TimeField | `TimeField` | 24 h | N | planned |
 | FileUpload, DropZone | `FileTrigger`, `DropZone` | CSV/TXT, images; progress; errors | R, N, T | planned |
-| TagGroup / TagField | `TagGroup` | removable tags | N | review |
+| TagGroup / TagField | `TagGroup` | removable tags | N | approved |
 | Form, FieldGroup, FormErrorSummary | `Form` | server errors mapping | all | approved |
 
 ## Feedback and status (P4)
