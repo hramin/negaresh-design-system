@@ -36,7 +36,7 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | --- | --- | --- | --- | --- |
 | TextField | `TextField` | label, description, error, prefix/suffix, character count | all | approved |
 | TextArea | `TextField` multiline | auto-grow | all | approved |
-| NumberField | `NumberField` | Persian display, Latin input accepted | all | planned |
+| NumberField | `NumberField` | Persian display, Latin input accepted | all | review |
 | SearchField | `SearchField` | clear, shortcut hint | all | approved |
 | PhoneField | `TextField` + utils | normalises to +989…; LTR | all | approved |
 | SerialField / CodeField | `TextField` + utils | LTR monospace; pattern hint; normalise | R, N, T | approved |
@@ -49,9 +49,9 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | ChoiceCard (radio/checkbox card) | `Radio`/`Checkbox` | with description, icon, price | R, N, T | approved |
 | SegmentedControl | `ToggleButtonGroup` | 2–5 options (from Ravanma v3) | N, T, V | approved |
 | Switch | `Switch` | — | all | approved |
-| Slider, RangeSlider | `Slider` | Persian ticks | T, V | planned |
-| DatePicker (Jalali), DateRangePicker, Calendar | `DatePicker` + `PersianCalendar` | Saturday start; min/max; Tehran tz | R, N, T | planned |
-| TimeField | `TimeField` | 24 h | N | planned |
+| Slider, RangeSlider | `Slider` | Persian ticks | T, V | review |
+| DatePicker (Jalali), DateRangePicker, Calendar | `DatePicker` + `PersianCalendar` | Saturday start; min/max; Tehran tz | R, N, T | review |
+| TimeField | `TimeField` | 24 h | N | review |
 | FileUpload, DropZone | `FileTrigger`, `DropZone` | CSV/TXT, images; progress; errors | R, N, T | planned |
 | TagGroup / TagField | `TagGroup` | removable tags | N | approved |
 | Form, FieldGroup, FormErrorSummary | `Form` | server errors mapping | all | approved |
