@@ -64,3 +64,6 @@ export * from './EmptyState/index.ts';
 export * from './ErrorPage/index.ts';
 export * from './Dialog/index.ts';
 export * from './Sheet/index.ts';
+export * from './Popover/index.ts';
+export * from './Tooltip/index.ts';
+export * from './ContextualHelp/index.ts';
