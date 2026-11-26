@@ -72,3 +72,6 @@ export * from './VerifiedBadge/index.ts';
 export * from './Card/index.ts';
 export * from './Image/index.ts';
 export * from './KeyValueList/index.ts';
+export * from './Tabs/index.ts';
+export * from './TabStrip/index.ts';
+export * from './SideNav/index.ts';
