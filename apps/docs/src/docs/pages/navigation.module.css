@@ -1,0 +1,41 @@
+@layer nds.patterns {
+  .block {
+    inline-size: min(calc(var(--nds-space-24) * 6), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .wide {
+    inline-size: min(calc(var(--nds-space-24) * 8.5), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .narrow {
+    inline-size: min(calc(var(--nds-space-24) * 3.8), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .frame {
+    inline-size: min(calc(var(--nds-space-24) * 8.5), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-md);
+    overflow: hidden;
+  }
+
+  .panelBox {
+    padding: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-md);
+    background: var(--nds-bg-surface);
+  }
+
+  .output {
+    margin: 0;
+    overflow-wrap: anywhere;
+    min-inline-size: 0;
+  }
+}

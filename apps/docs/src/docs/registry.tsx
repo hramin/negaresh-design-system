@@ -46,15 +46,24 @@ import { toggleButtonDoc } from './pages/toggle-button.tsx';
 import { topBarDoc } from './pages/top-bar.tsx';
 import { typographyDoc } from './pages/typography.tsx';
 import { avatarDoc } from './pages/avatar.tsx';
+import { breadcrumbsDoc } from './pages/breadcrumbs.tsx';
 import { cardDoc } from './pages/card.tsx';
 import { contextualHelpDoc } from './pages/contextual-help.tsx';
 import { dialogDoc } from './pages/dialog.tsx';
+import { disclosureDoc } from './pages/disclosure.tsx';
+import { footerDoc } from './pages/footer.tsx';
 import { imageDoc } from './pages/image.tsx';
 import { keyValueListDoc } from './pages/key-value-list.tsx';
+import { paginationDoc } from './pages/pagination.tsx';
 import { popoverDoc } from './pages/popover.tsx';
 import { sheetDoc } from './pages/sheet.tsx';
+import { sideNavDoc } from './pages/side-nav.tsx';
+import { stepperDoc } from './pages/stepper.tsx';
+import { tabStripDoc } from './pages/tab-strip.tsx';
+import { tabsDoc } from './pages/tabs.tsx';
 import { tooltipDoc } from './pages/tooltip.tsx';
 import { usageMeterDoc } from './pages/usage-meter.tsx';
+import { userMenuDoc } from './pages/user-menu.tsx';
 import { verifiedBadgeDoc } from './pages/verified-badge.tsx';
 import type { ComponentDoc } from './types.ts';
 
@@ -118,6 +127,15 @@ export const COMPONENT_DOCS: readonly ComponentDoc[] = [
   cardDoc,
   imageDoc,
   keyValueListDoc,
+  sideNavDoc,
+  tabStripDoc,
+  tabsDoc,
+  breadcrumbsDoc,
+  paginationDoc,
+  stepperDoc,
+  disclosureDoc,
+  userMenuDoc,
+  footerDoc,
 ];
 
 export function findDoc(slug: string): ComponentDoc | undefined {

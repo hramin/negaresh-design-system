@@ -88,15 +88,15 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | --- | --- | --- | --- | --- |
 | TopBar, TopBarBrand, TopBarNav, TopBarNavLink | `Link` | logo slot, nav links, actions, optional `mobileMenu` slot (pulled forward in P2 follow-up; `Sheet` mobile drawer integrates in P4) | all | approved |
 | AccountPill | `Button` | masked phone / display name + avatar trigger for `TopBar`; required `aria-label`; 44 px mobile target (pulled forward in P2 follow-up; reused by P4 `UserMenu` and P6 `AccountShell`) | all | approved |
-| SideNav | `Tree`/list | groups, badges, role-filtered; → TabStrip under 900 | R, N, T | planned |
-| TabStrip (mobile nav) | `Tabs` | scrollable | R, N, T | planned |
-| Tabs | `Tabs` | horizontal, vertical (Ravanma leaf 3) | all | planned |
-| Breadcrumbs | `Breadcrumbs` | collapse middle | N, T | planned |
-| Pagination, LoadMore | — | server-rendered links | all | planned |
-| Stepper | — | steps with done/current, `aria-current=step` | R, N, T | planned |
-| Disclosure, Accordion | `Disclosure(Group)` | FAQ, syllabus | all | planned |
-| UserMenu | `MenuTrigger` | composes `AccountPill` + `Menu`; adds roles and theme toggle | all | planned |
-| Footer | — | link groups, legal | N, T | planned |
+| SideNav | `Link` + `Disclosure` | groups, badges, role-filtered; → TabStrip under 900 | R, N, T | review |
+| TabStrip (mobile nav) | `Link` / `Button` | scrollable | R, N, T | review |
+| Tabs | `Tabs` | horizontal, vertical (Ravanma leaf 3) | all | review |
+| Breadcrumbs | `Breadcrumbs` | collapse middle | N, T | review |
+| Pagination, LoadMore | `Link` / `Button` | server-rendered links | all | review |
+| Stepper | — | steps with done/current, `aria-current=step` | R, N, T | review |
+| Disclosure, Accordion | `Disclosure(Group)` | FAQ, syllabus | all | review |
+| UserMenu | `MenuTrigger` | composes `AccountPill` + `Menu`; adds roles and theme toggle | all | review |
+| Footer | — | link groups, legal | N, T | review |
 
 ## Data display (P4)
 
