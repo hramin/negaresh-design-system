@@ -1,21 +1,25 @@
 @layer nds.patterns {
   .block {
-    inline-size: min(100%, calc(var(--nds-space-24) * 5.5));
+    inline-size: min(calc(var(--nds-space-24) * 5), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
     min-inline-size: 0;
   }
 
   .wide {
-    inline-size: min(100%, calc(var(--nds-space-24) * 7.5));
+    inline-size: min(calc(var(--nds-space-24) * 7), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
     min-inline-size: 0;
   }
 
   .compact {
-    inline-size: min(100%, calc(var(--nds-space-24) * 3.5));
+    inline-size: min(calc(var(--nds-space-24) * 3.25), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
     min-inline-size: 0;
   }
 
   .toastCard {
-    inline-size: min(100%, calc(var(--nds-space-24) * 4.25));
+    inline-size: min(calc(var(--nds-space-24) * 4.25), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
     min-inline-size: 0;
   }
 

@@ -1,5 +1,7 @@
 @layer nds.components {
   .root {
+    --_fill: color-mix(in srgb, var(--nds-bg-sunken) 45%, var(--nds-border-default));
+
     display: grid;
     gap: var(--nds-space-2);
     inline-size: 100%;
@@ -11,7 +13,7 @@
     inline-size: 100%;
     block-size: var(--nds-space-3);
     border-radius: var(--nds-radius-sm);
-    background: var(--nds-bg-sunken);
+    background: var(--_fill);
   }
 
   .root[data-animated="true"] .bar,
@@ -29,7 +31,7 @@
     inline-size: 100%;
     block-size: var(--nds-space-20);
     border-radius: var(--nds-radius-md);
-    background: var(--nds-bg-sunken);
+    background: var(--_fill);
   }
 
   .block[data-size="sm"] {
@@ -49,7 +51,7 @@
     inline-size: var(--nds-control-md);
     block-size: var(--nds-control-md);
     border-radius: var(--nds-radius-pill);
-    background: var(--nds-bg-sunken);
+    background: var(--_fill);
   }
 
   .circle[data-size="sm"] {
