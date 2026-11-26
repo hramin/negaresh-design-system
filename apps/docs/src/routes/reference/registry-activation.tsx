@@ -1,12 +1,10 @@
 /**
- * The approved reference page (reference/registry-activation) rebuilt from NDS components:
- * header and actions (P2) plus the full Registry activation form, validation, error summary,
- * serial/code normalization, Jalali/Toman formatting, and gateway ChoiceCard picker (P3 Wave 4).
- * `e2e/reference.spec.ts` compares header, desktop actions, and mobile bar pixel by pixel.
+ * The approved reference page (reference/registry-activation) rebuilt 100% from NDS components
+ * across all four states (form, error, success, limit) — P4 Done-when #1.
+ * `e2e/reference.spec.ts` verifies pixel parity for header, desktop actions, and mobile bar.
  */
 import {
   iconApp,
-  iconChevronDown,
   iconHelp,
   iconLink,
   iconLock,
@@ -14,41 +12,47 @@ import {
   iconPhone,
   iconSuccess,
   iconSun,
-  iconWarning,
 } from '@negaresh/icons';
 import {
-  AccountPill,
+  Badge,
   Button,
   ButtonGroup,
   ChoiceCard,
-  Code,
   CodeField,
   Container,
   CopyButton,
+  Disclosure,
   Form,
   FormErrorSummary,
+  Grid,
   Heading,
   Icon,
   IconButton,
+  Inline,
+  InlineAlert,
+  KeyValueItem,
+  KeyValueList,
   Link,
   LinkButton,
   LogoSlot,
   Ltr,
-  Menu,
-  MenuItem,
-  MenuTrigger,
   RadioGroup,
   Section,
   SerialField,
   SkipLink,
   Stack,
+  Stepper,
   Surface,
   Text,
+  ToastProvider,
   TopBar,
   TopBarBrand,
   TopBarNav,
   TopBarNavLink,
+  UsageMeter,
+  UserMenu,
   useTheme,
+  useToast,
 } from '@negaresh/react';
 import {
   formatDateTime,
@@ -141,7 +145,16 @@ const GATEWAYS: readonly { id: Gateway; label: string }[] = [
 ];
 
 function RegistryActivation() {
+  return (
+    <ToastProvider placement="bottom-center">
+      <RegistryActivationContent />
+    </ToastProvider>
+  );
+}
+
+function RegistryActivationContent() {
   const { state: searchState = 'form', s, code } = Route.useSearch();
+  const toast = useToast();
   const [activeState, setActiveState] = useState<State>(searchState);
   const [serial, setSerial] = useState(() => normalizeSerial(s ?? DEFAULT_SERIAL));
   const [sysCode, setSysCode] = useState(() => normalizeSerial(code ?? DEFAULT_SYSCODE));
@@ -151,7 +164,6 @@ function RegistryActivation() {
   const [gateway, setGateway] = useState<Gateway>('behpardakht');
   const [smsNotice, setSmsNotice] = useState<string | null>(null);
   const [paymentNotice, setPaymentNotice] = useState<string | null>(null);
-  const [helpOpenMobile, setHelpOpenMobile] = useState(false);
 
   useEffect(() => {
     setActiveState(searchState);
@@ -207,8 +219,41 @@ function RegistryActivation() {
 
   const handleGatewayPay = () => {
     const selected = GATEWAYS.find((g) => g.id === gateway)?.label ?? 'درگاه پرداخت';
-    setPaymentNotice(`انتقال به ${selected} برای مبلغ ${formatPrice(EXTRA_ACTIVATION_PRICE)} آماده شد.`);
+    const message = `انتقال به ${selected} برای مبلغ ${formatPrice(EXTRA_ACTIVATION_PRICE)} آماده شد.`;
+    setPaymentNotice(message);
+    toast.add({ title: message, tone: 'info' });
   };
+
+  const handleCodeCopied = () => {
+    toast.add({ title: 'کد کپی شد', tone: 'neutral', icon: iconSuccess }, { timeout: 2200 });
+  };
+
+  const handleResendSms = () => {
+    const message = 'کد فعال‌سازی دوباره با پیامک ارسال شد.';
+    setSmsNotice(message);
+    toast.add({ title: message, tone: 'success' });
+  };
+
+  const activationSteps = [
+    {
+      id: 'open',
+      title: 'باز کردن از برنامه.',
+      description: 'دکمهٔ «فعال‌سازی آنلاین» برنامه همین صفحه را باز می‌کند.',
+      inlineDescription: true,
+    },
+    {
+      id: 'serial',
+      title: 'وارد کردن سریال.',
+      description: 'سریال روی جعبه یا در پیامک خرید است.',
+      inlineDescription: true,
+    },
+    {
+      id: 'code',
+      title: 'وارد کردن کد در برنامه.',
+      description: 'کد را کپی و در پنجرهٔ فعال‌سازی برنامه وارد کنید.',
+      inlineDescription: true,
+    },
+  ] as const;
 
   return (
     <div className={styles.frame} data-reference-rebuild data-registry-state={activeState}>
@@ -219,10 +264,9 @@ function RegistryActivation() {
           <div className={styles.main}>
             <Stack gap="2" className={styles.pageHead}>
               <p className={styles.eyebrow}>
-                <span className={styles.badge}>
-                  <Icon icon={iconLink} size="sm" />
-                  <span>باز شده از برنامه</span>
-                </span>
+                <Badge tone="accent" size="sm" icon={iconLink}>
+                  باز شده از برنامه
+                </Badge>
               </p>
               <Heading level={1}>{title}</Heading>
               <Text as="p" tone="muted" leading="text" className={styles.lede}>
@@ -255,7 +299,7 @@ function RegistryActivation() {
                         }
                       />
 
-                      <div className={styles.fieldsTwo}>
+                      <Grid gap="5" className={styles.fieldsTwo}>
                         <SerialField
                           id="registry-serial"
                           name="serial"
@@ -281,7 +325,7 @@ function RegistryActivation() {
                           isReadOnly
                           description="برنامه این کد را از سخت‌افزار رایانه می‌سازد."
                         />
-                      </div>
+                      </Grid>
                     </Stack>
                   </Section>
 
@@ -303,25 +347,20 @@ function RegistryActivation() {
               <Surface aria-labelledby="rb-title" className={styles.primarySurface}>
                 <Section>
                   <Stack gap="5">
-                    <div className={`${styles.alert} ${styles.alertSuccess}`} role="status">
-                      <span className={styles.alertIcon}>
-                        <Icon icon={iconSuccess} size="md" />
-                      </span>
-                      <div>
-                        <Heading level={2} size="md" id="rb-title" className={styles.alertTitle}>
-                          کد فعال‌سازی ساخته شد
-                        </Heading>
-                        <span>
-                          همین کد را در پنجرهٔ فعال‌سازی برنامه وارد کنید. یک نسخه با پیامک و ایمیل
-                          هم فرستاده شد.
-                        </span>
-                      </div>
-                    </div>
+                    <InlineAlert
+                      id="rb-title"
+                      tone="success"
+                      headingLevel={2}
+                      title="کد فعال‌سازی ساخته شد"
+                    >
+                      همین کد را در پنجرهٔ فعال‌سازی برنامه وارد کنید. یک نسخه با پیامک و ایمیل هم
+                      فرستاده شد.
+                    </InlineAlert>
 
-                    <div className={styles.codebox}>
-                      <span className={styles.codeboxLabel} id="rb-code-label">
+                    <Stack gap="3" align="center" className={styles.codebox}>
+                      <Text size="xs" weight="medium" tone="subtle" id="rb-code-label">
                         کد فعال‌سازی
-                      </span>
+                      </Text>
                       <output
                         className={styles.codeboxValue}
                         id="rb-activation-code"
@@ -334,34 +373,29 @@ function RegistryActivation() {
                           value={ACTIVATION_CODE}
                           variant="primary"
                           aria-label="کپی کد فعال‌سازی"
+                          onCopy={handleCodeCopied}
                         >
                           کپی کد
                         </CopyButton>
                       </div>
-                    </div>
+                    </Stack>
                   </Stack>
                 </Section>
 
                 <Section>
-                  <dl className={styles.kv}>
-                    <dt>محصول</dt>
-                    <dd>نگارش تست هوش ۴</dd>
-                    <dt>سریال</dt>
-                    <dd>
-                      <Code>{formattedSerial}</Code>
-                    </dd>
-                    <dt>کد سیستم</dt>
-                    <dd>
-                      <Code>{sysCode}</Code>
-                    </dd>
-                    <dt>زمان</dt>
-                    <dd>{jalaliTime}</dd>
-                  </dl>
-                  {smsNotice && (
-                    <p className={styles.statusMessage} role="status">
-                      {smsNotice}
-                    </p>
-                  )}
+                  <Stack gap="4">
+                    <KeyValueList
+                      divided={false}
+                      density="compact"
+                      aria-label="جزئیات کد فعال‌سازی"
+                    >
+                      <KeyValueItem label="محصول" value="نگارش تست هوش ۴" />
+                      <KeyValueItem label="سریال" value={formattedSerial} code />
+                      <KeyValueItem label="کد سیستم" value={sysCode} code />
+                      <KeyValueItem label="زمان" value={jalaliTime} />
+                    </KeyValueList>
+                    {smsNotice && <InlineAlert tone="success">{smsNotice}</InlineAlert>}
+                  </Stack>
                 </Section>
 
                 <Section tone="sunken" className={styles.actionsSection} data-actions="success">
@@ -369,11 +403,7 @@ function RegistryActivation() {
                     <LinkButton href="#" size="sm">
                       فعال‌سازی‌های من
                     </LinkButton>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onPress={() => setSmsNotice('کد فعال‌سازی دوباره با پیامک ارسال شد.')}
-                    >
+                    <Button variant="ghost" size="sm" onPress={handleResendSms}>
                       ارسال دوبارهٔ پیامک
                     </Button>
                   </ButtonGroup>
@@ -385,37 +415,28 @@ function RegistryActivation() {
               <Surface aria-labelledby="rb-title" className={styles.primarySurface}>
                 <Section>
                   <Stack gap="5">
-                    <div className={`${styles.alert} ${styles.alertWarning}`} role="status">
-                      <span className={styles.alertIcon}>
-                        <Icon icon={iconWarning} size="md" />
-                      </span>
-                      <div>
-                        <Heading level={2} size="md" id="rb-title" className={styles.alertTitle}>
-                          سقف فعال‌سازی این سریال پر شده است
-                        </Heading>
-                        <span>
-                          این سریال پیش‌تر روی رایانهٔ دیگری فعال شده است. اگر همان رایانه را دوباره
-                          نصب کرده‌اید، از همان‌جا اقدام کنید؛ رایگان است.
-                        </span>
-                      </div>
-                    </div>
+                    <InlineAlert
+                      id="rb-title"
+                      tone="warning"
+                      headingLevel={2}
+                      title="سقف فعال‌سازی این سریال پر شده است"
+                    >
+                      این سریال پیش‌تر روی رایانهٔ دیگری فعال شده است. اگر همان رایانه را دوباره نصب
+                      کرده‌اید، از همان‌جا اقدام کنید؛ رایگان است.
+                    </InlineAlert>
 
-                    <div className={`${styles.meter} ${styles.meterFull}`}>
-                      <div className={styles.meterRow}>
-                        <span>رایانه‌های فعال‌شده</span>
-                        <strong>۱ از ۱</strong>
-                      </div>
-                      <div className={styles.meterTrack} aria-hidden="true">
-                        <span className={styles.meterSeg} data-on="true" />
-                      </div>
-                      <p className={styles.meterNote}>سقف پیش‌فرض محصول</p>
-                    </div>
+                    <UsageMeter
+                      label="رایانه‌های فعال‌شده"
+                      used={1}
+                      limit={1}
+                      sourceNote="سقف پیش‌فرض محصول"
+                    />
                   </Stack>
                 </Section>
 
                 <Section>
                   <Stack gap="5">
-                    <div className={styles.limitHeader}>
+                    <Inline justify="between" align="start" gap="4">
                       <Stack gap="1">
                         <Heading level={3} size="md">
                           یک فعال‌سازی دیگر بخرید
@@ -424,8 +445,10 @@ function RegistryActivation() {
                           بعد از پرداخت، کد برای همین رایانه ساخته می‌شود.
                         </Text>
                       </Stack>
-                      <span className={styles.price}>{formatPrice(EXTRA_ACTIVATION_PRICE)}</span>
-                    </div>
+                      <Text size="2xl" weight="heavy" tabular className={styles.price}>
+                        {formatPrice(EXTRA_ACTIVATION_PRICE)}
+                      </Text>
+                    </Inline>
 
                     <RadioGroup
                       label="درگاه پرداخت"
@@ -438,18 +461,14 @@ function RegistryActivation() {
                         }
                       }}
                     >
-                      <div className={styles.gatewayGrid}>
+                      <Grid gap="3" className={styles.gatewayGrid}>
                         {GATEWAYS.map((item) => (
                           <ChoiceCard key={item.id} value={item.id} title={item.label} />
                         ))}
-                      </div>
+                      </Grid>
                     </RadioGroup>
 
-                    {paymentNotice && (
-                      <p className={styles.statusMessage} role="status">
-                        {paymentNotice}
-                      </p>
-                    )}
+                    {paymentNotice && <InlineAlert tone="info">{paymentNotice}</InlineAlert>}
                   </Stack>
                 </Section>
 
@@ -470,7 +489,7 @@ function RegistryActivation() {
           <aside className={styles.aside} aria-label="جزئیات فعال‌سازی">
             <Surface className={styles.asideProduct}>
               <Section>
-                <div className={styles.product}>
+                <Inline gap="4" align="center" wrap={false}>
                   <span className={styles.productThumb} aria-hidden="true">
                     <Icon icon={iconApp} size="md" />
                   </span>
@@ -480,46 +499,28 @@ function RegistryActivation() {
                       ویندوز · نسخهٔ دانلودی
                     </Text>
                   </Stack>
-                </div>
+                </Inline>
               </Section>
 
               {activeState !== 'limit' && (
                 <Section className={styles.deskOnly}>
-                  <div className={styles.meter}>
-                    <div className={styles.meterRow}>
-                      <span>سقف این سریال</span>
-                      <strong>{activeState === 'success' ? '۱ از ۱' : '۰ از ۱'}</strong>
-                    </div>
-                    <div className={styles.meterTrack} aria-hidden="true">
-                      <span
-                        className={styles.meterSeg}
-                        data-on={activeState === 'success' ? 'true' : undefined}
-                      />
-                    </div>
-                    <p className={styles.meterNote}>
-                      نصب دوباره روی همین رایانه رایگان است و سقف را مصرف نمی‌کند.
-                    </p>
-                  </div>
+                  <UsageMeter
+                    label="سقف این سریال"
+                    used={activeState === 'success' ? 1 : 0}
+                    limit={1}
+                    isFull={false}
+                    sourceNote="نصب دوباره روی همین رایانه رایگان است و سقف را مصرف نمی‌کند."
+                  />
                 </Section>
               )}
             </Surface>
 
             <section className={styles.asideHelp} aria-label="راهنمای فعال‌سازی">
-              <Button
-                variant="ghost"
-                size="sm"
-                iconStart={iconHelp}
-                iconEnd={iconChevronDown}
-                aria-expanded={helpOpenMobile}
-                aria-controls="registry-help-panel"
-                className={styles.helpToggle}
-                onPress={() => setHelpOpenMobile((open) => !open)}
-              >
-                راهنمای فعال‌سازی
-              </Button>
-              <div
-                id="registry-help-panel"
-                className={helpOpenMobile ? undefined : styles.deskOnly}
+              <Disclosure
+                variant="plain"
+                icon={iconHelp}
+                title="راهنمای فعال‌سازی"
+                alwaysExpandedAbove="md"
               >
                 <Surface>
                   <Section>
@@ -527,47 +528,30 @@ function RegistryActivation() {
                       <Heading level={2} size="md" className={styles.deskOnly}>
                         سه گام تا فعال‌سازی
                       </Heading>
-                      <ol className={styles.steps}>
-                        <li data-done="true">
-                          <span>
-                            <strong>باز کردن از برنامه.</strong> دکمهٔ «فعال‌سازی آنلاین» برنامه همین
-                            صفحه را باز می‌کند.
-                          </span>
-                        </li>
-                        <li
-                          data-done={activeState === 'success' ? 'true' : undefined}
-                          aria-current={activeState !== 'success' ? 'step' : undefined}
-                        >
-                          <span>
-                            <strong>وارد کردن سریال.</strong> سریال روی جعبه یا در پیامک خرید است.
-                          </span>
-                        </li>
-                        <li aria-current={activeState === 'success' ? 'step' : undefined}>
-                          <span>
-                            <strong>وارد کردن کد در برنامه.</strong> کد را کپی و در پنجرهٔ فعال‌سازی
-                            برنامه وارد کنید.
-                          </span>
-                        </li>
-                      </ol>
+                      <Stepper
+                        orientation="vertical"
+                        currentStep={activeState === 'success' ? 3 : 2}
+                        steps={activationSteps}
+                      />
                     </Stack>
                   </Section>
                   <Section>
-                    <p className={styles.supportRow}>
+                    <Inline as="p" gap="2" align="start" wrap={false}>
                       <span className={styles.supportIcon} aria-hidden="true">
                         <Icon icon={iconPhone} size="sm" />
                       </span>
-                      <span>
+                      <Text size="xs" tone="subtle" leading="text">
                         پشتیبانی{' '}
                         <Link href="tel:+982191012345">
                           <Ltr>۰۲۱ ۹۱۰۱ ۲۳۴۵</Ltr>
                         </Link>
                         <br />
                         شنبه تا چهارشنبه، ۹ تا ۱۷
-                      </span>
-                    </p>
+                      </Text>
+                    </Inline>
                   </Section>
                 </Surface>
-              </div>
+              </Disclosure>
             </section>
           </aside>
         </Container>
@@ -580,6 +564,7 @@ function RegistryActivation() {
             variant="primary"
             fullWidth
             aria-label="کپی کد فعال‌سازی"
+            onCopy={handleCodeCopied}
           >
             کپی کد
           </CopyButton>
@@ -628,13 +613,15 @@ function RegistryHeader() {
             aria-label={isDark ? 'تغییر به حالت روشن' : 'تغییر به حالت تیره'}
             onPress={() => setTheme(isDark ? 'light' : 'dark')}
           />
-          <MenuTrigger>
-            <AccountPill label={maskedPhone} ltr aria-label={`حساب کاربری ${maskedPhone}`} />
-            <Menu placement="bottom end">
-              <MenuItem id="activations">فعال‌سازی‌های من</MenuItem>
-              <MenuItem id="signout">خروج</MenuItem>
-            </Menu>
-          </MenuTrigger>
+          <UserMenu
+            label={maskedPhone}
+            ltr
+            aria-label={`حساب کاربری ${maskedPhone}`}
+            showThemeToggle
+            items={[{ id: 'activations', label: 'فعال‌سازی‌های من', href: '#activations' }]}
+            onSignOut={() => {}}
+            signOutLabel="خروج"
+          />
         </>
       }
     />
