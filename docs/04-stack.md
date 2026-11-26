@@ -62,7 +62,7 @@ Checked on 13 Nov 2026 against the npm registry; API usage checked with Context7
 | @testing-library/react / user-event / dom, jsdom | 16.3.3 / 14.6.10 / 10.4.2, 31.0.1 | npm | 13 Nov 2026 | Component tests in `@negaresh/react` (with axe-core 4.14.0) |
 | pixelmatch / pngjs | 8.0.0 / 7.0.0 | npm | 13 Nov 2026 | Reference-parity test (`apps/docs/e2e/reference.spec.ts`) |
 | Playwright image | mcr.microsoft.com/playwright:v1.65.0-noble | Docker | 13 Nov 2026 | Visual baselines and CI e2e (D-96) |
-| d3-scale / d3-shape | 4.0.3 / 3.2.1 | npm | 13 Nov 2026 | P5 |
+| d3-scale / d3-shape (@types/d3-scale / @types/d3-shape) | 4.0.3 / 3.2.1 (4.0.9 / 3.2.0) | npm + installed `.d.ts` | 26 Nov 2026 | Installed in `@negaresh/charts` (P5 Wave 1); pure SVG math/path generation, zero d3 DOM access |
 | @inlang/paraglide-js | 3.2.2 | npm | 13 Nov 2026 | **Now 3.x, not 2.x** as the status table above says; re-check the TanStack integration before adopting (first strings catalogue) |
 | keycloakify | 11.16.4 | npm | 13 Nov 2026 | P6 |
 | turbo / pnpm / @changesets/cli / typescript | 2.11.11 / 12.18.0 / 3.0.3 / 6.0.3 | npm | 13 Nov 2026 | Installed. pnpm via Corepack (`packageManager`). **TypeScript 6.0.3, not 7.0** (see D-93) |
