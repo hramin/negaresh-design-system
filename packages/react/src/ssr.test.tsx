@@ -125,6 +125,16 @@ import {
   AccordionItem,
   UserMenu,
   Footer,
+  StatGroup,
+  StatTile,
+  Timeline,
+  ActivityList,
+  DiffView,
+  GridList,
+  GridListItem,
+  BulkActionBar,
+  FilterBar,
+  DataTable,
 } from './index.ts';
 import { faMessages } from './messages/fa.ts';
 
@@ -423,6 +433,76 @@ describe('server rendering', () => {
                   ]}
                   copyright="© ۱۴۰۵ نگارش برتر"
                 />
+                <StatGroup columns={2} aria-label="آمار رجیستری">
+                  <StatTile
+                    label="سریال‌های فعال"
+                    value={1248}
+                    delta={{ value: '۱۲٪', direction: 'up' }}
+                  />
+                  <StatTile label="فروش ماه" value={950000} format="toman" />
+                </StatGroup>
+                <Timeline
+                  aria-label="خط زمانی فعال‌سازی"
+                  items={[
+                    {
+                      id: 't1',
+                      title: 'فعال‌سازی موفق',
+                      timestamp: '2026-11-13T13:34:00Z',
+                      tone: 'success',
+                    },
+                  ]}
+                />
+                <ActivityList
+                  aria-label="فهرست رویدادها"
+                  items={[
+                    {
+                      id: 'a1',
+                      title: 'تغییر سقف سریال',
+                      timestamp: '2026-11-14T10:00:00Z',
+                      tone: 'info',
+                    },
+                  ]}
+                />
+                <DiffView
+                  title="مقایسهٔ نسخه"
+                  before={'سقف: ۱'}
+                  after={'سقف: ۳'}
+                />
+                <GridList aria-label="فهرست دستگاه‌ها" selectionMode="multiple">
+                  <GridListItem id="d1" title="رایانهٔ کلینیک" meta={<Code>882859354</Code>} />
+                </GridList>
+                <BulkActionBar selectedCount={2} onClearSelection={() => undefined}>
+                  <Button variant="secondary" size="sm">
+                    خروجی
+                  </Button>
+                </BulkActionBar>
+                <FilterBar
+                  searchValue=""
+                  onSearchChange={() => undefined}
+                  activeFilters={[{ id: 'st', label: 'وضعیت', value: 'فعال' }]}
+                  onReset={() => undefined}
+                />
+                <DataTable
+                  aria-label="جدول سریال‌ها"
+                  selectionMode="multiple"
+                  enableColumnVisibility
+                  showDensityToggle
+                  columns={[
+                    {
+                      id: 'serial',
+                      header: 'سریال',
+                      isRowHeader: true,
+                      cell: (row) => <Code>{row.serial}</Code>,
+                    },
+                    {
+                      id: 'status',
+                      header: 'وضعیت',
+                      cell: (row) => <StatusBadge domain="serial" status={row.status} size="sm" />,
+                    },
+                  ]}
+                  rows={[{ id: 'r1', serial: 'N25AG-EMV0K', status: 'active' as const }]}
+                  getRowKey={(row) => row.id}
+                />
               </ToastProvider>
             </Stack>
           </Container>
@@ -522,6 +602,18 @@ describe('server rendering', () => {
       'Disclosure',
       'Accordion',
       'Footer',
+      'StatGroup',
+      'StatTile',
+      'Timeline',
+      'TimelineItem',
+      'ActivityList',
+      'ActivityListItem',
+      'DiffView',
+      'GridList',
+      'GridListItem',
+      'BulkActionBar',
+      'FilterBar',
+      'DataTable',
     ]) {
       expect(html, name).toContain(`data-nds="${name}"`);
     }
@@ -544,6 +636,9 @@ describe('server rendering', () => {
     expect(html).toContain('صفحهٔ ۲ از ۹');
     expect(html).toContain('نمایش ۲۰ از ۵۰ مورد');
     expect(html).toContain('aria-current="step"');
+    expect(html).toContain('۱٬۲۴۸');
+    expect(html).toContain('۲ مورد انتخاب‌شده');
+    expect(html).toContain('وضعیت: فعال');
     expect(html).toContain('nonce="ssr-nonce"');
     expect(html).toContain('react-aria.i18n.strings');
     expect(html).toContain('بستن');
