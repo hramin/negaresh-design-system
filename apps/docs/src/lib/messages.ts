@@ -11,6 +11,7 @@ export const m = {
     start: 'شروع',
     foundations: 'مبانی',
     components: 'کامپوننت‌ها',
+    guides: 'راهنماها',
     reference: 'صفحه‌های مرجع',
   },
   nav: {
@@ -19,6 +20,7 @@ export const m = {
     color: 'رنگ',
     icons: 'آیکون‌ها',
     components: 'همهٔ کامپوننت‌ها',
+    formAdapter: 'آداپتور TanStack Form و Zod',
     reference: 'فعال‌سازی رجیستری',
   },
   /** Footer build stamp: «build <branch>@<short sha>» (Latin, LTR: it is a code). */

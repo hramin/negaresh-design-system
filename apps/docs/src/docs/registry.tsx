@@ -7,6 +7,7 @@ import { choiceCardDoc } from './pages/choice-card.tsx';
 import { comboBoxDoc } from './pages/combobox.tsx';
 import { copyButtonDoc } from './pages/copy-button.tsx';
 import { datePickerDoc } from './pages/date-picker.tsx';
+import { fileUploadDoc } from './pages/file-upload.tsx';
 import { formDoc } from './pages/form.tsx';
 import { iconDoc } from './pages/icon.tsx';
 import { layoutDoc } from './pages/layout.tsx';
@@ -15,6 +16,7 @@ import { logoSlotDoc } from './pages/logo-slot.tsx';
 import { ltrDoc } from './pages/ltr.tsx';
 import { menuDoc } from './pages/menu.tsx';
 import { numberFieldDoc } from './pages/number-field.tsx';
+import { otpFieldDoc } from './pages/otp-field.tsx';
 import { passwordFieldDoc } from './pages/password-field.tsx';
 import { phoneFieldDoc } from './pages/phone-field.tsx';
 import { radioGroupDoc } from './pages/radio-group.tsx';
@@ -72,6 +74,8 @@ export const COMPONENT_DOCS: readonly ComponentDoc[] = [
   sliderDoc,
   datePickerDoc,
   timeFieldDoc,
+  otpFieldDoc,
+  fileUploadDoc,
 ];
 
 export function findDoc(slug: string): ComponentDoc | undefined {

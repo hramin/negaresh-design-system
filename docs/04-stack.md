@@ -72,6 +72,7 @@ Checked on 13 Nov 2026 against the npm registry; API usage checked with Context7
 | docker/build-push-action · setup-buildx-action · login-action · metadata-action | v7 · v4 · v4 · v6 | Context7 + GitHub tags | 13 Nov 2026 | `.github/workflows/docs-image.yml`; GHA layer cache (`type=gha,mode=max`) |
 | actions/checkout · setup-node · upload-artifact, pnpm/action-setup | v7 · v7 · v7, v6 | GitHub tags | 13 Nov 2026 | `.github/workflows/ci.yml` |
 | Vazirmatn | 33.0.3 (npm `vazirmatn`) | npm | 13 Nov 2026 | Variable TTF subset with fonttools 4.60.1 (`packages/theme-company/scripts/subset-font.sh`) |
+| @tanstack/react-form / zod | 1.33.5 / 4.6.7 | npm + installed `.d.ts` | 25 Nov 2026 | Installed in `apps/docs` **only** (P3 Wave 4 docs adapter guide; `@negaresh/react` stays strictly free of form/validation runtime dependencies). Zod v4 Standard Schema v1 works directly in `validators.onSubmit` |
 
 ### Surprises
 

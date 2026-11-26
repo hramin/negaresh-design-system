@@ -40,7 +40,7 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | SearchField | `SearchField` | clear, shortcut hint | all | approved |
 | PhoneField | `TextField` + utils | normalises to +989…; LTR | all | approved |
 | SerialField / CodeField | `TextField` + utils | LTR monospace; pattern hint; normalise | R, N, T | approved |
-| OTPField | `TextField` ×6 pattern | paste, auto-advance, `autocomplete="one-time-code"`, resend countdown | all | planned |
+| OTPField | `TextField` ×6 pattern | paste, auto-advance, `autocomplete="one-time-code"`, resend countdown | all | review |
 | PasswordField | `TextField` | show/hide, strength hint | all | approved |
 | Select | `Select` | single, multiple; RTL arrow | all | approved |
 | ComboBox / Autocomplete | `ComboBox` | async, create-new | N, T | approved |
@@ -52,7 +52,7 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | Slider, RangeSlider | `Slider` | Persian ticks | T, V | approved |
 | DatePicker (Jalali), DateRangePicker, Calendar | `DatePicker` + `PersianCalendar` | Saturday start; min/max; Tehran tz | R, N, T | approved |
 | TimeField | `TimeField` | 24 h | N | approved |
-| FileUpload, DropZone | `FileTrigger`, `DropZone` | CSV/TXT, images; progress; errors | R, N, T | planned |
+| FileUpload, DropZone | `FileTrigger`, `DropZone` | CSV/TXT, images; progress; errors | R, N, T | review |
 | TagGroup / TagField | `TagGroup` | removable tags | N | approved |
 | Form, FieldGroup, FormErrorSummary | `Form` | server errors mapping | all | approved |
 
