@@ -48,6 +48,16 @@ export const COMPONENT_SLUGS = [
   'skeleton',
   'empty-state',
   'error-page',
+  'dialog',
+  'sheet',
+  'popover',
+  'tooltip',
+  'contextual-help',
+  'avatar',
+  'verified-badge',
+  'card',
+  'image',
+  'key-value-list',
 ] as const;
 
 export const ROUTES = [

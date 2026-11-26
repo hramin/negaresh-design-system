@@ -52,6 +52,16 @@ const HIDE_HEADER_SLUGS = new Set([
   'skeleton',
   'empty-state',
   'error-page',
+  'dialog',
+  'sheet',
+  'popover',
+  'tooltip',
+  'contextual-help',
+  'avatar',
+  'verified-badge',
+  'card',
+  'image',
+  'key-value-list',
 ]);
 
 const snap = (locator: Locator, name: string, hidePageHeader = false) =>
@@ -78,6 +88,16 @@ const PREHIDE_HEADER_SLUGS = new Set([
   'skeleton',
   'empty-state',
   'error-page',
+  'dialog',
+  'sheet',
+  'popover',
+  'tooltip',
+  'contextual-help',
+  'avatar',
+  'verified-badge',
+  'card',
+  'image',
+  'key-value-list',
 ]);
 
 for (const theme of THEMES) {
@@ -107,6 +127,147 @@ for (const theme of THEMES) {
     const liveToast = page.locator('[data-nds="ToastRegion"] [data-nds="Toast"]').first();
     await expect(liveToast).toBeVisible();
     await snap(liveToast, `toast-open-${theme}.png`, true);
+  });
+
+  test(`dialog open modal / mobile bottom sheet (${theme})`, async ({ page }) => {
+    await open(page, `/components/dialog?theme=${theme}`);
+    const region = page.locator('[data-interactive="dialog"]');
+    await region.getByRole('button', { name: 'باز کردن پنجره (md)' }).click();
+    await expect(page.locator('[data-nds="Dialog"]')).toBeVisible();
+    await expect(page.locator('[data-nds="DialogModal"][data-entering]')).toHaveCount(0);
+    await expect(page).toHaveScreenshot(`dialog-open-${theme}.png`, {
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`alert-dialog open destructive prompt (${theme})`, async ({ page }) => {
+    await open(page, `/components/dialog?theme=${theme}`);
+    const region = page.locator('[data-interactive="dialog"]');
+    await region.getByRole('button', { name: 'باطل کردن سریال (AlertDialog)' }).click();
+    await expect(page.locator('[data-nds="AlertDialog"]')).toBeVisible();
+    await expect(page.locator('[data-nds="AlertDialogModal"][data-entering]')).toHaveCount(0);
+    await expect(page).toHaveScreenshot(`alert-dialog-open-${theme}.png`, {
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`sheet open side drawer / TopBar mobile drawer (${theme})`, async ({ page, isMobile }) => {
+    await open(page, `/components/sheet?theme=${theme}`);
+    if (isMobile) {
+      await page
+        .locator('[data-interactive="topbar-sheet"]')
+        .getByRole('button', { name: 'باز کردن منوی ناوبری موبایل' })
+        .click();
+    } else {
+      await page
+        .locator('[data-interactive="sheet"]')
+        .getByRole('button', { name: 'کشوی ابتدای سطر (start)' })
+        .click();
+    }
+    await expect(page.locator('[data-nds="Sheet"]')).toBeVisible();
+    await expect(page.locator('[data-nds="SheetModal"][data-entering]')).toHaveCount(0);
+    await expect(page).toHaveScreenshot(`sheet-open-${theme}.png`, {
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`popover open floating layer with arrow (${theme})`, async ({ page }) => {
+    await open(page, `/components/popover?theme=${theme}`);
+    const trigger = page
+      .locator('[data-interactive="popover"]')
+      .getByRole('button', { name: 'نمایش پاپ‌اور با پیکان' });
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.click();
+    const popover = page.locator('[data-nds="Popover"]');
+    await expect(popover).toBeVisible();
+    await expect(page.locator('[data-nds="Popover"][data-entering]')).toHaveCount(0);
+    const boxes = await Promise.all([
+      trigger.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
+      popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
+    ]);
+    const viewport = page.viewportSize() ?? { width: 1440, height: 900 };
+    const pad = 12;
+    const x = Math.max(0, Math.floor(Math.min(...boxes.map((b) => b.x)) - pad));
+    const y = Math.max(0, Math.floor(Math.min(...boxes.map((b) => b.y)) - pad));
+    const right = Math.min(viewport.width, Math.ceil(Math.max(...boxes.map((b) => b.x + b.width)) + pad));
+    const bottom = Math.min(viewport.height, Math.ceil(Math.max(...boxes.map((b) => b.y + b.height)) + pad));
+    await expect(page).toHaveScreenshot(`popover-open-${theme}.png`, {
+      clip: { x, y, width: right - x, height: bottom - y },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`tooltip open inverse hint (${theme})`, async ({ page }) => {
+    await open(page, `/components/tooltip?theme=${theme}`);
+    const trigger = page
+      .locator('[data-interactive="tooltip"]')
+      .getByRole('button', { name: 'کپی کد فعال‌سازی' });
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.focus();
+    const tooltip = page.locator('[data-nds="Tooltip"]');
+    await expect(tooltip).toBeVisible();
+    await expect(page.locator('[data-nds="Tooltip"][data-entering]')).toHaveCount(0);
+    const boxes = await Promise.all([
+      trigger.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
+      tooltip.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
+    ]);
+    const viewport = page.viewportSize() ?? { width: 1440, height: 900 };
+    const pad = 12;
+    const x = Math.max(0, Math.floor(Math.min(...boxes.map((b) => b.x)) - pad));
+    const y = Math.max(0, Math.floor(Math.min(...boxes.map((b) => b.y)) - pad));
+    const right = Math.min(viewport.width, Math.ceil(Math.max(...boxes.map((b) => b.x + b.width)) + pad));
+    const bottom = Math.min(viewport.height, Math.ceil(Math.max(...boxes.map((b) => b.y + b.height)) + pad));
+    await expect(page).toHaveScreenshot(`tooltip-open-${theme}.png`, {
+      clip: { x, y, width: right - x, height: bottom - y },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`contextual-help open popover (${theme})`, async ({ page }) => {
+    await open(page, `/components/contextual-help?theme=${theme}`);
+    const trigger = page
+      .locator('[data-interactive="contextual-help"]')
+      .getByRole('button', { name: 'راهنمای کد سیستم' });
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.click();
+    const popover = page.locator('[data-nds="Popover"]');
+    await expect(popover).toBeVisible();
+    await expect(page.locator('[data-nds="Popover"][data-entering]')).toHaveCount(0);
+    const boxes = await Promise.all([
+      trigger.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
+      popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
+    ]);
+    const viewport = page.viewportSize() ?? { width: 1440, height: 900 };
+    const pad = 12;
+    const x = Math.max(0, Math.floor(Math.min(...boxes.map((b) => b.x)) - pad));
+    const y = Math.max(0, Math.floor(Math.min(...boxes.map((b) => b.y)) - pad));
+    const right = Math.min(viewport.width, Math.ceil(Math.max(...boxes.map((b) => b.x + b.width)) + pad));
+    const bottom = Math.min(viewport.height, Math.ceil(Math.max(...boxes.map((b) => b.y + b.height)) + pad));
+    await expect(page).toHaveScreenshot(`contextual-help-open-${theme}.png`, {
+      clip: { x, y, width: right - x, height: bottom - y },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
   });
 
   for (const slug of [
