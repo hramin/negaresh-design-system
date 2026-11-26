@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import viteReact from '@vitejs/plugin-react';
-import { defaultClientConditions } from 'vite';
+import { defaultClientConditions, defaultServerConditions } from 'vite';
 import { defineConfig } from 'vitest/config';
 
 // Library build: tree-shakable ESM with preserved module structure and one stylesheet,
@@ -8,6 +8,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   plugins: [viteReact()],
   resolve: { conditions: ['@negaresh/source', ...defaultClientConditions] },
+  ssr: { resolve: { conditions: ['@negaresh/source', ...defaultServerConditions] } },
   css: { modules: { generateScopedName: 'nds-chart-[local]-[hash:base64:5]' } },
   build: {
     lib: {
