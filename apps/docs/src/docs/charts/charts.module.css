@@ -1,0 +1,56 @@
+@layer nds.utilities {
+  .wide {
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-4);
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .gridTwo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: var(--nds-space-4);
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .sparkRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--nds-space-5);
+  }
+
+  .primitiveSvg {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 32rem;
+    block-size: auto;
+    overflow: visible;
+  }
+
+  .primitiveBg {
+    fill: var(--nds-bg-sunken);
+    stroke: var(--nds-border-default);
+    stroke-width: 1;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--nds-space-3);
+  }
+
+  .note {
+    margin: 0;
+    color: var(--nds-fg-subtle);
+    font-size: var(--nds-text-xs);
+  }
+}

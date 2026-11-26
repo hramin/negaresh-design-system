@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HealthzRouteImport } from './routes/healthz'
 import { Route as TokensRouteImport } from './routes/tokens'
+import { Route as ChartsIndexRouteImport } from './routes/charts/index'
+import { Route as ChartsSlugRouteImport } from './routes/charts/$slug'
 import { Route as ComponentsIndexRouteImport } from './routes/components/index'
 import { Route as ComponentsSlugRouteImport } from './routes/components/$slug'
 import { Route as FoundationsColorRouteImport } from './routes/foundations/color'
@@ -34,6 +36,16 @@ const HealthzRoute = HealthzRouteImport.update({
 const TokensRoute = TokensRouteImport.update({
   id: '/tokens',
   path: '/tokens',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChartsIndexRoute = ChartsIndexRouteImport.update({
+  id: '/charts/',
+  path: '/charts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChartsSlugRoute = ChartsSlugRouteImport.update({
+  id: '/charts/$slug',
+  path: '/charts/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsIndexRoute = ComponentsIndexRouteImport.update({
@@ -84,11 +96,13 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
+  '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
   '/foundations/icons': typeof FoundationsIconsRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/charts/': typeof ChartsIndexRoute
   '/components/': typeof ComponentsIndexRoute
   '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
   '/reference/admin-serials/': typeof ReferenceAdminSerialsIndexRoute
@@ -97,11 +111,13 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
+  '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
   '/foundations/icons': typeof FoundationsIconsRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/charts': typeof ChartsIndexRoute
   '/components': typeof ComponentsIndexRoute
   '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
   '/reference/admin-serials': typeof ReferenceAdminSerialsIndexRoute
@@ -111,11 +127,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
+  '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
   '/foundations/icons': typeof FoundationsIconsRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/charts/': typeof ChartsIndexRoute
   '/components/': typeof ComponentsIndexRoute
   '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
   '/reference/admin-serials/': typeof ReferenceAdminSerialsIndexRoute
@@ -126,11 +144,13 @@ export interface FileRouteTypes {
     | '/'
     | '/healthz'
     | '/tokens'
+    | '/charts/$slug'
     | '/components/$slug'
     | '/foundations/color'
     | '/foundations/icons'
     | '/guides/tanstack-form-zod'
     | '/reference/registry-activation'
+    | '/charts/'
     | '/components/'
     | '/reference/admin-serials/$serial'
     | '/reference/admin-serials/'
@@ -139,11 +159,13 @@ export interface FileRouteTypes {
     | '/'
     | '/healthz'
     | '/tokens'
+    | '/charts/$slug'
     | '/components/$slug'
     | '/foundations/color'
     | '/foundations/icons'
     | '/guides/tanstack-form-zod'
     | '/reference/registry-activation'
+    | '/charts'
     | '/components'
     | '/reference/admin-serials/$serial'
     | '/reference/admin-serials'
@@ -152,11 +174,13 @@ export interface FileRouteTypes {
     | '/'
     | '/healthz'
     | '/tokens'
+    | '/charts/$slug'
     | '/components/$slug'
     | '/foundations/color'
     | '/foundations/icons'
     | '/guides/tanstack-form-zod'
     | '/reference/registry-activation'
+    | '/charts/'
     | '/components/'
     | '/reference/admin-serials/$serial'
     | '/reference/admin-serials/'
@@ -166,11 +190,13 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HealthzRoute: typeof HealthzRoute
   TokensRoute: typeof TokensRoute
+  ChartsSlugRoute: typeof ChartsSlugRoute
   ComponentsSlugRoute: typeof ComponentsSlugRoute
   FoundationsColorRoute: typeof FoundationsColorRoute
   FoundationsIconsRoute: typeof FoundationsIconsRoute
   GuidesTanstackFormZodRoute: typeof GuidesTanstackFormZodRoute
   ReferenceRegistryActivationRoute: typeof ReferenceRegistryActivationRoute
+  ChartsIndexRoute: typeof ChartsIndexRoute
   ComponentsIndexRoute: typeof ComponentsIndexRoute
   ReferenceAdminSerialsSerialRoute: typeof ReferenceAdminSerialsSerialRoute
   ReferenceAdminSerialsIndexRoute: typeof ReferenceAdminSerialsIndexRoute
@@ -197,6 +223,20 @@ declare module '@tanstack/react-router' {
       path: '/tokens'
       fullPath: '/tokens'
       preLoaderRoute: typeof TokensRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charts/': {
+      id: '/charts/'
+      path: '/charts'
+      fullPath: '/charts/'
+      preLoaderRoute: typeof ChartsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charts/$slug': {
+      id: '/charts/$slug'
+      path: '/charts/$slug'
+      fullPath: '/charts/$slug'
+      preLoaderRoute: typeof ChartsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/': {
@@ -262,11 +302,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HealthzRoute: HealthzRoute,
   TokensRoute: TokensRoute,
+  ChartsSlugRoute: ChartsSlugRoute,
   ComponentsSlugRoute: ComponentsSlugRoute,
   FoundationsColorRoute: FoundationsColorRoute,
   FoundationsIconsRoute: FoundationsIconsRoute,
   GuidesTanstackFormZodRoute: GuidesTanstackFormZodRoute,
   ReferenceRegistryActivationRoute: ReferenceRegistryActivationRoute,
+  ChartsIndexRoute: ChartsIndexRoute,
   ComponentsIndexRoute: ComponentsIndexRoute,
   ReferenceAdminSerialsSerialRoute: ReferenceAdminSerialsSerialRoute,
   ReferenceAdminSerialsIndexRoute: ReferenceAdminSerialsIndexRoute,

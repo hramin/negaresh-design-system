@@ -1,6 +1,7 @@
 import { SkipLink, ToggleButton, ToggleButtonGroup, useTheme } from '@negaresh/react';
 import { Link } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
+import { CHART_DOCS } from '../docs/charts/registry.tsx';
 import { COMPONENT_DOCS } from '../docs/registry.tsx';
 import { m } from '../lib/messages.ts';
 import { THEME_CHOICES } from '../lib/theme.ts';
@@ -28,6 +29,17 @@ const NAV: {
       { to: '/components', label: m.nav.components },
       ...COMPONENT_DOCS.map((d) => ({
         to: '/components/$slug',
+        params: { slug: d.slug },
+        label: d.title,
+      })),
+    ],
+  },
+  {
+    title: m.navGroups.charts,
+    items: [
+      { to: '/charts', label: m.nav.charts },
+      ...CHART_DOCS.map((d) => ({
+        to: '/charts/$slug',
         params: { slug: d.slug },
         label: d.title,
       })),

@@ -117,7 +117,16 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 ## Charts — `@negaresh/charts` (P5)
 
-IntervalBar · ProfileLine · Bar · Radar · Gauge · Sparkline · ChartFrame (title, takeaway, legend, table alternative) · ReferenceLine · Band. Products: T, V, N (reports), R (admin dashboard).
+| Component | Base | Notes | Products | Status |
+| --- | --- | --- | --- | --- |
+| ChartFrame | — | `<figure>` with title, one-sentence takeaway, legend, source/norm note, loading/empty/error states, and native JS-free `<details>` data table alternative (`/charts/chart-frame`) | T, V, N, R | review |
+| ReferenceLine, Band | — | Reusable SSR SVG norm bands and dashed/dotted reference lines; automatically suppress rose/danger in `calm` mode (`/charts/chart-frame`) | T, V, N, R | review |
+| IntervalBar | `d3-scale` | Signature horizontal score + confidence interval bar with norm bands, cut-offs, `professional` and `calm` severity scales, mobile container-query stacking (`/charts/interval-bar`) | T, V | review |
+| ProfileLine | `d3-scale`, `d3-shape` | MMPI-style scale profile line with 50/65/70 reference lines, 40–60 norm band, vertical section dividers, non-diamond markers, keyboard-focusable points (`/charts/profile-line`) | T, V, N | review |
+| Bar | `d3-scale` | Vertical and horizontal categorical comparison bars, direct Persian value labels, greyscale-safe SVG `<pattern>` fills for multi-series (`/charts/bar`) | R, N, T, V | review |
+| Radar | `d3-scale`, `d3-shape` | Multi-axis professional/overview radar (D-67) with non-diamond vertex markers, always paired with visible data table (`/charts/radar`) | T, V | review |
+| Gauge | `d3-scale`, `d3-shape` | Bounded semicircular single-index arc gauge with Persian number + required band word, segmented bands, `professional` and `calm` modes (`/charts/gauge`) | T, V, N | review |
+| Sparkline | `d3-scale`, `d3-shape` | Axis-free compact inline trend SVG with required text summary, slots directly into `StatTile` (`/charts/sparkline`) | R, N, T | review |
 
 ## Assessment kit — `@negaresh/assessment` (P5)
 
