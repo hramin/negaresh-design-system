@@ -74,6 +74,21 @@ import {
   OTPField,
   DropZone,
   FileUpload,
+  InlineAlert,
+  Banner,
+  Toast,
+  ToastProvider,
+  Badge,
+  StatusBadge,
+  ProgressBar,
+  Meter,
+  UsageMeter,
+  Spinner,
+  GlobalLoadingBar,
+  Skeleton,
+  EmptyState,
+  ErrorState,
+  ErrorPage,
 } from './index.ts';
 import { faMessages } from './messages/fa.ts';
 
@@ -216,6 +231,35 @@ describe('server rendering', () => {
                   <MenuItem id="x">گزینه</MenuItem>
                 </Menu>
               </MenuTrigger>
+              <ToastProvider>
+                <InlineAlert tone="success" title="موفق" isDismissible>
+                  کد فعال‌سازی ساخته شد.
+                </InlineAlert>
+                <Banner tone="info" title="اطلاعیه" isDismissible>
+                  به‌روزرسانی سامانه انجام شد.
+                </Banner>
+                <Toast title="پیوند کپی شد" tone="neutral" />
+                <Badge tone="accent">باز شده از برنامه</Badge>
+                <StatusBadge domain="serial" status="limit_reached" />
+                <ProgressBar label="بارگذاری" value={64} />
+                <Meter label="مصرف حافظه" value={72} />
+                <UsageMeter
+                  label="رایانه‌های فعال‌شده"
+                  used={1}
+                  limit={1}
+                  sourceNote="سقف پیش‌فرض محصول"
+                />
+                <Spinner size="md" />
+                <GlobalLoadingBar isLoading position="static" />
+                <Skeleton variant="table" rows={2} columns={3} />
+                <EmptyState
+                  icon={iconLock}
+                  title="موردی وجود ندارد"
+                  description="هنوز داده‌ای ثبت نشده است."
+                />
+                <ErrorState status={404} actionHref="/" />
+                <ErrorPage status="maintenance" embedded headingLevel={2} />
+              </ToastProvider>
             </Stack>
           </Container>
         </ThemeProvider>
@@ -272,6 +316,19 @@ describe('server rendering', () => {
       'OTPField',
       'DropZone',
       'FileUpload',
+      'InlineAlert',
+      'Banner',
+      'Toast',
+      'Badge',
+      'ProgressBar',
+      'Meter',
+      'UsageMeter',
+      'Spinner',
+      'GlobalLoadingBar',
+      'Skeleton',
+      'EmptyState',
+      'ErrorState',
+      'ErrorPage',
     ]) {
       expect(html, name).toContain(`data-nds="${name}"`);
     }
@@ -283,6 +340,10 @@ describe('server rendering', () => {
     expect(html).toContain('رقم ۱ از ۶');
     expect(html).toContain('ارسال دوباره تا ۳۰ ثانیهٔ دیگر');
     expect(html).toContain('serials.csv');
+    expect(html).toContain('سقف پر شده');
+    expect(html).toContain('۱ از ۱');
+    expect(html).toContain('صفحهٔ مورد نظر پیدا نشد');
+    expect(html).toContain('سامانه در حال به‌روزرسانی است');
     expect(html).toContain('nonce="ssr-nonce"');
     expect(html).toContain('react-aria.i18n.strings');
     expect(html).toContain('بستن');

@@ -1,0 +1,116 @@
+@layer nds.components {
+  .root {
+    display: grid;
+    gap: var(--nds-space-2);
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .bar {
+    display: block;
+    inline-size: 100%;
+    block-size: var(--nds-space-3);
+    border-radius: var(--nds-radius-sm);
+    background: var(--nds-bg-sunken);
+  }
+
+  .root[data-animated="true"] .bar,
+  .root[data-animated="true"] .block,
+  .root[data-animated="true"] .circle {
+    animation: nds-skeleton-pulse calc(var(--nds-dur-slow) * 4.5) var(--nds-ease) infinite;
+  }
+
+  .lineShort {
+    inline-size: 65%;
+  }
+
+  .block {
+    display: block;
+    inline-size: 100%;
+    block-size: var(--nds-space-20);
+    border-radius: var(--nds-radius-md);
+    background: var(--nds-bg-sunken);
+  }
+
+  .block[data-size="sm"] {
+    block-size: var(--nds-control-md);
+  }
+
+  .block[data-size="md"] {
+    block-size: var(--nds-space-20);
+  }
+
+  .block[data-size="lg"] {
+    block-size: calc(var(--nds-space-24) + var(--nds-space-12));
+  }
+
+  .circle {
+    display: block;
+    inline-size: var(--nds-control-md);
+    block-size: var(--nds-control-md);
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-bg-sunken);
+  }
+
+  .circle[data-size="sm"] {
+    inline-size: var(--nds-space-8);
+    block-size: var(--nds-space-8);
+  }
+
+  .circle[data-size="md"] {
+    inline-size: var(--nds-control-md);
+    block-size: var(--nds-control-md);
+  }
+
+  .circle[data-size="lg"] {
+    inline-size: var(--nds-space-16);
+    block-size: var(--nds-space-16);
+  }
+
+  .table {
+    display: grid;
+    gap: var(--nds-space-3);
+    inline-size: 100%;
+  }
+
+  .tableRow {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: var(--nds-space-4);
+    padding-block: var(--nds-space-2);
+    border-block-end: var(--nds-border-width-hairline) solid var(--nds-border-default);
+  }
+
+  .tableRow:last-child {
+    border-block-end: none;
+  }
+
+  @keyframes nds-skeleton-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.45;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .root[data-animated="true"] .bar,
+    .root[data-animated="true"] .block,
+    .root[data-animated="true"] .circle {
+      animation: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .bar,
+    .block,
+    .circle {
+      border: var(--nds-border-width-hairline) solid CanvasText;
+      background: Canvas;
+    }
+  }
+}
