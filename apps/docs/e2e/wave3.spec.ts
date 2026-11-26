@@ -186,8 +186,10 @@ test('time field supports 24-hour Persian segment stepping and direct editing', 
 
   const hour = firstField.getByRole('spinbutton', { name: /^ساعت/ });
   const minute = firstField.getByRole('spinbutton', { name: /^دقیقه/ });
-  await expect(hour).toHaveText('۱۴');
+  // Wait for React Aria's post-hydration useEffect ID merge on DateSegment before matching /^ساعت/
+  // (the field label "ساعت شروع جلسه" also starts with "ساعت" prior to segment id reconciliation).
   await expect(minute).toHaveText('۳۰');
+  await expect(hour).toHaveText('۱۴');
 
   await hour.focus();
   await page.keyboard.press('ArrowUp');

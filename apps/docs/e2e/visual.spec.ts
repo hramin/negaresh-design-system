@@ -71,6 +71,13 @@ const HIDE_HEADER_SLUGS = new Set([
   'disclosure',
   'user-menu',
   'footer',
+  'data-table',
+  'filter-bar',
+  'bulk-action-bar',
+  'list',
+  'stat-tile',
+  'timeline',
+  'diff-view',
 ]);
 
 const snap = (locator: Locator, name: string, hidePageHeader = false) =>
@@ -116,6 +123,13 @@ const PREHIDE_HEADER_SLUGS = new Set([
   'disclosure',
   'user-menu',
   'footer',
+  'data-table',
+  'filter-bar',
+  'bulk-action-bar',
+  'list',
+  'stat-tile',
+  'timeline',
+  'diff-view',
 ]);
 
 for (const theme of THEMES) {
@@ -509,6 +523,41 @@ for (const theme of THEMES) {
       );
     });
   }
+
+  test(`admin-serials list (${theme})`, async ({ page }) => {
+    await open(page, `/reference/admin-serials?theme=${theme}`);
+    await page.addStyleTag({
+      content:
+        '[data-admin-sample] header, [data-admin-sample] [data-nds="SideNav"], [data-admin-sample] th { position: static !important; }',
+    });
+    await snap(page.locator('[data-admin-sample]'), `admin-serials-list-${theme}.png`, false);
+  });
+
+  test(`admin-serials detail (${theme})`, async ({ page }) => {
+    await open(page, `/reference/admin-serials/N25AG-EMV0K?theme=${theme}`);
+    await page.addStyleTag({
+      content:
+        '[data-admin-sample] header, [data-admin-sample] [data-nds="SideNav"] { position: static !important; }',
+    });
+    await snap(page.locator('[data-admin-sample]'), `admin-serials-detail-${theme}.png`, false);
+  });
+
+  test(`filter-bar mobile sheet open (${theme})`, async ({ page, isMobile }) => {
+    test.skip(!isMobile, 'mobile filter sheet drawer renders below 900 px');
+    await open(page, `/components/filter-bar?theme=${theme}`);
+    await page
+      .locator('[data-interactive="filter-bar"]')
+      .getByRole('button', { name: /^فیلترها/ })
+      .click();
+    await expect(page.locator('[data-nds="Sheet"]')).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
+    await expect(page.locator('[data-nds="SheetModal"][data-entering]')).toHaveCount(0);
+    await expect(page).toHaveScreenshot(`filter-bar-sheet-open-${theme}.png`, {
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
 
   test.describe('interaction states', () => {
     test.skip(({ isMobile }) => isMobile, 'pointer and keyboard states are captured on desktop');

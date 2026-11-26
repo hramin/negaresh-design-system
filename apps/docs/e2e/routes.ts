@@ -67,6 +67,13 @@ export const COMPONENT_SLUGS = [
   'disclosure',
   'user-menu',
   'footer',
+  'data-table',
+  'filter-bar',
+  'bulk-action-bar',
+  'list',
+  'stat-tile',
+  'timeline',
+  'diff-view',
 ] as const;
 
 export const ROUTES = [
@@ -81,6 +88,8 @@ export const ROUTES = [
   '/reference/registry-activation?state=error',
   '/reference/registry-activation?state=success',
   '/reference/registry-activation?state=limit',
+  '/reference/admin-serials',
+  '/reference/admin-serials/N25AG-EMV0K',
 ] as const;
 
 export const THEMES = ['light', 'dark'] as const;
