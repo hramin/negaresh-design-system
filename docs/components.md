@@ -76,11 +76,11 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| Dialog, AlertDialog | `Modal`, `Dialog` | sizes; becomes bottom sheet below 900 px | all | planned |
-| Sheet / Drawer | `Modal` | side (desktop), bottom (mobile) | all | planned |
-| Popover | `Popover` | — | all | planned |
-| Tooltip | `Tooltip` | text only; never essential info | all | planned |
-| ContextualHelp | `DialogTrigger` + Popover | (i) help next to labels | all | planned |
+| Dialog, AlertDialog | `Modal`, `Dialog` | sizes; becomes bottom sheet below 900 px | all | review |
+| Sheet / Drawer | `Modal` | side (desktop), bottom (mobile) | all | review |
+| Popover | `Popover` | — | all | review |
+| Tooltip | `Tooltip` | text only; never essential info | all | review |
+| ContextualHelp | `DialogTrigger` + Popover | (i) help next to labels | all | review |
 
 ## Navigation (P4)
 
@@ -105,15 +105,15 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | DataTable | `Table` | sort, select, sticky header, column visibility, density, stacks to cards on mobile, empty/loading/error | R, N, T | planned |
 | FilterBar | — | search + filters + chips + reset; filters move to Sheet on mobile | R, N, T | planned |
 | BulkActionBar | `Toolbar` | appears on selection | R, N, T | planned |
-| KeyValueList | — | label/value, LTR values, copyable | all | planned |
+| KeyValueList | — | label/value, LTR values, copyable | all | review |
 | StatTile, StatGroup | — | value, delta, sparkline | R, N, T | planned |
 | Timeline / ActivityList | `GridList` | activations, audit, revisions | R, N, T | planned |
 | DiffView | — | revision compare | N | planned |
-| Avatar, AvatarGroup | — | image, initials | N, T | planned |
-| VerifiedBadge | Badge | expert licence | N | planned |
-| Card (generic) | — | media, body, footer; link card | all | planned |
+| Avatar, AvatarGroup | — | image, initials | N, T | review |
+| VerifiedBadge | Badge | expert licence | N | review |
+| Card (generic) | — | media, body, footer; link card | all | review |
 | List, GridList | `GridList` | selectable rows | all | planned |
-| Image | — | ratio, sizes, lazy; alt required prop | all | planned |
+| Image | — | ratio, sizes, lazy; alt required prop | all | review |
 
 ## Charts — `@negaresh/charts` (P5)
 

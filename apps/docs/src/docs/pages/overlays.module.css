@@ -1,0 +1,70 @@
+@layer nds.patterns {
+  .block {
+    inline-size: min(calc(var(--nds-space-24) * 5.5), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .wide {
+    inline-size: min(calc(var(--nds-space-24) * 7.5), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .cardFrame {
+    inline-size: min(calc(var(--nds-space-24) * 3.5), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .wideCardFrame {
+    inline-size: min(calc(var(--nds-space-24) * 6), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .imageFrame {
+    inline-size: min(calc(var(--nds-space-24) * 3.25), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .topBarFrame {
+    inline-size: 100%;
+    max-inline-size: 100%;
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-md);
+    overflow: hidden;
+  }
+
+  .drawerNav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-1);
+  }
+
+  .labelRow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--nds-space-1);
+  }
+
+  .tooltipSample {
+    display: inline-flex;
+    align-items: center;
+    padding-block: var(--nds-space-2);
+    padding-inline: var(--nds-space-3);
+    border-radius: var(--nds-radius-sm);
+    background: var(--nds-bg-inverse);
+    color: var(--nds-fg-inverse);
+    box-shadow: var(--nds-shadow-overlay);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-medium);
+    line-height: var(--nds-leading-text);
+  }
+
+  .output {
+    overflow-wrap: anywhere;
+    min-inline-size: 0;
+  }
+}

@@ -45,7 +45,17 @@ import { toastDoc } from './pages/toast.tsx';
 import { toggleButtonDoc } from './pages/toggle-button.tsx';
 import { topBarDoc } from './pages/top-bar.tsx';
 import { typographyDoc } from './pages/typography.tsx';
+import { avatarDoc } from './pages/avatar.tsx';
+import { cardDoc } from './pages/card.tsx';
+import { contextualHelpDoc } from './pages/contextual-help.tsx';
+import { dialogDoc } from './pages/dialog.tsx';
+import { imageDoc } from './pages/image.tsx';
+import { keyValueListDoc } from './pages/key-value-list.tsx';
+import { popoverDoc } from './pages/popover.tsx';
+import { sheetDoc } from './pages/sheet.tsx';
+import { tooltipDoc } from './pages/tooltip.tsx';
 import { usageMeterDoc } from './pages/usage-meter.tsx';
+import { verifiedBadgeDoc } from './pages/verified-badge.tsx';
 import type { ComponentDoc } from './types.ts';
 
 /** Component documentation pages, in navigation order. */
@@ -98,6 +108,16 @@ export const COMPONENT_DOCS: readonly ComponentDoc[] = [
   skeletonDoc,
   emptyStateDoc,
   errorPageDoc,
+  dialogDoc,
+  sheetDoc,
+  popoverDoc,
+  tooltipDoc,
+  contextualHelpDoc,
+  avatarDoc,
+  verifiedBadgeDoc,
+  cardDoc,
+  imageDoc,
+  keyValueListDoc,
 ];
 
 export function findDoc(slug: string): ComponentDoc | undefined {
