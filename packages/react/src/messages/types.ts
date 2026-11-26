@@ -81,4 +81,75 @@ export interface NdsMessages {
   fileUploadTooLarge: (name: string, maxSize: string) => string;
   fileUploadTooMany: (maxFiles: number) => string;
   fileSize: (bytes: number) => string;
+  /** Shared dismiss and live-region labels for alerts, banners, toasts, and loaders. */
+  dismiss: string;
+  dismissAlert: string;
+  dismissBanner: string;
+  toastRegionLabel: string;
+  loading: string;
+  globalLoadingLabel: string;
+  /** Tone words used when an accessible status label is needed. */
+  toneInfo: string;
+  toneSuccess: string;
+  toneWarning: string;
+  toneDanger: string;
+  /** UsageMeter formatted summary («۱ از ۱») and full-capacity label. */
+  usageOf: (used: number, limit: number) => string;
+  usageFull: string;
+  /** Domain status labels for StatusBadge (order, payment, serial, review, report, campaign). */
+  statusLabels: {
+    order: {
+      awaiting_payment: string;
+      paid: string;
+      processing: string;
+      shipped: string;
+      completed: string;
+      cancelled: string;
+      refunded: string;
+    };
+    payment: {
+      pending: string;
+      paid: string;
+      failed: string;
+      cancelled: string;
+      refunded: string;
+    };
+    serial: {
+      active: string;
+      unused: string;
+      limit_reached: string;
+      revoked: string;
+      expired: string;
+    };
+    review: {
+      draft: string;
+      submitted: string;
+      changes_requested: string;
+      scheduled: string;
+      published: string;
+      unpublished: string;
+    };
+    report: {
+      none: string;
+      pending: string;
+      ready: string;
+      failed: string;
+      purged: string;
+    };
+    campaign: {
+      draft: string;
+      active: string;
+      full: string;
+      closed: string;
+      expired: string;
+    };
+  };
+  /** Preset copy for ErrorState / ErrorPage (403, 404, 410, 500, maintenance). */
+  errorPresets: {
+    403: { code: string; title: string; description: string; actionLabel: string };
+    404: { code: string; title: string; description: string; actionLabel: string };
+    410: { code: string; title: string; description: string; actionLabel: string };
+    500: { code: string; title: string; description: string; actionLabel: string };
+    maintenance: { code: string; title: string; description: string; actionLabel: string };
+  };
 }
