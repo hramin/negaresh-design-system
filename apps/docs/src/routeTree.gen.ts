@@ -18,6 +18,8 @@ import { Route as FoundationsColorRouteImport } from './routes/foundations/color
 import { Route as FoundationsIconsRouteImport } from './routes/foundations/icons'
 import { Route as GuidesTanstackFormZodRouteImport } from './routes/guides/tanstack-form-zod'
 import { Route as ReferenceRegistryActivationRouteImport } from './routes/reference/registry-activation'
+import { Route as ReferenceAdminSerialsIndexRouteImport } from './routes/reference/admin-serials/index'
+import { Route as ReferenceAdminSerialsSerialRouteImport } from './routes/reference/admin-serials/$serial'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -65,6 +67,18 @@ const ReferenceRegistryActivationRoute =
     path: '/reference/registry-activation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ReferenceAdminSerialsIndexRoute =
+  ReferenceAdminSerialsIndexRouteImport.update({
+    id: '/reference/admin-serials/',
+    path: '/reference/admin-serials/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ReferenceAdminSerialsSerialRoute =
+  ReferenceAdminSerialsSerialRouteImport.update({
+    id: '/reference/admin-serials/$serial',
+    path: '/reference/admin-serials/$serial',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -76,6 +90,8 @@ export interface FileRoutesByFullPath {
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
   '/components/': typeof ComponentsIndexRoute
+  '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
+  '/reference/admin-serials/': typeof ReferenceAdminSerialsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -87,6 +103,8 @@ export interface FileRoutesByTo {
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
   '/components': typeof ComponentsIndexRoute
+  '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
+  '/reference/admin-serials': typeof ReferenceAdminSerialsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -99,6 +117,8 @@ export interface FileRoutesById {
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
   '/components/': typeof ComponentsIndexRoute
+  '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
+  '/reference/admin-serials/': typeof ReferenceAdminSerialsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -112,6 +132,8 @@ export interface FileRouteTypes {
     | '/guides/tanstack-form-zod'
     | '/reference/registry-activation'
     | '/components/'
+    | '/reference/admin-serials/$serial'
+    | '/reference/admin-serials/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -123,6 +145,8 @@ export interface FileRouteTypes {
     | '/guides/tanstack-form-zod'
     | '/reference/registry-activation'
     | '/components'
+    | '/reference/admin-serials/$serial'
+    | '/reference/admin-serials'
   id:
     | '__root__'
     | '/'
@@ -134,6 +158,8 @@ export interface FileRouteTypes {
     | '/guides/tanstack-form-zod'
     | '/reference/registry-activation'
     | '/components/'
+    | '/reference/admin-serials/$serial'
+    | '/reference/admin-serials/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -146,6 +172,8 @@ export interface RootRouteChildren {
   GuidesTanstackFormZodRoute: typeof GuidesTanstackFormZodRoute
   ReferenceRegistryActivationRoute: typeof ReferenceRegistryActivationRoute
   ComponentsIndexRoute: typeof ComponentsIndexRoute
+  ReferenceAdminSerialsSerialRoute: typeof ReferenceAdminSerialsSerialRoute
+  ReferenceAdminSerialsIndexRoute: typeof ReferenceAdminSerialsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -213,6 +241,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReferenceRegistryActivationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reference/admin-serials/': {
+      id: '/reference/admin-serials/'
+      path: '/reference/admin-serials'
+      fullPath: '/reference/admin-serials/'
+      preLoaderRoute: typeof ReferenceAdminSerialsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reference/admin-serials/$serial': {
+      id: '/reference/admin-serials/$serial'
+      path: '/reference/admin-serials/$serial'
+      fullPath: '/reference/admin-serials/$serial'
+      preLoaderRoute: typeof ReferenceAdminSerialsSerialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -226,6 +268,8 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesTanstackFormZodRoute: GuidesTanstackFormZodRoute,
   ReferenceRegistryActivationRoute: ReferenceRegistryActivationRoute,
   ComponentsIndexRoute: ComponentsIndexRoute,
+  ReferenceAdminSerialsSerialRoute: ReferenceAdminSerialsSerialRoute,
+  ReferenceAdminSerialsIndexRoute: ReferenceAdminSerialsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -39,7 +39,15 @@ const NAV: {
   },
   {
     title: m.navGroups.reference,
-    items: [{ to: '/reference/registry-activation', label: m.nav.reference }],
+    items: [
+      { to: '/reference/registry-activation', label: m.nav.reference },
+      { to: '/reference/admin-serials', label: m.nav.adminSerialsList },
+      {
+        to: '/reference/admin-serials/$serial',
+        params: { serial: 'N25AG-EMV0K' },
+        label: m.nav.adminSerialDetail,
+      },
+    ],
   },
 ];
 

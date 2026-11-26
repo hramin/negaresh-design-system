@@ -22,6 +22,8 @@ export const m = {
     components: 'همهٔ کامپوننت‌ها',
     formAdapter: 'آداپتور TanStack Form و Zod',
     reference: 'فعال‌سازی رجیستری',
+    adminSerialsList: 'پنل مدیریت · فهرست سریال‌ها',
+    adminSerialDetail: 'پنل مدیریت · جزئیات سریال',
   },
   /** Footer build stamp: «build <branch>@<short sha>» (Latin, LTR: it is a code). */
   build: (branch: string, sha: string) => `build ${branch}@${sha}`,
