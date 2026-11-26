@@ -37,6 +37,17 @@ export const COMPONENT_SLUGS = [
   'time-field',
   'otp-field',
   'file-upload',
+  'inline-alert',
+  'banner',
+  'toast',
+  'badge',
+  'status-badge',
+  'progress-meter',
+  'usage-meter',
+  'spinner',
+  'skeleton',
+  'empty-state',
+  'error-page',
 ] as const;
 
 export const ROUTES = [

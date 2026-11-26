@@ -41,6 +41,17 @@ const HIDE_HEADER_SLUGS = new Set([
   'time-field',
   'otp-field',
   'file-upload',
+  'inline-alert',
+  'banner',
+  'toast',
+  'badge',
+  'status-badge',
+  'progress-meter',
+  'usage-meter',
+  'spinner',
+  'skeleton',
+  'empty-state',
+  'error-page',
 ]);
 
 const snap = (locator: Locator, name: string, hidePageHeader = false) =>
@@ -53,13 +64,27 @@ const snap = (locator: Locator, name: string, hidePageHeader = false) =>
     ...(hidePageHeader ? { style: 'header { visibility: hidden !important; }' } : {}),
   });
 
-const WAVE4_SLUGS = new Set(['otp-field', 'file-upload']);
+const PREHIDE_HEADER_SLUGS = new Set([
+  'otp-field',
+  'file-upload',
+  'inline-alert',
+  'banner',
+  'toast',
+  'badge',
+  'status-badge',
+  'progress-meter',
+  'usage-meter',
+  'spinner',
+  'skeleton',
+  'empty-state',
+  'error-page',
+]);
 
 for (const theme of THEMES) {
   for (const slug of COMPONENT_SLUGS) {
     test(`gallery ${slug} (${theme})`, async ({ page }) => {
       await open(page, `/components/${slug}?theme=${theme}`);
-      if (WAVE4_SLUGS.has(slug)) {
+      if (PREHIDE_HEADER_SLUGS.has(slug)) {
         await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
       }
       await snap(
@@ -73,6 +98,15 @@ for (const theme of THEMES) {
   test(`icon grid (${theme})`, async ({ page }) => {
     await open(page, `/foundations/icons?theme=${theme}`);
     await snap(page.locator('[data-gallery="icons"]'), `icons-${theme}.png`);
+  });
+
+  test(`toast open floating notification (${theme})`, async ({ page }) => {
+    await open(page, `/components/toast?theme=${theme}`);
+    const region = page.locator('[data-interactive="toast"]');
+    await region.getByRole('button', { name: 'اعلان با اقدام' }).click();
+    const liveToast = page.locator('[data-nds="ToastRegion"] [data-nds="Toast"]').first();
+    await expect(liveToast).toBeVisible();
+    await snap(liveToast, `toast-open-${theme}.png`, true);
   });
 
   for (const slug of [
