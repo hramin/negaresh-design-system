@@ -1,0 +1,137 @@
+@layer nds.components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-3);
+    min-inline-size: 0;
+    inline-size: 100%;
+  }
+
+  .svgWrap {
+    inline-size: 100%;
+    overflow-inline: auto;
+  }
+
+  .svg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    overflow: visible;
+  }
+
+  .root[data-dir="rtl"] .svg {
+    direction: rtl;
+  }
+
+  .root[data-dir="ltr"] .svg {
+    direction: ltr;
+  }
+
+  .gridLine {
+    stroke: var(--nds-viz-grid);
+    stroke-width: 1;
+  }
+
+  .dividerLine {
+    stroke: var(--nds-border-strong);
+    stroke-width: 1.4;
+    stroke-dasharray: 4 3;
+  }
+
+  .dividerLabel {
+    fill: var(--nds-fg-subtle);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-medium);
+  }
+
+  .axisLine {
+    stroke: var(--nds-border-strong);
+    stroke-width: 1;
+  }
+
+  .axisText {
+    fill: var(--nds-fg-subtle);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .categoryText {
+    fill: var(--nds-fg-muted);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-medium);
+  }
+
+  .seriesPath {
+    fill: none;
+    stroke-width: 2.25;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .valueLabel {
+    fill: var(--nds-fg-default);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-semibold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pointTrigger {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .pointTrigger:focus-visible {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .focusHalo {
+    fill: none;
+    stroke: var(--nds-focus-ring);
+    stroke-width: 2;
+    opacity: 0;
+  }
+
+  .pointTrigger:focus-visible .focusHalo,
+  .pointTrigger[data-active="true"] .focusHalo {
+    opacity: 1;
+  }
+
+  .readout {
+    padding-block: var(--nds-space-2);
+    padding-inline: var(--nds-space-3);
+    border-radius: var(--nds-radius-sm);
+    background: var(--nds-bg-sunken);
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-xs);
+    line-height: var(--nds-leading-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (forced-colors: active) {
+    .gridLine,
+    .axisLine,
+    .dividerLine {
+      stroke: GrayText;
+    }
+
+    .axisText,
+    .categoryText,
+    .valueLabel,
+    .dividerLabel {
+      fill: CanvasText;
+    }
+
+    .pointTrigger:focus-visible {
+      outline-color: Highlight;
+    }
+
+    .focusHalo {
+      stroke: Highlight;
+    }
+  }
+}

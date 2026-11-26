@@ -46,6 +46,8 @@ export interface ReferenceLineProps {
   tone?: ReferenceLineTone | undefined;
   /** Audience mode; prevents rose/danger styling in `'calm'` mode. Default `'professional'`. */
   mode?: ChartMode | undefined;
+  /** Reading direction for inward horizontal label alignment. Default `'rtl'`. */
+  dir?: 'rtl' | 'ltr' | undefined;
   /** Dash pattern. Default `'dashed'`. */
   lineStyle?: ReferenceLineStyle | undefined;
   className?: string | undefined;

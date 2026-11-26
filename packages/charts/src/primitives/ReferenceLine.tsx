@@ -32,6 +32,7 @@ export function ReferenceLine({
   labelPosition = 'start',
   tone = 'ref',
   mode = 'professional',
+  dir = 'rtl',
   lineStyle = 'dashed',
   className,
 }: ReferenceLineProps) {
@@ -46,9 +47,19 @@ export function ReferenceLine({
   const x2 = isVertical ? pos : e;
   const y2 = isVertical ? e : pos;
 
-  const labelX = isVertical ? pos : labelPosition === 'start' ? Math.max(s, e) - 4 : Math.min(s, e) + 4;
+  const minX = Math.min(s, e);
+  const maxX = Math.max(s, e);
+  const labelX = isVertical
+    ? pos
+    : dir === 'rtl'
+      ? labelPosition === 'start'
+        ? maxX - 6
+        : minX + 6
+      : labelPosition === 'start'
+        ? minX + 6
+        : maxX - 6;
   const labelY = isVertical ? Math.min(s, e) - 6 : pos - 5;
-  const textAnchor = isVertical ? 'middle' : labelPosition === 'start' ? 'end' : 'start';
+  const textAnchor = isVertical ? 'middle' : labelPosition === 'start' ? 'start' : 'end';
 
   return (
     <g
