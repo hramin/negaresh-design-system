@@ -1,6 +1,6 @@
 # Components
 
-Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026), and P4 Wave 1 (Feedback and status) components are `approved` following owner confirmation on 25 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
+Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026), and P4 Waves 1–2 (Feedback and status, Overlays, and standalone Display primitives) are `approved` following owner confirmation on 25 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
 
 Every component documents: anatomy, props, all applicable states (default, hover, focus-visible, pressed, disabled, loading, invalid, empty, read-only), keyboard map, ARIA notes, RTL notes, do/don't, and a mobile example.
 
@@ -76,11 +76,11 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| Dialog, AlertDialog | `Modal`, `Dialog` | sizes; becomes bottom sheet below 900 px | all | review |
-| Sheet / Drawer | `Modal` | side (desktop), bottom (mobile) | all | review |
-| Popover | `Popover` | — | all | review |
-| Tooltip | `Tooltip` | text only; never essential info | all | review |
-| ContextualHelp | `DialogTrigger` + Popover | (i) help next to labels | all | review |
+| Dialog, AlertDialog | `Modal`, `Dialog` | sizes; becomes bottom sheet below 900 px | all | approved |
+| Sheet / Drawer | `Modal` | side (desktop), bottom (mobile) | all | approved |
+| Popover | `Popover` | — | all | approved |
+| Tooltip | `Tooltip` | text only; never essential info | all | approved |
+| ContextualHelp | `DialogTrigger` + Popover | (i) help next to labels | all | approved |
 
 ## Navigation (P4)
 
@@ -105,15 +105,15 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | DataTable | `Table` | sort, select, sticky header, column visibility, density, stacks to cards on mobile, empty/loading/error | R, N, T | planned |
 | FilterBar | — | search + filters + chips + reset; filters move to Sheet on mobile | R, N, T | planned |
 | BulkActionBar | `Toolbar` | appears on selection | R, N, T | planned |
-| KeyValueList | — | label/value, LTR values, copyable | all | review |
+| KeyValueList | — | label/value, LTR values, copyable | all | approved |
 | StatTile, StatGroup | — | value, delta, sparkline | R, N, T | planned |
 | Timeline / ActivityList | `GridList` | activations, audit, revisions | R, N, T | planned |
 | DiffView | — | revision compare | N | planned |
-| Avatar, AvatarGroup | — | image, initials | N, T | review |
-| VerifiedBadge | Badge | expert licence | N | review |
-| Card (generic) | — | media, body, footer; link card | all | review |
+| Avatar, AvatarGroup | — | image, initials | N, T | approved |
+| VerifiedBadge | Badge | expert licence | N | approved |
+| Card (generic) | — | media, body, footer; link card | all | approved |
 | List, GridList | `GridList` | selectable rows | all | planned |
-| Image | — | ratio, sizes, lazy; alt required prop | all | review |
+| Image | — | ratio, sizes, lazy; alt required prop | all | approved |
 
 ## Charts — `@negaresh/charts` (P5)
 
