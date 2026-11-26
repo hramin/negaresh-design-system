@@ -115,7 +115,7 @@ function AdminShellInner({ activeSection = 'serials', children }: AdminShellProp
       <SkipLink />
       <TopBar
         brand={
-          <TopBarBrand href="/reference/admin-serials">
+          <TopBarBrand href="/reference/admin-serials" aria-label="رجیستری نگرش · مدیریت">
             <LogoSlot product="رجیستری نگرش · مدیریت" size="sm" />
           </TopBarBrand>
         }
