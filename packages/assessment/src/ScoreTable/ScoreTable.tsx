@@ -79,7 +79,8 @@ export function ScoreTable({
     3 + (resolvedShowCode ? 1 : 0) + (resolvedShowRaw ? 1 : 0) + (resolvedShowInterval ? 1 : 0);
 
   const groups = groupBySection(items);
-  const resolvedCaption = caption ?? m.scoreTableCaption;
+  const resolvedCaption =
+    caption ?? (typeof title === 'string' && title.length > 0 ? title : m.scoreTableCaption);
 
   return (
     <section
