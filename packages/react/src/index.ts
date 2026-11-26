@@ -75,3 +75,6 @@ export * from './KeyValueList/index.ts';
 export * from './Tabs/index.ts';
 export * from './TabStrip/index.ts';
 export * from './SideNav/index.ts';
+export * from './Breadcrumbs/index.ts';
+export * from './Pagination/index.ts';
+export * from './Stepper/index.ts';
