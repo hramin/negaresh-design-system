@@ -58,6 +58,15 @@ export const COMPONENT_SLUGS = [
   'card',
   'image',
   'key-value-list',
+  'side-nav',
+  'tab-strip',
+  'tabs',
+  'breadcrumbs',
+  'pagination',
+  'stepper',
+  'disclosure',
+  'user-menu',
+  'footer',
 ] as const;
 
 export const ROUTES = [

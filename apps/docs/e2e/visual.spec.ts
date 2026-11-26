@@ -62,6 +62,15 @@ const HIDE_HEADER_SLUGS = new Set([
   'card',
   'image',
   'key-value-list',
+  'side-nav',
+  'tab-strip',
+  'tabs',
+  'breadcrumbs',
+  'pagination',
+  'stepper',
+  'disclosure',
+  'user-menu',
+  'footer',
 ]);
 
 const snap = (locator: Locator, name: string, hidePageHeader = false) =>
@@ -98,6 +107,15 @@ const PREHIDE_HEADER_SLUGS = new Set([
   'card',
   'image',
   'key-value-list',
+  'side-nav',
+  'tab-strip',
+  'tabs',
+  'breadcrumbs',
+  'pagination',
+  'stepper',
+  'disclosure',
+  'user-menu',
+  'footer',
 ]);
 
 for (const theme of THEMES) {
@@ -269,6 +287,70 @@ for (const theme of THEMES) {
     const right = Math.min(viewport.width, Math.ceil(Math.max(...boxes.map((b) => b.x + b.width)) + pad));
     const bottom = Math.min(viewport.height, Math.ceil(Math.max(...boxes.map((b) => b.y + b.height)) + pad));
     await expect(page).toHaveScreenshot(`contextual-help-open-${theme}.png`, {
+      clip: { x, y, width: right - x, height: bottom - y },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`user-menu open account dropdown (${theme})`, async ({ page }) => {
+    await open(page, `/components/user-menu?theme=${theme}`);
+    const trigger = page
+      .locator('[data-interactive="user-menu"]')
+      .locator('[data-nds="AccountPill"]');
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.click();
+    const popover = page.locator('[data-nds="MenuPopover"]');
+    await expect(popover).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
+    await expect(page.locator('[data-nds="MenuPopover"][data-entering]')).toHaveCount(0);
+    const boxes = await Promise.all([
+      trigger.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
+      popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
+    ]);
+    const viewport = page.viewportSize() ?? { width: 1440, height: 900 };
+    const pad = 12;
+    const x = Math.max(0, Math.floor(Math.min(...boxes.map((b) => b.x)) - pad));
+    const y = Math.max(0, Math.floor(Math.min(...boxes.map((b) => b.y)) - pad));
+    const right = Math.min(viewport.width, Math.ceil(Math.max(...boxes.map((b) => b.x + b.width)) + pad));
+    const bottom = Math.min(viewport.height, Math.ceil(Math.max(...boxes.map((b) => b.y + b.height)) + pad));
+    await expect(page).toHaveScreenshot(`user-menu-open-${theme}.png`, {
+      clip: { x, y, width: right - x, height: bottom - y },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`breadcrumbs collapsed menu open (${theme})`, async ({ page }) => {
+    await open(page, `/components/breadcrumbs?theme=${theme}`);
+    const trigger = page
+      .locator('[data-interactive="breadcrumbs"]')
+      .getByRole('button', { name: 'نمایش مسیرهای میانی' });
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.click();
+    const popover = page.locator('[data-nds="MenuPopover"]');
+    await expect(popover).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
+    await expect(page.locator('[data-nds="MenuPopover"][data-entering]')).toHaveCount(0);
+    const boxes = await Promise.all([
+      trigger.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
+      popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
+    ]);
+    const viewport = page.viewportSize() ?? { width: 1440, height: 900 };
+    const pad = 12;
+    const x = Math.max(0, Math.floor(Math.min(...boxes.map((b) => b.x)) - pad));
+    const y = Math.max(0, Math.floor(Math.min(...boxes.map((b) => b.y)) - pad));
+    const right = Math.min(viewport.width, Math.ceil(Math.max(...boxes.map((b) => b.x + b.width)) + pad));
+    const bottom = Math.min(viewport.height, Math.ceil(Math.max(...boxes.map((b) => b.y + b.height)) + pad));
+    await expect(page).toHaveScreenshot(`breadcrumbs-collapsed-open-${theme}.png`, {
       clip: { x, y, width: right - x, height: bottom - y },
       animations: 'disabled',
       caret: 'hide',
