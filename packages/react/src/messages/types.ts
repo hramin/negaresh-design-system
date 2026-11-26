@@ -152,4 +152,14 @@ export interface NdsMessages {
     500: { code: string; title: string; description: string; actionLabel: string };
     maintenance: { code: string; title: string; description: string; actionLabel: string };
   };
+  /** Overlays and standalone display primitives (P4 Wave 2). */
+  closeDialog: string;
+  closeSheet: string;
+  confirm: string;
+  cancel: string;
+  contextualHelpLabel: string;
+  verifiedExpert: string;
+  avatarOverflow: (count: number) => string;
+  avatarOverflowLabel: (count: number) => string;
+  copyValue: (label: string) => string;
 }

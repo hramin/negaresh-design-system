@@ -178,6 +178,16 @@ export const faMessages: NdsMessages = {
       actionLabel: 'بررسی دوباره',
     },
   },
+  closeDialog: 'بستن پنجره',
+  closeSheet: 'بستن کشو',
+  confirm: 'تأیید',
+  cancel: 'انصراف',
+  contextualHelpLabel: 'راهنما',
+  verifiedExpert: 'پروانهٔ تأییدشده',
+  avatarOverflow: (count) => `+${formatNumber(count, { maximumFractionDigits: 0 })}`,
+  avatarOverflowLabel: (count) =>
+    `${formatNumber(count, { maximumFractionDigits: 0 })} نفر دیگر`,
+  copyValue: (label) => `کپی ${label}`,
 };
 
 export {
