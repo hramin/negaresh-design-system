@@ -247,7 +247,9 @@ export function DiffView({
   };
 
   const resolvedDir = dir ?? (isCode ? 'ltr' : undefined);
-  const resolvedLabel = ariaLabelledBy ? undefined : (ariaLabel ?? m.diffLabel);
+  const resolvedLabel = ariaLabelledBy
+    ? undefined
+    : (ariaLabel ?? (typeof title === 'string' ? title : m.diffLabel));
   const hasHeader =
     title !== undefined ||
     beforeLabel !== undefined ||

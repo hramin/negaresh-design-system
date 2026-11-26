@@ -41,6 +41,7 @@ function Example() {
     <div className={styles.wide} data-interactive="filter-bar">
       <Stack gap="3">
         <FilterBar
+          aria-label="فیلترهای تعاملی سریال‌ها"
           searchValue={search}
           onSearchChange={setSearch}
           searchPlaceholder="جست‌وجوی سریال یا شمارهٔ همراه…"
@@ -98,6 +99,7 @@ export const filterBarDoc: ComponentDoc = {
         <State label="search + inline filters + active chips">
           <div className={styles.wide}>
             <FilterBar
+              aria-label="گالری فیلترهای کامل"
               searchValue="N25AG"
               onSearchChange={() => undefined}
               filters={
@@ -126,6 +128,7 @@ export const filterBarDoc: ComponentDoc = {
         <State label="search only">
           <div className={styles.block}>
             <FilterBar
+              aria-label="گالری جست‌وجوی ساده"
               searchValue=""
               onSearchChange={() => undefined}
               searchPlaceholder="جست‌وجو در گزارش ممیزی…"
