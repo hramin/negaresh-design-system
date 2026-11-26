@@ -111,7 +111,7 @@ export function DropZone({
           {...(buttonId !== undefined ? { id: buttonId } : {})}
           type="button"
           variant="secondary"
-          size="sm"
+          size="md"
           iconStart={iconUpload}
           isDisabled={isDisabled}
           {...(ariaDescribedBy !== undefined ? { 'aria-describedby': ariaDescribedBy } : {})}

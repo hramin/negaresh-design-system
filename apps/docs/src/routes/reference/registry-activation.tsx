@@ -74,6 +74,17 @@ const EXTRA_ACTIVATION_PRICE = 95_000;
 const WRONG_PRODUCT_ERROR =
   'این سریال برای «نگارش تست هوش ۴» نیست. سریال همین برنامه را وارد کنید.';
 
+const coerceSearchParam = (value: unknown): string | undefined => {
+  if (typeof value === 'string') {
+    const trimmed = value.trim();
+    return trimmed.length > 0 ? trimmed : undefined;
+  }
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return String(value);
+  }
+  return undefined;
+};
+
 export const Route = createFileRoute('/reference/registry-activation')({
   validateSearch: (
     search: Record<string, unknown>,
@@ -87,12 +98,10 @@ export const Route = createFileRoute('/reference/registry-activation')({
     ) {
       out.state = search.state;
     }
-    if (typeof search.s === 'string' && search.s.trim().length > 0) {
-      out.s = search.s;
-    }
-    if (typeof search.code === 'string' && search.code.trim().length > 0) {
-      out.code = search.code;
-    }
+    const serialParam = coerceSearchParam(search.s);
+    if (serialParam !== undefined) out.s = serialParam;
+    const codeParam = coerceSearchParam(search.code);
+    if (codeParam !== undefined) out.code = codeParam;
     return out;
   },
   head: () => ({ meta: [{ title: 'فعال‌سازی نرم‌افزار — بازسازی مرجع' }] }),

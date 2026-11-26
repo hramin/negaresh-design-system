@@ -41,6 +41,10 @@
     overflow: auto;
   }
 
+  .codePre {
+    margin: 0;
+  }
+
   .resultBox {
     padding: var(--nds-space-4);
     border: var(--nds-border-width-hairline) solid var(--nds-success-border);

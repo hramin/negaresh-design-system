@@ -456,9 +456,16 @@ function TanStackFormZodGuide() {
                   کپی کد
                 </CopyButton>
               </div>
-              <pre className={styles.codeBlock}>
-                <code>{ADAPTER_SNIPPET}</code>
-              </pre>
+              <section
+                className={styles.codeBlock}
+                aria-label="کد نمونهٔ آداپتور TanStack Form و Zod"
+                // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable regions must be keyboard-reachable
+                tabIndex={0}
+              >
+                <pre className={styles.codePre}>
+                  <code>{ADAPTER_SNIPPET}</code>
+                </pre>
+              </section>
             </div>
           </Section>
         </Surface>
