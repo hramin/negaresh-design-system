@@ -1,6 +1,6 @@
 # Components
 
-Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), and all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026); docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
+Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026), and P4 Wave 1 (Feedback and status) components are `approved` following owner confirmation on 25 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
 
 Every component documents: anatomy, props, all applicable states (default, hover, focus-visible, pressed, disabled, loading, invalid, empty, read-only), keyboard map, ARIA notes, RTL notes, do/don't, and a mobile example.
 
@@ -60,17 +60,17 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| InlineAlert | — | info, success, warning, danger; title, actions | all | review |
-| Banner | — | page-level, dismissible | all | review |
-| Toast, ToastRegion | `UNSTABLE_Toast*` (wrapped behind owned NDS API) | queue, actions, `role=status` | all | review |
-| Badge | — | neutral, accent, status; dot | all | review |
-| StatusBadge | Badge | domain maps: order, payment, serial, review, report, campaign | all | review |
-| ProgressBar, Meter | `ProgressBar`, `Meter` | determinate, indeterminate | all | review |
-| UsageMeter | `Meter` | segmented slots, source note, full state | R, T | review |
-| Spinner, GlobalLoadingBar | — | — | all | review |
-| Skeleton | — | text, block, table rows | all | review |
-| EmptyState | — | icon, title, text, action | all | review |
-| ErrorState / ErrorPage | — | 403, 404, 410, 500, maintenance | all | review |
+| InlineAlert | — | info, success, warning, danger; title, actions | all | approved |
+| Banner | — | page-level, dismissible | all | approved |
+| Toast, ToastRegion | `UNSTABLE_Toast*` (wrapped behind owned NDS API) | queue, actions, `role=status` | all | approved |
+| Badge | — | neutral, accent, status; dot | all | approved |
+| StatusBadge | Badge | domain maps: order, payment, serial, review, report, campaign | all | approved |
+| ProgressBar, Meter | `ProgressBar`, `Meter` | determinate, indeterminate | all | approved |
+| UsageMeter | `Meter` | segmented slots, source note, full state | R, T | approved |
+| Spinner, GlobalLoadingBar | — | — | all | approved |
+| Skeleton | — | text, block, table rows | all | approved |
+| EmptyState | — | icon, title, text, action | all | approved |
+| ErrorState / ErrorPage | — | 403, 404, 410, 500, maintenance | all | approved |
 
 ## Overlays (P4)
 
