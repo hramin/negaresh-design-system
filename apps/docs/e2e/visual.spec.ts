@@ -1,5 +1,5 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
-import { CHART_SLUGS, COMPONENT_SLUGS, THEMES } from './routes.ts';
+import { ASSESSMENT_SLUGS, CHART_SLUGS, COMPONENT_SLUGS, THEMES } from './routes.ts';
 
 /**
  * Visual snapshots of every states gallery (docs/quality.md): light/dark × 1440/390.
@@ -152,6 +152,18 @@ for (const theme of THEMES) {
       await open(page, `/charts/${slug}?theme=${theme}`);
       await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
       await snap(page.locator(`[data-gallery="chart-${slug}"]`), `chart-${slug}-${theme}.png`, true);
+    });
+  }
+
+  for (const slug of ASSESSMENT_SLUGS) {
+    test(`assessment gallery ${slug} (${theme})`, async ({ page }) => {
+      await open(page, `/assessment/${slug}?theme=${theme}`);
+      await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+      await snap(
+        page.locator(`[data-gallery="assessment-${slug}"]`),
+        `assessment-${slug}-${theme}.png`,
+        true,
+      );
     });
   }
 
@@ -720,3 +732,21 @@ for (const theme of THEMES) {
     });
   });
 }
+
+test.describe('A4 assessment print baselines', () => {
+  test('MMPI-Teen-13 professional A4 print layout', async ({ page, isMobile }) => {
+    test.skip(isMobile, 'A4 print baselines run on desktop viewport');
+    await page.setViewportSize({ width: 794, height: 1123 });
+    await open(page, '/reference/assessment-report?fixture=mmpi-teen-13&mode=professional');
+    await page.emulateMedia({ media: 'print' });
+    await snap(page.locator('[data-nds="PrintLayout"]'), 'assessment-print-mmpi-teen-13.png');
+  });
+
+  test('Wellbeing-8 calm A4 print layout', async ({ page, isMobile }) => {
+    test.skip(isMobile, 'A4 print baselines run on desktop viewport');
+    await page.setViewportSize({ width: 794, height: 1123 });
+    await open(page, '/reference/assessment-report?fixture=wellbeing-8&mode=calm');
+    await page.emulateMedia({ media: 'print' });
+    await snap(page.locator('[data-nds="PrintLayout"]'), 'assessment-print-wellbeing-8-calm.png');
+  });
+});

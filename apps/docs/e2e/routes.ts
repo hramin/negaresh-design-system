@@ -86,6 +86,16 @@ export const CHART_SLUGS = [
   'sparkline',
 ] as const;
 
+export const ASSESSMENT_SLUGS = [
+  'question-item',
+  'answer-flow',
+  'start-resume',
+  'result-overview',
+  'interpretation-block',
+  'report-status',
+  'print-layout',
+] as const;
+
 export const ROUTES = [
   '/',
   '/tokens',
@@ -95,6 +105,8 @@ export const ROUTES = [
   ...COMPONENT_SLUGS.map((s) => `/components/${s}`),
   '/charts',
   ...CHART_SLUGS.map((s) => `/charts/${s}`),
+  '/assessment',
+  ...ASSESSMENT_SLUGS.map((s) => `/assessment/${s}`),
   '/guides/tanstack-form-zod',
   '/reference/registry-activation',
   '/reference/registry-activation?state=error',
@@ -102,6 +114,8 @@ export const ROUTES = [
   '/reference/registry-activation?state=limit',
   '/reference/admin-serials',
   '/reference/admin-serials/N25AG-EMV0K',
+  '/reference/assessment-report',
+  '/reference/assessment-report?fixture=wellbeing-8&mode=calm',
 ] as const;
 
 export const THEMES = ['light', 'dark'] as const;
