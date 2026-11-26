@@ -61,6 +61,7 @@ test('Toast enqueues floating notifications with overlay shadow, runs actions, d
     await expect(toastRegion).toBeVisible();
     const liveToast = toastRegion.locator('[data-nds="Toast"]').first();
     await expect(liveToast).toContainText('سریال باطل شد');
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
 
     // Floating overlay shadow must be applied on Toast (D-77)
     const shadow = await liveToast.evaluate((el) => getComputedStyle(el).boxShadow);

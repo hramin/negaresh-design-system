@@ -1,9 +1,26 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 
 const example = (name: string) => `[data-interactive="${name}"]`;
 
 const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
+
+/**
+ * When a modal Dialog, Sheet, or Popover is open, React Aria's `ariaHideOutside`
+ * intentionally marks the background page (including `<main>` and `<h1>`) as `aria-hidden="true"`.
+ * Resting-page landmark and h1 coverage is enforced in `smoke.spec.ts`.
+ */
+const MODAL_OPEN_DISABLED_RULES = ['landmark-one-main', 'page-has-heading-one'];
+
+const settle = async (page: Page) => {
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      ),
+  );
+  await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
+};
 
 test('Dialog and AlertDialog trap focus, restore focus on Escape, adapt to bottom sheet on mobile, and pass axe while open', async ({
   page,
@@ -21,6 +38,7 @@ test('Dialog and AlertDialog trap focus, restore focus on Escape, adapt to botto
     const dialog = page.getByRole('dialog', { name: 'جزئیات فعال‌سازی سریال' });
     await expect(dialog).toBeVisible();
     await expect(page.locator('[data-nds="DialogModal"][data-entering]')).toHaveCount(0);
+    await settle(page);
 
     const modal = page.locator('[data-nds="DialogModal"]');
     const shadow = await modal.evaluate((el) => getComputedStyle(el).boxShadow);
@@ -51,8 +69,11 @@ test('Dialog and AlertDialog trap focus, restore focus on Escape, adapt to botto
     const focusInsideDialog = await dialog.evaluate((el) => el.contains(document.activeElement));
     expect(focusInsideDialog).toBe(true);
 
-    // Zero axe violations while Dialog is open
-    const axe = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
+    // Zero WCAG 2.2 AA violations while Dialog is open
+    const axe = await new AxeBuilder({ page })
+      .withTags(AXE_TAGS)
+      .disableRules(MODAL_OPEN_DISABLED_RULES)
+      .analyze();
     expect(axe.violations, `dialog open (${theme})`).toEqual([]);
 
     // Escape closes and restores focus to trigger
@@ -66,8 +87,12 @@ test('Dialog and AlertDialog trap focus, restore focus on Escape, adapt to botto
     const alertDialog = page.getByRole('alertdialog', { name: 'باطل کردن سریال؟' });
     await expect(alertDialog).toBeVisible();
     await expect(page.locator('[data-nds="AlertDialogModal"][data-entering]')).toHaveCount(0);
+    await settle(page);
 
-    const axeAlert = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
+    const axeAlert = await new AxeBuilder({ page })
+      .withTags(AXE_TAGS)
+      .disableRules(MODAL_OPEN_DISABLED_RULES)
+      .analyze();
     expect(axeAlert.violations, `alertdialog open (${theme})`).toEqual([]);
 
     await alertDialog.getByRole('button', { name: 'باطل شود' }).click();
@@ -97,6 +122,7 @@ test('Sheet / Drawer supports desktop side drawer and TopBar mobileMenu bottom d
       const drawer = page.getByRole('dialog', { name: 'بخش‌های رجیستری' });
       await expect(drawer).toBeVisible();
       await expect(page.locator('[data-nds="SheetModal"][data-entering]')).toHaveCount(0);
+      await settle(page);
 
       const modal = page.locator('[data-nds="SheetModal"]');
       const box = await modal.boundingBox();
@@ -106,7 +132,10 @@ test('Sheet / Drawer supports desktop side drawer and TopBar mobileMenu bottom d
         expect(Math.abs(box.y + box.height - viewport.height)).toBeLessThanOrEqual(2);
       }
 
-      const axe = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
+      const axe = await new AxeBuilder({ page })
+        .withTags(AXE_TAGS)
+        .disableRules(MODAL_OPEN_DISABLED_RULES)
+        .analyze();
       expect(axe.violations, `topbar sheet mobile (${theme})`).toEqual([]);
 
       await drawer.getByRole('link', { name: 'فعال‌سازی‌های من' }).click();
@@ -122,6 +151,7 @@ test('Sheet / Drawer supports desktop side drawer and TopBar mobileMenu bottom d
       const sheet = page.getByRole('dialog', { name: 'فیلتر فهرست سریال‌ها' });
       await expect(sheet).toBeVisible();
       await expect(page.locator('[data-nds="SheetModal"][data-entering]')).toHaveCount(0);
+      await settle(page);
 
       const modal = page.locator('[data-nds="SheetModal"]');
       const box = await modal.boundingBox();
@@ -132,7 +162,10 @@ test('Sheet / Drawer supports desktop side drawer and TopBar mobileMenu bottom d
         expect(Math.abs(box.height - viewport.height)).toBeLessThanOrEqual(2);
       }
 
-      const axe = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
+      const axe = await new AxeBuilder({ page })
+        .withTags(AXE_TAGS)
+        .disableRules(MODAL_OPEN_DISABLED_RULES)
+        .analyze();
       expect(axe.violations, `sheet desktop (${theme})`).toEqual([]);
 
       await page.keyboard.press('Escape');
@@ -156,11 +189,16 @@ test('Popover, Tooltip, and ContextualHelp open cleanly, meet touch targets, dis
 
     const popDialog = page.getByRole('dialog', { name: 'منبع سقف فعال‌سازی' });
     await expect(popDialog).toBeVisible();
+    await expect(page.locator('[data-nds="Popover"][data-entering]')).toHaveCount(0);
+    await settle(page);
     const popEl = page.locator('[data-nds="Popover"]');
     expect(await popEl.evaluate((el) => getComputedStyle(el).boxShadow)).not.toBe('none');
     await expect(page.locator('[data-nds="PopoverArrow"]')).toBeVisible();
 
-    const axePop = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
+    const axePop = await new AxeBuilder({ page })
+      .withTags(AXE_TAGS)
+      .disableRules(MODAL_OPEN_DISABLED_RULES)
+      .analyze();
     expect(axePop.violations, `popover open (${theme})`).toEqual([]);
 
     await page.keyboard.press('Escape');
@@ -175,6 +213,8 @@ test('Popover, Tooltip, and ContextualHelp open cleanly, meet touch targets, dis
     await tipTrigger.focus();
     const tooltip = page.getByRole('tooltip');
     await expect(tooltip).toBeVisible();
+    await expect(page.locator('[data-nds="Tooltip"][data-entering]')).toHaveCount(0);
+    await settle(page);
     await expect(tooltip).toContainText('کپی کد فعال‌سازی');
     expect(await tooltip.evaluate((el) => getComputedStyle(el).boxShadow)).not.toBe('none');
 
@@ -203,9 +243,14 @@ test('Popover, Tooltip, and ContextualHelp open cleanly, meet touch targets, dis
     await page.keyboard.press('Enter');
     const helpDialog = page.getByRole('dialog', { name: 'کد سیستم را از کجا پیدا کنیم؟' });
     await expect(helpDialog).toBeVisible();
+    await expect(page.locator('[data-nds="Popover"][data-entering]')).toHaveCount(0);
+    await settle(page);
     await expect(helpDialog.getByRole('link', { name: 'مشاهدهٔ راهنمای تصویری' })).toBeVisible();
 
-    const axeHelp = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
+    const axeHelp = await new AxeBuilder({ page })
+      .withTags(AXE_TAGS)
+      .disableRules(MODAL_OPEN_DISABLED_RULES)
+      .analyze();
     expect(axeHelp.violations, `contextual-help open (${theme})`).toEqual([]);
 
     await page.keyboard.press('Escape');
