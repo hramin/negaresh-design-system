@@ -1,6 +1,6 @@
 # Components
 
-Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026), and P4 Waves 1–2 (Feedback and status, Overlays, and standalone Display primitives) are `approved` following owner confirmation on 25 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
+Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026), P4 Waves 1–2 (Feedback and status, Overlays, and standalone Display primitives) are `approved` following owner confirmation on 25 Nov 2026, and P4 Wave 3 (Navigation) is `approved` following owner confirmation on 26 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
 
 Every component documents: anatomy, props, all applicable states (default, hover, focus-visible, pressed, disabled, loading, invalid, empty, read-only), keyboard map, ARIA notes, RTL notes, do/don't, and a mobile example.
 
@@ -88,15 +88,15 @@ Every component documents: anatomy, props, all applicable states (default, hover
 | --- | --- | --- | --- | --- |
 | TopBar, TopBarBrand, TopBarNav, TopBarNavLink | `Link` | logo slot, nav links, actions, optional `mobileMenu` slot (pulled forward in P2 follow-up; `Sheet` mobile drawer integrates in P4) | all | approved |
 | AccountPill | `Button` | masked phone / display name + avatar trigger for `TopBar`; required `aria-label`; 44 px mobile target (pulled forward in P2 follow-up; reused by P4 `UserMenu` and P6 `AccountShell`) | all | approved |
-| SideNav | `Link` + `Disclosure` | groups, badges, role-filtered; → TabStrip under 900 | R, N, T | review |
-| TabStrip (mobile nav) | `Link` / `Button` | scrollable | R, N, T | review |
-| Tabs | `Tabs` | horizontal, vertical (Ravanma leaf 3) | all | review |
-| Breadcrumbs | `Breadcrumbs` | collapse middle | N, T | review |
-| Pagination, LoadMore | `Link` / `Button` | server-rendered links | all | review |
-| Stepper | — | steps with done/current, `aria-current=step` | R, N, T | review |
-| Disclosure, Accordion | `Disclosure(Group)` | FAQ, syllabus | all | review |
-| UserMenu | `MenuTrigger` | composes `AccountPill` + `Menu`; adds roles and theme toggle | all | review |
-| Footer | — | link groups, legal | N, T | review |
+| SideNav | `Link` + `Disclosure` | groups, badges, role-filtered; → TabStrip under 900 | R, N, T | approved |
+| TabStrip (mobile nav) | `Link` / `Button` | scrollable | R, N, T | approved |
+| Tabs | `Tabs` | horizontal, vertical (Ravanma leaf 3) | all | approved |
+| Breadcrumbs | `Breadcrumbs` | collapse middle | N, T | approved |
+| Pagination, LoadMore | `Link` / `Button` | server-rendered links | all | approved |
+| Stepper | — | steps with done/current, `aria-current=step` | R, N, T | approved |
+| Disclosure, Accordion | `Disclosure(Group)` | FAQ, syllabus | all | approved |
+| UserMenu | `MenuTrigger` | composes `AccountPill` + `Menu`; adds roles and theme toggle | all | approved |
+| Footer | — | link groups, legal | N, T | approved |
 
 ## Data display (P4)
 
