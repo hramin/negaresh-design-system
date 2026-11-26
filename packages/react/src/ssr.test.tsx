@@ -89,6 +89,26 @@ import {
   EmptyState,
   ErrorState,
   ErrorPage,
+  DialogTrigger,
+  Dialog,
+  AlertDialog,
+  Sheet,
+  Drawer,
+  PopoverTrigger,
+  Popover,
+  TooltipTrigger,
+  Tooltip,
+  ContextualHelp,
+  Avatar,
+  AvatarGroup,
+  VerifiedBadge,
+  Card,
+  CardMedia,
+  CardBody,
+  CardFooter,
+  Image,
+  KeyValueList,
+  KeyValueItem,
 } from './index.ts';
 import { faMessages } from './messages/fa.ts';
 
@@ -259,6 +279,62 @@ describe('server rendering', () => {
                 />
                 <ErrorState status={404} actionHref="/" />
                 <ErrorPage status="maintenance" embedded headingLevel={2} />
+                <DialogTrigger>
+                  <Button>باز کردن پنجره</Button>
+                  <Dialog title="پنجرهٔ نمونه">متن پنجره</Dialog>
+                </DialogTrigger>
+                <DialogTrigger>
+                  <Button variant="danger">حذف</Button>
+                  <AlertDialog title="تأیید حذف" tone="danger">
+                    آیا مطمئن هستید؟
+                  </AlertDialog>
+                </DialogTrigger>
+                <DialogTrigger>
+                  <Button>کشو</Button>
+                  <Sheet title="کشوی نمونه" side="start">
+                    محتوای کشو
+                  </Sheet>
+                </DialogTrigger>
+                <DialogTrigger>
+                  <Button>کشو ۲</Button>
+                  <Drawer title="کشوی دوم" side="end">
+                    محتوای کشوی دوم
+                  </Drawer>
+                </DialogTrigger>
+                <PopoverTrigger>
+                  <Button>پاپ‌اور</Button>
+                  <Popover title="جزئیات">متن پاپ‌اور</Popover>
+                </PopoverTrigger>
+                <TooltipTrigger>
+                  <Button>تولتیپ</Button>
+                  <Tooltip>راهنمای کوتاه</Tooltip>
+                </TooltipTrigger>
+                <ContextualHelp title="راهنمای کد سیستم">توضیح کوتاه راهنما</ContextualHelp>
+                <AvatarGroup max={2} aria-label="اعضای تیم">
+                  <Avatar name="دکتر سارا رضایی" />
+                  <Avatar name="آرش نادری" />
+                  <Avatar name="مریم کاظمی" />
+                </AvatarGroup>
+                <VerifiedBadge licenceNumber="12485" />
+                <Card>
+                  <CardMedia>
+                    <Image
+                      src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>"
+                      alt="تصویر نمونه"
+                      ratio="16/9"
+                    />
+                  </CardMedia>
+                  <CardBody>بدنهٔ کارت</CardBody>
+                  <CardFooter tone="sunken">پاورقی کارت</CardFooter>
+                </Card>
+                <KeyValueList aria-label="مشخصات">
+                  <KeyValueItem
+                    label="شمارهٔ سریال"
+                    value="NGR-4920-8814"
+                    code
+                    copyValue="NGR49208814"
+                  />
+                </KeyValueList>
               </ToastProvider>
             </Stack>
           </Container>
@@ -329,6 +405,17 @@ describe('server rendering', () => {
       'EmptyState',
       'ErrorState',
       'ErrorPage',
+      'ContextualHelp',
+      'Avatar',
+      'AvatarGroup',
+      'VerifiedBadge',
+      'Card',
+      'CardMedia',
+      'CardBody',
+      'CardFooter',
+      'Image',
+      'KeyValueList',
+      'KeyValueItem',
     ]) {
       expect(html, name).toContain(`data-nds="${name}"`);
     }
@@ -344,6 +431,10 @@ describe('server rendering', () => {
     expect(html).toContain('۱ از ۱');
     expect(html).toContain('صفحهٔ مورد نظر پیدا نشد');
     expect(html).toContain('سامانه در حال به‌روزرسانی است');
+    expect(html).toContain('پروانهٔ تأییدشده');
+    expect(html).toContain('۱۲۴۸۵');
+    expect(html).toContain('س ر');
+    expect(html).toContain('+۱');
     expect(html).toContain('nonce="ssr-nonce"');
     expect(html).toContain('react-aria.i18n.strings');
     expect(html).toContain('بستن');

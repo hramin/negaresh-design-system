@@ -46,8 +46,8 @@ describe('Sheet / Drawer', () => {
     await userEvent.click(screen.getByRole('button', { name: 'بستن کشو' }));
     await waitFor(() => {
       expect(screen.queryByRole('dialog')).toBeNull();
+      expect(document.activeElement).toBe(trigger);
     });
-    expect(document.activeElement).toBe(trigger);
   });
 
   it('integrates with TopBar mobileMenu slot via Drawer alias with zero axe violations', async () => {
@@ -90,7 +90,7 @@ describe('Sheet / Drawer', () => {
     await userEvent.click(screen.getByRole('link', { name: 'فعال‌سازی‌های من' }));
     await waitFor(() => {
       expect(screen.queryByRole('dialog')).toBeNull();
+      expect(document.activeElement).toBe(menuButton);
     });
-    expect(document.activeElement).toBe(menuButton);
   });
 });

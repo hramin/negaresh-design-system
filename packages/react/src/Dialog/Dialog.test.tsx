@@ -43,8 +43,8 @@ describe('Dialog and AlertDialog', () => {
     await userEvent.keyboard('{Escape}');
     await waitFor(() => {
       expect(screen.queryByRole('dialog')).toBeNull();
+      expect(document.activeElement).toBe(trigger);
     });
-    expect(document.activeElement).toBe(trigger);
   });
 
   it('closes via the Persian close button and supports controlled open state', async () => {

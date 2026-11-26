@@ -67,3 +67,8 @@ export * from './Sheet/index.ts';
 export * from './Popover/index.ts';
 export * from './Tooltip/index.ts';
 export * from './ContextualHelp/index.ts';
+export * from './Avatar/index.ts';
+export * from './VerifiedBadge/index.ts';
+export * from './Card/index.ts';
+export * from './Image/index.ts';
+export * from './KeyValueList/index.ts';

@@ -1,0 +1,11 @@
+@layer nds.components {
+  .licence {
+    font-variant-numeric: tabular-nums;
+    opacity: 0.9;
+  }
+
+  .sep {
+    margin-inline: var(--nds-space-1);
+    opacity: 0.65;
+  }
+}
