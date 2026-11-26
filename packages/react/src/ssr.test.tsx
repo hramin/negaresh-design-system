@@ -74,6 +74,57 @@ import {
   OTPField,
   DropZone,
   FileUpload,
+  InlineAlert,
+  Banner,
+  Toast,
+  ToastProvider,
+  Badge,
+  StatusBadge,
+  ProgressBar,
+  Meter,
+  UsageMeter,
+  Spinner,
+  GlobalLoadingBar,
+  Skeleton,
+  EmptyState,
+  ErrorState,
+  ErrorPage,
+  DialogTrigger,
+  Dialog,
+  AlertDialog,
+  Sheet,
+  Drawer,
+  PopoverTrigger,
+  Popover,
+  TooltipTrigger,
+  Tooltip,
+  ContextualHelp,
+  Avatar,
+  AvatarGroup,
+  VerifiedBadge,
+  Card,
+  CardMedia,
+  CardBody,
+  CardFooter,
+  Image,
+  KeyValueList,
+  KeyValueItem,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanel,
+  TabStrip,
+  TabStripItem,
+  SideNav,
+  Breadcrumbs,
+  Pagination,
+  LoadMore,
+  Stepper,
+  Disclosure,
+  Accordion,
+  AccordionItem,
+  UserMenu,
+  Footer,
 } from './index.ts';
 import { faMessages } from './messages/fa.ts';
 
@@ -216,6 +267,163 @@ describe('server rendering', () => {
                   <MenuItem id="x">گزینه</MenuItem>
                 </Menu>
               </MenuTrigger>
+              <ToastProvider>
+                <InlineAlert tone="success" title="موفق" isDismissible>
+                  کد فعال‌سازی ساخته شد.
+                </InlineAlert>
+                <Banner tone="info" title="اطلاعیه" isDismissible>
+                  به‌روزرسانی سامانه انجام شد.
+                </Banner>
+                <Toast title="پیوند کپی شد" tone="neutral" />
+                <Badge tone="accent">باز شده از برنامه</Badge>
+                <StatusBadge domain="serial" status="limit_reached" />
+                <ProgressBar label="بارگذاری" value={64} />
+                <Meter label="مصرف حافظه" value={72} />
+                <UsageMeter
+                  label="رایانه‌های فعال‌شده"
+                  used={1}
+                  limit={1}
+                  sourceNote="سقف پیش‌فرض محصول"
+                />
+                <Spinner size="md" />
+                <GlobalLoadingBar isLoading position="static" />
+                <Skeleton variant="table" rows={2} columns={3} />
+                <EmptyState
+                  icon={iconLock}
+                  title="موردی وجود ندارد"
+                  description="هنوز داده‌ای ثبت نشده است."
+                />
+                <ErrorState status={404} actionHref="/" />
+                <ErrorPage status="maintenance" embedded headingLevel={2} />
+                <DialogTrigger>
+                  <Button>باز کردن پنجره</Button>
+                  <Dialog title="پنجرهٔ نمونه">متن پنجره</Dialog>
+                </DialogTrigger>
+                <DialogTrigger>
+                  <Button variant="danger">حذف</Button>
+                  <AlertDialog title="تأیید حذف" tone="danger">
+                    آیا مطمئن هستید؟
+                  </AlertDialog>
+                </DialogTrigger>
+                <DialogTrigger>
+                  <Button>کشو</Button>
+                  <Sheet title="کشوی نمونه" side="start">
+                    محتوای کشو
+                  </Sheet>
+                </DialogTrigger>
+                <DialogTrigger>
+                  <Button>کشو ۲</Button>
+                  <Drawer title="کشوی دوم" side="end">
+                    محتوای کشوی دوم
+                  </Drawer>
+                </DialogTrigger>
+                <PopoverTrigger>
+                  <Button>پاپ‌اور</Button>
+                  <Popover title="جزئیات">متن پاپ‌اور</Popover>
+                </PopoverTrigger>
+                <TooltipTrigger>
+                  <Button>تولتیپ</Button>
+                  <Tooltip>راهنمای کوتاه</Tooltip>
+                </TooltipTrigger>
+                <ContextualHelp title="راهنمای کد سیستم">توضیح کوتاه راهنما</ContextualHelp>
+                <AvatarGroup max={2} aria-label="اعضای تیم">
+                  <Avatar name="دکتر سارا رضایی" />
+                  <Avatar name="آرش نادری" />
+                  <Avatar name="مریم کاظمی" />
+                </AvatarGroup>
+                <VerifiedBadge licenceNumber="12485" />
+                <Card>
+                  <CardMedia>
+                    <Image
+                      src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>"
+                      alt="تصویر نمونه"
+                      ratio="16/9"
+                    />
+                  </CardMedia>
+                  <CardBody>بدنهٔ کارت</CardBody>
+                  <CardFooter tone="sunken">پاورقی کارت</CardFooter>
+                </Card>
+                <KeyValueList aria-label="مشخصات">
+                  <KeyValueItem
+                    label="شمارهٔ سریال"
+                    value="NGR-4920-8814"
+                    code
+                    copyValue="NGR49208814"
+                  />
+                </KeyValueList>
+                <SideNav
+                  aria-label="منوی پنل"
+                  userRoles={['customer']}
+                  groups={[
+                    {
+                      id: 'main',
+                      title: 'حساب من',
+                      items: [
+                        { id: 'act', label: 'فعال‌سازی‌ها', href: '#act', isCurrent: true, badge: 3 },
+                      ],
+                    },
+                  ]}
+                />
+                <TabStrip aria-label="بخش‌های سریع">
+                  <TabStripItem href="#a" isCurrent>
+                    نمای کلی
+                  </TabStripItem>
+                </TabStrip>
+                <Tabs defaultSelectedKey="t1">
+                  <TabList aria-label="زبانه‌ها">
+                    <Tab id="t1">مشخصات</Tab>
+                    <Tab id="t2">سابقه</Tab>
+                  </TabList>
+                  <TabPanel id="t1">محتوای مشخصات</TabPanel>
+                  <TabPanel id="t2">محتوای سابقه</TabPanel>
+                </Tabs>
+                <Breadcrumbs
+                  maxItems={3}
+                  items={[
+                    { id: 'home', label: 'خانه', href: '/' },
+                    { id: 'tests', label: 'آزمون‌ها', href: '/tests' },
+                    { id: 'clinical', label: 'بالینی', href: '/tests/clinical' },
+                    { id: 'neo', label: 'آزمون نئو' },
+                  ]}
+                />
+                <Pagination page={2} totalPages={9} getPageHref={(p) => `?page=${p}`} showSummary />
+                <LoadMore loaded={20} total={50} href="?page=2" />
+                <Stepper
+                  currentStep={2}
+                  steps={[
+                    { id: 's1', title: 'گام اول' },
+                    { id: 's2', title: 'گام دوم' },
+                    { id: 's3', title: 'گام سوم' },
+                  ]}
+                />
+                <Disclosure title="راهنمای فعال‌سازی" variant="plain" alwaysExpandedAbove="md">
+                  توضیحات راهنما
+                </Disclosure>
+                <Accordion defaultExpandedKeys={['faq1']}>
+                  <AccordionItem id="faq1" title="پرسش اول">
+                    پاسخ اول
+                  </AccordionItem>
+                </Accordion>
+                <UserMenu
+                  label="۰۹۱۲ ••• ۴۵۶۷"
+                  ltr
+                  aria-label="حساب کاربری"
+                  name="سارا رضایی"
+                  showThemeToggle
+                  items={[{ id: 'act', label: 'فعال‌سازی‌های من' }]}
+                />
+                <Footer
+                  brand={<LogoSlot name="نگارش برتر" product="رجیستری" />}
+                  groups={[
+                    {
+                      id: 'g1',
+                      title: 'پیوندها',
+                      links: [{ id: 'l1', label: 'پشتیبانی', href: '/support' }],
+                    },
+                  ]}
+                  copyright="© ۱۴۰۵ نگارش برتر"
+                />
+              </ToastProvider>
             </Stack>
           </Container>
         </ThemeProvider>
@@ -272,6 +480,48 @@ describe('server rendering', () => {
       'OTPField',
       'DropZone',
       'FileUpload',
+      'InlineAlert',
+      'Banner',
+      'Toast',
+      'Badge',
+      'ProgressBar',
+      'Meter',
+      'UsageMeter',
+      'Spinner',
+      'GlobalLoadingBar',
+      'Skeleton',
+      'EmptyState',
+      'ErrorState',
+      'ErrorPage',
+      'ContextualHelp',
+      'Avatar',
+      'AvatarGroup',
+      'VerifiedBadge',
+      'Card',
+      'CardMedia',
+      'CardBody',
+      'CardFooter',
+      'Image',
+      'KeyValueList',
+      'KeyValueItem',
+      'SideNav',
+      'SideNavGroup',
+      'SideNavItem',
+      'TabStrip',
+      'TabStripItem',
+      'Tabs',
+      'TabList',
+      'Tab',
+      'TabPanel',
+      'Breadcrumbs',
+      'BreadcrumbItem',
+      'Pagination',
+      'LoadMore',
+      'Stepper',
+      'StepperStep',
+      'Disclosure',
+      'Accordion',
+      'Footer',
     ]) {
       expect(html, name).toContain(`data-nds="${name}"`);
     }
@@ -283,6 +533,17 @@ describe('server rendering', () => {
     expect(html).toContain('رقم ۱ از ۶');
     expect(html).toContain('ارسال دوباره تا ۳۰ ثانیهٔ دیگر');
     expect(html).toContain('serials.csv');
+    expect(html).toContain('سقف پر شده');
+    expect(html).toContain('۱ از ۱');
+    expect(html).toContain('صفحهٔ مورد نظر پیدا نشد');
+    expect(html).toContain('سامانه در حال به‌روزرسانی است');
+    expect(html).toContain('پروانهٔ تأییدشده');
+    expect(html).toContain('۱۲۴۸۵');
+    expect(html).toContain('س ر');
+    expect(html).toContain('+۱');
+    expect(html).toContain('صفحهٔ ۲ از ۹');
+    expect(html).toContain('نمایش ۲۰ از ۵۰ مورد');
+    expect(html).toContain('aria-current="step"');
     expect(html).toContain('nonce="ssr-nonce"');
     expect(html).toContain('react-aria.i18n.strings');
     expect(html).toContain('بستن');

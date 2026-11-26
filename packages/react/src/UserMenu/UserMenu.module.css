@@ -1,0 +1,43 @@
+@layer nds.components {
+  .triggerAvatar {
+    border: 0;
+  }
+
+  .menu {
+    min-inline-size: calc(var(--nds-space-24) * 2.4);
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-space-3);
+    padding-block: var(--nds-space-1);
+    text-transform: none;
+  }
+
+  .headerText {
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+  }
+
+  .headerName {
+    color: var(--nds-fg-default);
+    font-size: var(--nds-text-sm);
+    font-weight: var(--nds-weight-semibold);
+    line-height: var(--nds-leading-ui);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .headerSubtitle {
+    color: var(--nds-fg-subtle);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-regular);
+    line-height: var(--nds-leading-ui);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

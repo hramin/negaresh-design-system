@@ -1,0 +1,111 @@
+@layer nds.components {
+  .alert {
+    --_bg: var(--nds-info-bg);
+    --_fg: var(--nds-info-fg);
+    --_border: var(--nds-info-border);
+
+    display: flex;
+    align-items: flex-start;
+    gap: var(--nds-space-3);
+    min-inline-size: 0;
+    padding: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--_border);
+    border-radius: var(--nds-radius-md);
+    background: var(--_bg);
+    color: var(--_fg);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-text);
+  }
+
+  .alert[data-tone="info"] {
+    --_bg: var(--nds-info-bg);
+    --_fg: var(--nds-info-fg);
+    --_border: var(--nds-info-border);
+  }
+
+  .alert[data-tone="success"] {
+    --_bg: var(--nds-success-bg);
+    --_fg: var(--nds-success-fg);
+    --_border: var(--nds-success-border);
+  }
+
+  .alert[data-tone="warning"] {
+    --_bg: var(--nds-warning-bg);
+    --_fg: var(--nds-warning-fg);
+    --_border: var(--nds-warning-border);
+  }
+
+  .alert[data-tone="danger"] {
+    --_bg: var(--nds-danger-bg);
+    --_fg: var(--nds-danger-fg);
+    --_border: var(--nds-danger-border);
+  }
+
+  .icon {
+    display: inline-flex;
+    flex: none;
+    margin-block-start: calc(var(--nds-space-1) / 2);
+    color: var(--_fg);
+  }
+
+  .body {
+    display: grid;
+    flex: 1 1 auto;
+    gap: var(--nds-space-1);
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .title {
+    margin: 0;
+    font-size: var(--nds-text-sm);
+    font-weight: var(--nds-weight-bold);
+    line-height: var(--nds-leading-ui);
+    color: var(--_fg);
+  }
+
+  .content {
+    color: var(--_fg);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--nds-space-2);
+    margin-block-start: var(--nds-space-2);
+  }
+
+  .dismiss {
+    flex: none;
+    margin-block: calc(var(--nds-space-2) * -1);
+    margin-inline-end: calc(var(--nds-space-2) * -1);
+    color: var(--_fg);
+  }
+
+  .dismiss[data-hovered],
+  .dismiss[data-pressed] {
+    background: color-mix(in srgb, currentColor 12%, transparent);
+    color: var(--_fg);
+  }
+
+  @media (prefers-contrast: more) {
+    .alert {
+      border-width: var(--nds-border-width-thick);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .alert {
+      border-color: CanvasText;
+      color: CanvasText;
+    }
+
+    .icon,
+    .title,
+    .content,
+    .dismiss {
+      color: CanvasText;
+    }
+  }
+}

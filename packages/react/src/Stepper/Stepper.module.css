@@ -1,0 +1,190 @@
+@layer nds.components {
+  .list {
+    display: grid;
+    gap: var(--nds-space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-inline-size: 0;
+  }
+
+  .list[data-orientation="horizontal"] {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--nds-space-3);
+  }
+
+  .step {
+    position: relative;
+    display: grid;
+    grid-template-columns: calc(var(--nds-space-6) + var(--nds-space-1)) minmax(0, 1fr);
+    gap: var(--nds-space-3);
+    align-items: start;
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-text);
+    min-inline-size: 0;
+  }
+
+  .list[data-orientation="horizontal"] .step {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+  }
+
+  .head {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-space-3);
+    inline-size: 100%;
+  }
+
+  .connector {
+    display: none;
+  }
+
+  .list[data-orientation="horizontal"] .connector {
+    display: block;
+    flex: 1 1 auto;
+    block-size: var(--nds-border-width-hairline);
+    background: var(--nds-border-default);
+  }
+
+  .list[data-orientation="horizontal"] .step:last-child .connector {
+    display: none;
+  }
+
+  .list[data-orientation="horizontal"] .step[data-status="done"] .connector {
+    background: var(--nds-accent-default);
+  }
+
+  .indicator {
+    display: grid;
+    flex: none;
+    place-items: center;
+    inline-size: calc(var(--nds-space-6) + var(--nds-space-1));
+    block-size: calc(var(--nds-space-6) + var(--nds-space-1));
+    margin-block-start: calc(var(--nds-space-1) / 2);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-control);
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-bg-surface);
+    color: var(--nds-fg-default);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-bold);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .list[data-orientation="horizontal"] .indicator {
+    margin-block-start: 0;
+  }
+
+  .step[data-status="done"] .indicator {
+    border-color: var(--nds-accent-default);
+    background: var(--nds-accent-default);
+    color: var(--nds-accent-on);
+  }
+
+  .step[data-status="current"] .indicator {
+    border-width: var(--nds-border-width-thick);
+    border-color: var(--nds-accent-default);
+    background: var(--nds-accent-subtle);
+    color: var(--nds-accent-fg);
+  }
+
+  .content {
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .title {
+    color: var(--nds-fg-default);
+    font-weight: var(--nds-weight-semibold);
+  }
+
+  .step[data-status="current"] .title {
+    color: var(--nds-accent-fg);
+    font-weight: var(--nds-weight-bold);
+  }
+
+  .description {
+    color: var(--nds-fg-muted);
+  }
+
+  .inlineLead {
+    color: var(--nds-fg-default);
+    font-weight: var(--nds-weight-semibold);
+  }
+
+  .action {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--nds-touch);
+    margin-block: calc(var(--nds-space-2) * -1);
+    padding: 0;
+    border: 0;
+    border-radius: var(--nds-radius-sm);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .action[data-hovered] .title {
+    color: var(--nds-accent-fg);
+    text-decoration: underline;
+    text-underline-offset: var(--nds-space-1);
+  }
+
+  .action[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  @media (width < 600px) {
+    .list[data-orientation="horizontal"] {
+      display: grid;
+      gap: var(--nds-space-4);
+    }
+
+    .list[data-orientation="horizontal"] .step {
+      display: grid;
+      grid-template-columns: calc(var(--nds-space-6) + var(--nds-space-1)) minmax(0, 1fr);
+      gap: var(--nds-space-3);
+    }
+
+    .list[data-orientation="horizontal"] .head {
+      inline-size: auto;
+    }
+
+    .list[data-orientation="horizontal"] .connector {
+      display: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .indicator {
+      border-color: CanvasText;
+      color: CanvasText;
+    }
+
+    .step[data-status="done"] .indicator {
+      border-color: Highlight;
+      background: Highlight;
+      color: HighlightText;
+    }
+
+    .step[data-status="current"] .indicator {
+      border-color: Highlight;
+      color: Highlight;
+    }
+
+    .action[data-focus-visible] {
+      outline-color: Highlight;
+    }
+  }
+}

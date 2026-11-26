@@ -81,6 +81,138 @@ export const faMessages: NdsMessages = {
   fileUploadTooMany: (maxFiles) =>
     `حداکثر ${toPersianDigits(maxFiles)} پرونده می‌توانید انتخاب کنید.`,
   fileSize: formatPersianFileSize,
+  dismiss: 'بستن',
+  dismissAlert: 'بستن پیام',
+  dismissBanner: 'بستن اعلان صفحه',
+  toastRegionLabel: 'اعلان‌ها',
+  loading: 'در حال بارگذاری…',
+  globalLoadingLabel: 'در حال بارگذاری صفحه',
+  toneInfo: 'اطلاع',
+  toneSuccess: 'موفق',
+  toneWarning: 'هشدار',
+  toneDanger: 'خطا',
+  usageOf: (used, limit) =>
+    `${formatNumber(used, { maximumFractionDigits: 0 })} از ${formatNumber(limit, { maximumFractionDigits: 0 })}`,
+  usageFull: 'سقف پر شده است',
+  statusLabels: {
+    order: {
+      awaiting_payment: 'در انتظار پرداخت',
+      paid: 'پرداخت‌شده',
+      processing: 'در حال آماده‌سازی',
+      shipped: 'ارسال‌شده',
+      completed: 'تکمیل‌شده',
+      cancelled: 'لغوشده',
+      refunded: 'بازگشت وجه',
+    },
+    payment: {
+      pending: 'در انتظار',
+      paid: 'موفق',
+      failed: 'ناموفق',
+      cancelled: 'لغوشده',
+      refunded: 'مستردشده',
+    },
+    serial: {
+      active: 'فعال',
+      unused: 'استفاده‌نشده',
+      limit_reached: 'سقف پر شده',
+      revoked: 'باطل‌شده',
+      expired: 'منقضی‌شده',
+    },
+    review: {
+      draft: 'پیش‌نویس',
+      submitted: 'ارسال‌شده برای بررسی',
+      changes_requested: 'نیاز به اصلاح',
+      scheduled: 'زمان‌بندی‌شده',
+      published: 'منتشرشده',
+      unpublished: 'خارج از انتشار',
+    },
+    report: {
+      none: 'ساخته‌نشده',
+      pending: 'در حال آماده‌سازی',
+      ready: 'آماده',
+      failed: 'ناموفق',
+      purged: 'حذف‌شده',
+    },
+    campaign: {
+      draft: 'پیش‌نویس',
+      active: 'فعال',
+      full: 'تکمیل ظرفیت',
+      closed: 'بسته',
+      expired: 'منقضی‌شده',
+    },
+  },
+  errorPresets: {
+    403: {
+      code: '۴۰۳',
+      title: 'دسترسی به این بخش مجاز نیست',
+      description:
+        'حساب کاربری شما اجازهٔ مشاهدهٔ این صفحه را ندارد. اگر تصور می‌کنید این محدودیت اشتباه است، با پشتیبانی تماس بگیرید.',
+      actionLabel: 'بازگشت به صفحهٔ اصلی',
+    },
+    404: {
+      code: '۴۰۴',
+      title: 'صفحهٔ مورد نظر پیدا نشد',
+      description:
+        'نشانی واردشده ممکن است تغییر کرده یا حذف شده باشد. می‌توانید به صفحهٔ اصلی برگردید یا دوباره جست‌وجو کنید.',
+      actionLabel: 'بازگشت به صفحهٔ اصلی',
+    },
+    410: {
+      code: '۴۱۰',
+      title: 'این صفحه دیگر در دسترس نیست',
+      description:
+        'محتوای این نشانی به صورت دائمی برداشته شده یا مهلت دسترسی به آن به پایان رسیده است.',
+      actionLabel: 'بازگشت به صفحهٔ اصلی',
+    },
+    500: {
+      code: '۵۰۰',
+      title: 'مشکلی در سرور پیش آمده است',
+      description:
+        'در پردازش درخواست شما خطایی رخ داد. چند لحظهٔ دیگر دوباره تلاش کنید یا در صورت تکرار با پشتیبانی تماس بگیرید.',
+      actionLabel: 'تلاش دوباره',
+    },
+    maintenance: {
+      code: 'به‌روزرسانی',
+      title: 'سامانه در حال به‌روزرسانی است',
+      description:
+        'برای بهبود خدمات، سامانه به طور موقت در دسترس نیست. به‌زودی دوباره در خدمت شما هستیم.',
+      actionLabel: 'بررسی دوباره',
+    },
+  },
+  closeDialog: 'بستن پنجره',
+  closeSheet: 'بستن کشو',
+  confirm: 'تأیید',
+  cancel: 'انصراف',
+  contextualHelpLabel: 'راهنما',
+  verifiedExpert: 'پروانهٔ تأییدشده',
+  avatarOverflow: (count) => `+${formatNumber(count, { maximumFractionDigits: 0 })}`,
+  avatarOverflowLabel: (count) =>
+    `${formatNumber(count, { maximumFractionDigits: 0 })} نفر دیگر`,
+  copyValue: (label) => `کپی ${label}`,
+  sideNavLabel: 'منوی کناری',
+  tabStripLabel: 'ناوبری بخش‌ها',
+  breadcrumbsLabel: 'مسیر راهنما',
+  breadcrumbsExpand: 'نمایش مسیرهای میانی',
+  paginationLabel: 'صفحه‌بندی',
+  paginationPrevious: 'صفحهٔ قبل',
+  paginationNext: 'صفحهٔ بعد',
+  paginationPage: (page) => `صفحهٔ ${formatNumber(page, { maximumFractionDigits: 0 })}`,
+  paginationPageOf: (page, total) =>
+    `صفحهٔ ${formatNumber(page, { maximumFractionDigits: 0 })} از ${formatNumber(total, { maximumFractionDigits: 0 })}`,
+  loadMore: 'نمایش موارد بیشتر',
+  loadMoreShowing: (loaded, total) =>
+    `نمایش ${formatNumber(loaded, { maximumFractionDigits: 0 })} از ${formatNumber(total, { maximumFractionDigits: 0 })} مورد`,
+  stepperLabel: 'مراحل',
+  stepCompleted: 'انجام‌شده',
+  stepCurrent: 'مرحلهٔ فعلی',
+  stepUpcoming: 'مرحلهٔ بعدی',
+  userMenuLabel: 'منوی حساب کاربری',
+  userMenuRolesTitle: 'نقش کاربری',
+  userMenuThemeTitle: 'نمایهٔ رنگ',
+  themeLight: 'روشن',
+  themeDark: 'تیره',
+  themeSystem: 'خودکار (سیستم)',
+  signOut: 'خروج از حساب',
+  footerLabel: 'پاورقی',
 };
 
 export {
