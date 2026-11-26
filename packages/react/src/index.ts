@@ -62,3 +62,5 @@ export * from './Spinner/index.ts';
 export * from './Skeleton/index.ts';
 export * from './EmptyState/index.ts';
 export * from './ErrorPage/index.ts';
+export * from './Dialog/index.ts';
+export * from './Sheet/index.ts';
