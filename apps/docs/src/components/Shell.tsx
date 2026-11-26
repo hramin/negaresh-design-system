@@ -1,6 +1,7 @@
 import { SkipLink, ToggleButton, ToggleButtonGroup, useTheme } from '@negaresh/react';
 import { Link } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
+import { ASSESSMENT_DOCS } from '../docs/assessment/registry.tsx';
 import { CHART_DOCS } from '../docs/charts/registry.tsx';
 import { COMPONENT_DOCS } from '../docs/registry.tsx';
 import { m } from '../lib/messages.ts';
@@ -46,6 +47,17 @@ const NAV: {
     ],
   },
   {
+    title: m.navGroups.assessment,
+    items: [
+      { to: '/assessment', label: m.nav.assessment },
+      ...ASSESSMENT_DOCS.map((d) => ({
+        to: '/assessment/$slug',
+        params: { slug: d.slug },
+        label: d.title,
+      })),
+    ],
+  },
+  {
     title: m.navGroups.guides,
     items: [{ to: '/guides/tanstack-form-zod', label: m.nav.formAdapter }],
   },
@@ -59,6 +71,7 @@ const NAV: {
         params: { serial: 'N25AG-EMV0K' },
         label: m.nav.adminSerialDetail,
       },
+      { to: '/reference/assessment-report', label: m.nav.assessmentReport },
     ],
   },
 ];

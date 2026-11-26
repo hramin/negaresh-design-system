@@ -130,20 +130,20 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 ## Assessment kit — `@negaresh/assessment` (P5)
 
-| Component | Notes |
-| --- | --- |
-| QuestionItem | stem as legend, options as radio group; 2/4/6, Likert (5/7), forced choice; image options |
-| AnswerPage | n questions per page, validation per page, unanswered summary |
-| AnswerProgress | «صفحهٔ n از N» + bar, announced |
-| StartForm | demographics from schema (choice, number, text, Jalali date) |
-| ResumeOrRestart | one unfinished attempt per test |
-| ResultSummary | headline, type/profile/index |
-| ScoreTable | items with value, band, severity word |
-| InterpretationBlock | by section and severity; pro and calm variants |
-| ResultChart | chart spec → charts package |
-| ReportStatus | none, pending, ready, failed, purged; retry |
-| PrintLayout (A4) | header, chart, table, interpretation, footer note; 14 × 10 mm margins |
-| SubmittedPage | campaign "you can close this page" |
+| Component | Base | Notes | Products | Status |
+| --- | --- | --- | --- | --- |
+| QuestionItem | `fieldset` + `legend` + RAC `RadioGroup` | Stem as `<legend>`, real `<input type="radio">` option chips; 2/4/6 choices, Likert (5/7), forced choice, image options with required `alt` (`/assessment/question-item`) | T, V | review |
+| AnswerPage | `QuestionItem` + `AnswerProgress` + `FormErrorSummary` | `n` questions per page, per-page required validation, unanswered summary with direct jump-to-radio focus, RTL page navigation (`/assessment/answer-flow`) | T, V | review |
+| AnswerProgress | `ProgressBar` | «صفحهٔ n از N» + determinate bar, polite `role="status"` live announcement on page change (`/assessment/answer-flow`) | T, V | review |
+| StartForm | `TextField`, `NumberField`, `Select`/`RadioGroup`, Jalali `DatePicker` | Schema-driven demographics (`choice`, `number`, `text`, `jalali-date`), campaign blocker states (`not_on_roster`, `already_taken`, `seats_full`, `closed`, `expired`), error summary (`/assessment/start-resume`) | T, V | review |
+| ResumeOrRestart | `ProgressBar`, `KeyValueList`, `AlertDialog` | One unfinished attempt per test; Jalali last-saved & expiry timestamps; destructive restart guarded by `AlertDialog` (`/assessment/start-resume`) | T, V | review |
+| ResultSummary | `Badge`, `InlineAlert`, `Code` | Headline, `profile`/`type`/`index`/`themes` kinds, Jalali completion metadata, validity callout; `professional` and `calm` (zero rose/danger) modes (`/assessment/result-overview`) | T, V | review |
+| ScoreTable | `Badge`, `Code` | Grouped scale rows with Persian tabular digits, optional raw score & confidence interval, severity word + icon; `professional` and `calm` (zero rose/danger) modes (`/assessment/result-overview`) | T, V | review |
+| InterpretationBlock | `Badge`, `Code` | Interpretation sections grouped by section, validity, and severity with recommendations; `professional` and `calm` (zero rose/danger) variants (`/assessment/interpretation-block`) | T, V | review |
+| ResultChart | `@negaresh/charts` `ChartFrame` | Declarative `/api/v1` chart spec adapter (`profile-line`, `interval-bar`, `bar`, `radar`, `gauge`) with automatic table/legend builders and `calm`/`professional` propagation (`/assessment/result-overview`) | T, V | review |
+| ReportStatus | `StatusBadge(domain="report")`, `Spinner`, `InlineAlert` | All 5 report lifecycle states (`none`, `pending`, `ready`, `failed`, `purged`) with Jalali retention timestamps, download/print actions, and retry (`/assessment/report-status`) | T, V | review |
+| PrintLayout (A4) | `@page` A4 (14 × 10 mm) + `LogoSlot` | Header, charts, score table, interpretation, confidentiality footer; `break-inside: avoid`, automatic light-paper print fidelity, Playwright A4 PDF & screen-vs-print parity (`/assessment/print-layout`, `/reference/assessment-report`) | T, N, V | review |
+| SubmittedPage | `Icon`, `Code` | Stripped campaign completion confirmation («می‌توانید این صفحه را ببندید»), Jalali submission timestamp, LTR tracking code (`/assessment/report-status`) | T, V | review |
 
 ## Patterns — `@negaresh/patterns` (P6)
 

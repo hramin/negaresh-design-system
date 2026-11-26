@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HealthzRouteImport } from './routes/healthz'
 import { Route as TokensRouteImport } from './routes/tokens'
+import { Route as AssessmentIndexRouteImport } from './routes/assessment/index'
+import { Route as AssessmentSlugRouteImport } from './routes/assessment/$slug'
 import { Route as ChartsIndexRouteImport } from './routes/charts/index'
 import { Route as ChartsSlugRouteImport } from './routes/charts/$slug'
 import { Route as ComponentsIndexRouteImport } from './routes/components/index'
@@ -19,6 +21,7 @@ import { Route as ComponentsSlugRouteImport } from './routes/components/$slug'
 import { Route as FoundationsColorRouteImport } from './routes/foundations/color'
 import { Route as FoundationsIconsRouteImport } from './routes/foundations/icons'
 import { Route as GuidesTanstackFormZodRouteImport } from './routes/guides/tanstack-form-zod'
+import { Route as ReferenceAssessmentReportRouteImport } from './routes/reference/assessment-report'
 import { Route as ReferenceRegistryActivationRouteImport } from './routes/reference/registry-activation'
 import { Route as ReferenceAdminSerialsIndexRouteImport } from './routes/reference/admin-serials/index'
 import { Route as ReferenceAdminSerialsSerialRouteImport } from './routes/reference/admin-serials/$serial'
@@ -36,6 +39,16 @@ const HealthzRoute = HealthzRouteImport.update({
 const TokensRoute = TokensRouteImport.update({
   id: '/tokens',
   path: '/tokens',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssessmentIndexRoute = AssessmentIndexRouteImport.update({
+  id: '/assessment/',
+  path: '/assessment/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssessmentSlugRoute = AssessmentSlugRouteImport.update({
+  id: '/assessment/$slug',
+  path: '/assessment/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChartsIndexRoute = ChartsIndexRouteImport.update({
@@ -73,6 +86,12 @@ const GuidesTanstackFormZodRoute = GuidesTanstackFormZodRouteImport.update({
   path: '/guides/tanstack-form-zod',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReferenceAssessmentReportRoute =
+  ReferenceAssessmentReportRouteImport.update({
+    id: '/reference/assessment-report',
+    path: '/reference/assessment-report',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ReferenceRegistryActivationRoute =
   ReferenceRegistryActivationRouteImport.update({
     id: '/reference/registry-activation',
@@ -96,12 +115,15 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
+  '/assessment/$slug': typeof AssessmentSlugRoute
   '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
   '/foundations/icons': typeof FoundationsIconsRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
+  '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/assessment/': typeof AssessmentIndexRoute
   '/charts/': typeof ChartsIndexRoute
   '/components/': typeof ComponentsIndexRoute
   '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
@@ -111,12 +133,15 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
+  '/assessment/$slug': typeof AssessmentSlugRoute
   '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
   '/foundations/icons': typeof FoundationsIconsRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
+  '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/assessment': typeof AssessmentIndexRoute
   '/charts': typeof ChartsIndexRoute
   '/components': typeof ComponentsIndexRoute
   '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
@@ -127,12 +152,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/healthz': typeof HealthzRoute
   '/tokens': typeof TokensRoute
+  '/assessment/$slug': typeof AssessmentSlugRoute
   '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
   '/foundations/icons': typeof FoundationsIconsRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
+  '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/assessment/': typeof AssessmentIndexRoute
   '/charts/': typeof ChartsIndexRoute
   '/components/': typeof ComponentsIndexRoute
   '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
@@ -144,12 +172,15 @@ export interface FileRouteTypes {
     | '/'
     | '/healthz'
     | '/tokens'
+    | '/assessment/$slug'
     | '/charts/$slug'
     | '/components/$slug'
     | '/foundations/color'
     | '/foundations/icons'
     | '/guides/tanstack-form-zod'
+    | '/reference/assessment-report'
     | '/reference/registry-activation'
+    | '/assessment/'
     | '/charts/'
     | '/components/'
     | '/reference/admin-serials/$serial'
@@ -159,12 +190,15 @@ export interface FileRouteTypes {
     | '/'
     | '/healthz'
     | '/tokens'
+    | '/assessment/$slug'
     | '/charts/$slug'
     | '/components/$slug'
     | '/foundations/color'
     | '/foundations/icons'
     | '/guides/tanstack-form-zod'
+    | '/reference/assessment-report'
     | '/reference/registry-activation'
+    | '/assessment'
     | '/charts'
     | '/components'
     | '/reference/admin-serials/$serial'
@@ -174,12 +208,15 @@ export interface FileRouteTypes {
     | '/'
     | '/healthz'
     | '/tokens'
+    | '/assessment/$slug'
     | '/charts/$slug'
     | '/components/$slug'
     | '/foundations/color'
     | '/foundations/icons'
     | '/guides/tanstack-form-zod'
+    | '/reference/assessment-report'
     | '/reference/registry-activation'
+    | '/assessment/'
     | '/charts/'
     | '/components/'
     | '/reference/admin-serials/$serial'
@@ -190,12 +227,15 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HealthzRoute: typeof HealthzRoute
   TokensRoute: typeof TokensRoute
+  AssessmentSlugRoute: typeof AssessmentSlugRoute
   ChartsSlugRoute: typeof ChartsSlugRoute
   ComponentsSlugRoute: typeof ComponentsSlugRoute
   FoundationsColorRoute: typeof FoundationsColorRoute
   FoundationsIconsRoute: typeof FoundationsIconsRoute
   GuidesTanstackFormZodRoute: typeof GuidesTanstackFormZodRoute
+  ReferenceAssessmentReportRoute: typeof ReferenceAssessmentReportRoute
   ReferenceRegistryActivationRoute: typeof ReferenceRegistryActivationRoute
+  AssessmentIndexRoute: typeof AssessmentIndexRoute
   ChartsIndexRoute: typeof ChartsIndexRoute
   ComponentsIndexRoute: typeof ComponentsIndexRoute
   ReferenceAdminSerialsSerialRoute: typeof ReferenceAdminSerialsSerialRoute
@@ -223,6 +263,20 @@ declare module '@tanstack/react-router' {
       path: '/tokens'
       fullPath: '/tokens'
       preLoaderRoute: typeof TokensRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assessment/': {
+      id: '/assessment/'
+      path: '/assessment'
+      fullPath: '/assessment/'
+      preLoaderRoute: typeof AssessmentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assessment/$slug': {
+      id: '/assessment/$slug'
+      path: '/assessment/$slug'
+      fullPath: '/assessment/$slug'
+      preLoaderRoute: typeof AssessmentSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/charts/': {
@@ -274,6 +328,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesTanstackFormZodRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reference/assessment-report': {
+      id: '/reference/assessment-report'
+      path: '/reference/assessment-report'
+      fullPath: '/reference/assessment-report'
+      preLoaderRoute: typeof ReferenceAssessmentReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reference/registry-activation': {
       id: '/reference/registry-activation'
       path: '/reference/registry-activation'
@@ -302,12 +363,15 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HealthzRoute: HealthzRoute,
   TokensRoute: TokensRoute,
+  AssessmentSlugRoute: AssessmentSlugRoute,
   ChartsSlugRoute: ChartsSlugRoute,
   ComponentsSlugRoute: ComponentsSlugRoute,
   FoundationsColorRoute: FoundationsColorRoute,
   FoundationsIconsRoute: FoundationsIconsRoute,
   GuidesTanstackFormZodRoute: GuidesTanstackFormZodRoute,
+  ReferenceAssessmentReportRoute: ReferenceAssessmentReportRoute,
   ReferenceRegistryActivationRoute: ReferenceRegistryActivationRoute,
+  AssessmentIndexRoute: AssessmentIndexRoute,
   ChartsIndexRoute: ChartsIndexRoute,
   ComponentsIndexRoute: ComponentsIndexRoute,
   ReferenceAdminSerialsSerialRoute: ReferenceAdminSerialsSerialRoute,

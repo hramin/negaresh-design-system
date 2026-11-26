@@ -188,4 +188,21 @@
       padding-inline: var(--nds-space-4);
     }
   }
+
+  @media print {
+    .shell {
+      display: block;
+      min-block-size: auto;
+    }
+
+    .topbar,
+    .nav,
+    .footer {
+      display: none;
+    }
+
+    .main {
+      padding: 0;
+    }
+  }
 }
