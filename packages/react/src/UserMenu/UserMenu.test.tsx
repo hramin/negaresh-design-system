@@ -22,7 +22,6 @@ describe('UserMenu', () => {
         name="سارا رضایی"
         subtitle="۰۹۱۲ ••• ۴۵۶۷"
         ltrSubtitle
-        showInitialsAvatar
         showThemeToggle
         activeRole="customer"
         onRoleChange={onRoleChange}

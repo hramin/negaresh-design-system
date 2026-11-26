@@ -7,6 +7,8 @@ import { GalleryRow, State } from '../ui.tsx';
 import styles from './navigation.module.css';
 
 const MASKED = maskPhone('09121234567');
+const PORTRAIT_SVG =
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%231D6B66'/><circle cx='32' cy='25' r='11' fill='%23F3F1EC'/><path d='M14 56c3-11 10-16 18-16s15 5 18 16' fill='%23F3F1EC'/></svg>";
 
 function Example() {
   const [role, setRole] = useState('customer');
@@ -22,7 +24,7 @@ function Example() {
             name="دکتر سارا رضایی"
             subtitle={MASKED}
             ltrSubtitle
-            showInitialsAvatar
+            avatarSrc={PORTRAIT_SVG}
             showThemeToggle
             activeRole={role}
             onRoleChange={(next) => {
@@ -79,7 +81,7 @@ export const userMenuDoc: ComponentDoc = {
   Example,
   Gallery: () => (
     <>
-      <GalleryRow title="شمارهٔ همراه ماسک‌شده (رجیستری) و نام با حروف اول (Avatar)">
+      <GalleryRow title="شمارهٔ همراه ماسک‌شده (رجیستری) و نام با تصویر Avatar">
         <State label="masked phone · default icon">
           <UserMenu
             label={MASKED}
@@ -89,12 +91,12 @@ export const userMenuDoc: ComponentDoc = {
             onSignOut={() => {}}
           />
         </State>
-        <State label="display name · initials Avatar">
+        <State label="display name · portrait Avatar">
           <UserMenu
             label="سارا رضایی"
             aria-label="حساب کاربری سارا رضایی"
             name="سارا رضایی"
-            showInitialsAvatar
+            avatarSrc={PORTRAIT_SVG}
             items={[{ id: 'p', label: 'پروندهٔ آزمون‌ها', icon: iconFile }]}
             showThemeToggle
           />
@@ -103,7 +105,7 @@ export const userMenuDoc: ComponentDoc = {
           <UserMenu
             label={MASKED}
             ltr
-            aria-label="حساب کاربری غیرفعال"
+            aria-label={`حساب کاربری ${MASKED} (غیرفعال)`}
             isDisabled
             items={[{ id: 'a', label: 'فعال‌سازی‌های من' }]}
           />
@@ -125,7 +127,7 @@ export const userMenuDoc: ComponentDoc = {
       name: 'UserMenu',
       props: [
         { name: 'label / aria-label / ltr', type: 'ReactNode / string / boolean', description: 'شناسهٔ نمایشی دسکتاپ، نام دسترس‌پذیر الزامی و ایزوله‌سازی LTR.' },
-        { name: 'name / subtitle / avatarSrc / showInitialsAvatar', type: 'string / ReactNode / string / boolean', description: 'سربرگ حساب و تنظیمات Avatar.' },
+        { name: 'name / subtitle / avatarSrc', type: 'string / ReactNode / string', description: 'سربرگ حساب و تصویر Avatar (در صورت نبود تصویر، سربرگ منو حروف اول فارسی را نشان می‌دهد).' },
         { name: 'items', type: 'readonly UserMenuItemData[]', description: 'آیتم‌های منو با امکان فیلتر بر اساس نقش (roles).' },
         { name: 'roles / activeRole / onRoleChange', type: 'readonly UserMenuRole[] / string / (id: string) => void', description: 'بخش انتخاب نقش کاربری.' },
         { name: 'showThemeToggle', type: 'boolean', default: 'false', description: 'افزودن بخش انتخاب نمایهٔ رنگ متصل به useTheme().' },

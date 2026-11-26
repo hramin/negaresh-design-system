@@ -1,5 +1,5 @@
 import { iconChevronDown, type IconDefinition } from '@negaresh/icons';
-import { createContext, type ReactNode, type Ref, useContext } from 'react';
+import { createContext, type ReactNode, type Ref, useContext, useEffect, useState } from 'react';
 import {
   Button as RacButton,
   Disclosure as RacDisclosure,
@@ -58,6 +58,9 @@ export function Disclosure({
   headingLevel,
   alwaysExpandedAbove,
   panelRole = 'group',
+  isExpanded,
+  defaultExpanded,
+  onExpandedChange,
   children,
   className,
   ref,
@@ -65,6 +68,32 @@ export function Disclosure({
 }: DisclosureProps) {
   const insideAccordion = useContext(InsideAccordionContext);
   const resolvedVariant = insideAccordion ? 'plain' : variant;
+  const [desktopForceOpen, setDesktopForceOpen] = useState(false);
+
+  useEffect(() => {
+    if (alwaysExpandedAbove !== 'md' || typeof window === 'undefined' || !window.matchMedia) {
+      setDesktopForceOpen(false);
+      return;
+    }
+    const mq = window.matchMedia('(min-width: 900px)');
+    const sync = () => setDesktopForceOpen(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, [alwaysExpandedAbove]);
+
+  const [mobileOpen, setMobileOpen] = useState(defaultExpanded ?? false);
+  const controlledByResponsive = alwaysExpandedAbove === 'md' && isExpanded === undefined;
+  const effectiveExpanded = controlledByResponsive
+    ? desktopForceOpen || mobileOpen
+    : isExpanded;
+
+  const handleExpandedChange = (next: boolean) => {
+    if (controlledByResponsive && !desktopForceOpen) {
+      setMobileOpen(next);
+    }
+    onExpandedChange?.(next);
+  };
 
   const triggerButton = (
     <RacButton slot="trigger" className={cx(styles.trigger)}>
@@ -101,6 +130,9 @@ export function Disclosure({
   return (
     <RacDisclosure
       {...rest}
+      {...(effectiveExpanded !== undefined ? { isExpanded: effectiveExpanded } : {})}
+      {...(effectiveExpanded === undefined && defaultExpanded !== undefined ? { defaultExpanded } : {})}
+      onExpandedChange={handleExpandedChange}
       ref={ref}
       data-nds="Disclosure"
       data-variant={insideAccordion ? undefined : resolvedVariant}

@@ -195,6 +195,7 @@
 
     .disclosure[data-always-expanded="md"] .panel {
       display: block !important;
+      content-visibility: visible !important;
     }
 
     .disclosure[data-always-expanded="md"][data-variant="plain"] .panelInner {

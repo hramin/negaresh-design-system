@@ -58,12 +58,10 @@ export interface UserMenuProps {
   subtitle?: ReactNode | undefined;
   /** Wrap `subtitle` in `<Ltr>`. Default `false`. */
   ltrSubtitle?: boolean | undefined;
-  /** Portrait image URL rendered with NDS `Avatar`. */
+  /** Portrait image URL rendered with NDS `Avatar` on both the trigger pill and menu header. */
   avatarSrc?: string | undefined;
-  /** Semantic tone for the `Avatar` fallback. Default `'accent'`. */
+  /** Semantic tone for the `Avatar` fallback in the menu header. Default `'accent'`. */
   avatarTone?: AvatarTone | undefined;
-  /** Render `Avatar` initials inside `AccountPill` when `name` is provided without `avatarSrc`. Default `false`. */
-  showInitialsAvatar?: boolean | undefined;
   /** Custom avatar node passed directly to `AccountPill`. */
   avatar?: ReactNode | undefined;
   /** Account navigation items rendered inside the menu. */
@@ -111,7 +109,6 @@ export function UserMenu({
   ltrSubtitle = false,
   avatarSrc,
   avatarTone = 'accent',
-  showInitialsAvatar = false,
   avatar,
   items = [],
   roles,
@@ -134,7 +131,7 @@ export function UserMenu({
 
   const resolvedTriggerAvatar =
     avatar ??
-    (avatarSrc || (showInitialsAvatar && name) ? (
+    (avatarSrc ? (
       <Avatar
         src={avatarSrc}
         name={name}
