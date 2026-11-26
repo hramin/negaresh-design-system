@@ -60,17 +60,17 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| InlineAlert | — | info, success, warning, danger; title, actions | all | planned |
-| Banner | — | page-level, dismissible | all | planned |
-| Toast, ToastRegion | `UNSTABLE_Toast*` → check status | queue, actions, `role=status` | all | planned |
-| Badge | — | neutral, accent, status; dot | all | planned |
-| StatusBadge | Badge | domain maps: order, payment, serial, review, report, campaign | all | planned |
-| ProgressBar, Meter | `ProgressBar`, `Meter` | determinate, indeterminate | all | planned |
-| UsageMeter | `Meter` | segmented slots, source note, full state | R, T | planned |
-| Spinner, GlobalLoadingBar | — | — | all | planned |
-| Skeleton | — | text, block, table rows | all | planned |
-| EmptyState | — | icon, title, text, action | all | planned |
-| ErrorState / ErrorPage | — | 403, 404, 410, 500, maintenance | all | planned |
+| InlineAlert | — | info, success, warning, danger; title, actions | all | review |
+| Banner | — | page-level, dismissible | all | review |
+| Toast, ToastRegion | `UNSTABLE_Toast*` (wrapped behind owned NDS API) | queue, actions, `role=status` | all | review |
+| Badge | — | neutral, accent, status; dot | all | review |
+| StatusBadge | Badge | domain maps: order, payment, serial, review, report, campaign | all | review |
+| ProgressBar, Meter | `ProgressBar`, `Meter` | determinate, indeterminate | all | review |
+| UsageMeter | `Meter` | segmented slots, source note, full state | R, T | review |
+| Spinner, GlobalLoadingBar | — | — | all | review |
+| Skeleton | — | text, block, table rows | all | review |
+| EmptyState | — | icon, title, text, action | all | review |
+| ErrorState / ErrorPage | — | 403, 404, 410, 500, maintenance | all | review |
 
 ## Overlays (P4)
 
