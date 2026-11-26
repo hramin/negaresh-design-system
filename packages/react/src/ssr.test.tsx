@@ -109,6 +109,22 @@ import {
   Image,
   KeyValueList,
   KeyValueItem,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanel,
+  TabStrip,
+  TabStripItem,
+  SideNav,
+  Breadcrumbs,
+  Pagination,
+  LoadMore,
+  Stepper,
+  Disclosure,
+  Accordion,
+  AccordionItem,
+  UserMenu,
+  Footer,
 } from './index.ts';
 import { faMessages } from './messages/fa.ts';
 
@@ -335,6 +351,78 @@ describe('server rendering', () => {
                     copyValue="NGR49208814"
                   />
                 </KeyValueList>
+                <SideNav
+                  aria-label="منوی پنل"
+                  userRoles={['customer']}
+                  groups={[
+                    {
+                      id: 'main',
+                      title: 'حساب من',
+                      items: [
+                        { id: 'act', label: 'فعال‌سازی‌ها', href: '#act', isCurrent: true, badge: 3 },
+                      ],
+                    },
+                  ]}
+                />
+                <TabStrip aria-label="بخش‌های سریع">
+                  <TabStripItem href="#a" isCurrent>
+                    نمای کلی
+                  </TabStripItem>
+                </TabStrip>
+                <Tabs defaultSelectedKey="t1">
+                  <TabList aria-label="زبانه‌ها">
+                    <Tab id="t1">مشخصات</Tab>
+                    <Tab id="t2">سابقه</Tab>
+                  </TabList>
+                  <TabPanel id="t1">محتوای مشخصات</TabPanel>
+                  <TabPanel id="t2">محتوای سابقه</TabPanel>
+                </Tabs>
+                <Breadcrumbs
+                  maxItems={3}
+                  items={[
+                    { id: 'home', label: 'خانه', href: '/' },
+                    { id: 'tests', label: 'آزمون‌ها', href: '/tests' },
+                    { id: 'clinical', label: 'بالینی', href: '/tests/clinical' },
+                    { id: 'neo', label: 'آزمون نئو' },
+                  ]}
+                />
+                <Pagination page={2} totalPages={9} getPageHref={(p) => `?page=${p}`} showSummary />
+                <LoadMore loaded={20} total={50} href="?page=2" />
+                <Stepper
+                  currentStep={2}
+                  steps={[
+                    { id: 's1', title: 'گام اول' },
+                    { id: 's2', title: 'گام دوم' },
+                    { id: 's3', title: 'گام سوم' },
+                  ]}
+                />
+                <Disclosure title="راهنمای فعال‌سازی" variant="plain" alwaysExpandedAbove="md">
+                  توضیحات راهنما
+                </Disclosure>
+                <Accordion defaultExpandedKeys={['faq1']}>
+                  <AccordionItem id="faq1" title="پرسش اول">
+                    پاسخ اول
+                  </AccordionItem>
+                </Accordion>
+                <UserMenu
+                  label="۰۹۱۲ ••• ۴۵۶۷"
+                  ltr
+                  aria-label="حساب کاربری"
+                  name="سارا رضایی"
+                  showThemeToggle
+                  items={[{ id: 'act', label: 'فعال‌سازی‌های من' }]}
+                />
+                <Footer
+                  brand={<LogoSlot name="نگارش برتر" product="رجیستری" />}
+                  groups={[
+                    {
+                      id: 'g1',
+                      title: 'پیوندها',
+                      links: [{ id: 'l1', label: 'پشتیبانی', href: '/support' }],
+                    },
+                  ]}
+                  copyright="© ۱۴۰۵ نگارش برتر"
+                />
               </ToastProvider>
             </Stack>
           </Container>
@@ -416,6 +504,24 @@ describe('server rendering', () => {
       'Image',
       'KeyValueList',
       'KeyValueItem',
+      'SideNav',
+      'SideNavGroup',
+      'SideNavItem',
+      'TabStrip',
+      'TabStripItem',
+      'Tabs',
+      'TabList',
+      'Tab',
+      'TabPanel',
+      'Breadcrumbs',
+      'BreadcrumbItem',
+      'Pagination',
+      'LoadMore',
+      'Stepper',
+      'StepperStep',
+      'Disclosure',
+      'Accordion',
+      'Footer',
     ]) {
       expect(html, name).toContain(`data-nds="${name}"`);
     }
@@ -435,6 +541,9 @@ describe('server rendering', () => {
     expect(html).toContain('۱۲۴۸۵');
     expect(html).toContain('س ر');
     expect(html).toContain('+۱');
+    expect(html).toContain('صفحهٔ ۲ از ۹');
+    expect(html).toContain('نمایش ۲۰ از ۵۰ مورد');
+    expect(html).toContain('aria-current="step"');
     expect(html).toContain('nonce="ssr-nonce"');
     expect(html).toContain('react-aria.i18n.strings');
     expect(html).toContain('بستن');

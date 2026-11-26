@@ -78,3 +78,6 @@ export * from './SideNav/index.ts';
 export * from './Breadcrumbs/index.ts';
 export * from './Pagination/index.ts';
 export * from './Stepper/index.ts';
+export * from './Disclosure/index.ts';
+export * from './UserMenu/index.ts';
+export * from './Footer/index.ts';
