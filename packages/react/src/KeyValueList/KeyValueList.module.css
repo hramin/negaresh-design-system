@@ -58,6 +58,11 @@
     margin-block: calc(var(--nds-space-2) * -1);
   }
 
+  .copyButton {
+    min-inline-size: var(--nds-touch);
+    min-block-size: var(--nds-touch);
+  }
+
   @media (width < 600px) {
     .item {
       grid-template-columns: minmax(0, 1fr);

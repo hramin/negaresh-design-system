@@ -54,6 +54,7 @@
     align-items: center;
     padding-block: var(--nds-space-2);
     padding-inline: var(--nds-space-3);
+    border: var(--nds-border-width-hairline) solid transparent;
     border-radius: var(--nds-radius-sm);
     background: var(--nds-bg-inverse);
     color: var(--nds-fg-inverse);
@@ -66,5 +67,13 @@
   .output {
     overflow-wrap: anywhere;
     min-inline-size: 0;
+  }
+
+  @media (forced-colors: active) {
+    .tooltipSample {
+      border-color: CanvasText;
+      background: Canvas;
+      color: CanvasText;
+    }
   }
 }

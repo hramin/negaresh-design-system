@@ -67,6 +67,7 @@ export function KeyValueItem({
               variant="ghost"
               size="sm"
               aria-label={resolvedCopyLabel}
+              className={cx(styles.copyButton)}
               {...(onCopy !== undefined ? { onCopy } : {})}
             />
           </span>
