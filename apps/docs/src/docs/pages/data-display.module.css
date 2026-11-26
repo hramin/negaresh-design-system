@@ -1,0 +1,39 @@
+@layer nds.patterns {
+  .block {
+    inline-size: min(calc(var(--nds-space-24) * 6.5), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .wide {
+    inline-size: min(calc(var(--nds-space-24) * 9), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .narrow {
+    inline-size: min(calc(var(--nds-space-24) * 4), calc(100vw - var(--nds-space-16)));
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .sparkSvg {
+    display: block;
+    inline-size: var(--nds-space-20);
+    block-size: var(--nds-space-8);
+    color: var(--nds-viz-1);
+  }
+
+  .sparkSvgWarn {
+    display: block;
+    inline-size: var(--nds-space-20);
+    block-size: var(--nds-space-8);
+    color: var(--nds-viz-2);
+  }
+
+  .output {
+    margin: 0;
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+}

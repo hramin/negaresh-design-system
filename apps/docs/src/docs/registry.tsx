@@ -65,6 +65,13 @@ import { tooltipDoc } from './pages/tooltip.tsx';
 import { usageMeterDoc } from './pages/usage-meter.tsx';
 import { userMenuDoc } from './pages/user-menu.tsx';
 import { verifiedBadgeDoc } from './pages/verified-badge.tsx';
+import { dataTableDoc } from './pages/data-table.tsx';
+import { filterBarDoc } from './pages/filter-bar.tsx';
+import { bulkActionBarDoc } from './pages/bulk-action-bar.tsx';
+import { listDoc } from './pages/list.tsx';
+import { statTileDoc } from './pages/stat-tile.tsx';
+import { timelineDoc } from './pages/timeline.tsx';
+import { diffViewDoc } from './pages/diff-view.tsx';
 import type { ComponentDoc } from './types.ts';
 
 /** Component documentation pages, in navigation order. */
@@ -136,6 +143,13 @@ export const COMPONENT_DOCS: readonly ComponentDoc[] = [
   disclosureDoc,
   userMenuDoc,
   footerDoc,
+  dataTableDoc,
+  filterBarDoc,
+  bulkActionBarDoc,
+  listDoc,
+  statTileDoc,
+  timelineDoc,
+  diffViewDoc,
 ];
 
 export function findDoc(slug: string): ComponentDoc | undefined {

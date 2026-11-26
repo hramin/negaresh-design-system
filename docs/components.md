@@ -102,17 +102,17 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| DataTable | `Table` | sort, select, sticky header, column visibility, density, stacks to cards on mobile, empty/loading/error | R, N, T | planned |
-| FilterBar | — | search + filters + chips + reset; filters move to Sheet on mobile | R, N, T | planned |
-| BulkActionBar | `Toolbar` | appears on selection | R, N, T | planned |
+| DataTable | `Table` | sort, select, sticky header, column visibility, density, stacks to cards on mobile, empty/loading/error | R, N, T | review |
+| FilterBar | — | search + filters + chips + reset; filters move to Sheet on mobile | R, N, T | review |
+| BulkActionBar | `Toolbar` | appears on selection | R, N, T | review |
 | KeyValueList | — | label/value, LTR values, copyable | all | approved |
-| StatTile, StatGroup | — | value, delta, sparkline | R, N, T | planned |
-| Timeline / ActivityList | `GridList` | activations, audit, revisions | R, N, T | planned |
-| DiffView | — | revision compare | N | planned |
+| StatTile, StatGroup | — | value, delta, sparkline | R, N, T | review |
+| Timeline / ActivityList | `GridList` | activations, audit, revisions | R, N, T | review |
+| DiffView | — | revision compare | N | review |
 | Avatar, AvatarGroup | — | image, initials | N, T | approved |
 | VerifiedBadge | Badge | expert licence | N | approved |
 | Card (generic) | — | media, body, footer; link card | all | approved |
-| List, GridList | `GridList` | selectable rows | all | planned |
+| List, GridList | `GridList` | selectable rows | all | review |
 | Image | — | ratio, sizes, lazy; alt required prop | all | approved |
 
 ## Charts — `@negaresh/charts` (P5)
