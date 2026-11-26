@@ -1,0 +1,192 @@
+@layer nds.components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+    color: var(--nds-fg-default);
+  }
+
+  .root[data-disabled] {
+    color: var(--nds-fg-disabled);
+  }
+
+  .label {
+    font-size: var(--nds-text-sm);
+    font-weight: var(--nds-weight-semibold);
+    line-height: var(--nds-leading-ui);
+    cursor: pointer;
+  }
+
+  .root[data-disabled] .label {
+    cursor: not-allowed;
+  }
+
+  .slotsRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--nds-space-3);
+  }
+
+  /* Digits in OTP codes always flow left-to-right inside RTL documents (D-86). */
+  .slots {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--nds-space-2);
+    direction: ltr;
+    unicode-bidi: isolate;
+    max-inline-size: 100%;
+  }
+
+  .slot {
+    box-sizing: border-box;
+    flex: 0 1 var(--nds-control-md);
+    inline-size: var(--nds-control-md);
+    min-inline-size: var(--nds-touch);
+    min-block-size: var(--nds-control-md);
+    margin: 0;
+    padding-block: var(--nds-space-2);
+    padding-inline: var(--nds-space-1);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-control);
+    border-radius: var(--nds-field-radius);
+    background: var(--nds-bg-surface);
+    color: inherit;
+    font-family: var(--nds-font-code);
+    font-size: var(--nds-text-xl);
+    font-weight: var(--nds-weight-semibold);
+    font-variant-numeric: tabular-nums;
+    line-height: var(--nds-leading-tight);
+    text-align: center;
+    outline: none;
+    transition:
+      border-color var(--nds-dur-fast) var(--nds-ease),
+      background-color var(--nds-dur-fast) var(--nds-ease);
+  }
+
+  .slot[data-hovered]:not([data-disabled]) {
+    border-color: var(--nds-fg-muted);
+  }
+
+  .slot[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+    border-color: var(--nds-accent-default);
+  }
+
+  .slot[data-focused]:not([data-focus-visible]):not([data-invalid]) {
+    border-color: var(--nds-accent-default);
+  }
+
+  .slot[data-invalid],
+  .root[data-invalid] .slot {
+    border-color: var(--nds-danger-fg);
+  }
+
+  .slot[data-disabled],
+  .root[data-readonly] .slot,
+  .root[data-pending] .slot {
+    background: var(--nds-bg-sunken);
+  }
+
+  .slot[data-disabled] {
+    cursor: not-allowed;
+  }
+
+  .pending {
+    display: grid;
+    flex: none;
+    place-items: center;
+    color: var(--nds-fg-muted);
+  }
+
+  .pending > span {
+    inline-size: var(--nds-icon-md);
+    block-size: var(--nds-icon-md);
+    border: var(--nds-border-width-thick) solid currentColor;
+    border-inline-end-color: transparent;
+    border-radius: var(--nds-radius-pill);
+    animation: nds-otp-spin var(--nds-dur-slow) linear infinite;
+  }
+
+  .description {
+    margin: 0;
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .errorSlot {
+    min-block-size: calc(var(--nds-text-sm) * var(--nds-leading-ui));
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .error {
+    color: var(--nds-danger-fg);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .resendRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--nds-space-2);
+  }
+
+  .resendCountdown {
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+    font-variant-numeric: tabular-nums;
+    line-height: var(--nds-leading-ui);
+  }
+
+  @keyframes nds-otp-spin {
+    to {
+      rotate: 1turn;
+    }
+  }
+
+  @media (width < 420px) {
+    .slots {
+      gap: var(--nds-space-1);
+    }
+
+    .slot {
+      inline-size: var(--nds-touch);
+      font-size: var(--nds-text-lg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slot {
+      transition: none;
+    }
+
+    .pending > span {
+      animation: none;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .slot {
+      border-color: currentColor;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .slot {
+      border-color: ButtonText;
+    }
+
+    .slot[data-focus-visible] {
+      outline-color: Highlight;
+    }
+
+    .error {
+      color: CanvasText;
+    }
+  }
+}

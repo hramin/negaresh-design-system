@@ -49,3 +49,4 @@ export * from './Slider/index.ts';
 export * from './Calendar/index.ts';
 export * from './DatePicker/index.ts';
 export * from './TimeField/index.ts';
+export * from './OTPField/index.ts';
