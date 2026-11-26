@@ -1,0 +1,132 @@
+@layer nds.components {
+  .root {
+    --_fill: var(--nds-accent-default);
+    --_track-height: var(--nds-space-2);
+
+    display: grid;
+    gap: var(--nds-space-2);
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .root[data-size="sm"] {
+    --_track-height: calc(var(--nds-space-1) + var(--nds-space-1) / 2);
+  }
+
+  .root[data-tone="accent"] {
+    --_fill: var(--nds-accent-default);
+  }
+
+  .root[data-tone="success"] {
+    --_fill: var(--nds-success-fg);
+  }
+
+  .root[data-tone="warning"] {
+    --_fill: var(--nds-warning-fg);
+  }
+
+  .root[data-tone="danger"] {
+    --_fill: var(--nds-danger-fg);
+  }
+
+  .header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--nds-space-3);
+    min-inline-size: 0;
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .label {
+    color: var(--nds-fg-default);
+    font-weight: var(--nds-weight-medium);
+    overflow-wrap: anywhere;
+  }
+
+  .value {
+    flex: none;
+    color: var(--nds-fg-muted);
+    font-weight: var(--nds-weight-semibold);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .track {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    inline-size: 100%;
+    block-size: var(--_track-height);
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-border-strong);
+    overflow: hidden;
+  }
+
+  .fill {
+    display: block;
+    block-size: 100%;
+    border-radius: var(--nds-radius-pill);
+    background: var(--_fill);
+    transition: inline-size var(--nds-dur-base) var(--nds-ease);
+  }
+
+  .indeterminate {
+    inline-size: 38%;
+    animation: nds-progress-indeterminate calc(var(--nds-dur-slow) * 4.5) var(--nds-ease) infinite;
+  }
+
+  :dir(rtl) .indeterminate {
+    animation-name: nds-progress-indeterminate-rtl;
+  }
+
+  @keyframes nds-progress-indeterminate {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(300%);
+    }
+  }
+
+  @keyframes nds-progress-indeterminate-rtl {
+    0% {
+      transform: translateX(100%);
+    }
+
+    100% {
+      transform: translateX(-300%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fill {
+      transition: none;
+    }
+
+    .indeterminate {
+      inline-size: 60%;
+      margin-inline: auto;
+      animation: none;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .track {
+      outline: var(--nds-border-width-hairline) solid var(--nds-fg-default);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .track {
+      border: var(--nds-border-width-hairline) solid CanvasText;
+      background: Canvas;
+    }
+
+    .fill {
+      background: Highlight;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+@layer nds.components {
+  .badge {
+    --_bg: var(--nds-bg-sunken);
+    --_fg: var(--nds-fg-muted);
+    --_border: var(--nds-border-default);
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--nds-space-1);
+    max-inline-size: 100%;
+    padding-block: var(--nds-space-1);
+    padding-inline: var(--nds-space-3);
+    border: var(--nds-border-width-hairline) solid var(--_border);
+    border-radius: var(--nds-radius-pill);
+    background: var(--_bg);
+    color: var(--_fg);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-semibold);
+    line-height: var(--nds-leading-ui);
+    white-space: nowrap;
+  }
+
+  .badge[data-size="sm"] {
+    padding-block: calc(var(--nds-space-1) / 2);
+    padding-inline: var(--nds-space-2);
+    font-size: var(--nds-text-2xs);
+  }
+
+  .badge[data-tone="neutral"] {
+    --_bg: var(--nds-bg-sunken);
+    --_fg: var(--nds-fg-muted);
+    --_border: var(--nds-border-default);
+  }
+
+  .badge[data-tone="accent"] {
+    --_bg: var(--nds-accent-subtle);
+    --_fg: var(--nds-accent-fg);
+    --_border: transparent;
+  }
+
+  .badge[data-tone="info"] {
+    --_bg: var(--nds-info-bg);
+    --_fg: var(--nds-info-fg);
+    --_border: var(--nds-info-border);
+  }
+
+  .badge[data-tone="success"] {
+    --_bg: var(--nds-success-bg);
+    --_fg: var(--nds-success-fg);
+    --_border: var(--nds-success-border);
+  }
+
+  .badge[data-tone="warning"] {
+    --_bg: var(--nds-warning-bg);
+    --_fg: var(--nds-warning-fg);
+    --_border: var(--nds-warning-border);
+  }
+
+  .badge[data-tone="danger"] {
+    --_bg: var(--nds-danger-bg);
+    --_fg: var(--nds-danger-fg);
+    --_border: var(--nds-danger-border);
+  }
+
+  .dot {
+    inline-size: calc(var(--nds-space-1) * 1.5);
+    block-size: calc(var(--nds-space-1) * 1.5);
+    flex: none;
+    border-radius: var(--nds-radius-pill);
+    background: currentColor;
+  }
+
+  .icon {
+    display: inline-flex;
+    flex: none;
+    color: currentColor;
+  }
+
+  .label {
+    min-inline-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (prefers-contrast: more) {
+    .badge {
+      border-color: currentColor;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .badge {
+      border-color: CanvasText;
+      color: CanvasText;
+    }
+
+    .dot {
+      background: CanvasText;
+    }
+  }
+}

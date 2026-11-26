@@ -54,3 +54,7 @@ export * from './FileUpload/index.ts';
 export * from './InlineAlert/index.ts';
 export * from './Banner/index.ts';
 export * from './Toast/index.ts';
+export * from './Badge/index.ts';
+export * from './StatusBadge/index.ts';
+export * from './Progress/index.ts';
+export * from './UsageMeter/index.ts';
