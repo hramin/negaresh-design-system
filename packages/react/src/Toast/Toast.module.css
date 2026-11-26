@@ -1,0 +1,252 @@
+@layer nds.components {
+  .region {
+    position: fixed;
+    inset-block-end: var(--nds-space-6);
+    inset-inline-end: var(--nds-space-6);
+    z-index: var(--nds-z-toast);
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+    inline-size: min(calc(var(--nds-space-24) * 4.5), calc(100vw - var(--nds-space-8)));
+    pointer-events: none;
+    outline: none;
+  }
+
+  .region[data-placement="bottom-center"] {
+    inset-inline: var(--nds-space-4);
+    margin-inline: auto;
+  }
+
+  .region[data-placement="top-end"] {
+    inset-block-start: calc(var(--nds-topbar) + var(--nds-space-4));
+    inset-block-end: auto;
+  }
+
+  .region[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-space-1);
+    border-radius: var(--nds-radius-md);
+  }
+
+  .toast {
+    --_bg: var(--nds-bg-inverse);
+    --_fg: var(--nds-fg-inverse);
+    --_border: transparent;
+    --_ring: var(--nds-fg-inverse);
+
+    display: flex;
+    align-items: flex-start;
+    gap: var(--nds-space-3);
+    min-inline-size: 0;
+    padding-block: var(--nds-space-3);
+    padding-inline: var(--nds-space-4) var(--nds-space-2);
+    border: var(--nds-border-width-hairline) solid var(--_border);
+    border-radius: var(--nds-radius-md);
+    background: var(--_bg);
+    color: var(--_fg);
+    box-shadow: var(--nds-shadow-overlay);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-text);
+    pointer-events: auto;
+    outline: none;
+    animation: nds-toast-in var(--nds-dur-base) var(--nds-ease-enter);
+  }
+
+  .toast[data-static="true"] {
+    animation: none;
+  }
+
+  .toast[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--_ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .toast[data-tone="neutral"] {
+    --_bg: var(--nds-bg-inverse);
+    --_fg: var(--nds-fg-inverse);
+    --_border: transparent;
+    --_ring: var(--nds-fg-inverse);
+  }
+
+  .toast[data-tone="info"] {
+    --_bg: var(--nds-info-bg);
+    --_fg: var(--nds-info-fg);
+    --_border: var(--nds-info-border);
+    --_ring: var(--nds-focus-ring);
+  }
+
+  .toast[data-tone="success"] {
+    --_bg: var(--nds-success-bg);
+    --_fg: var(--nds-success-fg);
+    --_border: var(--nds-success-border);
+    --_ring: var(--nds-focus-ring);
+  }
+
+  .toast[data-tone="warning"] {
+    --_bg: var(--nds-warning-bg);
+    --_fg: var(--nds-warning-fg);
+    --_border: var(--nds-warning-border);
+    --_ring: var(--nds-focus-ring);
+  }
+
+  .toast[data-tone="danger"] {
+    --_bg: var(--nds-danger-bg);
+    --_fg: var(--nds-danger-fg);
+    --_border: var(--nds-danger-border);
+    --_ring: var(--nds-focus-ring);
+  }
+
+  .icon {
+    display: inline-flex;
+    flex: none;
+    margin-block-start: calc(var(--nds-space-1) / 2);
+    color: var(--_fg);
+  }
+
+  .content {
+    display: grid;
+    flex: 1 1 auto;
+    gap: var(--nds-space-1);
+    min-inline-size: 0;
+    padding-block: calc(var(--nds-space-1) / 2);
+    overflow-wrap: anywhere;
+  }
+
+  .title {
+    display: block;
+    font-weight: var(--nds-weight-semibold);
+    line-height: var(--nds-leading-ui);
+    color: var(--_fg);
+  }
+
+  .description {
+    display: block;
+    font-size: var(--nds-text-xs);
+    line-height: var(--nds-leading-text);
+    color: var(--_fg);
+  }
+
+  .controls {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: var(--nds-space-1);
+    margin-block: calc(var(--nds-space-1) * -1);
+  }
+
+  .action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: var(--nds-touch);
+    padding-inline: var(--nds-space-3);
+    border: var(--nds-border-width-hairline) solid currentColor;
+    border-radius: var(--nds-radius-pill);
+    background: transparent;
+    color: var(--_fg);
+    font: inherit;
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-semibold);
+    line-height: var(--nds-leading-ui);
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    transition: background-color var(--nds-dur-fast) var(--nds-ease);
+  }
+
+  .action[data-hovered],
+  .action[data-pressed] {
+    background: color-mix(in srgb, currentColor 14%, transparent);
+  }
+
+  .action[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--_ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .close {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--nds-touch);
+    block-size: var(--nds-touch);
+    padding: 0;
+    border: var(--nds-border-width-hairline) solid transparent;
+    border-radius: var(--nds-radius-pill);
+    background: transparent;
+    color: var(--_fg);
+    cursor: pointer;
+    outline: none;
+    transition: background-color var(--nds-dur-fast) var(--nds-ease);
+  }
+
+  .close[data-hovered],
+  .close[data-pressed] {
+    background: color-mix(in srgb, currentColor 14%, transparent);
+  }
+
+  .close[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--_ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  @keyframes nds-toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(var(--nds-space-2));
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 899px) {
+    .region {
+      inset-inline: var(--nds-space-4);
+      inset-block-end: var(--nds-space-4);
+      inline-size: auto;
+    }
+
+    .region[data-placement="top-end"] {
+      inset-block-start: calc(var(--nds-topbar) + var(--nds-space-3));
+      inset-block-end: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toast {
+      animation: none;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .toast {
+      border-width: var(--nds-border-width-thick);
+      border-color: var(--_fg);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .toast {
+      border-color: CanvasText;
+      color: CanvasText;
+    }
+
+    .icon,
+    .title,
+    .description,
+    .action,
+    .close {
+      color: CanvasText;
+    }
+
+    .toast[data-focus-visible],
+    .action[data-focus-visible],
+    .close[data-focus-visible] {
+      outline-color: Highlight;
+    }
+  }
+}
