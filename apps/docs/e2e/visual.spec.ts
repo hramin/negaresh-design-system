@@ -134,6 +134,7 @@ for (const theme of THEMES) {
     const region = page.locator('[data-interactive="dialog"]');
     await region.getByRole('button', { name: 'باز کردن پنجره (md)' }).click();
     await expect(page.locator('[data-nds="Dialog"]')).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
     await expect(page.locator('[data-nds="DialogModal"][data-entering]')).toHaveCount(0);
     await expect(page).toHaveScreenshot(`dialog-open-${theme}.png`, {
       animations: 'disabled',
@@ -147,6 +148,7 @@ for (const theme of THEMES) {
     const region = page.locator('[data-interactive="dialog"]');
     await region.getByRole('button', { name: 'باطل کردن سریال (AlertDialog)' }).click();
     await expect(page.locator('[data-nds="AlertDialog"]')).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
     await expect(page.locator('[data-nds="AlertDialogModal"][data-entering]')).toHaveCount(0);
     await expect(page).toHaveScreenshot(`alert-dialog-open-${theme}.png`, {
       animations: 'disabled',
@@ -169,6 +171,7 @@ for (const theme of THEMES) {
         .click();
     }
     await expect(page.locator('[data-nds="Sheet"]')).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
     await expect(page.locator('[data-nds="SheetModal"][data-entering]')).toHaveCount(0);
     await expect(page).toHaveScreenshot(`sheet-open-${theme}.png`, {
       animations: 'disabled',
@@ -189,6 +192,7 @@ for (const theme of THEMES) {
     await trigger.click();
     const popover = page.locator('[data-nds="Popover"]');
     await expect(popover).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
     await expect(page.locator('[data-nds="Popover"][data-entering]')).toHaveCount(0);
     const boxes = await Promise.all([
       trigger.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
@@ -220,6 +224,7 @@ for (const theme of THEMES) {
     await trigger.focus();
     const tooltip = page.locator('[data-nds="Tooltip"]');
     await expect(tooltip).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
     await expect(page.locator('[data-nds="Tooltip"][data-entering]')).toHaveCount(0);
     const boxes = await Promise.all([
       trigger.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
@@ -251,6 +256,7 @@ for (const theme of THEMES) {
     await trigger.click();
     const popover = page.locator('[data-nds="Popover"]');
     await expect(popover).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
     await expect(page.locator('[data-nds="Popover"][data-entering]')).toHaveCount(0);
     const boxes = await Promise.all([
       trigger.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect),
