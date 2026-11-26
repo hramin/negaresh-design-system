@@ -1,0 +1,175 @@
+@layer nds.components {
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+    color: var(--nds-fg-default);
+  }
+
+  .group[data-disabled] {
+    color: var(--nds-fg-disabled);
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-1);
+  }
+
+  .items[data-orientation="horizontal"] {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: var(--nds-space-5);
+    row-gap: var(--nds-space-1);
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-1);
+    min-inline-size: 0;
+    color: var(--nds-fg-default);
+  }
+
+  .field[data-disabled] {
+    color: var(--nds-fg-disabled);
+  }
+
+  .control {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--nds-space-3);
+    min-block-size: var(--nds-touch);
+    min-inline-size: var(--nds-touch);
+    padding-block: var(--nds-space-2);
+    color: inherit;
+    font-size: var(--nds-text-md);
+    line-height: var(--nds-leading-ui);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .control[data-disabled] {
+    cursor: not-allowed;
+  }
+
+  .control[data-readonly] {
+    cursor: default;
+  }
+
+  .box {
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: var(--nds-icon-md);
+    block-size: var(--nds-icon-md);
+    margin-block-start: calc(var(--nds-space-1) / 2);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-control);
+    border-radius: calc(var(--nds-radius-sm) / 2);
+    background: var(--nds-bg-surface);
+    color: var(--nds-accent-on);
+    transition:
+      background var(--nds-dur-fast) var(--nds-ease),
+      border-color var(--nds-dur-fast) var(--nds-ease);
+  }
+
+  .control[data-hovered]:not([data-disabled]) .box {
+    border-color: var(--nds-fg-muted);
+  }
+
+  .control[data-selected] .box,
+  .control[data-indeterminate] .box {
+    border-color: var(--nds-accent-default);
+    background: var(--nds-accent-default);
+  }
+
+  .control[data-hovered][data-selected]:not([data-disabled]) .box,
+  .control[data-hovered][data-indeterminate]:not([data-disabled]) .box {
+    border-color: var(--nds-accent-hover);
+    background: var(--nds-accent-hover);
+  }
+
+  .control[data-pressed]:not([data-disabled]) .box {
+    border-color: var(--nds-accent-pressed);
+  }
+
+  .control[data-pressed][data-selected]:not([data-disabled]) .box,
+  .control[data-pressed][data-indeterminate]:not([data-disabled]) .box {
+    background: var(--nds-accent-pressed);
+  }
+
+  .control[data-invalid] .box {
+    border-color: var(--nds-danger-fg);
+  }
+
+  .control[data-disabled] .box {
+    border-color: var(--nds-border-default);
+    background: var(--nds-bg-sunken);
+    color: var(--nds-fg-disabled);
+  }
+
+  .control[data-focus-visible] .box {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-1);
+    min-inline-size: 0;
+  }
+
+  .labelText {
+    font-weight: var(--nds-weight-medium);
+  }
+
+  .itemDescription {
+    padding-inline-start: calc(var(--nds-icon-md) + var(--nds-space-3));
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .field[data-disabled] .itemDescription {
+    color: var(--nds-fg-disabled);
+  }
+
+  .standaloneError {
+    padding-inline-start: calc(var(--nds-icon-md) + var(--nds-space-3));
+    color: var(--nds-danger-fg);
+    font-size: var(--nds-text-sm);
+    line-height: var(--nds-leading-ui);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .box {
+      transition: none;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .box {
+      border-color: currentColor;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .box {
+      border-color: ButtonText;
+    }
+
+    .control[data-selected] .box,
+    .control[data-indeterminate] .box {
+      border-color: Highlight;
+      background: Highlight;
+      color: HighlightText;
+    }
+
+    .control[data-focus-visible] .box {
+      outline-color: Highlight;
+    }
+  }
+}

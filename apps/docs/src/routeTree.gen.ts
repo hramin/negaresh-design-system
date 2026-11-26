@@ -16,6 +16,7 @@ import { Route as ComponentsIndexRouteImport } from './routes/components/index'
 import { Route as ComponentsSlugRouteImport } from './routes/components/$slug'
 import { Route as FoundationsColorRouteImport } from './routes/foundations/color'
 import { Route as FoundationsIconsRouteImport } from './routes/foundations/icons'
+import { Route as GuidesTanstackFormZodRouteImport } from './routes/guides/tanstack-form-zod'
 import { Route as ReferenceRegistryActivationRouteImport } from './routes/reference/registry-activation'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +54,11 @@ const FoundationsIconsRoute = FoundationsIconsRouteImport.update({
   path: '/foundations/icons',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesTanstackFormZodRoute = GuidesTanstackFormZodRouteImport.update({
+  id: '/guides/tanstack-form-zod',
+  path: '/guides/tanstack-form-zod',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReferenceRegistryActivationRoute =
   ReferenceRegistryActivationRouteImport.update({
     id: '/reference/registry-activation',
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
   '/foundations/icons': typeof FoundationsIconsRoute
+  '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
   '/components/': typeof ComponentsIndexRoute
 }
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
   '/foundations/icons': typeof FoundationsIconsRoute
+  '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
   '/components': typeof ComponentsIndexRoute
 }
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/components/$slug': typeof ComponentsSlugRoute
   '/foundations/color': typeof FoundationsColorRoute
   '/foundations/icons': typeof FoundationsIconsRoute
+  '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
   '/components/': typeof ComponentsIndexRoute
 }
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/components/$slug'
     | '/foundations/color'
     | '/foundations/icons'
+    | '/guides/tanstack-form-zod'
     | '/reference/registry-activation'
     | '/components/'
   fileRoutesByTo: FileRoutesByTo
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/components/$slug'
     | '/foundations/color'
     | '/foundations/icons'
+    | '/guides/tanstack-form-zod'
     | '/reference/registry-activation'
     | '/components'
   id:
@@ -120,6 +131,7 @@ export interface FileRouteTypes {
     | '/components/$slug'
     | '/foundations/color'
     | '/foundations/icons'
+    | '/guides/tanstack-form-zod'
     | '/reference/registry-activation'
     | '/components/'
   fileRoutesById: FileRoutesById
@@ -131,6 +143,7 @@ export interface RootRouteChildren {
   ComponentsSlugRoute: typeof ComponentsSlugRoute
   FoundationsColorRoute: typeof FoundationsColorRoute
   FoundationsIconsRoute: typeof FoundationsIconsRoute
+  GuidesTanstackFormZodRoute: typeof GuidesTanstackFormZodRoute
   ReferenceRegistryActivationRoute: typeof ReferenceRegistryActivationRoute
   ComponentsIndexRoute: typeof ComponentsIndexRoute
 }
@@ -186,6 +199,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FoundationsIconsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/tanstack-form-zod': {
+      id: '/guides/tanstack-form-zod'
+      path: '/guides/tanstack-form-zod'
+      fullPath: '/guides/tanstack-form-zod'
+      preLoaderRoute: typeof GuidesTanstackFormZodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reference/registry-activation': {
       id: '/reference/registry-activation'
       path: '/reference/registry-activation'
@@ -203,6 +223,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsSlugRoute: ComponentsSlugRoute,
   FoundationsColorRoute: FoundationsColorRoute,
   FoundationsIconsRoute: FoundationsIconsRoute,
+  GuidesTanstackFormZodRoute: GuidesTanstackFormZodRoute,
   ReferenceRegistryActivationRoute: ReferenceRegistryActivationRoute,
   ComponentsIndexRoute: ComponentsIndexRoute,
 }

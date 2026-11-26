@@ -4,6 +4,11 @@
     min-inline-size: 0;
   }
 
+  .slider {
+    inline-size: calc(var(--nds-space-24) * 2.5);
+    max-inline-size: 100%;
+  }
+
   .example {
     inline-size: min(100%, calc(var(--nds-space-24) * 6));
     min-inline-size: 0;

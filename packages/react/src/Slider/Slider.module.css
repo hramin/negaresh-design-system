@@ -1,0 +1,216 @@
+@layer nds.components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+    inline-size: 100%;
+    min-inline-size: min(100%, calc(var(--nds-space-24) * 2.5));
+    color: var(--nds-fg-default);
+  }
+
+  .root[data-orientation="vertical"] {
+    inline-size: auto;
+    min-inline-size: 0;
+    align-items: center;
+  }
+
+  .root[data-disabled] {
+    color: var(--nds-fg-subtle);
+  }
+
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--nds-space-2);
+  }
+
+  .output {
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+    font-weight: var(--nds-weight-semibold);
+    font-variant-numeric: tabular-nums;
+    line-height: var(--nds-leading-ui);
+  }
+
+  .root[data-disabled] .output {
+    color: var(--nds-fg-subtle);
+  }
+
+  .track {
+    position: relative;
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    block-size: var(--nds-touch);
+    cursor: pointer;
+    touch-action: none;
+  }
+
+  .root[data-orientation="vertical"] .track {
+    direction: ltr;
+    justify-content: center;
+    inline-size: var(--nds-touch);
+    block-size: calc(var(--nds-space-24) * 2);
+  }
+
+  .track[data-disabled] {
+    cursor: not-allowed;
+  }
+
+  .rail {
+    position: relative;
+    inline-size: 100%;
+    block-size: var(--nds-space-1);
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-border-strong);
+  }
+
+  .root[data-orientation="vertical"] .rail {
+    inline-size: var(--nds-space-1);
+    block-size: 100%;
+  }
+
+  .fill {
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-accent-default);
+  }
+
+  .root[data-disabled] .fill {
+    background: var(--nds-fg-disabled);
+  }
+
+  .thumb {
+    box-sizing: border-box;
+    inset-block-start: 50%;
+    inline-size: var(--nds-icon-md);
+    block-size: var(--nds-icon-md);
+    border: var(--nds-border-width-thick) solid var(--nds-accent-default);
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-bg-surface);
+    cursor: grab;
+    outline: none;
+    transition:
+      border-color var(--nds-dur-fast) var(--nds-ease),
+      background var(--nds-dur-fast) var(--nds-ease);
+  }
+
+  .root[data-orientation="vertical"] .thumb {
+    inset-block-start: auto;
+    inset-inline-start: 50%;
+  }
+
+  .thumb::after {
+    content: "";
+    position: absolute;
+    inset: calc((var(--nds-icon-md) - var(--nds-touch)) / 2);
+  }
+
+  .thumb[data-hovered]:not([data-disabled]) {
+    border-color: var(--nds-accent-hover);
+    background: var(--nds-bg-selected);
+  }
+
+  .thumb[data-dragging] {
+    border-color: var(--nds-accent-pressed);
+    background: var(--nds-accent-default);
+    cursor: grabbing;
+  }
+
+  .thumb[data-focus-visible] {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .thumb[data-disabled] {
+    border-color: var(--nds-fg-disabled);
+    background: var(--nds-bg-sunken);
+    cursor: not-allowed;
+  }
+
+  .ticks {
+    position: relative;
+    inline-size: 100%;
+    min-block-size: calc(var(--nds-text-xs) * var(--nds-leading-ui) + var(--nds-space-2));
+    font-size: var(--nds-text-xs);
+    font-variant-numeric: tabular-nums;
+    color: var(--nds-fg-muted);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .root[data-disabled] .ticks {
+    color: var(--nds-fg-subtle);
+  }
+
+  .tick {
+    position: absolute;
+    inset-block-start: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--nds-space-1) / 2);
+    white-space: nowrap;
+  }
+
+  .tick[data-align="center"]:dir(rtl) {
+    transform: translateX(50%);
+  }
+
+  .tick[data-align="center"]:dir(ltr) {
+    transform: translateX(-50%);
+  }
+
+  .tick[data-align="start"] {
+    align-items: flex-start;
+  }
+
+  .tick[data-align="end"] {
+    align-items: flex-end;
+  }
+
+  .tick[data-align="end"]:dir(rtl) {
+    transform: translateX(100%);
+  }
+
+  .tick[data-align="end"]:dir(ltr) {
+    transform: translateX(-100%);
+  }
+
+  .tickMark {
+    inline-size: var(--nds-border-width-hairline);
+    block-size: var(--nds-space-1);
+    background: var(--nds-border-control);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .thumb {
+      transition: none;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .rail {
+      background: currentColor;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .rail {
+      background: CanvasText;
+    }
+
+    .fill {
+      background: Highlight;
+    }
+
+    .thumb {
+      border-color: Highlight;
+      background: Canvas;
+    }
+
+    .thumb[data-focus-visible] {
+      outline-color: Highlight;
+    }
+  }
+}

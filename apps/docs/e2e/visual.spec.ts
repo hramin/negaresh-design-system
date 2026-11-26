@@ -19,7 +19,7 @@ async function open(page: Page, path: string) {
   await page.mouse.move(0, 0);
 }
 
-const WAVE1_SLUGS = new Set([
+const HIDE_HEADER_SLUGS = new Set([
   'text-field',
   'text-area',
   'search-field',
@@ -27,6 +27,20 @@ const WAVE1_SLUGS = new Set([
   'serial-field',
   'password-field',
   'form',
+  'select',
+  'combobox',
+  'checkbox',
+  'radio-group',
+  'choice-card',
+  'segmented-control',
+  'switch',
+  'tag-group',
+  'number-field',
+  'slider',
+  'date-picker',
+  'time-field',
+  'otp-field',
+  'file-upload',
 ]);
 
 const snap = (locator: Locator, name: string, hidePageHeader = false) =>
@@ -39,14 +53,19 @@ const snap = (locator: Locator, name: string, hidePageHeader = false) =>
     ...(hidePageHeader ? { style: 'header { visibility: hidden !important; }' } : {}),
   });
 
+const WAVE4_SLUGS = new Set(['otp-field', 'file-upload']);
+
 for (const theme of THEMES) {
   for (const slug of COMPONENT_SLUGS) {
     test(`gallery ${slug} (${theme})`, async ({ page }) => {
       await open(page, `/components/${slug}?theme=${theme}`);
+      if (WAVE4_SLUGS.has(slug)) {
+        await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+      }
       await snap(
         page.locator(`[data-gallery="${slug}"]`),
         `${slug}-${theme}.png`,
-        WAVE1_SLUGS.has(slug),
+        HIDE_HEADER_SLUGS.has(slug),
       );
     });
   }
@@ -79,8 +98,184 @@ for (const theme of THEMES) {
     });
   }
 
+  test(`select open listbox (${theme})`, async ({ page }) => {
+    await open(page, `/components/select?theme=${theme}`);
+    const region = page.locator('[data-interactive="select"]');
+    const trigger = region.getByRole('button', { name: /استان ارسال/ });
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.click();
+    await expect(page.getByRole('listbox')).toBeVisible();
+    const popover = page.locator('[data-nds="SelectPopover"]');
+    await expect(page.locator('[data-nds="SelectPopover"][data-entering]')).toHaveCount(0);
+    const box = await popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect);
+    const x = Math.max(0, Math.floor(box.x));
+    const y = Math.max(0, Math.floor(box.y));
+    const width = Math.ceil(box.x + box.width) - x;
+    const height = Math.ceil(box.y + box.height) - y;
+    await expect(page).toHaveScreenshot(`select-open-${theme}.png`, {
+      clip: { x, y, width, height },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`combobox open create-new listbox (${theme})`, async ({ page }) => {
+    await open(page, `/components/combobox?theme=${theme}`);
+    const region = page.locator('[data-interactive="combobox"]');
+    const input = region.getByRole('combobox');
+    await input.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await input.click();
+    await input.fill('روان‌سنجی نوجوان');
+    await expect(page.getByRole('option', { name: /افزودن «روان‌سنجی نوجوان»/ })).toBeVisible();
+    const popover = page.locator('[data-nds="ComboBoxPopover"]');
+    await expect(page.locator('[data-nds="ComboBoxPopover"][data-entering]')).toHaveCount(0);
+    const box = await popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect);
+    const x = Math.max(0, Math.floor(box.x));
+    const y = Math.max(0, Math.floor(box.y));
+    const width = Math.ceil(box.x + box.width) - x;
+    const height = Math.ceil(box.y + box.height) - y;
+    await expect(page).toHaveScreenshot(`combobox-open-${theme}.png`, {
+      clip: { x, y, width, height },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`date-picker open Jalali calendar popover (${theme})`, async ({ page }) => {
+    await open(page, `/components/date-picker?theme=${theme}`);
+    const region = page.locator('[data-interactive="date-picker"]');
+    const trigger = region
+      .locator('[data-nds="DatePicker"]')
+      .getByRole('button', { name: /باز کردن تقویم/ });
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.click();
+    const popover = page.locator('[data-nds="DatePickerPopover"]');
+    await expect(popover).toBeVisible();
+    await expect(page.locator('[data-nds="DatePickerPopover"][data-entering]')).toHaveCount(0);
+    const box = await popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect);
+    const x = Math.max(0, Math.floor(box.x));
+    const y = Math.max(0, Math.floor(box.y));
+    const width = Math.ceil(box.x + box.width) - x;
+    const height = Math.ceil(box.y + box.height) - y;
+    await expect(page).toHaveScreenshot(`date-picker-open-${theme}.png`, {
+      clip: { x, y, width, height },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`date-range-picker open Jalali calendar popover (${theme})`, async ({ page }) => {
+    await open(page, `/components/date-picker?theme=${theme}`);
+    const region = page.locator('[data-interactive="date-picker"]');
+    const trigger = region
+      .locator('[data-nds="DateRangePicker"]')
+      .getByRole('button', { name: /باز کردن تقویم/ });
+    await trigger.evaluate((el) => {
+      el.scrollIntoView({ block: 'center' });
+      window.scrollTo(0, Math.round(window.scrollY));
+    });
+    await trigger.click();
+    const popover = page.locator('[data-nds="DateRangePickerPopover"]');
+    await expect(popover).toBeVisible();
+    await expect(page.locator('[data-nds="DateRangePickerPopover"][data-entering]')).toHaveCount(0);
+    const box = await popover.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect);
+    const x = Math.max(0, Math.floor(box.x));
+    const y = Math.max(0, Math.floor(box.y));
+    const width = Math.ceil(box.x + box.width) - x;
+    const height = Math.ceil(box.y + box.height) - y;
+    await expect(page).toHaveScreenshot(`date-range-picker-open-${theme}.png`, {
+      clip: { x, y, width, height },
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
+
+  test(`tanstack-form-zod guide form (${theme})`, async ({ page }) => {
+    await open(page, `/guides/tanstack-form-zod?theme=${theme}`);
+    await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+    await snap(
+      page.locator('[data-gallery="tanstack-form-zod"]'),
+      `tanstack-form-zod-${theme}.png`,
+      true,
+    );
+  });
+
+  for (const state of ['form', 'error', 'success', 'limit'] as const) {
+    test(`registry-activation ${state} (${theme})`, async ({ page }) => {
+      await open(page, `/reference/registry-activation?state=${state}&theme=${theme}`);
+      await page.addStyleTag({
+        content: 'header, [data-region="mobile-bar"] { position: static !important; }',
+      });
+      await snap(
+        page.locator('[data-reference-rebuild]'),
+        `registry-activation-${state}-${theme}.png`,
+        false,
+      );
+    });
+  }
+
   test.describe('interaction states', () => {
     test.skip(({ isMobile }) => isMobile, 'pointer and keyboard states are captured on desktop');
+
+    test(`wave2 focus-visible states (${theme})`, async ({ page }) => {
+      for (const item of [
+        { slug: 'segmented-control', selector: '[data-nds="SegmentedControlItem"]' },
+        { slug: 'switch', selector: 'input[type="checkbox"]' },
+        { slug: 'choice-card', selector: 'input[type="radio"]' },
+      ] as const) {
+        await open(page, `/components/${item.slug}?theme=${theme}`);
+        const region = page.locator(`[data-interactive="${item.slug}"]`);
+        const target = region.locator(item.selector).first();
+        await target.focus();
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Tab');
+        await snap(region, `${item.slug}-focus-${theme}.png`, true);
+      }
+    });
+
+    test(`wave3 focus-visible states (${theme})`, async ({ page }) => {
+      for (const item of [
+        { slug: 'number-field', selector: 'input:not([type="hidden"])' },
+        { slug: 'slider', selector: 'input[type="range"]' },
+        { slug: 'time-field', selector: '[role="spinbutton"]' },
+      ] as const) {
+        await open(page, `/components/${item.slug}?theme=${theme}`);
+        const region = page.locator(`[data-interactive="${item.slug}"]`);
+        const target = region.locator(item.selector).first();
+        await target.focus();
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Tab');
+        await snap(region, `${item.slug}-focus-${theme}.png`, true);
+      }
+    });
+
+    test(`wave4 focus-visible states (${theme})`, async ({ page }) => {
+      for (const item of [
+        { slug: 'otp-field', selector: 'input:not([type="hidden"])' },
+        { slug: 'file-upload', selector: '[data-nds="DropZone"] [data-nds="Button"]' },
+      ] as const) {
+        await open(page, `/components/${item.slug}?theme=${theme}`);
+        const region = page.locator(`[data-interactive="${item.slug}"]`);
+        const target = region.locator(item.selector).first();
+        await target.focus();
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Tab');
+        await snap(region, `${item.slug}-focus-${theme}.png`, true);
+      }
+    });
 
     for (const variant of ['primary', 'secondary', 'ghost'] as const) {
       test(`button ${variant} hover / pressed / focus-visible (${theme})`, async ({ page }) => {

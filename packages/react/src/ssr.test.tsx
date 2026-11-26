@@ -47,6 +47,33 @@ import {
   Form,
   FieldGroup,
   FormErrorSummary,
+  Select,
+  SelectItem,
+  ComboBox,
+  Autocomplete,
+  ComboBoxItem,
+  Checkbox,
+  CheckboxGroup,
+  RadioGroup,
+  Radio,
+  ChoiceCard,
+  SegmentedControl,
+  SegmentedControlItem,
+  Switch,
+  TagGroup,
+  Tag,
+  TagField,
+  NumberField,
+  Slider,
+  RangeSlider,
+  Calendar,
+  RangeCalendar,
+  DatePicker,
+  DateRangePicker,
+  TimeField,
+  OTPField,
+  DropZone,
+  FileUpload,
 } from './index.ts';
 import { faMessages } from './messages/fa.ts';
 
@@ -119,6 +146,60 @@ describe('server rendering', () => {
                 <SerialField label="سریال" defaultValue="n25ag emv0k" />
                 <CodeField label="کد سیستم" defaultValue="882859354" />
                 <PasswordField label="گذرواژه" />
+                <Select label="استان" defaultValue="tehran">
+                  <SelectItem id="tehran">تهران</SelectItem>
+                </Select>
+                <ComboBox label="آزمون">
+                  <ComboBoxItem id="neo">نئو</ComboBoxItem>
+                </ComboBox>
+                <Autocomplete label="تخصص">
+                  <ComboBoxItem id="cbt">شناختی</ComboBoxItem>
+                </Autocomplete>
+                <CheckboxGroup label="کانال" defaultValue={['sms']}>
+                  <Checkbox value="sms">پیامک</Checkbox>
+                </CheckboxGroup>
+                <RadioGroup label="بسته" defaultValue="pro">
+                  <Radio value="base">پایه</Radio>
+                  <ChoiceCard value="pro" title="کلینیک" price={250000} />
+                </RadioGroup>
+                <SegmentedControl label="نما" defaultValue="pro">
+                  <SegmentedControlItem id="pro">حرفه‌ای</SegmentedControlItem>
+                  <SegmentedControlItem id="calm">آرام</SegmentedControlItem>
+                </SegmentedControl>
+                <Switch defaultSelected>ارسال خودکار</Switch>
+                <TagGroup label="برچسب‌ها">
+                  <Tag id="t1">روان‌سنجی</Tag>
+                </TagGroup>
+                <TagField label="کلیدواژه" defaultValue={['آزمون']} />
+                <NumberField label="ظرفیت" defaultValue={12} suffix="نفر" />
+                <Slider label="میزان" defaultValue={40} ticks={[0, 50, 100]} />
+                <RangeSlider label="بازهٔ قیمت" defaultValue={[20, 80]} />
+                <Calendar aria-label="تقویم جلسه" defaultValue="2026-11-13" />
+                <RangeCalendar
+                  aria-label="بازهٔ تقویم"
+                  defaultValue={{ start: '2026-11-11', end: '2026-11-15' }}
+                />
+                <DatePicker label="تاریخ شروع" defaultValue="2026-11-13" />
+                <DateRangePicker
+                  label="بازهٔ برگزاری"
+                  defaultValue={{ start: '2026-11-11', end: '2026-11-17' }}
+                />
+                <TimeField label="ساعت جلسه" defaultValue="14:30" />
+                <OTPField label="کد تأیید" defaultValue="۴۸۲۹۱۶" resendSecondsRemaining={30} />
+                <DropZone aria-label="منطقهٔ رهاسازی" />
+                <FileUpload
+                  label="فهرست سریال‌ها"
+                  defaultItems={[
+                    {
+                      id: 'ssr-file-1',
+                      name: 'serials.csv',
+                      size: 4096,
+                      type: 'text/csv',
+                      status: 'uploading',
+                      progress: 60,
+                    },
+                  ]}
+                />
               </Form>
               <Link href="https://negaresh.ir" external>
                 نگارش
@@ -167,10 +248,41 @@ describe('server rendering', () => {
       'Form',
       'FieldGroup',
       'FormErrorSummary',
+      'Select',
+      'ComboBox',
+      'Checkbox',
+      'CheckboxGroup',
+      'RadioGroup',
+      'Radio',
+      'ChoiceCard',
+      'SegmentedControl',
+      'SegmentedControlItem',
+      'Switch',
+      'TagGroup',
+      'Tag',
+      'TagField',
+      'NumberField',
+      'Slider',
+      'RangeSlider',
+      'Calendar',
+      'RangeCalendar',
+      'DatePicker',
+      'DateRangePicker',
+      'TimeField',
+      'OTPField',
+      'DropZone',
+      'FileUpload',
     ]) {
       expect(html, name).toContain(`data-nds="${name}"`);
     }
     expect(html).toContain('N25AG-EMV0K');
+    expect(html).toContain('۲۵۰٬۰۰۰ تومان');
+    expect(html).toContain('آبان ۱۴۰۵');
+    expect(html).toContain('افزایش ظرفیت');
+    expect(html).toContain('کاهش ظرفیت');
+    expect(html).toContain('رقم ۱ از ۶');
+    expect(html).toContain('ارسال دوباره تا ۳۰ ثانیهٔ دیگر');
+    expect(html).toContain('serials.csv');
     expect(html).toContain('nonce="ssr-nonce"');
     expect(html).toContain('react-aria.i18n.strings');
     expect(html).toContain('بستن');

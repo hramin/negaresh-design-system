@@ -1,6 +1,6 @@
 # Components
 
-Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
+Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), and all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026); docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
 
 Every component documents: anatomy, props, all applicable states (default, hover, focus-visible, pressed, disabled, loading, invalid, empty, read-only), keyboard map, ARIA notes, RTL notes, do/don't, and a mobile example.
 
@@ -34,27 +34,27 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| TextField | `TextField` | label, description, error, prefix/suffix, character count | all | review |
-| TextArea | `TextField` multiline | auto-grow | all | review |
-| NumberField | `NumberField` | Persian display, Latin input accepted | all | planned |
-| SearchField | `SearchField` | clear, shortcut hint | all | review |
-| PhoneField | `TextField` + utils | normalises to +989…; LTR | all | review |
-| SerialField / CodeField | `TextField` + utils | LTR monospace; pattern hint; normalise | R, N, T | review |
-| OTPField | `TextField` ×6 pattern | paste, auto-advance, `autocomplete="one-time-code"`, resend countdown | all | planned |
-| PasswordField | `TextField` | show/hide, strength hint | all | review |
-| Select | `Select` | single, multiple; RTL arrow | all | planned |
-| ComboBox / Autocomplete | `ComboBox` | async, create-new | N, T | planned |
-| Checkbox, CheckboxGroup | `Checkbox(Group)` | indeterminate | all | planned |
-| RadioGroup | `RadioGroup` | vertical, horizontal | all | planned |
-| ChoiceCard (radio/checkbox card) | `Radio`/`Checkbox` | with description, icon, price | R, N, T | planned |
-| SegmentedControl | `ToggleButtonGroup` | 2–5 options (from Ravanma v3) | N, T, V | planned |
-| Switch | `Switch` | — | all | planned |
-| Slider, RangeSlider | `Slider` | Persian ticks | T, V | planned |
-| DatePicker (Jalali), DateRangePicker, Calendar | `DatePicker` + `PersianCalendar` | Saturday start; min/max; Tehran tz | R, N, T | planned |
-| TimeField | `TimeField` | 24 h | N | planned |
-| FileUpload, DropZone | `FileTrigger`, `DropZone` | CSV/TXT, images; progress; errors | R, N, T | planned |
-| TagGroup / TagField | `TagGroup` | removable tags | N | planned |
-| Form, FieldGroup, FormErrorSummary | `Form` | server errors mapping | all | review |
+| TextField | `TextField` | label, description, error, prefix/suffix, character count | all | approved |
+| TextArea | `TextField` multiline | auto-grow | all | approved |
+| NumberField | `NumberField` | Persian display, Latin input accepted | all | approved |
+| SearchField | `SearchField` | clear, shortcut hint | all | approved |
+| PhoneField | `TextField` + utils | normalises to +989…; LTR | all | approved |
+| SerialField / CodeField | `TextField` + utils | LTR monospace; pattern hint; normalise | R, N, T | approved |
+| OTPField | `TextField` ×6 pattern | paste, auto-advance, `autocomplete="one-time-code"`, resend countdown | all | approved |
+| PasswordField | `TextField` | show/hide, strength hint | all | approved |
+| Select | `Select` | single, multiple; RTL arrow | all | approved |
+| ComboBox / Autocomplete | `ComboBox` | async, create-new | N, T | approved |
+| Checkbox, CheckboxGroup | `Checkbox(Group)` | indeterminate | all | approved |
+| RadioGroup | `RadioGroup` | vertical, horizontal | all | approved |
+| ChoiceCard (radio/checkbox card) | `Radio`/`Checkbox` | with description, icon, price | R, N, T | approved |
+| SegmentedControl | `ToggleButtonGroup` | 2–5 options (from Ravanma v3) | N, T, V | approved |
+| Switch | `Switch` | — | all | approved |
+| Slider, RangeSlider | `Slider` | Persian ticks | T, V | approved |
+| DatePicker (Jalali), DateRangePicker, Calendar | `DatePicker` + `PersianCalendar` | Saturday start; min/max; Tehran tz | R, N, T | approved |
+| TimeField | `TimeField` | 24 h | N | approved |
+| FileUpload, DropZone | `FileTrigger`, `DropZone` | CSV/TXT, images; progress; errors | R, N, T | approved |
+| TagGroup / TagField | `TagGroup` | removable tags | N | approved |
+| Form, FieldGroup, FormErrorSummary | `Form` | server errors mapping | all | approved |
 
 ## Feedback and status (P4)
 

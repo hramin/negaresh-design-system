@@ -1,13 +1,20 @@
 import { describe, expect, it } from 'vitest';
 import {
+  createPersianCalendar,
   formatDate,
   formatDateNumeric,
   formatDateTime,
   formatRelative,
   formatTime,
   fromJalali,
+  getTodayIsoDate,
+  isPersianWeekend,
+  parseIsoDate,
+  parseIsoTime,
   parseJalali,
   TEHRAN,
+  toIsoDate,
+  toIsoTime,
   toJalali,
 } from './date.ts';
 
@@ -63,5 +70,30 @@ describe('date', () => {
     expect(formatRelative('2026-11-13T14:00:00Z', instant)).toBe('۲۶ دقیقه بعد');
     expect(formatRelative(instant, '2026-11-15T00:00:00Z')).toBe('۲۲ آبان ۱۴۰۵، ساعت ۱۷:۰۴');
     expect(typeof formatRelative(new Date())).toBe('string');
+  });
+
+  it('converts ISO dates/times for Jalali calendar and 24-hour time inputs', () => {
+    expect(createPersianCalendar().identifier).toBe('persian');
+
+    const friday = parseIsoDate('2026-11-13');
+    expect(friday?.year).toBe(1405);
+    expect(friday?.month).toBe(8);
+    expect(friday?.day).toBe(22);
+    expect(friday && toIsoDate(friday)).toBe('2026-11-13');
+    expect(friday && isPersianWeekend(friday)).toBe(true);
+
+    const saturday = parseIsoDate('2026-11-14');
+    expect(saturday && isPersianWeekend(saturday)).toBe(false);
+
+    expect(parseIsoDate('2026-02-30')).toBeNull();
+    expect(parseIsoDate('bad')).toBeNull();
+    expect(getTodayIsoDate()).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+
+    const t1 = parseIsoTime('09:05');
+    expect(t1 && toIsoTime(t1)).toBe('09:05');
+    const t2 = parseIsoTime('17:04:09');
+    expect(t2 && toIsoTime(t2, true)).toBe('17:04:09');
+    expect(parseIsoTime('25:99')).toBeNull();
+    expect(parseIsoTime('not-time')).toBeNull();
   });
 });

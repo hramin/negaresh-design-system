@@ -34,6 +34,10 @@ const NAV: {
     ],
   },
   {
+    title: m.navGroups.guides,
+    items: [{ to: '/guides/tanstack-form-zod', label: m.nav.formAdapter }],
+  },
+  {
     title: m.navGroups.reference,
     items: [{ to: '/reference/registry-activation', label: m.nav.reference }],
   },
