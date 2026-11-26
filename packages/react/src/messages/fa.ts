@@ -1,5 +1,16 @@
 import type { NdsMessages } from './types.ts';
-import { toPersianDigits } from '@negaresh/utils';
+import { formatNumber, formatPercent, toPersianDigits } from '@negaresh/utils';
+
+function formatPersianFileSize(bytes: number): string {
+  const safe = Math.max(0, bytes);
+  if (safe < 1024) return `${formatNumber(safe, { maximumFractionDigits: 0 })} بایت`;
+  const kb = safe / 1024;
+  if (kb < 1024) return `${formatNumber(kb, { maximumFractionDigits: kb >= 100 ? 0 : 1 })} کیلوبایت`;
+  const mb = kb / 1024;
+  if (mb < 1024) return `${formatNumber(mb, { maximumFractionDigits: mb >= 100 ? 0 : 1 })} مگابایت`;
+  const gb = mb / 1024;
+  return `${formatNumber(gb, { maximumFractionDigits: 1 })} گیگابایت`;
+}
 
 /** Persian strings for NDS components (company products are Persian-only, D-30). */
 export const faMessages: NdsMessages = {
@@ -49,6 +60,27 @@ export const faMessages: NdsMessages = {
   nextMonth: 'ماه بعد',
   numberIncrement: 'افزایش',
   numberDecrement: 'کاهش',
+  otpSlotLabel: (index, total) => `رقم ${toPersianDigits(index)} از ${toPersianDigits(total)}`,
+  otpIncomplete: (length) => `کد ${toPersianDigits(length)} رقمی را کامل وارد کنید.`,
+  otpResend: 'ارسال دوبارهٔ کد',
+  otpResendWait: (seconds) => `ارسال دوباره تا ${toPersianDigits(seconds)} ثانیهٔ دیگر`,
+  otpResendReady: 'امکان ارسال دوبارهٔ کد فعال شد.',
+  otpResent: 'کد تازه ارسال شد.',
+  fileUploadDropPrompt: 'پرونده را اینجا رها کنید یا از دستگاه انتخاب کنید',
+  fileUploadChoose: 'انتخاب پرونده',
+  fileUploadChooseMultiple: 'انتخاب پرونده‌ها',
+  fileUploadRemove: (name) => `حذف پروندهٔ «${name}»`,
+  fileUploadUploading: (percent) =>
+    percent === undefined ? 'در حال بارگذاری…' : `در حال بارگذاری، ${formatPercent(percent)}`,
+  fileUploadComplete: 'بارگذاری کامل شد',
+  fileUploadError: 'خطا در بارگذاری پرونده',
+  fileUploadInvalidType: (name, accept) =>
+    `قالب پروندهٔ «${name}» مجاز نیست (قالب‌های مجاز: ${accept}).`,
+  fileUploadTooLarge: (name, maxSize) =>
+    `حجم پروندهٔ «${name}» بیشتر از سقف مجاز (${maxSize}) است.`,
+  fileUploadTooMany: (maxFiles) =>
+    `حداکثر ${toPersianDigits(maxFiles)} پرونده می‌توانید انتخاب کنید.`,
+  fileSize: formatPersianFileSize,
 };
 
 export {
