@@ -162,4 +162,28 @@ export interface NdsMessages {
   avatarOverflow: (count: number) => string;
   avatarOverflowLabel: (count: number) => string;
   copyValue: (label: string) => string;
+  /** Navigation components (P4 Wave 3). */
+  sideNavLabel: string;
+  tabStripLabel: string;
+  breadcrumbsLabel: string;
+  breadcrumbsExpand: string;
+  paginationLabel: string;
+  paginationPrevious: string;
+  paginationNext: string;
+  paginationPage: (page: number) => string;
+  paginationPageOf: (page: number, total: number) => string;
+  loadMore: string;
+  loadMoreShowing: (loaded: number, total: number) => string;
+  stepperLabel: string;
+  stepCompleted: string;
+  stepCurrent: string;
+  stepUpcoming: string;
+  userMenuLabel: string;
+  userMenuRolesTitle: string;
+  userMenuThemeTitle: string;
+  themeLight: string;
+  themeDark: string;
+  themeSystem: string;
+  signOut: string;
+  footerLabel: string;
 }

@@ -188,6 +188,31 @@ export const faMessages: NdsMessages = {
   avatarOverflowLabel: (count) =>
     `${formatNumber(count, { maximumFractionDigits: 0 })} نفر دیگر`,
   copyValue: (label) => `کپی ${label}`,
+  sideNavLabel: 'منوی کناری',
+  tabStripLabel: 'ناوبری بخش‌ها',
+  breadcrumbsLabel: 'مسیر راهنما',
+  breadcrumbsExpand: 'نمایش مسیرهای میانی',
+  paginationLabel: 'صفحه‌بندی',
+  paginationPrevious: 'صفحهٔ قبل',
+  paginationNext: 'صفحهٔ بعد',
+  paginationPage: (page) => `صفحهٔ ${formatNumber(page, { maximumFractionDigits: 0 })}`,
+  paginationPageOf: (page, total) =>
+    `صفحهٔ ${formatNumber(page, { maximumFractionDigits: 0 })} از ${formatNumber(total, { maximumFractionDigits: 0 })}`,
+  loadMore: 'نمایش موارد بیشتر',
+  loadMoreShowing: (loaded, total) =>
+    `نمایش ${formatNumber(loaded, { maximumFractionDigits: 0 })} از ${formatNumber(total, { maximumFractionDigits: 0 })} مورد`,
+  stepperLabel: 'مراحل',
+  stepCompleted: 'انجام‌شده',
+  stepCurrent: 'مرحلهٔ فعلی',
+  stepUpcoming: 'مرحلهٔ بعدی',
+  userMenuLabel: 'منوی حساب کاربری',
+  userMenuRolesTitle: 'نقش کاربری',
+  userMenuThemeTitle: 'نمایهٔ رنگ',
+  themeLight: 'روشن',
+  themeDark: 'تیره',
+  themeSystem: 'خودکار (سیستم)',
+  signOut: 'خروج از حساب',
+  footerLabel: 'پاورقی',
 };
 
 export {
