@@ -53,4 +53,15 @@
     color: var(--nds-fg-subtle);
     font-size: var(--nds-text-xs);
   }
+
+  .chartGallery figure {
+    flex: 1 1 100%;
+    inline-size: 100%;
+    align-items: stretch;
+    min-inline-size: 0;
+  }
+
+  .chartGallery figure > div {
+    inline-size: 100%;
+  }
 }

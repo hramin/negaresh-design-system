@@ -275,9 +275,18 @@ export function ChartFrame({
       {showFooter && (
         <div className={styles.footer}>
           {hasTable && tableMode === 'visible' && (
-            <div className={styles.tableWrapVisible}>
+            <section
+              className={styles.tableWrapVisible}
+              aria-label={
+                typeof title === 'string'
+                  ? `${title} — ${table.caption ?? m.dataTableCaption}`
+                  : (table.caption ?? m.dataTableCaption)
+              }
+              // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable table container requires keyboard access on mobile (WCAG 2.1.1)
+              tabIndex={0}
+            >
               <DataTable table={table} fallbackCaption={m.dataTableCaption} />
-            </div>
+            </section>
           )}
 
           {hasTable && tableMode === 'toggle' && (
@@ -288,9 +297,18 @@ export function ChartFrame({
                   <Icon icon={iconChevronDown} size="sm" />
                 </span>
               </summary>
-              <div className={styles.tableWrap}>
+              <section
+                className={styles.tableWrap}
+                aria-label={
+                  typeof title === 'string'
+                    ? `${title} — ${table.caption ?? m.dataTableCaption}`
+                    : (table.caption ?? m.dataTableCaption)
+                }
+                // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable table container requires keyboard access on mobile (WCAG 2.1.1)
+                tabIndex={0}
+              >
                 <DataTable table={table} fallbackCaption={m.dataTableCaption} />
-              </div>
+              </section>
             </details>
           )}
 

@@ -31,6 +31,10 @@
     font-size: var(--nds-text-xs);
     font-weight: var(--nds-weight-medium);
     font-variant-numeric: tabular-nums;
+    paint-order: stroke;
+    stroke: var(--nds-bg-surface);
+    stroke-width: 3.5px;
+    stroke-linejoin: round;
   }
 
   .refLabel[data-tone="accent"] {
@@ -79,6 +83,10 @@
     font-family: var(--nds-font-sans);
     font-size: var(--nds-text-xs);
     font-weight: var(--nds-weight-medium);
+    paint-order: stroke;
+    stroke: var(--nds-bg-surface);
+    stroke-width: 3px;
+    stroke-linejoin: round;
   }
 
   @media (forced-colors: active) {
@@ -89,6 +97,7 @@
     .refLabel,
     .bandLabel {
       fill: CanvasText;
+      stroke: none;
     }
 
     .bandRect {

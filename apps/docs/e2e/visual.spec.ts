@@ -1,5 +1,5 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
-import { COMPONENT_SLUGS, THEMES } from './routes.ts';
+import { CHART_SLUGS, COMPONENT_SLUGS, THEMES } from './routes.ts';
 
 /**
  * Visual snapshots of every states gallery (docs/quality.md): light/dark × 1440/390.
@@ -144,6 +144,14 @@ for (const theme of THEMES) {
         `${slug}-${theme}.png`,
         HIDE_HEADER_SLUGS.has(slug),
       );
+    });
+  }
+
+  for (const slug of CHART_SLUGS) {
+    test(`chart gallery ${slug} (${theme})`, async ({ page }) => {
+      await open(page, `/charts/${slug}?theme=${theme}`);
+      await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+      await snap(page.locator(`[data-gallery="chart-${slug}"]`), `chart-${slug}-${theme}.png`, true);
     });
   }
 

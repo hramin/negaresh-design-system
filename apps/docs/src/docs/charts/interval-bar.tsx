@@ -52,9 +52,9 @@ const sampleItems: IntervalBarItem[] = [
 
 const normBands = [{ from: 40, to: 60, tone: 'band' as const, label: 'بازهٔ هنجار' }];
 const refLines = [
-  { value: 50, label: 'میانگین ۵۰' },
-  { value: 65, label: '۶۵', tone: 'warning' as const },
-  { value: 70, label: '۷۰', tone: 'danger' as const },
+  { value: 50, label: 'میانگین' },
+  { value: 65, label: 'توجه', tone: 'warning' as const },
+  { value: 70, label: 'بالینی', tone: 'danger' as const },
 ];
 
 function Example() {

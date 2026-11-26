@@ -103,10 +103,11 @@
   .bandBadge {
     display: inline-flex;
     align-items: center;
+    max-inline-size: 100%;
     padding-block: calc(var(--nds-space-1) / 2);
     padding-inline: var(--nds-space-2);
     border: var(--nds-border-width-hairline) solid var(--nds-border-default);
-    border-radius: var(--nds-radius-pill);
+    border-radius: var(--nds-radius-sm);
     background: var(--nds-bg-sunken);
     color: var(--nds-fg-muted);
     font-size: var(--nds-text-xs);
@@ -201,10 +202,12 @@
 
   @container (max-inline-size: 34rem) {
     .row {
-      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-columns: minmax(0, 1fr);
       grid-template-areas:
-        "label value"
-        "track track";
+        "label"
+        "value"
+        "track";
+      gap: var(--nds-space-2);
     }
 
     .labelCell {
@@ -213,6 +216,7 @@
 
     .valueCell {
       grid-area: value;
+      justify-content: flex-start;
     }
 
     .trackCell {
@@ -221,6 +225,7 @@
 
     .axisRow {
       grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "track";
     }
 
     .axisSpacer {

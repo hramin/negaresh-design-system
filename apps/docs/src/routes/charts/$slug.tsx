@@ -6,6 +6,7 @@ import { findChartDoc } from '../../docs/charts/registry.tsx';
 import { PRODUCT_NAMES, STATUS_NAMES } from '../../docs/labels.ts';
 import { List, PropsTable } from '../../docs/ui.tsx';
 import ui from '../../docs/ui.module.css';
+import chartsUi from '../../docs/charts/charts.module.css';
 
 export const Route = createFileRoute('/charts/$slug')({
   loader: ({ params }) => {
@@ -57,7 +58,7 @@ function ChartPage() {
         <Heading level={2} id="states">
           حالت‌ها
         </Heading>
-        <div className={ui.gallery} data-gallery={`chart-${doc.slug}`}>
+        <div className={`${ui.gallery} ${chartsUi.chartGallery}`} data-gallery={`chart-${doc.slug}`}>
           <Gallery />
         </div>
       </section>

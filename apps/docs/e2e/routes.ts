@@ -76,6 +76,16 @@ export const COMPONENT_SLUGS = [
   'diff-view',
 ] as const;
 
+export const CHART_SLUGS = [
+  'chart-frame',
+  'interval-bar',
+  'profile-line',
+  'bar',
+  'radar',
+  'gauge',
+  'sparkline',
+] as const;
+
 export const ROUTES = [
   '/',
   '/tokens',
@@ -83,6 +93,8 @@ export const ROUTES = [
   '/foundations/icons',
   '/components',
   ...COMPONENT_SLUGS.map((s) => `/components/${s}`),
+  '/charts',
+  ...CHART_SLUGS.map((s) => `/charts/${s}`),
   '/guides/tanstack-form-zod',
   '/reference/registry-activation',
   '/reference/registry-activation?state=error',

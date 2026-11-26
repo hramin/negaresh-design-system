@@ -9,7 +9,7 @@
 
   .svgWrap {
     inline-size: 100%;
-    overflow-inline: auto;
+    min-inline-size: 0;
   }
 
   .svg {

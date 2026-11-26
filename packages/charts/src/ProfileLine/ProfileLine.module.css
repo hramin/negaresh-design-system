@@ -9,7 +9,7 @@
 
   .svgWrap {
     inline-size: 100%;
-    overflow-inline: auto;
+    min-inline-size: 0;
   }
 
   .svg {
@@ -77,6 +77,10 @@
     font-size: var(--nds-text-xs);
     font-weight: var(--nds-weight-semibold);
     font-variant-numeric: tabular-nums;
+    paint-order: stroke;
+    stroke: var(--nds-bg-surface);
+    stroke-width: 3.5px;
+    stroke-linejoin: round;
   }
 
   .pointTrigger {
@@ -124,6 +128,7 @@
     .valueLabel,
     .dividerLabel {
       fill: CanvasText;
+      stroke: none;
     }
 
     .pointTrigger:focus-visible {

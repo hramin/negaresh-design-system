@@ -429,7 +429,6 @@ export function Bar({
           {bandElements}
           {gridElements}
           {axisElements}
-          {refElements}
 
           {bars.map((bar, idx) => {
             const isActive = activeKey === bar.key;
@@ -476,6 +475,8 @@ export function Bar({
               </g>
             );
           })}
+
+          {refElements}
         </svg>
       </div>
 

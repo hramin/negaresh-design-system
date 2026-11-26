@@ -168,6 +168,12 @@
     background: var(--nds-bg-surface);
   }
 
+  .tableWrap:focus-visible,
+  .tableWrapVisible:focus-visible {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
   .table {
     inline-size: 100%;
     border-collapse: collapse;
