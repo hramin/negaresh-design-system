@@ -39,6 +39,8 @@ const HIDE_HEADER_SLUGS = new Set([
   'slider',
   'date-picker',
   'time-field',
+  'otp-field',
+  'file-upload',
 ]);
 
 const snap = (locator: Locator, name: string, hidePageHeader = false) =>
@@ -51,10 +53,15 @@ const snap = (locator: Locator, name: string, hidePageHeader = false) =>
     ...(hidePageHeader ? { style: 'header { visibility: hidden !important; }' } : {}),
   });
 
+const WAVE4_SLUGS = new Set(['otp-field', 'file-upload']);
+
 for (const theme of THEMES) {
   for (const slug of COMPONENT_SLUGS) {
     test(`gallery ${slug} (${theme})`, async ({ page }) => {
       await open(page, `/components/${slug}?theme=${theme}`);
+      if (WAVE4_SLUGS.has(slug)) {
+        await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+      }
       await snap(
         page.locator(`[data-gallery="${slug}"]`),
         `${slug}-${theme}.png`,
@@ -196,6 +203,30 @@ for (const theme of THEMES) {
     });
   });
 
+  test(`tanstack-form-zod guide form (${theme})`, async ({ page }) => {
+    await open(page, `/guides/tanstack-form-zod?theme=${theme}`);
+    await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+    await snap(
+      page.locator('[data-gallery="tanstack-form-zod"]'),
+      `tanstack-form-zod-${theme}.png`,
+      true,
+    );
+  });
+
+  for (const state of ['form', 'error', 'success', 'limit'] as const) {
+    test(`registry-activation ${state} (${theme})`, async ({ page }) => {
+      await open(page, `/reference/registry-activation?state=${state}&theme=${theme}`);
+      await page.addStyleTag({
+        content: 'header, [data-region="mobile-bar"] { position: static !important; }',
+      });
+      await snap(
+        page.locator('[data-reference-rebuild]'),
+        `registry-activation-${state}-${theme}.png`,
+        false,
+      );
+    });
+  }
+
   test.describe('interaction states', () => {
     test.skip(({ isMobile }) => isMobile, 'pointer and keyboard states are captured on desktop');
 
@@ -220,6 +251,21 @@ for (const theme of THEMES) {
         { slug: 'number-field', selector: 'input:not([type="hidden"])' },
         { slug: 'slider', selector: 'input[type="range"]' },
         { slug: 'time-field', selector: '[role="spinbutton"]' },
+      ] as const) {
+        await open(page, `/components/${item.slug}?theme=${theme}`);
+        const region = page.locator(`[data-interactive="${item.slug}"]`);
+        const target = region.locator(item.selector).first();
+        await target.focus();
+        await page.keyboard.press('Shift+Tab');
+        await page.keyboard.press('Tab');
+        await snap(region, `${item.slug}-focus-${theme}.png`, true);
+      }
+    });
+
+    test(`wave4 focus-visible states (${theme})`, async ({ page }) => {
+      for (const item of [
+        { slug: 'otp-field', selector: 'input:not([type="hidden"])' },
+        { slug: 'file-upload', selector: '[data-nds="DropZone"] [data-nds="Button"]' },
       ] as const) {
         await open(page, `/components/${item.slug}?theme=${theme}`);
         const region = page.locator(`[data-interactive="${item.slug}"]`);
