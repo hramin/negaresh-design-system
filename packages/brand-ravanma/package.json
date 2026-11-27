@@ -10,6 +10,11 @@
       "@negaresh/source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./docs.manifest": {
+      "@negaresh/source": "./src/docs.manifest.ts",
+      "types": "./dist/docs.manifest.d.ts",
+      "default": "./dist/docs.manifest.js"
     }
   },
   "files": [

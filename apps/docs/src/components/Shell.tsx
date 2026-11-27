@@ -1,6 +1,7 @@
 import { SkipLink, ToggleButton, ToggleButtonGroup, useTheme } from '@negaresh/react';
 import { Link } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
+import { buildBrandNavGroups } from '../docs/brands/registry.ts';
 import {
   ASSESSMENT_CATALOG,
   CHART_CATALOG,
@@ -82,6 +83,21 @@ const NAV: {
     ],
   },
   {
+    title: m.navGroups.products,
+    items: [
+      { to: '/products', label: m.nav.products },
+      { to: '/products/registry', label: m.nav.productRegistry },
+      { to: '/products/negaresh', label: m.nav.productNegaresh },
+      { to: '/products/test-platform', label: m.nav.productTestPlatform },
+      { to: '/products/ravanma', label: m.nav.productRavanma },
+    ],
+  },
+  {
+    title: m.navGroups.brands,
+    items: [{ to: '/brands', label: m.nav.brands }],
+  },
+  ...buildBrandNavGroups(),
+  {
     title: m.navGroups.guides,
     items: [
       { to: '/guides/tanstack-form-zod', label: m.nav.formAdapter },
@@ -125,7 +141,9 @@ export function Shell({ children }: { children: ReactNode }) {
             <p className={styles.navTitle}>{group.title}</p>
             <ul>
               {group.items.map((item) => (
-                <li key={item.to + (item.params?.slug ?? '')}>
+                <li
+                  key={`${item.to}:${item.params?.brand ?? ''}:${item.params?.slug ?? ''}:${item.params?.serial ?? ''}`}
+                >
                   <Link
                     to={item.to}
                     {...(item.params ? { params: item.params } : {})}

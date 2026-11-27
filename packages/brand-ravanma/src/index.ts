@@ -1,2 +1,7 @@
-// Entry point. Components arrive in a later phase (see docs/phases/).
-export {};
+export type {
+  BrandManifestLink,
+  BrandManifestRoute,
+  BrandManifestSection,
+  DocsManifest,
+} from './docs.manifest.js';
+export { docsManifest } from './docs.manifest.js';
