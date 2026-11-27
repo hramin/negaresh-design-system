@@ -2,6 +2,8 @@
 import './layers.css';
 
 export * from './commerce/index.ts';
+export * from './content/index.ts';
+export * from './courses/index.ts';
 export * from './licensing/index.ts';
 export {
   type PartialPatternMessages,
@@ -10,3 +12,5 @@ export {
   usePatternMessages,
 } from './messages/context.tsx';
 export type { PatternMessages } from './messages/types.ts';
+export * from './shells/index.ts';
+export * from './test-platform/index.ts';
