@@ -178,33 +178,6 @@
     text-underline-offset: 0.25em;
   }
 
-  .status {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--nds-space-1);
-    padding-inline: var(--nds-space-2);
-    border-radius: var(--nds-radius-pill);
-    font-size: var(--nds-text-xs);
-    font-weight: var(--nds-weight-semibold);
-    white-space: nowrap;
-  }
-
-  .statusPass {
-    background: var(--nds-success-bg);
-    color: var(--nds-success-fg);
-  }
-
-  .statusFail {
-    background: var(--nds-danger-bg);
-    color: var(--nds-danger-fg);
-  }
-
-  .icon {
-    inline-size: var(--nds-icon-sm);
-    block-size: var(--nds-icon-sm);
-    flex: none;
-  }
-
   /* Mobile composition: tables become stacked cards below 900 px (CLAUDE.md §3). */
   .mobileOnly {
     display: none;

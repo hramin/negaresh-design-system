@@ -1,10 +1,12 @@
 import { SkipLink, ToggleButton, ToggleButtonGroup, useTheme } from '@negaresh/react';
 import { Link } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
-import { ASSESSMENT_DOCS } from '../docs/assessment/registry.tsx';
-import { CHART_DOCS } from '../docs/charts/registry.tsx';
-import { PATTERN_DOCS } from '../docs/patterns/registry.tsx';
-import { COMPONENT_DOCS } from '../docs/registry.tsx';
+import {
+  ASSESSMENT_CATALOG,
+  CHART_CATALOG,
+  COMPONENT_CATALOG,
+  PATTERN_CATALOG,
+} from '../docs/catalog.ts';
 import { m } from '../lib/messages.ts';
 import { THEME_CHOICES } from '../lib/theme.ts';
 import styles from './Shell.module.css';
@@ -15,13 +17,23 @@ const NAV: {
 }[] = [
   {
     title: m.navGroups.start,
-    items: [{ to: '/', label: m.nav.overview }],
+    items: [
+      { to: '/', label: m.nav.overview },
+      { to: '/start', label: m.nav.start },
+    ],
   },
   {
     title: m.navGroups.foundations,
     items: [
       { to: '/foundations/color', label: m.nav.color },
+      { to: '/foundations/typography', label: m.nav.typography },
+      { to: '/foundations/layout', label: m.nav.layout },
+      { to: '/foundations/motion', label: m.nav.motion },
       { to: '/foundations/icons', label: m.nav.icons },
+      { to: '/foundations/localization', label: m.nav.localization },
+      { to: '/foundations/accessibility', label: m.nav.accessibility },
+      { to: '/foundations/content', label: m.nav.content },
+      { to: '/foundations/data-viz', label: m.nav.dataViz },
       { to: '/tokens', label: m.nav.tokens },
     ],
   },
@@ -29,7 +41,7 @@ const NAV: {
     title: m.navGroups.components,
     items: [
       { to: '/components', label: m.nav.components },
-      ...COMPONENT_DOCS.map((d) => ({
+      ...COMPONENT_CATALOG.map((d) => ({
         to: '/components/$slug',
         params: { slug: d.slug },
         label: d.title,
@@ -40,7 +52,7 @@ const NAV: {
     title: m.navGroups.charts,
     items: [
       { to: '/charts', label: m.nav.charts },
-      ...CHART_DOCS.map((d) => ({
+      ...CHART_CATALOG.map((d) => ({
         to: '/charts/$slug',
         params: { slug: d.slug },
         label: d.title,
@@ -51,7 +63,7 @@ const NAV: {
     title: m.navGroups.assessment,
     items: [
       { to: '/assessment', label: m.nav.assessment },
-      ...ASSESSMENT_DOCS.map((d) => ({
+      ...ASSESSMENT_CATALOG.map((d) => ({
         to: '/assessment/$slug',
         params: { slug: d.slug },
         label: d.title,
@@ -62,7 +74,7 @@ const NAV: {
     title: m.navGroups.patterns,
     items: [
       { to: '/patterns', label: m.nav.patterns },
-      ...PATTERN_DOCS.map((d) => ({
+      ...PATTERN_CATALOG.map((d) => ({
         to: '/patterns/$slug',
         params: { slug: d.slug },
         label: d.title,
@@ -71,7 +83,11 @@ const NAV: {
   },
   {
     title: m.navGroups.guides,
-    items: [{ to: '/guides/tanstack-form-zod', label: m.nav.formAdapter }],
+    items: [
+      { to: '/guides/tanstack-form-zod', label: m.nav.formAdapter },
+      { to: '/changelog', label: m.nav.changelog },
+      { to: '/decisions', label: m.nav.decisions },
+    ],
   },
   {
     title: m.navGroups.reference,
@@ -94,7 +110,7 @@ export function Shell({ children }: { children: ReactNode }) {
   return (
     <div className={styles.shell}>
       <SkipLink />
-      <header className={styles.topbar}>
+      <header className={styles.topbar} data-docs-topbar>
         <Link to="/" className={styles.brand}>
           {m.siteName}
           <span className={styles.brandLatin} lang="en" dir="ltr">

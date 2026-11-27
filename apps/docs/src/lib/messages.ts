@@ -1,6 +1,6 @@
 /**
- * Site chrome strings. A stand-in for the Paraglide message catalogue, which arrives
- * with the first components that need it; page content lives in the route files.
+ * Site chrome strings. A stand-in for the Paraglide message catalogue; page content lives
+ * in the route files.
  */
 export const m = {
   siteName: 'دیزاین سیستم نگرش',
@@ -14,24 +14,54 @@ export const m = {
     charts: 'نمودارها',
     assessment: 'کیت ارزیابی و آزمون',
     patterns: 'الگوهای محصول',
+    products: 'محصولات',
+    brands: 'افزونه‌های برند',
+    tools: 'ابزارها و مرجع‌ها',
     guides: 'راهنماها',
     reference: 'صفحه‌های مرجع',
   },
   nav: {
     overview: 'معرفی',
+    start: 'شروع کار',
     tokens: 'توکن‌ها',
     color: 'رنگ',
+    typography: 'تایپوگرافی',
+    layout: 'چیدمان و فضا',
+    motion: 'حرکت',
     icons: 'آیکون‌ها',
+    localization: 'بومی‌سازی و RTL',
+    accessibility: 'دسترس‌پذیری',
+    content: 'محتوا و لحن',
+    dataViz: 'بصری‌سازی داده',
     components: 'همهٔ کامپوننت‌ها',
     charts: 'همهٔ نمودارها',
     assessment: 'همهٔ کامپوننت‌های آزمون',
     patterns: 'همهٔ الگوهای محصول',
+    products: 'همهٔ محصولات',
+    productRegistry: 'رجیستری نرم‌افزار',
+    productNegaresh: 'سایت اصلی نگرش',
+    productTestPlatform: 'پلتفرم آزمون',
+    productRavanma: 'روانما',
+    brands: 'افزونه‌های برند (Manifest)',
+    playground: 'زمین بازی تعاملی',
+    search: 'جست‌وجو',
+    changelog: 'تاریخچهٔ تغییرات',
+    decisions: 'تصمیم‌های طراحی',
     formAdapter: 'آداپتور TanStack Form و Zod',
     reference: 'فعال‌سازی رجیستری',
     adminSerialsList: 'پنل مدیریت · فهرست سریال‌ها',
     adminSerialDetail: 'پنل مدیریت · جزئیات سریال',
     assessmentReport: 'گزارش چاپی A4 آزمون',
     keycloakLogin: 'پوستهٔ ورود Keycloak',
+  },
+  search: {
+    triggerLabel: 'جست‌وجو در مستندات',
+    shortcutHint: 'Ctrl+K',
+    dialogTitle: 'جست‌وجو در دیزاین سیستم نگرش',
+    placeholder: 'نام کامپوننت، توکن، تصمیم (D-93) یا موضوع فارسی…',
+    noResultsTitle: 'نتیجه‌ای پیدا نشد',
+    noResultsBody: 'عبارت دیگری بنویسید یا نام انگلیسی کامپوننت یا توکن (--nds-*) را جست‌وجو کنید.',
+    allResultsLink: 'مشاهده در صفحهٔ جست‌وجو',
   },
   /** Footer build stamp: «build <branch>@<short sha>» (Latin, LTR: it is a code). */
   build: (branch: string, sha: string) => `build ${branch}@${sha}`,

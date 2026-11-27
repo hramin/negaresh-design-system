@@ -114,7 +114,15 @@ function TokenGroup({ group }: { group: Group }) {
                     </span>
                   </th>
                   <td>
-                    <code className={styles.code}>{tsPath(t.path)}</code>
+                    <span className={styles.cellActions}>
+                      <code className={styles.code}>{tsPath(t.path)}</code>
+                      <CopyButton
+                        value={tsPath(t.path)}
+                        size="sm"
+                        variant="ghost"
+                        aria-label={`کپی ${tsPath(t.path)}`}
+                      />
+                    </span>
                   </td>
                   <td>
                     <code className={styles.code}>{t.value.light}</code>
@@ -153,7 +161,15 @@ function TokenGroup({ group }: { group: Group }) {
               </div>
               <div className={styles.cardRow}>
                 <span className={styles.label}>نام در TS</span>
-                <code className={styles.code}>{tsPath(t.path)}</code>
+                <span className={styles.cellActions}>
+                  <code className={styles.code}>{tsPath(t.path)}</code>
+                  <CopyButton
+                    value={tsPath(t.path)}
+                    size="sm"
+                    variant="ghost"
+                    aria-label={`کپی ${tsPath(t.path)}`}
+                  />
+                </span>
               </div>
               <div className={styles.cardRow}>
                 <span className={styles.label}>{modal ? 'روشن' : 'مقدار'}</span>

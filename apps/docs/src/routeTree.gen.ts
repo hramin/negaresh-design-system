@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChangelogRouteImport } from './routes/changelog'
+import { Route as DecisionsRouteImport } from './routes/decisions'
 import { Route as HealthzRouteImport } from './routes/healthz'
+import { Route as StartRouteImport } from './routes/start'
 import { Route as TokensRouteImport } from './routes/tokens'
 import { Route as AssessmentIndexRouteImport } from './routes/assessment/index'
 import { Route as AssessmentSlugRouteImport } from './routes/assessment/$slug'
@@ -18,8 +21,15 @@ import { Route as ChartsIndexRouteImport } from './routes/charts/index'
 import { Route as ChartsSlugRouteImport } from './routes/charts/$slug'
 import { Route as ComponentsIndexRouteImport } from './routes/components/index'
 import { Route as ComponentsSlugRouteImport } from './routes/components/$slug'
+import { Route as FoundationsAccessibilityRouteImport } from './routes/foundations/accessibility'
 import { Route as FoundationsColorRouteImport } from './routes/foundations/color'
+import { Route as FoundationsContentRouteImport } from './routes/foundations/content'
+import { Route as FoundationsDataVizRouteImport } from './routes/foundations/data-viz'
 import { Route as FoundationsIconsRouteImport } from './routes/foundations/icons'
+import { Route as FoundationsLayoutRouteImport } from './routes/foundations/layout'
+import { Route as FoundationsLocalizationRouteImport } from './routes/foundations/localization'
+import { Route as FoundationsMotionRouteImport } from './routes/foundations/motion'
+import { Route as FoundationsTypographyRouteImport } from './routes/foundations/typography'
 import { Route as GuidesTanstackFormZodRouteImport } from './routes/guides/tanstack-form-zod'
 import { Route as PatternsIndexRouteImport } from './routes/patterns/index'
 import { Route as PatternsSlugRouteImport } from './routes/patterns/$slug'
@@ -34,9 +44,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChangelogRoute = ChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DecisionsRoute = DecisionsRouteImport.update({
+  id: '/decisions',
+  path: '/decisions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HealthzRoute = HealthzRouteImport.update({
   id: '/healthz',
   path: '/healthz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StartRoute = StartRouteImport.update({
+  id: '/start',
+  path: '/start',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TokensRoute = TokensRouteImport.update({
@@ -74,14 +99,50 @@ const ComponentsSlugRoute = ComponentsSlugRouteImport.update({
   path: '/components/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FoundationsAccessibilityRoute =
+  FoundationsAccessibilityRouteImport.update({
+    id: '/foundations/accessibility',
+    path: '/foundations/accessibility',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const FoundationsColorRoute = FoundationsColorRouteImport.update({
   id: '/foundations/color',
   path: '/foundations/color',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FoundationsContentRoute = FoundationsContentRouteImport.update({
+  id: '/foundations/content',
+  path: '/foundations/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundationsDataVizRoute = FoundationsDataVizRouteImport.update({
+  id: '/foundations/data-viz',
+  path: '/foundations/data-viz',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FoundationsIconsRoute = FoundationsIconsRouteImport.update({
   id: '/foundations/icons',
   path: '/foundations/icons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundationsLayoutRoute = FoundationsLayoutRouteImport.update({
+  id: '/foundations/layout',
+  path: '/foundations/layout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundationsLocalizationRoute = FoundationsLocalizationRouteImport.update({
+  id: '/foundations/localization',
+  path: '/foundations/localization',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundationsMotionRoute = FoundationsMotionRouteImport.update({
+  id: '/foundations/motion',
+  path: '/foundations/motion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundationsTypographyRoute = FoundationsTypographyRouteImport.update({
+  id: '/foundations/typography',
+  path: '/foundations/typography',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuidesTanstackFormZodRoute = GuidesTanstackFormZodRouteImport.update({
@@ -131,13 +192,23 @@ const ReferenceAdminSerialsSerialRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/changelog': typeof ChangelogRoute
+  '/decisions': typeof DecisionsRoute
   '/healthz': typeof HealthzRoute
+  '/start': typeof StartRoute
   '/tokens': typeof TokensRoute
   '/assessment/$slug': typeof AssessmentSlugRoute
   '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
+  '/foundations/accessibility': typeof FoundationsAccessibilityRoute
   '/foundations/color': typeof FoundationsColorRoute
+  '/foundations/content': typeof FoundationsContentRoute
+  '/foundations/data-viz': typeof FoundationsDataVizRoute
   '/foundations/icons': typeof FoundationsIconsRoute
+  '/foundations/layout': typeof FoundationsLayoutRoute
+  '/foundations/localization': typeof FoundationsLocalizationRoute
+  '/foundations/motion': typeof FoundationsMotionRoute
+  '/foundations/typography': typeof FoundationsTypographyRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/patterns/$slug': typeof PatternsSlugRoute
   '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
@@ -152,13 +223,23 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/changelog': typeof ChangelogRoute
+  '/decisions': typeof DecisionsRoute
   '/healthz': typeof HealthzRoute
+  '/start': typeof StartRoute
   '/tokens': typeof TokensRoute
   '/assessment/$slug': typeof AssessmentSlugRoute
   '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
+  '/foundations/accessibility': typeof FoundationsAccessibilityRoute
   '/foundations/color': typeof FoundationsColorRoute
+  '/foundations/content': typeof FoundationsContentRoute
+  '/foundations/data-viz': typeof FoundationsDataVizRoute
   '/foundations/icons': typeof FoundationsIconsRoute
+  '/foundations/layout': typeof FoundationsLayoutRoute
+  '/foundations/localization': typeof FoundationsLocalizationRoute
+  '/foundations/motion': typeof FoundationsMotionRoute
+  '/foundations/typography': typeof FoundationsTypographyRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/patterns/$slug': typeof PatternsSlugRoute
   '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
@@ -174,13 +255,23 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/changelog': typeof ChangelogRoute
+  '/decisions': typeof DecisionsRoute
   '/healthz': typeof HealthzRoute
+  '/start': typeof StartRoute
   '/tokens': typeof TokensRoute
   '/assessment/$slug': typeof AssessmentSlugRoute
   '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
+  '/foundations/accessibility': typeof FoundationsAccessibilityRoute
   '/foundations/color': typeof FoundationsColorRoute
+  '/foundations/content': typeof FoundationsContentRoute
+  '/foundations/data-viz': typeof FoundationsDataVizRoute
   '/foundations/icons': typeof FoundationsIconsRoute
+  '/foundations/layout': typeof FoundationsLayoutRoute
+  '/foundations/localization': typeof FoundationsLocalizationRoute
+  '/foundations/motion': typeof FoundationsMotionRoute
+  '/foundations/typography': typeof FoundationsTypographyRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/patterns/$slug': typeof PatternsSlugRoute
   '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
@@ -197,13 +288,23 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/changelog'
+    | '/decisions'
     | '/healthz'
+    | '/start'
     | '/tokens'
     | '/assessment/$slug'
     | '/charts/$slug'
     | '/components/$slug'
+    | '/foundations/accessibility'
     | '/foundations/color'
+    | '/foundations/content'
+    | '/foundations/data-viz'
     | '/foundations/icons'
+    | '/foundations/layout'
+    | '/foundations/localization'
+    | '/foundations/motion'
+    | '/foundations/typography'
     | '/guides/tanstack-form-zod'
     | '/patterns/$slug'
     | '/reference/assessment-report'
@@ -218,13 +319,23 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/changelog'
+    | '/decisions'
     | '/healthz'
+    | '/start'
     | '/tokens'
     | '/assessment/$slug'
     | '/charts/$slug'
     | '/components/$slug'
+    | '/foundations/accessibility'
     | '/foundations/color'
+    | '/foundations/content'
+    | '/foundations/data-viz'
     | '/foundations/icons'
+    | '/foundations/layout'
+    | '/foundations/localization'
+    | '/foundations/motion'
+    | '/foundations/typography'
     | '/guides/tanstack-form-zod'
     | '/patterns/$slug'
     | '/reference/assessment-report'
@@ -239,13 +350,23 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/changelog'
+    | '/decisions'
     | '/healthz'
+    | '/start'
     | '/tokens'
     | '/assessment/$slug'
     | '/charts/$slug'
     | '/components/$slug'
+    | '/foundations/accessibility'
     | '/foundations/color'
+    | '/foundations/content'
+    | '/foundations/data-viz'
     | '/foundations/icons'
+    | '/foundations/layout'
+    | '/foundations/localization'
+    | '/foundations/motion'
+    | '/foundations/typography'
     | '/guides/tanstack-form-zod'
     | '/patterns/$slug'
     | '/reference/assessment-report'
@@ -261,13 +382,23 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChangelogRoute: typeof ChangelogRoute
+  DecisionsRoute: typeof DecisionsRoute
   HealthzRoute: typeof HealthzRoute
+  StartRoute: typeof StartRoute
   TokensRoute: typeof TokensRoute
   AssessmentSlugRoute: typeof AssessmentSlugRoute
   ChartsSlugRoute: typeof ChartsSlugRoute
   ComponentsSlugRoute: typeof ComponentsSlugRoute
+  FoundationsAccessibilityRoute: typeof FoundationsAccessibilityRoute
   FoundationsColorRoute: typeof FoundationsColorRoute
+  FoundationsContentRoute: typeof FoundationsContentRoute
+  FoundationsDataVizRoute: typeof FoundationsDataVizRoute
   FoundationsIconsRoute: typeof FoundationsIconsRoute
+  FoundationsLayoutRoute: typeof FoundationsLayoutRoute
+  FoundationsLocalizationRoute: typeof FoundationsLocalizationRoute
+  FoundationsMotionRoute: typeof FoundationsMotionRoute
+  FoundationsTypographyRoute: typeof FoundationsTypographyRoute
   GuidesTanstackFormZodRoute: typeof GuidesTanstackFormZodRoute
   PatternsSlugRoute: typeof PatternsSlugRoute
   ReferenceAssessmentReportRoute: typeof ReferenceAssessmentReportRoute
@@ -290,11 +421,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/changelog': {
+      id: '/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof ChangelogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/decisions': {
+      id: '/decisions'
+      path: '/decisions'
+      fullPath: '/decisions'
+      preLoaderRoute: typeof DecisionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/healthz': {
       id: '/healthz'
       path: '/healthz'
       fullPath: '/healthz'
       preLoaderRoute: typeof HealthzRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/start': {
+      id: '/start'
+      path: '/start'
+      fullPath: '/start'
+      preLoaderRoute: typeof StartRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tokens': {
@@ -346,6 +498,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/foundations/accessibility': {
+      id: '/foundations/accessibility'
+      path: '/foundations/accessibility'
+      fullPath: '/foundations/accessibility'
+      preLoaderRoute: typeof FoundationsAccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/foundations/color': {
       id: '/foundations/color'
       path: '/foundations/color'
@@ -353,11 +512,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FoundationsColorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/foundations/content': {
+      id: '/foundations/content'
+      path: '/foundations/content'
+      fullPath: '/foundations/content'
+      preLoaderRoute: typeof FoundationsContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/data-viz': {
+      id: '/foundations/data-viz'
+      path: '/foundations/data-viz'
+      fullPath: '/foundations/data-viz'
+      preLoaderRoute: typeof FoundationsDataVizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/foundations/icons': {
       id: '/foundations/icons'
       path: '/foundations/icons'
       fullPath: '/foundations/icons'
       preLoaderRoute: typeof FoundationsIconsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/layout': {
+      id: '/foundations/layout'
+      path: '/foundations/layout'
+      fullPath: '/foundations/layout'
+      preLoaderRoute: typeof FoundationsLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/localization': {
+      id: '/foundations/localization'
+      path: '/foundations/localization'
+      fullPath: '/foundations/localization'
+      preLoaderRoute: typeof FoundationsLocalizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/motion': {
+      id: '/foundations/motion'
+      path: '/foundations/motion'
+      fullPath: '/foundations/motion'
+      preLoaderRoute: typeof FoundationsMotionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/typography': {
+      id: '/foundations/typography'
+      path: '/foundations/typography'
+      fullPath: '/foundations/typography'
+      preLoaderRoute: typeof FoundationsTypographyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides/tanstack-form-zod': {
@@ -421,13 +622,23 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChangelogRoute: ChangelogRoute,
+  DecisionsRoute: DecisionsRoute,
   HealthzRoute: HealthzRoute,
+  StartRoute: StartRoute,
   TokensRoute: TokensRoute,
   AssessmentSlugRoute: AssessmentSlugRoute,
   ChartsSlugRoute: ChartsSlugRoute,
   ComponentsSlugRoute: ComponentsSlugRoute,
+  FoundationsAccessibilityRoute: FoundationsAccessibilityRoute,
   FoundationsColorRoute: FoundationsColorRoute,
+  FoundationsContentRoute: FoundationsContentRoute,
+  FoundationsDataVizRoute: FoundationsDataVizRoute,
   FoundationsIconsRoute: FoundationsIconsRoute,
+  FoundationsLayoutRoute: FoundationsLayoutRoute,
+  FoundationsLocalizationRoute: FoundationsLocalizationRoute,
+  FoundationsMotionRoute: FoundationsMotionRoute,
+  FoundationsTypographyRoute: FoundationsTypographyRoute,
   GuidesTanstackFormZodRoute: GuidesTanstackFormZodRoute,
   PatternsSlugRoute: PatternsSlugRoute,
   ReferenceAssessmentReportRoute: ReferenceAssessmentReportRoute,
