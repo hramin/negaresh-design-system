@@ -1,6 +1,8 @@
 // Cascade layer order must be imported first so @layer nds.patterns sorts cleanly above nds.components.
 import './layers.css';
 
+export * from './commerce/index.ts';
+export * from './licensing/index.ts';
 export {
   type PartialPatternMessages,
   PatternMessagesProvider,

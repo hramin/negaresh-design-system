@@ -1,0 +1,25 @@
+export {
+  type ActivationErrorKind,
+  ActivationFlow,
+  type ActivationFlowProps,
+  type ActivationRecord,
+  CodeDisplay,
+  type CodeDisplayProps,
+  MyActivations,
+  type MyActivationsProps,
+} from './ActivationPatterns.tsx';
+export {
+  type AlertChannelConfig,
+  type AlertChannelId,
+  AlertChannels,
+  type AlertChannelsProps,
+  AuditLog,
+  type AuditLogEntry,
+  type AuditLogProps,
+  LimitEditor,
+  type LimitEditorProps,
+  type LimitSource,
+  SerialBatchGenerator,
+  type SerialBatchGeneratorProps,
+  type SerialProductOption,
+} from './LicensingAdminPatterns.tsx';
