@@ -147,4 +147,20 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 ## Patterns — `@negaresh/patterns` (P6)
 
-See `patterns.md`.
+See `patterns.md`. P6 Wave 1 product patterns are in `review` awaiting owner confirmation; P6 Wave 2 (`@negaresh/keycloak-theme` identity/auth flows) remains `planned`. Docs pages live under `/patterns/<slug>`.
+
+| Pattern | Base / Reused | Notes | Products | Status |
+| --- | --- | --- | --- | --- |
+| Price, ProductCard, ProductPage, Wishlist | `Card`, `Image`, `ChoiceCard`, `Accordion`, `ToggleButton`, `formatPrice` | Toman-only pricing (D-26), gallery thumbnails, edition picker, requirements, FAQ, wishlist (`/patterns/commerce-catalog`) | N, R, T | review |
+| Cart, OrderSummary, Checkout, GatewayPicker, PaymentResult | `Stepper`, `ChoiceCard`, `PhoneField`, `KeyValueList`, `CopyButton`, `EmptyState` | Qty steppers, coupon code, digital-only checkout shortcut, admin-ordered gateways, success/cancelled/failed payment states (`/patterns/commerce-checkout`) | N, R, T | review |
+| OrderDetail, Invoice (A4 print) | `StatusBadge(order)`, `Timeline`, `KeyValueList`, `LogoSlot`, `@page` A4 | Order lifecycle timeline, Toman breakdown, A4 14 × 10 mm printable invoice with Jalali dates (`/patterns/commerce-orders`) | N, T | review |
+| CodeDisplay, ActivationFlow, MyActivations | `SerialField`, `UsageMeter`, `CopyButton`, `InlineAlert`, `KeyValueList` | LTR activation codes, FR-11 errors, FR-12 repeat-PC banner, limit → buy +1 CTA, rate-limited resend (`/patterns/licensing-activation`) | R, N | review |
+| LimitEditor, SerialBatchGenerator, AlertChannels, AuditLog | `NumberField`, `Timeline`, `Select`, `Switch`, `FilterBar`, `DataTable`, `DiffView` | FR-23 limit source badge + reason override, batch preview + CSV export, SMS/email/Telegram/Bale + 2 recipients, IP/diff audit (`/patterns/licensing-admin`) | R | review |
+| ContentCard (×4), BlogFeed, ContentBlocks, ArticlePage, Poll | `Card`, `Image`, `FilterBar`, `LoadMore`, `Accordion`, `InlineAlert`, `CopyButton` | Article/Post/Quote/Poll cards, ≤ 5 featured slider, 11 JSON block types (CalloutBox ×4, ContentCallout ×3), byline + TOC + poll expert note (`/patterns/content-editorial`) | N | review |
+| ExpertDirectory, ExpertProfile, WriterWorkspace, ReviewQueue | `FilterBar`, `Avatar`, `VerifiedBadge`, `Tabs`, `StatusBadge(review)`, `DatePicker`, `TimeField`, `DiffView` | Privacy-safe expert directory/profile, 5-state writer editor shell (`editorSlot` per Q-04), revision diff/restore, editorial queue (`/patterns/content-experts`) | N | review |
+| CoursePage, CoursePlayer, LessonNav, CourseProgress, MyCourses | `Accordion`, `ProgressBar`, `SegmentedControl`, `ToggleButton`, `Price` | Syllabus, 16:9 player frame + speed/resume, 90% completion rule, enrolled course filters (`/patterns/courses`) | N | review |
+| AccountShell, AccountContacts, AdminShell, SettingsPage, NotificationTemplatesEditor | `TopBar`, `UserMenu` (reusing `AccountPill`), `SideNav`, `Sheet`, `OTPField`, `AlertDialog`, `StatGroup` | Account/Admin workspace shells, multi-mobile OTP verification & removal guard, dirty Save bar, live template variable preview (`/patterns/account-admin-shells`) | R, N, T | review |
+| TestCatalog, TestDashboard | `FilterBar`, `Price`, `StatGroup`, `StatusBadge(report)` | Free/sale/org-rate test cards and dashboard with slots for approved P5 `@negaresh/assessment` components (`/patterns/test-platform-catalog`) | T | review |
+| CampaignBuilder, ShareLinkPanel, RosterImport, SeatMeter, CampaignParticipants, OrgWallet, B2BPanel | `DatePicker`, `FileUpload`, `UsageMeter`, `DataTable`, `PhoneField`, `CopyButton`, `AlertDialog` | Org campaigns, LTR share link + CSV export, paste/CSV roster validation, Toman wallet + ledger, one-time B2B API keys (`/patterns/test-platform-org`) | T | review |
+| Identity & auth theme (`@negaresh/keycloak-theme`) | Keycloakify + `@negaresh/react` + `@negaresh/theme-company` | PhoneSignIn (OTP), PasswordSignIn, ForgotPassword, Register, VerifyMobile, TwoFactorSetup, Error/Info (P6 Wave 2) | all | planned |
+

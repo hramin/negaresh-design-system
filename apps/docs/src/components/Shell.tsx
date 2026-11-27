@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
 import { ASSESSMENT_DOCS } from '../docs/assessment/registry.tsx';
 import { CHART_DOCS } from '../docs/charts/registry.tsx';
+import { PATTERN_DOCS } from '../docs/patterns/registry.tsx';
 import { COMPONENT_DOCS } from '../docs/registry.tsx';
 import { m } from '../lib/messages.ts';
 import { THEME_CHOICES } from '../lib/theme.ts';
@@ -52,6 +53,17 @@ const NAV: {
       { to: '/assessment', label: m.nav.assessment },
       ...ASSESSMENT_DOCS.map((d) => ({
         to: '/assessment/$slug',
+        params: { slug: d.slug },
+        label: d.title,
+      })),
+    ],
+  },
+  {
+    title: m.navGroups.patterns,
+    items: [
+      { to: '/patterns', label: m.nav.patterns },
+      ...PATTERN_DOCS.map((d) => ({
+        to: '/patterns/$slug',
         params: { slug: d.slug },
         label: d.title,
       })),
