@@ -1,0 +1,88 @@
+@layer nds.patterns {
+  .catalogGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+    gap: var(--nds-space-4);
+  }
+
+  .twoCol {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--nds-space-5);
+    align-items: start;
+  }
+
+  .walletHero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--nds-space-4);
+    padding: var(--nds-space-5);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-lg);
+    background: var(--nds-bg-surface);
+  }
+
+  .walletAmount {
+    font-size: var(--nds-text-3xl);
+    font-weight: var(--nds-weight-bold);
+    font-variant-numeric: tabular-nums;
+    color: var(--nds-fg-default);
+  }
+
+  .keyRevealBox {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--nds-space-3);
+    padding: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--nds-warning-border);
+    border-radius: var(--nds-radius-md);
+    background: var(--nds-warning-bg);
+  }
+
+  .listRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--nds-space-3);
+    padding: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-md);
+    background: var(--nds-bg-surface);
+  }
+
+  .plainList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-3);
+  }
+
+  .amountPositive {
+    color: var(--nds-success-fg);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--nds-weight-semibold);
+  }
+
+  .amountNegative {
+    color: var(--nds-danger-fg);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--nds-weight-semibold);
+  }
+
+  @media (max-width: 899px) {
+    .twoCol {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .walletAmount {
+      font-size: var(--nds-text-2xl);
+    }
+  }
+}

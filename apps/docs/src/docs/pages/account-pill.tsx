@@ -31,7 +31,7 @@ export const accountPillDoc: ComponentDoc = {
   base: 'Button',
   summary:
     'دکمهٔ فشردهٔ حساب کاربری برای نوار بالایی؛ معمولاً ماشهٔ منوی کاربری است. در دسکتاپ برچسب (شمارهٔ پوشیده یا نام) و آواتار را نشان می‌دهد و در موبایل به دکمهٔ آواتار با هدف ۴۴×۴۴ پیکسل تبدیل می‌شود.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => <AccountMenuExample />,
   Gallery: () => (
@@ -70,46 +70,6 @@ export const accountPillDoc: ComponentDoc = {
       'گذاشتن اقدام‌های متعدد داخل خود قرص؛ قرص یک دکمهٔ واحد است که منو را باز می‌کند.',
     ],
   },
-  api: [
-    {
-      name: 'AccountPill',
-      props: [
-        {
-          name: 'label',
-          type: 'ReactNode',
-          description:
-            'شناسهٔ دیدنی حساب در دسکتاپ (شمارهٔ پوشیده یا نام)؛ زیر ۹۰۰ پیکسل پنهان می‌شود.',
-        },
-        {
-          name: 'aria-label',
-          type: 'string',
-          description: 'الزامی؛ نام دسترس‌پذیر دکمه در هر دو اندازهٔ دسکتاپ و موبایل.',
-        },
-        {
-          name: 'ltr',
-          type: 'boolean',
-          default: 'false',
-          description: 'ایزوله‌سازی چپ‌به‌راست برچسب با Ltr (برای شمارهٔ همراه و ایمیل).',
-        },
-        {
-          name: 'avatar',
-          type: 'ReactNode',
-          description: 'محتوای جایگزین دایرهٔ ۳۲ پیکسلی (پیش‌فرض: آیکون کاربر).',
-        },
-        {
-          name: 'isDisabled',
-          type: 'boolean',
-          default: 'false',
-          description: 'غیرفعال کردن دکمه.',
-        },
-        {
-          name: 'onPress',
-          type: '(e) => void',
-          description: 'رویداد کلیک/فشار (در نبود MenuTrigger).',
-        },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'رسیدن فوکوس به دکمه با حلقهٔ فوکوس ۲ پیکسلی' },
     { keys: 'Enter / Space / ↓', action: 'اجرا یا باز کردن منوی متصل (درون MenuTrigger)' },

@@ -10,7 +10,7 @@ export const linkDoc: ComponentDoc = {
   base: 'Link',
   summary:
     'پیوند همیشه زیرخط دارد تا فقط به رنگ وابسته نباشد. پیوند بیرونی آیکون و توضیح پنهان «در زبانهٔ تازه باز می‌شود» دارد.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <Text as="p" leading="text">
@@ -61,26 +61,6 @@ export const linkDoc: ComponentDoc = {
     do: ['متن پیوند مقصد را بگوید: «راهنمای نصب دوباره»، نه «اینجا».'],
     dont: ['پیوند برای اقدام (ارسال، حذف)؛ آن دکمه است.'],
   },
-  api: [
-    {
-      name: 'Link',
-      props: [
-        { name: 'href', type: 'string', description: 'مقصد.' },
-        {
-          name: 'variant',
-          type: "'inline' | 'standalone'",
-          default: "'inline'",
-          description: 'standalone در خط جداگانه، با هدف ۴۴.',
-        },
-        {
-          name: 'external',
-          type: 'boolean',
-          description: 'زبانهٔ تازه، rel="noopener noreferrer"، آیکون و متن پنهان.',
-        },
-        { name: 'isDisabled', type: 'boolean', description: 'aria-disabled.' },
-      ],
-    },
-  ],
   keyboard: [{ keys: 'Enter', action: 'باز کردن پیوند' }],
   a11y: ['زیرخط همیشگی (WCAG 1.4.1).', 'متن «در زبانهٔ تازه باز می‌شود» از کاتالوگ پیام‌ها.'],
   rtl: ['آیکون پیوند بیرونی قرینه می‌شود.'],

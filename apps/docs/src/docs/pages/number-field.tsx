@@ -47,7 +47,7 @@ export const numberFieldDoc: ComponentDoc = {
   base: 'NumberField, Group, Input, Button',
   summary:
     'ورودی عددی دسترس‌پذیر با نمایش ارقام فارسی و tabular-nums، پذیرش هم‌زمان ارقام فارسی، عربی و لاتین، دکمه‌های گام‌بردار ۴۴ پیکسلی و قالب‌بندی Intl.NumberFormat.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -143,32 +143,6 @@ export const numberFieldDoc: ComponentDoc = {
       'در مقادیر پیوسته که حس مقایسهٔ نسبی مهم‌تر از عدد دقیق است، Slider را ترجیح دهید.',
     ],
   },
-  api: [
-    {
-      name: 'NumberField',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب دیدنی و الزامی فیلد.' },
-        { name: 'value / defaultValue', type: 'number', description: 'مقدار عددی کنترل‌شده یا اولیه.' },
-        { name: 'onChange', type: '(value: number) => void', description: 'در تغییر یا ثبت عدد فراخوانی می‌شود.' },
-        { name: 'minValue / maxValue / step', type: 'number', description: 'محدودهٔ مجاز و اندازهٔ گام.' },
-        {
-          name: 'formatOptions',
-          type: 'Intl.NumberFormatOptions',
-          description: 'تنظیمات قالب‌بندی مانند درصد یا غیرفعال‌سازی جداکننده.',
-        },
-        { name: 'prefix / suffix', type: 'ReactNode', description: 'پیشوند یا پسوند واحد (مانند «تومان» یا «نفر»).' },
-        { name: 'hideStepper', type: 'boolean', default: 'false', description: 'پنهان کردن دکمه‌های + و −.' },
-        { name: 'description / errorMessage', type: 'ReactNode', description: 'متن راهنما و پیام خطا.' },
-        {
-          name: 'isRequired / isDisabled / isReadOnly / isInvalid / isPending',
-          type: 'boolean',
-          description: 'وضعیت‌های الزامی، غیرفعال، فقط‌خواندنی، خطادار و در حال انجام.',
-        },
-        { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'ارتفاع کنترل (حداقل ۴۴ پیکسل).' },
-        { name: 'className / ref', type: 'string / Ref<HTMLInputElement>', description: '—' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: '↑ / ↓', action: 'افزایش یا کاهش یک گام (step)' },
     { keys: 'PageUp / PageDown', action: 'افزایش یا کاهش با گام بزرگ‌تر' },

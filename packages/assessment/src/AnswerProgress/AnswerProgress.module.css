@@ -1,0 +1,31 @@
+@layer nds.components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--nds-space-2);
+  }
+
+  .pageLabel {
+    margin: 0;
+    color: var(--nds-fg-default);
+    font-size: var(--nds-text-sm);
+    font-weight: var(--nds-weight-semibold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .answeredLabel {
+    margin: 0;
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+}

@@ -1,0 +1,141 @@
+@layer nds.components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+    inline-size: 100%;
+  }
+
+  .svg {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 20rem;
+    block-size: auto;
+    overflow: visible;
+  }
+
+  .trackArc {
+    fill: var(--nds-bg-sunken);
+    stroke: var(--nds-border-default);
+    stroke-width: 1;
+  }
+
+  .bandArc {
+    opacity: 0.9;
+  }
+
+  .bandArc[data-tone="band"] {
+    fill: var(--nds-viz-band);
+  }
+
+  .bandArc[data-tone="ok"] {
+    fill: var(--nds-success-bg);
+  }
+
+  .bandArc[data-tone="caution"] {
+    fill: var(--nds-warning-bg);
+  }
+
+  .bandArc[data-tone="severe"] {
+    fill: var(--nds-danger-bg);
+  }
+
+  .bandArc[data-tone="calm"] {
+    fill: var(--nds-accent-subtle);
+  }
+
+  .refTick {
+    stroke: var(--nds-viz-ref);
+    stroke-width: 1.8;
+    stroke-dasharray: 3 2;
+  }
+
+  .endLabel {
+    fill: var(--nds-fg-subtle);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .valueText {
+    fill: var(--nds-fg-default);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-2xl);
+    font-weight: var(--nds-weight-bold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .labelText {
+    fill: var(--nds-fg-muted);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-medium);
+  }
+
+  .bandPill {
+    display: inline-flex;
+    align-items: center;
+    padding-block: var(--nds-space-1);
+    padding-inline: var(--nds-space-3);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-pill);
+    background: var(--nds-bg-sunken);
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-sm);
+    font-weight: var(--nds-weight-medium);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .bandPill[data-tone="ok"] {
+    border-color: var(--nds-success-border);
+    background: var(--nds-success-bg);
+    color: var(--nds-success-fg);
+  }
+
+  .bandPill[data-tone="caution"] {
+    border-color: var(--nds-warning-border);
+    background: var(--nds-warning-bg);
+    color: var(--nds-warning-fg);
+  }
+
+  .bandPill[data-tone="severe"] {
+    border-color: var(--nds-danger-border);
+    background: var(--nds-danger-bg);
+    color: var(--nds-danger-fg);
+  }
+
+  .bandPill[data-tone="calm-highlight"] {
+    border-color: var(--nds-accent-default);
+    background: var(--nds-accent-subtle);
+    color: var(--nds-accent-fg);
+  }
+
+  @media (forced-colors: active) {
+    .trackArc {
+      fill: Canvas;
+      stroke: CanvasText;
+    }
+
+    .bandArc {
+      fill: none;
+      stroke: GrayText;
+      stroke-width: 1;
+    }
+
+    .refTick {
+      stroke: CanvasText;
+    }
+
+    .valueText,
+    .labelText,
+    .endLabel {
+      fill: CanvasText;
+    }
+
+    .bandPill {
+      border-color: CanvasText;
+    }
+  }
+}

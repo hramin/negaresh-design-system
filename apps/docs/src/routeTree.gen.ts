@@ -10,18 +10,57 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChangelogRouteImport } from './routes/changelog'
+import { Route as DecisionsRouteImport } from './routes/decisions'
 import { Route as HealthzRouteImport } from './routes/healthz'
+import { Route as PlaygroundRouteImport } from './routes/playground'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as StartRouteImport } from './routes/start'
 import { Route as TokensRouteImport } from './routes/tokens'
+import { Route as AssessmentIndexRouteImport } from './routes/assessment/index'
+import { Route as AssessmentSlugRouteImport } from './routes/assessment/$slug'
+import { Route as BrandsIndexRouteImport } from './routes/brands/index'
+import { Route as ChartsIndexRouteImport } from './routes/charts/index'
+import { Route as ChartsSlugRouteImport } from './routes/charts/$slug'
 import { Route as ComponentsIndexRouteImport } from './routes/components/index'
 import { Route as ComponentsSlugRouteImport } from './routes/components/$slug'
+import { Route as FoundationsAccessibilityRouteImport } from './routes/foundations/accessibility'
 import { Route as FoundationsColorRouteImport } from './routes/foundations/color'
+import { Route as FoundationsContentRouteImport } from './routes/foundations/content'
+import { Route as FoundationsDataVizRouteImport } from './routes/foundations/data-viz'
 import { Route as FoundationsIconsRouteImport } from './routes/foundations/icons'
+import { Route as FoundationsLayoutRouteImport } from './routes/foundations/layout'
+import { Route as FoundationsLocalizationRouteImport } from './routes/foundations/localization'
+import { Route as FoundationsMotionRouteImport } from './routes/foundations/motion'
+import { Route as FoundationsTypographyRouteImport } from './routes/foundations/typography'
 import { Route as GuidesTanstackFormZodRouteImport } from './routes/guides/tanstack-form-zod'
+import { Route as PatternsIndexRouteImport } from './routes/patterns/index'
+import { Route as PatternsSlugRouteImport } from './routes/patterns/$slug'
+import { Route as ProductsIndexRouteImport } from './routes/products/index'
+import { Route as ProductsNegareshRouteImport } from './routes/products/negaresh'
+import { Route as ProductsRavanmaRouteImport } from './routes/products/ravanma'
+import { Route as ProductsRegistryRouteImport } from './routes/products/registry'
+import { Route as ProductsTestPlatformRouteImport } from './routes/products/test-platform'
+import { Route as ReferenceAssessmentReportRouteImport } from './routes/reference/assessment-report'
+import { Route as ReferenceKeycloakLoginRouteImport } from './routes/reference/keycloak-login'
 import { Route as ReferenceRegistryActivationRouteImport } from './routes/reference/registry-activation'
+import { Route as BrandsBrandSlugRouteImport } from './routes/brands/$brand.$slug'
+import { Route as ReferenceAdminSerialsIndexRouteImport } from './routes/reference/admin-serials/index'
+import { Route as ReferenceAdminSerialsSerialRouteImport } from './routes/reference/admin-serials/$serial'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangelogRoute = ChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DecisionsRoute = DecisionsRouteImport.update({
+  id: '/decisions',
+  path: '/decisions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HealthzRoute = HealthzRouteImport.update({
@@ -29,9 +68,49 @@ const HealthzRoute = HealthzRouteImport.update({
   path: '/healthz',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlaygroundRoute = PlaygroundRouteImport.update({
+  id: '/playground',
+  path: '/playground',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StartRoute = StartRouteImport.update({
+  id: '/start',
+  path: '/start',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TokensRoute = TokensRouteImport.update({
   id: '/tokens',
   path: '/tokens',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssessmentIndexRoute = AssessmentIndexRouteImport.update({
+  id: '/assessment/',
+  path: '/assessment/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssessmentSlugRoute = AssessmentSlugRouteImport.update({
+  id: '/assessment/$slug',
+  path: '/assessment/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrandsIndexRoute = BrandsIndexRouteImport.update({
+  id: '/brands/',
+  path: '/brands/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChartsIndexRoute = ChartsIndexRouteImport.update({
+  id: '/charts/',
+  path: '/charts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChartsSlugRoute = ChartsSlugRouteImport.update({
+  id: '/charts/$slug',
+  path: '/charts/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsIndexRoute = ComponentsIndexRouteImport.update({
@@ -44,9 +123,25 @@ const ComponentsSlugRoute = ComponentsSlugRouteImport.update({
   path: '/components/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FoundationsAccessibilityRoute =
+  FoundationsAccessibilityRouteImport.update({
+    id: '/foundations/accessibility',
+    path: '/foundations/accessibility',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const FoundationsColorRoute = FoundationsColorRouteImport.update({
   id: '/foundations/color',
   path: '/foundations/color',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundationsContentRoute = FoundationsContentRouteImport.update({
+  id: '/foundations/content',
+  path: '/foundations/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundationsDataVizRoute = FoundationsDataVizRouteImport.update({
+  id: '/foundations/data-viz',
+  path: '/foundations/data-viz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FoundationsIconsRoute = FoundationsIconsRouteImport.update({
@@ -54,9 +149,75 @@ const FoundationsIconsRoute = FoundationsIconsRouteImport.update({
   path: '/foundations/icons',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FoundationsLayoutRoute = FoundationsLayoutRouteImport.update({
+  id: '/foundations/layout',
+  path: '/foundations/layout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundationsLocalizationRoute = FoundationsLocalizationRouteImport.update({
+  id: '/foundations/localization',
+  path: '/foundations/localization',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundationsMotionRoute = FoundationsMotionRouteImport.update({
+  id: '/foundations/motion',
+  path: '/foundations/motion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundationsTypographyRoute = FoundationsTypographyRouteImport.update({
+  id: '/foundations/typography',
+  path: '/foundations/typography',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuidesTanstackFormZodRoute = GuidesTanstackFormZodRouteImport.update({
   id: '/guides/tanstack-form-zod',
   path: '/guides/tanstack-form-zod',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatternsIndexRoute = PatternsIndexRouteImport.update({
+  id: '/patterns/',
+  path: '/patterns/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatternsSlugRoute = PatternsSlugRouteImport.update({
+  id: '/patterns/$slug',
+  path: '/patterns/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsIndexRoute = ProductsIndexRouteImport.update({
+  id: '/products/',
+  path: '/products/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsNegareshRoute = ProductsNegareshRouteImport.update({
+  id: '/products/negaresh',
+  path: '/products/negaresh',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRavanmaRoute = ProductsRavanmaRouteImport.update({
+  id: '/products/ravanma',
+  path: '/products/ravanma',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRegistryRoute = ProductsRegistryRouteImport.update({
+  id: '/products/registry',
+  path: '/products/registry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsTestPlatformRoute = ProductsTestPlatformRouteImport.update({
+  id: '/products/test-platform',
+  path: '/products/test-platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferenceAssessmentReportRoute =
+  ReferenceAssessmentReportRouteImport.update({
+    id: '/reference/assessment-report',
+    path: '/reference/assessment-report',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ReferenceKeycloakLoginRoute = ReferenceKeycloakLoginRouteImport.update({
+  id: '/reference/keycloak-login',
+  path: '/reference/keycloak-login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReferenceRegistryActivationRoute =
@@ -65,87 +226,307 @@ const ReferenceRegistryActivationRoute =
     path: '/reference/registry-activation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const BrandsBrandSlugRoute = BrandsBrandSlugRouteImport.update({
+  id: '/brands/$brand/$slug',
+  path: '/brands/$brand/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferenceAdminSerialsIndexRoute =
+  ReferenceAdminSerialsIndexRouteImport.update({
+    id: '/reference/admin-serials/',
+    path: '/reference/admin-serials/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ReferenceAdminSerialsSerialRoute =
+  ReferenceAdminSerialsSerialRouteImport.update({
+    id: '/reference/admin-serials/$serial',
+    path: '/reference/admin-serials/$serial',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/changelog': typeof ChangelogRoute
+  '/decisions': typeof DecisionsRoute
   '/healthz': typeof HealthzRoute
+  '/playground': typeof PlaygroundRoute
+  '/search': typeof SearchRoute
+  '/start': typeof StartRoute
   '/tokens': typeof TokensRoute
+  '/assessment/$slug': typeof AssessmentSlugRoute
+  '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
+  '/foundations/accessibility': typeof FoundationsAccessibilityRoute
   '/foundations/color': typeof FoundationsColorRoute
+  '/foundations/content': typeof FoundationsContentRoute
+  '/foundations/data-viz': typeof FoundationsDataVizRoute
   '/foundations/icons': typeof FoundationsIconsRoute
+  '/foundations/layout': typeof FoundationsLayoutRoute
+  '/foundations/localization': typeof FoundationsLocalizationRoute
+  '/foundations/motion': typeof FoundationsMotionRoute
+  '/foundations/typography': typeof FoundationsTypographyRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
+  '/patterns/$slug': typeof PatternsSlugRoute
+  '/products/negaresh': typeof ProductsNegareshRoute
+  '/products/ravanma': typeof ProductsRavanmaRoute
+  '/products/registry': typeof ProductsRegistryRoute
+  '/products/test-platform': typeof ProductsTestPlatformRoute
+  '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
+  '/reference/keycloak-login': typeof ReferenceKeycloakLoginRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/assessment/': typeof AssessmentIndexRoute
+  '/brands/': typeof BrandsIndexRoute
+  '/charts/': typeof ChartsIndexRoute
   '/components/': typeof ComponentsIndexRoute
+  '/patterns/': typeof PatternsIndexRoute
+  '/products/': typeof ProductsIndexRoute
+  '/brands/$brand/$slug': typeof BrandsBrandSlugRoute
+  '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
+  '/reference/admin-serials/': typeof ReferenceAdminSerialsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/changelog': typeof ChangelogRoute
+  '/decisions': typeof DecisionsRoute
   '/healthz': typeof HealthzRoute
+  '/playground': typeof PlaygroundRoute
+  '/search': typeof SearchRoute
+  '/start': typeof StartRoute
   '/tokens': typeof TokensRoute
+  '/assessment/$slug': typeof AssessmentSlugRoute
+  '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
+  '/foundations/accessibility': typeof FoundationsAccessibilityRoute
   '/foundations/color': typeof FoundationsColorRoute
+  '/foundations/content': typeof FoundationsContentRoute
+  '/foundations/data-viz': typeof FoundationsDataVizRoute
   '/foundations/icons': typeof FoundationsIconsRoute
+  '/foundations/layout': typeof FoundationsLayoutRoute
+  '/foundations/localization': typeof FoundationsLocalizationRoute
+  '/foundations/motion': typeof FoundationsMotionRoute
+  '/foundations/typography': typeof FoundationsTypographyRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
+  '/patterns/$slug': typeof PatternsSlugRoute
+  '/products/negaresh': typeof ProductsNegareshRoute
+  '/products/ravanma': typeof ProductsRavanmaRoute
+  '/products/registry': typeof ProductsRegistryRoute
+  '/products/test-platform': typeof ProductsTestPlatformRoute
+  '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
+  '/reference/keycloak-login': typeof ReferenceKeycloakLoginRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/assessment': typeof AssessmentIndexRoute
+  '/brands': typeof BrandsIndexRoute
+  '/charts': typeof ChartsIndexRoute
   '/components': typeof ComponentsIndexRoute
+  '/patterns': typeof PatternsIndexRoute
+  '/products': typeof ProductsIndexRoute
+  '/brands/$brand/$slug': typeof BrandsBrandSlugRoute
+  '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
+  '/reference/admin-serials': typeof ReferenceAdminSerialsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/changelog': typeof ChangelogRoute
+  '/decisions': typeof DecisionsRoute
   '/healthz': typeof HealthzRoute
+  '/playground': typeof PlaygroundRoute
+  '/search': typeof SearchRoute
+  '/start': typeof StartRoute
   '/tokens': typeof TokensRoute
+  '/assessment/$slug': typeof AssessmentSlugRoute
+  '/charts/$slug': typeof ChartsSlugRoute
   '/components/$slug': typeof ComponentsSlugRoute
+  '/foundations/accessibility': typeof FoundationsAccessibilityRoute
   '/foundations/color': typeof FoundationsColorRoute
+  '/foundations/content': typeof FoundationsContentRoute
+  '/foundations/data-viz': typeof FoundationsDataVizRoute
   '/foundations/icons': typeof FoundationsIconsRoute
+  '/foundations/layout': typeof FoundationsLayoutRoute
+  '/foundations/localization': typeof FoundationsLocalizationRoute
+  '/foundations/motion': typeof FoundationsMotionRoute
+  '/foundations/typography': typeof FoundationsTypographyRoute
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
+  '/patterns/$slug': typeof PatternsSlugRoute
+  '/products/negaresh': typeof ProductsNegareshRoute
+  '/products/ravanma': typeof ProductsRavanmaRoute
+  '/products/registry': typeof ProductsRegistryRoute
+  '/products/test-platform': typeof ProductsTestPlatformRoute
+  '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
+  '/reference/keycloak-login': typeof ReferenceKeycloakLoginRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
+  '/assessment/': typeof AssessmentIndexRoute
+  '/brands/': typeof BrandsIndexRoute
+  '/charts/': typeof ChartsIndexRoute
   '/components/': typeof ComponentsIndexRoute
+  '/patterns/': typeof PatternsIndexRoute
+  '/products/': typeof ProductsIndexRoute
+  '/brands/$brand/$slug': typeof BrandsBrandSlugRoute
+  '/reference/admin-serials/$serial': typeof ReferenceAdminSerialsSerialRoute
+  '/reference/admin-serials/': typeof ReferenceAdminSerialsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/changelog'
+    | '/decisions'
     | '/healthz'
+    | '/playground'
+    | '/search'
+    | '/start'
     | '/tokens'
+    | '/assessment/$slug'
+    | '/charts/$slug'
     | '/components/$slug'
+    | '/foundations/accessibility'
     | '/foundations/color'
+    | '/foundations/content'
+    | '/foundations/data-viz'
     | '/foundations/icons'
+    | '/foundations/layout'
+    | '/foundations/localization'
+    | '/foundations/motion'
+    | '/foundations/typography'
     | '/guides/tanstack-form-zod'
+    | '/patterns/$slug'
+    | '/products/negaresh'
+    | '/products/ravanma'
+    | '/products/registry'
+    | '/products/test-platform'
+    | '/reference/assessment-report'
+    | '/reference/keycloak-login'
     | '/reference/registry-activation'
+    | '/assessment/'
+    | '/brands/'
+    | '/charts/'
     | '/components/'
+    | '/patterns/'
+    | '/products/'
+    | '/brands/$brand/$slug'
+    | '/reference/admin-serials/$serial'
+    | '/reference/admin-serials/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/changelog'
+    | '/decisions'
     | '/healthz'
+    | '/playground'
+    | '/search'
+    | '/start'
     | '/tokens'
+    | '/assessment/$slug'
+    | '/charts/$slug'
     | '/components/$slug'
+    | '/foundations/accessibility'
     | '/foundations/color'
+    | '/foundations/content'
+    | '/foundations/data-viz'
     | '/foundations/icons'
+    | '/foundations/layout'
+    | '/foundations/localization'
+    | '/foundations/motion'
+    | '/foundations/typography'
     | '/guides/tanstack-form-zod'
+    | '/patterns/$slug'
+    | '/products/negaresh'
+    | '/products/ravanma'
+    | '/products/registry'
+    | '/products/test-platform'
+    | '/reference/assessment-report'
+    | '/reference/keycloak-login'
     | '/reference/registry-activation'
+    | '/assessment'
+    | '/brands'
+    | '/charts'
     | '/components'
+    | '/patterns'
+    | '/products'
+    | '/brands/$brand/$slug'
+    | '/reference/admin-serials/$serial'
+    | '/reference/admin-serials'
   id:
     | '__root__'
     | '/'
+    | '/changelog'
+    | '/decisions'
     | '/healthz'
+    | '/playground'
+    | '/search'
+    | '/start'
     | '/tokens'
+    | '/assessment/$slug'
+    | '/charts/$slug'
     | '/components/$slug'
+    | '/foundations/accessibility'
     | '/foundations/color'
+    | '/foundations/content'
+    | '/foundations/data-viz'
     | '/foundations/icons'
+    | '/foundations/layout'
+    | '/foundations/localization'
+    | '/foundations/motion'
+    | '/foundations/typography'
     | '/guides/tanstack-form-zod'
+    | '/patterns/$slug'
+    | '/products/negaresh'
+    | '/products/ravanma'
+    | '/products/registry'
+    | '/products/test-platform'
+    | '/reference/assessment-report'
+    | '/reference/keycloak-login'
     | '/reference/registry-activation'
+    | '/assessment/'
+    | '/brands/'
+    | '/charts/'
     | '/components/'
+    | '/patterns/'
+    | '/products/'
+    | '/brands/$brand/$slug'
+    | '/reference/admin-serials/$serial'
+    | '/reference/admin-serials/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChangelogRoute: typeof ChangelogRoute
+  DecisionsRoute: typeof DecisionsRoute
   HealthzRoute: typeof HealthzRoute
+  PlaygroundRoute: typeof PlaygroundRoute
+  SearchRoute: typeof SearchRoute
+  StartRoute: typeof StartRoute
   TokensRoute: typeof TokensRoute
+  AssessmentSlugRoute: typeof AssessmentSlugRoute
+  ChartsSlugRoute: typeof ChartsSlugRoute
   ComponentsSlugRoute: typeof ComponentsSlugRoute
+  FoundationsAccessibilityRoute: typeof FoundationsAccessibilityRoute
   FoundationsColorRoute: typeof FoundationsColorRoute
+  FoundationsContentRoute: typeof FoundationsContentRoute
+  FoundationsDataVizRoute: typeof FoundationsDataVizRoute
   FoundationsIconsRoute: typeof FoundationsIconsRoute
+  FoundationsLayoutRoute: typeof FoundationsLayoutRoute
+  FoundationsLocalizationRoute: typeof FoundationsLocalizationRoute
+  FoundationsMotionRoute: typeof FoundationsMotionRoute
+  FoundationsTypographyRoute: typeof FoundationsTypographyRoute
   GuidesTanstackFormZodRoute: typeof GuidesTanstackFormZodRoute
+  PatternsSlugRoute: typeof PatternsSlugRoute
+  ProductsNegareshRoute: typeof ProductsNegareshRoute
+  ProductsRavanmaRoute: typeof ProductsRavanmaRoute
+  ProductsRegistryRoute: typeof ProductsRegistryRoute
+  ProductsTestPlatformRoute: typeof ProductsTestPlatformRoute
+  ReferenceAssessmentReportRoute: typeof ReferenceAssessmentReportRoute
+  ReferenceKeycloakLoginRoute: typeof ReferenceKeycloakLoginRoute
   ReferenceRegistryActivationRoute: typeof ReferenceRegistryActivationRoute
+  AssessmentIndexRoute: typeof AssessmentIndexRoute
+  BrandsIndexRoute: typeof BrandsIndexRoute
+  ChartsIndexRoute: typeof ChartsIndexRoute
   ComponentsIndexRoute: typeof ComponentsIndexRoute
+  PatternsIndexRoute: typeof PatternsIndexRoute
+  ProductsIndexRoute: typeof ProductsIndexRoute
+  BrandsBrandSlugRoute: typeof BrandsBrandSlugRoute
+  ReferenceAdminSerialsSerialRoute: typeof ReferenceAdminSerialsSerialRoute
+  ReferenceAdminSerialsIndexRoute: typeof ReferenceAdminSerialsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -157,6 +538,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/changelog': {
+      id: '/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof ChangelogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/decisions': {
+      id: '/decisions'
+      path: '/decisions'
+      fullPath: '/decisions'
+      preLoaderRoute: typeof DecisionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/healthz': {
       id: '/healthz'
       path: '/healthz'
@@ -164,11 +559,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HealthzRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/playground': {
+      id: '/playground'
+      path: '/playground'
+      fullPath: '/playground'
+      preLoaderRoute: typeof PlaygroundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/start': {
+      id: '/start'
+      path: '/start'
+      fullPath: '/start'
+      preLoaderRoute: typeof StartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tokens': {
       id: '/tokens'
       path: '/tokens'
       fullPath: '/tokens'
       preLoaderRoute: typeof TokensRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assessment/': {
+      id: '/assessment/'
+      path: '/assessment'
+      fullPath: '/assessment/'
+      preLoaderRoute: typeof AssessmentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assessment/$slug': {
+      id: '/assessment/$slug'
+      path: '/assessment/$slug'
+      fullPath: '/assessment/$slug'
+      preLoaderRoute: typeof AssessmentSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brands/': {
+      id: '/brands/'
+      path: '/brands'
+      fullPath: '/brands/'
+      preLoaderRoute: typeof BrandsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charts/': {
+      id: '/charts/'
+      path: '/charts'
+      fullPath: '/charts/'
+      preLoaderRoute: typeof ChartsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charts/$slug': {
+      id: '/charts/$slug'
+      path: '/charts/$slug'
+      fullPath: '/charts/$slug'
+      preLoaderRoute: typeof ChartsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/': {
@@ -185,11 +636,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/foundations/accessibility': {
+      id: '/foundations/accessibility'
+      path: '/foundations/accessibility'
+      fullPath: '/foundations/accessibility'
+      preLoaderRoute: typeof FoundationsAccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/foundations/color': {
       id: '/foundations/color'
       path: '/foundations/color'
       fullPath: '/foundations/color'
       preLoaderRoute: typeof FoundationsColorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/content': {
+      id: '/foundations/content'
+      path: '/foundations/content'
+      fullPath: '/foundations/content'
+      preLoaderRoute: typeof FoundationsContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/data-viz': {
+      id: '/foundations/data-viz'
+      path: '/foundations/data-viz'
+      fullPath: '/foundations/data-viz'
+      preLoaderRoute: typeof FoundationsDataVizRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/foundations/icons': {
@@ -199,11 +671,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FoundationsIconsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/foundations/layout': {
+      id: '/foundations/layout'
+      path: '/foundations/layout'
+      fullPath: '/foundations/layout'
+      preLoaderRoute: typeof FoundationsLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/localization': {
+      id: '/foundations/localization'
+      path: '/foundations/localization'
+      fullPath: '/foundations/localization'
+      preLoaderRoute: typeof FoundationsLocalizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/motion': {
+      id: '/foundations/motion'
+      path: '/foundations/motion'
+      fullPath: '/foundations/motion'
+      preLoaderRoute: typeof FoundationsMotionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foundations/typography': {
+      id: '/foundations/typography'
+      path: '/foundations/typography'
+      fullPath: '/foundations/typography'
+      preLoaderRoute: typeof FoundationsTypographyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides/tanstack-form-zod': {
       id: '/guides/tanstack-form-zod'
       path: '/guides/tanstack-form-zod'
       fullPath: '/guides/tanstack-form-zod'
       preLoaderRoute: typeof GuidesTanstackFormZodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patterns/': {
+      id: '/patterns/'
+      path: '/patterns'
+      fullPath: '/patterns/'
+      preLoaderRoute: typeof PatternsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patterns/$slug': {
+      id: '/patterns/$slug'
+      path: '/patterns/$slug'
+      fullPath: '/patterns/$slug'
+      preLoaderRoute: typeof PatternsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/': {
+      id: '/products/'
+      path: '/products'
+      fullPath: '/products/'
+      preLoaderRoute: typeof ProductsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/negaresh': {
+      id: '/products/negaresh'
+      path: '/products/negaresh'
+      fullPath: '/products/negaresh'
+      preLoaderRoute: typeof ProductsNegareshRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/ravanma': {
+      id: '/products/ravanma'
+      path: '/products/ravanma'
+      fullPath: '/products/ravanma'
+      preLoaderRoute: typeof ProductsRavanmaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/registry': {
+      id: '/products/registry'
+      path: '/products/registry'
+      fullPath: '/products/registry'
+      preLoaderRoute: typeof ProductsRegistryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/test-platform': {
+      id: '/products/test-platform'
+      path: '/products/test-platform'
+      fullPath: '/products/test-platform'
+      preLoaderRoute: typeof ProductsTestPlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reference/assessment-report': {
+      id: '/reference/assessment-report'
+      path: '/reference/assessment-report'
+      fullPath: '/reference/assessment-report'
+      preLoaderRoute: typeof ReferenceAssessmentReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reference/keycloak-login': {
+      id: '/reference/keycloak-login'
+      path: '/reference/keycloak-login'
+      fullPath: '/reference/keycloak-login'
+      preLoaderRoute: typeof ReferenceKeycloakLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reference/registry-activation': {
@@ -213,19 +776,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReferenceRegistryActivationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/brands/$brand/$slug': {
+      id: '/brands/$brand/$slug'
+      path: '/brands/$brand/$slug'
+      fullPath: '/brands/$brand/$slug'
+      preLoaderRoute: typeof BrandsBrandSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reference/admin-serials/': {
+      id: '/reference/admin-serials/'
+      path: '/reference/admin-serials'
+      fullPath: '/reference/admin-serials/'
+      preLoaderRoute: typeof ReferenceAdminSerialsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reference/admin-serials/$serial': {
+      id: '/reference/admin-serials/$serial'
+      path: '/reference/admin-serials/$serial'
+      fullPath: '/reference/admin-serials/$serial'
+      preLoaderRoute: typeof ReferenceAdminSerialsSerialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChangelogRoute: ChangelogRoute,
+  DecisionsRoute: DecisionsRoute,
   HealthzRoute: HealthzRoute,
+  PlaygroundRoute: PlaygroundRoute,
+  SearchRoute: SearchRoute,
+  StartRoute: StartRoute,
   TokensRoute: TokensRoute,
+  AssessmentSlugRoute: AssessmentSlugRoute,
+  ChartsSlugRoute: ChartsSlugRoute,
   ComponentsSlugRoute: ComponentsSlugRoute,
+  FoundationsAccessibilityRoute: FoundationsAccessibilityRoute,
   FoundationsColorRoute: FoundationsColorRoute,
+  FoundationsContentRoute: FoundationsContentRoute,
+  FoundationsDataVizRoute: FoundationsDataVizRoute,
   FoundationsIconsRoute: FoundationsIconsRoute,
+  FoundationsLayoutRoute: FoundationsLayoutRoute,
+  FoundationsLocalizationRoute: FoundationsLocalizationRoute,
+  FoundationsMotionRoute: FoundationsMotionRoute,
+  FoundationsTypographyRoute: FoundationsTypographyRoute,
   GuidesTanstackFormZodRoute: GuidesTanstackFormZodRoute,
+  PatternsSlugRoute: PatternsSlugRoute,
+  ProductsNegareshRoute: ProductsNegareshRoute,
+  ProductsRavanmaRoute: ProductsRavanmaRoute,
+  ProductsRegistryRoute: ProductsRegistryRoute,
+  ProductsTestPlatformRoute: ProductsTestPlatformRoute,
+  ReferenceAssessmentReportRoute: ReferenceAssessmentReportRoute,
+  ReferenceKeycloakLoginRoute: ReferenceKeycloakLoginRoute,
   ReferenceRegistryActivationRoute: ReferenceRegistryActivationRoute,
+  AssessmentIndexRoute: AssessmentIndexRoute,
+  BrandsIndexRoute: BrandsIndexRoute,
+  ChartsIndexRoute: ChartsIndexRoute,
   ComponentsIndexRoute: ComponentsIndexRoute,
+  PatternsIndexRoute: PatternsIndexRoute,
+  ProductsIndexRoute: ProductsIndexRoute,
+  BrandsBrandSlugRoute: BrandsBrandSlugRoute,
+  ReferenceAdminSerialsSerialRoute: ReferenceAdminSerialsSerialRoute,
+  ReferenceAdminSerialsIndexRoute: ReferenceAdminSerialsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

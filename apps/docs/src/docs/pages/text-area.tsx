@@ -1,7 +1,7 @@
 import { TextArea } from '@negaresh/react';
 import type { ComponentDoc } from '../types.ts';
 import { GalleryRow, State } from '../ui.tsx';
-import { fieldA11y, fieldApi, fieldKeyboard, fieldRtl } from './field-docs.ts';
+import { fieldA11y, fieldKeyboard, fieldRtl } from './field-docs.ts';
 import styles from './fields.module.css';
 
 export const textAreaDoc: ComponentDoc = {
@@ -11,7 +11,7 @@ export const textAreaDoc: ComponentDoc = {
   base: 'TextField + TextArea',
   summary:
     'برای پیام و توضیح چندخطی. ارتفاع با محتوا رشد می‌کند و شمارندهٔ فارسی، راهنما و خطا کنار متن باقی می‌مانند.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <div className={styles.example} data-interactive="text-area">
@@ -95,27 +95,6 @@ export const textAreaDoc: ComponentDoc = {
       'محتوای بلند را با ارتفاع ثابت پنهان نکنید.',
     ],
   },
-  api: [
-    fieldApi('TextArea', [
-      { name: 'rows', type: 'number', default: '3', description: 'تعداد خط‌های اولیه.' },
-      {
-        name: 'autoGrow',
-        type: 'boolean',
-        default: 'true',
-        description: 'ارتفاع هنگام ویرایش با محتوا رشد می‌کند؛ SSR بدون دسترسی به DOM است.',
-      },
-      {
-        name: 'showCharacterCount / maxLength',
-        type: 'boolean / number',
-        description: 'شمارندهٔ فارسی و محدودیت طول.',
-      },
-      {
-        name: 'ref',
-        type: 'Ref<HTMLTextAreaElement>',
-        description: 'به textarea واقعی اشاره می‌کند.',
-      },
-    ]),
-  ],
   keyboard: [
     ...fieldKeyboard,
     { keys: 'Enter', action: 'افزودن خط تازه؛ ارسال با دکمهٔ فرم انجام می‌شود.' },

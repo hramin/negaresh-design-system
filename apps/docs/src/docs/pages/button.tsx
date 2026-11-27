@@ -14,7 +14,7 @@ export const buttonDoc: ComponentDoc = {
   base: 'Button, Link',
   summary:
     'برچسب با فعل شروع می‌شود و نتیجه را می‌گوید. در هر سطح حداکثر یک دکمهٔ اصلی. هدف لمسی همیشه دست‌کم ۴۴ پیکسل.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <ButtonGroup>
@@ -103,62 +103,6 @@ export const buttonDoc: ComponentDoc = {
       'غیرفعال کردن به‌جای توضیح؛ اگر کاری ممکن نیست، دلیلش را بنویسید.',
     ],
   },
-  api: [
-    {
-      name: 'Button',
-      props: [
-        {
-          name: 'variant',
-          type: "'primary' | 'secondary' | 'ghost' | 'danger'",
-          default: "'secondary'",
-          description: 'گونهٔ دیداری.',
-        },
-        {
-          name: 'size',
-          type: "'sm' | 'md' | 'lg'",
-          default: "'md'",
-          description: '۴۰ / ۴۸ / ۵۶؛ sm هدف ۴۴ را نگه می‌دارد.',
-        },
-        {
-          name: 'iconStart / iconEnd',
-          type: 'IconDefinition',
-          description: 'آیکون پیش یا پس از برچسب.',
-        },
-        {
-          name: 'isPending',
-          type: 'boolean',
-          description: 'قابل فوکوس می‌ماند، فشار را نمی‌پذیرد و به صفحه‌خوان اعلام می‌شود.',
-        },
-        { name: 'isDisabled', type: 'boolean', description: 'غیرفعال.' },
-        { name: 'fullWidth', type: 'boolean', description: 'تمام عرض (نوار اقدام موبایل).' },
-        { name: 'onPress', type: '(e: PressEvent) => void', description: 'ماوس، لمس و کیبورد.' },
-        {
-          name: 'type',
-          type: "'button' | 'submit' | 'reset'",
-          default: "'button'",
-          description: 'در حال انجام submit نمی‌کند.',
-        },
-      ],
-    },
-    {
-      name: 'LinkButton',
-      props: [
-        {
-          name: 'href',
-          type: 'string',
-          description: 'ظاهر دکمه، رفتار پیوند. بقیهٔ ویژگی‌ها مثل Button.',
-        },
-      ],
-    },
-    {
-      name: 'IconButton',
-      props: [
-        { name: 'icon', type: 'IconDefinition', description: 'آیکون.' },
-        { name: 'aria-label', type: 'string', description: 'الزامی.' },
-        { name: 'variant', type: "'ghost' | 'secondary'", default: "'ghost'", description: '—' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Enter / Space', action: 'اجرای دکمه' },
     { keys: 'Tab', action: 'رفتن به دکمهٔ بعدی' },

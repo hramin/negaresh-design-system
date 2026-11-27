@@ -1,10 +1,11 @@
+import { iconCheck, iconClose } from '@negaresh/icons';
+import { Badge } from '@negaresh/react';
 import { formatNumber } from '@negaresh/utils';
 import { createFileRoute } from '@tanstack/react-router';
-import { TableWrap } from '../../components/TableWrap.tsx';
 import styles from '../../components/Page.module.css';
-import { StatusBadge } from '../../components/StatusBadge.tsx';
-import color from './color.module.css';
+import { TableWrap } from '../../components/TableWrap.tsx';
 import { colorRamps, contrastResults, cssTokens, type Mode } from '../../lib/tokens.ts';
+import color from './color.module.css';
 
 export const Route = createFileRoute('/foundations/color')({
   head: () => ({ meta: [{ title: 'رنگ · دیزاین سیستم نگرش' }] }),
@@ -224,7 +225,13 @@ function ColorPage() {
                   <td>{formatNumber(r.ratio, { maximumFractionDigits: 2 })}</td>
                   <td>{formatNumber(r.min, { maximumFractionDigits: 1 })}</td>
                   <td>
-                    <StatusBadge pass={r.pass} passLabel="قبول" failLabel="رد" />
+                    <Badge
+                      tone={r.pass ? 'success' : 'danger'}
+                      icon={r.pass ? iconCheck : iconClose}
+                      size="sm"
+                    >
+                      {r.pass ? 'قبول' : 'رد'}
+                    </Badge>
                   </td>
                 </tr>
               ))}
@@ -240,7 +247,13 @@ function ColorPage() {
                   <span className={styles.label}> روی </span>
                   <code className={styles.code}>{r.bg}</code>
                 </span>
-                <StatusBadge pass={r.pass} passLabel="قبول" failLabel="رد" />
+                <Badge
+                  tone={r.pass ? 'success' : 'danger'}
+                  icon={r.pass ? iconCheck : iconClose}
+                  size="sm"
+                >
+                  {r.pass ? 'قبول' : 'رد'}
+                </Badge>
               </div>
               <div className={styles.cardRow}>
                 <span className={styles.label}>

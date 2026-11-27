@@ -75,7 +75,7 @@ export const userMenuDoc: ComponentDoc = {
   components: ['UserMenu'],
   summary:
     'ترکیب کامپوننت‌های تأییدشدهٔ AccountPill، Menu و Avatar با پشتیبانی از تعویض نقش کاربری، تغییر زندهٔ نمایهٔ رنگ (روشن/تیره/سیستم) و اقدام خروج.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   base: 'AccountPill + MenuTrigger + Menu + Avatar',
   Example,
@@ -122,19 +122,6 @@ export const userMenuDoc: ComponentDoc = {
       'حساب کاربری را بدون aria-label رندر نکنید؛ در عرض زیر ۹۰۰ پیکسل برچسب متنی پنهان می‌شود و تنها آواتار دیده می‌شود.',
     ],
   },
-  api: [
-    {
-      name: 'UserMenu',
-      props: [
-        { name: 'label / aria-label / ltr', type: 'ReactNode / string / boolean', description: 'شناسهٔ نمایشی دسکتاپ، نام دسترس‌پذیر الزامی و ایزوله‌سازی LTR.' },
-        { name: 'name / subtitle / avatarSrc', type: 'string / ReactNode / string', description: 'سربرگ حساب و تصویر Avatar (در صورت نبود تصویر، سربرگ منو حروف اول فارسی را نشان می‌دهد).' },
-        { name: 'items', type: 'readonly UserMenuItemData[]', description: 'آیتم‌های منو با امکان فیلتر بر اساس نقش (roles).' },
-        { name: 'roles / activeRole / onRoleChange', type: 'readonly UserMenuRole[] / string / (id: string) => void', description: 'بخش انتخاب نقش کاربری.' },
-        { name: 'showThemeToggle', type: 'boolean', default: 'false', description: 'افزودن بخش انتخاب نمایهٔ رنگ متصل به useTheme().' },
-        { name: 'onSignOut / signOutLabel', type: '() => void / string', description: 'اقدام خروج با لحن danger و آیکن خروج.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Enter / Space / ArrowDown', action: 'باز کردن منوی حساب کاربری از AccountPill.' },
     { keys: 'ArrowDown / ArrowUp', action: 'حرکت بین بخش‌های پیوندها، نقش‌ها، نمایهٔ رنگ و خروج.' },

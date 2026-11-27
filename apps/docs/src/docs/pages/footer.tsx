@@ -60,7 +60,7 @@ export const footerDoc: ComponentDoc = {
   components: ['Footer', 'FooterGroup', 'FooterLink'],
   summary:
     'پاورقی معنایی صفحه با ستون برند، گروه‌های پیوند واکنش‌گرا، پیوندهای بیرونی دسترس‌پذیر و ردیف حقوقی جداشده با خط مویی (بدون سایهٔ ساکن، D-77).',
-  status: 'review',
+  status: 'approved',
   products: ['N', 'T'],
   Example,
   Gallery: () => (
@@ -101,17 +101,6 @@ export const footerDoc: ComponentDoc = {
       'ستون‌های پیوند را بیش از ۴ گروه نکنید تا خوانایی در دسکتاپ و موبایل حفظ شود.',
     ],
   },
-  api: [
-    {
-      name: 'Footer',
-      props: [
-        { name: 'brand / description', type: 'ReactNode / ReactNode', description: 'جایگاه لوگو (LogoSlot) و توضیح کوتاه برند.' },
-        { name: 'groups', type: 'readonly FooterGroupData[]', description: 'ستون‌های پیوند با عنوان و فهرست پیوندها.' },
-        { name: 'copyright / legalLinks / badges', type: 'ReactNode / readonly FooterLinkData[] / ReactNode', description: 'ردیف حقوقی و نشان‌های اعتماد.' },
-        { name: 'tone / size / as', type: "'surface' | 'sunken' / 'default' | 'wide' / 'footer' | 'div'", default: "'surface' / 'default' / 'footer'", description: 'پس‌زمینه، عرض کانتینر و تگ ریشه.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت بین همهٔ پیوندهای ستون‌ها و ردیف حقوقی.' },
   ],

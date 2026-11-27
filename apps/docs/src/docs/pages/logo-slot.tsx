@@ -8,7 +8,7 @@ export const logoSlotDoc: ComponentDoc = {
   components: ['LogoSlot'],
   summary:
     'هسته فقط جای لوگو را تعریف می‌کند (D-14، D-37): نشان، نام و برچسب محصول با فضای خالی. تا رسیدن لوگوهای تازه (Q-02) جای‌نما نشان داده می‌شود.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => <LogoSlot name="نگارش برتر" product="رجیستری" />,
   Gallery: () => (
@@ -36,22 +36,6 @@ export const logoSlotDoc: ComponentDoc = {
     do: ['لوگو را داخل یک پیوند به صفحهٔ اصلی بگذارید و به پیوند نام بدهید.'],
     dont: ['تصویر یا هنر نقاشی‌شده در هسته؛ هنر روانما در brand-ravanma است.'],
   },
-  api: [
-    {
-      name: 'LogoSlot',
-      props: [
-        { name: 'logo', type: 'ReactNode', description: 'نشان از کیت برند؛ بدون آن جای‌نما.' },
-        { name: 'name', type: 'ReactNode', description: 'نام شرکت.' },
-        { name: 'product', type: 'ReactNode', description: 'برچسب محصول بعد از جداکننده.' },
-        {
-          name: 'size',
-          type: "'sm' | 'md' | 'lg'",
-          default: "'md'",
-          description: '۲۴، ۳۲، ۴۸ پیکسل.',
-        },
-      ],
-    },
-  ],
   a11y: ['تزئینی است؛ نام دسترس‌پذیر را پیوند اطرافش می‌دهد.'],
   rtl: ['ترتیب نشان → نام → محصول از سمت شروع (راست).'],
 };

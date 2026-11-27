@@ -1,0 +1,42 @@
+@layer nds.components {
+  .svg {
+    display: inline-block;
+    inline-size: 6.75rem;
+    block-size: 2rem;
+    vertical-align: middle;
+    overflow: visible;
+  }
+
+  .svg[data-size="sm"] {
+    inline-size: 5rem;
+    block-size: 1.5rem;
+  }
+
+  .svg[data-size="lg"] {
+    inline-size: 9rem;
+    block-size: 2.5rem;
+  }
+
+  .baseline {
+    stroke: var(--nds-viz-ref);
+    stroke-width: 1;
+    stroke-dasharray: 2 2;
+  }
+
+  .line {
+    fill: none;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @media (forced-colors: active) {
+    .baseline {
+      stroke: GrayText;
+    }
+
+    .line {
+      stroke: CanvasText;
+    }
+  }
+}

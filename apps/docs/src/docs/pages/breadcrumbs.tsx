@@ -40,7 +40,7 @@ export const breadcrumbsDoc: ComponentDoc = {
   components: ['Breadcrumbs', 'BreadcrumbItem'],
   summary:
     'نمایش سلسله‌مراتب صفحات ساخته‌شده روی React Aria Breadcrumbs با جداکنندهٔ آینه‌ای در RTL و جمع‌کردن خودکار مسیرهای میانی در یک منوی دسترس‌پذیر.',
-  status: 'review',
+  status: 'approved',
   products: ['N', 'T'],
   base: 'React Aria Breadcrumbs / Breadcrumb + Menu',
   Example,
@@ -92,17 +92,6 @@ export const breadcrumbsDoc: ComponentDoc = {
       'برای مراحل خطی یک فرایند (مانند فعال‌سازی یا خرید) از Breadcrumbs استفاده نکنید؛ از Stepper استفاده کنید.',
     ],
   },
-  api: [
-    {
-      name: 'Breadcrumbs',
-      props: [
-        { name: 'items', type: 'readonly BreadcrumbItemData[]', description: 'آرایهٔ مسیرها (لازم برای جمع‌کردن خودکار مسیرهای میانی).' },
-        { name: 'maxItems', type: 'number', description: 'حداکثر موارد قابل نمایش پیش از تبدیل مسیرهای میانی به منوی «…».' },
-        { name: 'itemsBeforeCollapse / itemsAfterCollapse', type: 'number / number', default: '1 / 2', description: 'تعداد موارد ابتدایی و انتهایی که قابل مشاهده می‌مانند.' },
-        { name: 'separator', type: "'chevron' | 'slash'", default: "'chevron'", description: 'جداکنندهٔ منطقی بین مسیرها.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت میان پیوندهای مسیر و دکمهٔ نمایش مسیرهای میانی.' },
     { keys: 'Enter / Space', action: 'باز کردن پیوند یا منوی مسیرهای میانی جمع‌شده.' },

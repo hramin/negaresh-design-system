@@ -46,7 +46,7 @@ export const contextualHelpDoc: ComponentDoc = {
   base: 'DialogTrigger + Popover',
   summary:
     'دکمهٔ راهنمای (i) یا (?) کنار برچسب فیلدها و تیتر بخش‌ها با ترکیب DialogTrigger و Popover و هدف لمسی تضمینی حداقل ۴۴×۴۴ پیکسل.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -87,19 +87,6 @@ export const contextualHelpDoc: ComponentDoc = {
       'الزامات اجباری ورودی (مانند «الزامی» یا الگوی فیلد) را درون ContextualHelp پنهان نکنید؛ آن‌ها را زیر فیلد بنویسید.',
     ],
   },
-  api: [
-    {
-      name: 'ContextualHelp',
-      props: [
-        { name: 'variant', type: "'info' | 'help'", default: "'info'", description: 'آیکون اطلاعات (i) یا پرسش (?).' },
-        { name: 'title', type: 'ReactNode', description: 'عنوان داخل پاپ‌اور راهنما.' },
-        { name: 'children', type: 'ReactNode', description: 'متن توضیحی یا ساختار راهنما.' },
-        { name: 'footer', type: 'ReactNode', description: 'پیوند یا اقدام اختیاری پایین راهنما.' },
-        { name: 'placement', type: 'PopoverPlacement', default: "'bottom start'", description: 'جایگذاری منطقی پاپ‌اور.' },
-        { name: 'aria-label', type: 'string', default: '«راهنما»', description: 'نام دسترس‌پذیر دکمهٔ محرک.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Enter / Space', action: 'باز کردن پاپ‌اور راهنما.' },
     { keys: 'Tab', action: 'حرکت به پیوندهای داخل راهنما.' },

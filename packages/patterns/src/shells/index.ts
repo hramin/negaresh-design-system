@@ -1,0 +1,16 @@
+export {
+  AccountContacts,
+  type AccountContactsProps,
+  AccountShell,
+  type AccountShellProps,
+  AdminShell,
+  type AdminShellProps,
+  type NotificationTemplate,
+  NotificationTemplatesEditor,
+  type NotificationTemplatesEditorProps,
+  SettingsPage,
+  type SettingsPageProps,
+  type SettingsSectionItem,
+  type TemplateChannel,
+  type VerifiedMobileItem,
+} from './ShellPatterns.tsx';

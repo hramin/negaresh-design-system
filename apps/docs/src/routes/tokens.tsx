@@ -1,10 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router';
-import type { CSSProperties } from 'react';
-import { CopyButton } from '@negaresh/react';
-import { TableWrap } from '../components/TableWrap.tsx';
-import styles from '../components/Page.module.css';
-import { cssTokens, type TokenEntry, tsPath } from '../lib/tokens.ts';
+import { CopyButton, SegmentedControl, SegmentedControlItem } from '@negaresh/react';
 import { formatNumber } from '@negaresh/utils';
+import { createFileRoute } from '@tanstack/react-router';
+import { type CSSProperties, useState } from 'react';
+import styles from '../components/Page.module.css';
+import { TableWrap } from '../components/TableWrap.tsx';
+import { cssTokens, type TokenEntry, tsPath } from '../lib/tokens.ts';
 
 export const Route = createFileRoute('/tokens')({
   head: () => ({ meta: [{ title: 'توکن‌ها · دیزاین سیستم نگرش' }] }),
@@ -48,6 +48,8 @@ const GROUPS: Group[] = [
 ];
 
 function TokensPage() {
+  const [copyFormat, setCopyFormat] = useState<'css' | 'ts'>('css');
+
   return (
     <article className={styles.page}>
       <header className={styles.header}>
@@ -57,6 +59,17 @@ function TokensPage() {
           <span className={styles.code}>{'tokens/**/*.tokens.json'}</span> ساخته می‌شوند. کامپوننت‌ها
           فقط توکن‌های معنایی و پیش‌فرض‌های کامپوننت را می‌خوانند؛ مقدار خام هرگز.
         </p>
+        <SegmentedControl
+          label="قالب کپی هر توکن"
+          size="sm"
+          value={copyFormat}
+          onChange={(k) => {
+            if (k === 'css' || k === 'ts') setCopyFormat(k);
+          }}
+        >
+          <SegmentedControlItem id="css">متغیر CSS (--nds-*)</SegmentedControlItem>
+          <SegmentedControlItem id="ts">مسیر TypeScript (tokens.*)</SegmentedControlItem>
+        </SegmentedControl>
         <nav aria-label="گروه‌های توکن">
           <ul className={styles.toc}>
             {GROUPS.map((g) => (
@@ -68,13 +81,13 @@ function TokensPage() {
         </nav>
       </header>
       {GROUPS.map((g) => (
-        <TokenGroup key={g.id} group={g} />
+        <TokenGroup key={g.id} group={g} copyFormat={copyFormat} />
       ))}
     </article>
   );
 }
 
-function TokenGroup({ group }: { group: Group }) {
+function TokenGroup({ group, copyFormat }: { group: Group; copyFormat: 'css' | 'ts' }) {
   const list = cssTokens.filter(group.match);
   const modal = list.some((t) => t.modal);
   return (
@@ -97,6 +110,9 @@ function TokenGroup({ group }: { group: Group }) {
             {list.map((t) => {
               const sample = group.sample?.(t);
               const { className, ...style } = sample ?? { className: '' };
+              const tsName = tsPath(t.path);
+              const copyValue = copyFormat === 'css' ? `var(${t.cssVar})` : tsName;
+              const copyTarget = copyFormat === 'css' ? t.cssVar : tsName;
               return (
                 <tr key={t.path}>
                   {group.sample && (
@@ -106,15 +122,15 @@ function TokenGroup({ group }: { group: Group }) {
                     <span className={styles.cellActions}>
                       <code className={styles.code}>{t.cssVar}</code>
                       <CopyButton
-                        value={`var(${t.cssVar})`}
+                        value={copyValue}
                         size="sm"
                         variant="ghost"
-                        aria-label={`کپی ${t.cssVar}`}
+                        aria-label={`کپی ${copyTarget}`}
                       />
                     </span>
                   </th>
                   <td>
-                    <code className={styles.code}>{tsPath(t.path)}</code>
+                    <code className={styles.code}>{tsName}</code>
                   </td>
                   <td>
                     <code className={styles.code}>{t.value.light}</code>
@@ -139,21 +155,24 @@ function TokenGroup({ group }: { group: Group }) {
         {list.map((t) => {
           const sample = group.sample?.(t);
           const { className, ...style } = sample ?? { className: '' };
+          const tsName = tsPath(t.path);
+          const copyValue = copyFormat === 'css' ? `var(${t.cssVar})` : tsName;
+          const copyTarget = copyFormat === 'css' ? t.cssVar : tsName;
           return (
             <li key={t.path} className={styles.card}>
               <div className={styles.cardHead}>
                 {className && <span className={className} style={style} />}
                 <code className={styles.code}>{t.cssVar}</code>
                 <CopyButton
-                  value={`var(${t.cssVar})`}
+                  value={copyValue}
                   size="sm"
                   variant="ghost"
-                  aria-label={`کپی ${t.cssVar}`}
+                  aria-label={`کپی ${copyTarget}`}
                 />
               </div>
               <div className={styles.cardRow}>
                 <span className={styles.label}>نام در TS</span>
-                <code className={styles.code}>{tsPath(t.path)}</code>
+                <code className={styles.code}>{tsName}</code>
               </div>
               <div className={styles.cardRow}>
                 <span className={styles.label}>{modal ? 'روشن' : 'مقدار'}</span>

@@ -1,0 +1,264 @@
+@layer nds.components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-3);
+    min-inline-size: 0;
+    inline-size: 100%;
+    container-type: inline-size;
+  }
+
+  .rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, 10rem) minmax(0, 1fr) minmax(7rem, 11rem);
+    align-items: center;
+    gap: var(--nds-space-2) var(--nds-space-3);
+    padding-block: var(--nds-space-2);
+    padding-inline: var(--nds-space-2);
+    border-radius: var(--nds-radius-sm);
+    background: transparent;
+    transition: background var(--nds-dur-fast) var(--nds-ease);
+  }
+
+  .row[data-active="true"] {
+    background: var(--nds-bg-hover);
+  }
+
+  .axisRow {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, 10rem) minmax(0, 1fr) minmax(7rem, 11rem);
+    align-items: center;
+    gap: var(--nds-space-3);
+    padding-inline: var(--nds-space-2);
+  }
+
+  .axisSpacer {
+    display: block;
+  }
+
+  .labelCell {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--nds-space-1) / 2);
+    min-inline-size: 0;
+    text-align: start;
+  }
+
+  .labelText {
+    color: var(--nds-fg-default);
+    font-size: var(--nds-text-sm);
+    font-weight: var(--nds-weight-medium);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .subLabel {
+    color: var(--nds-fg-subtle);
+    font-size: var(--nds-text-xs);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .trackCell {
+    min-inline-size: 0;
+    inline-size: 100%;
+  }
+
+  .trackSvg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    overflow: visible;
+  }
+
+  .axisSvg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    overflow: visible;
+  }
+
+  .valueCell {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+  }
+
+  .scoreNum {
+    color: var(--nds-fg-default);
+    font-size: var(--nds-text-sm);
+    font-weight: var(--nds-weight-semibold);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .bandBadge {
+    display: inline-flex;
+    align-items: center;
+    max-inline-size: 100%;
+    padding-block: calc(var(--nds-space-1) / 2);
+    padding-inline: var(--nds-space-2);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-sm);
+    background: var(--nds-bg-sunken);
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-medium);
+    line-height: var(--nds-leading-ui);
+  }
+
+  .bandBadge[data-tone="ok"] {
+    border-color: var(--nds-success-border);
+    background: var(--nds-success-bg);
+    color: var(--nds-success-fg);
+  }
+
+  .bandBadge[data-tone="caution"] {
+    border-color: var(--nds-warning-border);
+    background: var(--nds-warning-bg);
+    color: var(--nds-warning-fg);
+  }
+
+  .bandBadge[data-tone="severe"] {
+    border-color: var(--nds-danger-border);
+    background: var(--nds-danger-bg);
+    color: var(--nds-danger-fg);
+  }
+
+  .bandBadge[data-tone="calm-highlight"] {
+    border-color: var(--nds-accent-default);
+    background: var(--nds-accent-subtle);
+    color: var(--nds-accent-fg);
+  }
+
+  .trackBg {
+    fill: var(--nds-bg-sunken);
+    stroke: var(--nds-border-default);
+    stroke-width: 1;
+  }
+
+  .gridLine {
+    stroke: var(--nds-viz-grid);
+    stroke-width: 1;
+  }
+
+  .whiskerLine {
+    stroke-width: 3.5;
+    stroke-linecap: round;
+  }
+
+  .whiskerCap {
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .pointTrigger {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .pointTrigger:focus-visible {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .focusHalo {
+    fill: none;
+    stroke: var(--nds-focus-ring);
+    stroke-width: 2;
+    opacity: 0;
+  }
+
+  .pointTrigger:focus-visible .focusHalo,
+  .pointTrigger[data-active="true"] .focusHalo {
+    opacity: 1;
+  }
+
+  .tickText {
+    fill: var(--nds-fg-subtle);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .readout {
+    padding-block: var(--nds-space-2);
+    padding-inline: var(--nds-space-3);
+    border-radius: var(--nds-radius-sm);
+    background: var(--nds-bg-sunken);
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-xs);
+    line-height: var(--nds-leading-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @container (max-inline-size: 34rem) {
+    .row {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        "label"
+        "value"
+        "track";
+      gap: var(--nds-space-2);
+    }
+
+    .labelCell {
+      grid-area: label;
+    }
+
+    .valueCell {
+      grid-area: value;
+      justify-content: flex-start;
+    }
+
+    .trackCell {
+      grid-area: track;
+    }
+
+    .axisRow {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "track";
+    }
+
+    .axisSpacer {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .row {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .trackBg {
+      fill: Canvas;
+      stroke: CanvasText;
+    }
+
+    .bandBadge {
+      border-color: CanvasText;
+    }
+
+    .pointTrigger:focus-visible {
+      outline-color: Highlight;
+    }
+
+    .focusHalo {
+      stroke: Highlight;
+    }
+
+    .tickText {
+      fill: CanvasText;
+    }
+  }
+}

@@ -41,7 +41,7 @@ export const otpFieldDoc: ComponentDoc = {
   base: 'Input, ProgressBar, FormValidationContext',
   summary:
     'ورودی ۶ رقمی کد یک‌بارمصرف با ترتیب چپ‌به‌راست ارقام لاتین در صفحهٔ راست‌به‌چپ، تبدیل خودکار ارقام فارسی/عربی، جای‌گذاری هوشمند پیامک، تکمیل خودکار one-time-code و شمارشگر ارسال دوباره.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -122,56 +122,6 @@ export const otpFieldDoc: ComponentDoc = {
       'خطا را فقط با رنگ قرمز حاشیه نشان ندهید؛ پیام روشن و مشخص بنویسید.',
     ],
   },
-  api: [
-    {
-      name: 'OTPField',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب الزامی گروه کد.' },
-        {
-          name: 'length',
-          type: 'number',
-          default: '6',
-          description: 'تعداد خانه‌های کد یک‌بارمصرف.',
-        },
-        {
-          name: 'value / defaultValue',
-          type: 'string',
-          description: 'مقدار کنترل‌شده یا اولیه (ارقام فارسی، عربی و لاتین پذیرفته می‌شوند).',
-        },
-        {
-          name: 'onChange',
-          type: '(value: string) => void',
-          description: 'با رشتهٔ استاندارد ارقام لاتین فراخوانی می‌شود.',
-        },
-        {
-          name: 'onComplete',
-          type: '(code: string) => void',
-          description: 'بلافاصله پس از تکمیل هر ۶ رقم یک بار فراخوانی می‌شود.',
-        },
-        {
-          name: 'onResend / resendCooldown / resendSecondsRemaining',
-          type: '() => void / number / number',
-          default: '60',
-          description: 'دکمه و شمارشگر ارسال دوبارهٔ کد (ثانیهٔ کنترل‌شده برای SSR یا همگام با سرور).',
-        },
-        {
-          name: 'description / errorMessage / isInvalid / validate',
-          type: 'ReactNode / ReactNode / boolean / Validator',
-          description: 'راهنما، خطای مشخص و اتصال خودکار به validationErrors در Form.',
-        },
-        {
-          name: 'isRequired / isDisabled / isReadOnly / isPending',
-          type: 'boolean',
-          description: 'حالت‌های استاندارد فیلد؛ در حالت pending مقدار در فرم حفظ می‌شود.',
-        },
-        {
-          name: 'id / name / className / ref',
-          type: 'string / string / string / Ref<HTMLInputElement>',
-          description: 'شناسهٔ خانهٔ نخست (برای FormErrorSummary)، نام ارسال فرم و ارجاع به ورودی.',
-        },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'ارقام ۰–۹ / 0–9', action: 'ثبت رقم لاتین در خانهٔ فعلی و حرکت خودکار به خانهٔ بعدی.' },
     { keys: 'Backspace', action: 'پاک کردن خانهٔ فعلی؛ اگر خالی باشد، بازگشت به خانهٔ قبلی و پاک کردن آن.' },

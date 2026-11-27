@@ -44,7 +44,7 @@ export const inlineAlertDoc: ComponentDoc = {
   components: ['InlineAlert'],
   summary:
     'بلوک بازخورد درون‌صفحه در چهار لحن معنایی (اطلاع، موفق، هشدار، خطا) با آیکن، عنوان، اقدام‌های مرتبط و قابلیت بستن، بدون سایهٔ ساکن.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -115,48 +115,6 @@ export const inlineAlertDoc: ComponentDoc = {
       'از پیام خطای قرمز برای اطلاع‌رسانی عادی یا توضیح راهنما استفاده نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'InlineAlert',
-      props: [
-        {
-          name: 'tone',
-          type: "'info' | 'success' | 'warning' | 'danger'",
-          default: "'info'",
-          description: 'لحن معنایی؛ رنگ پس‌زمینه، حاشیه، متن و آیکن پیش‌فرض را تعیین می‌کند.',
-        },
-        { name: 'title', type: 'ReactNode', description: 'عنوان کوتاه و مشخص پیام.' },
-        { name: 'children', type: 'ReactNode', description: 'متن توضیحی پیام.' },
-        {
-          name: 'icon',
-          type: 'IconDefinition | false',
-          description: 'جایگزینی آیکن پیش‌فرض یا حذف آن با false.',
-        },
-        { name: 'actions', type: 'ReactNode', description: 'دکمه‌ها یا پیوندهای اقدام زیر متن.' },
-        {
-          name: 'isDismissible',
-          type: 'boolean',
-          default: 'false',
-          description: 'نمایش دکمهٔ بستن با هدف لمسی حداقل ۴۴×۴۴ پیکسل.',
-        },
-        {
-          name: 'isDismissed / defaultDismissed / onDismiss',
-          type: 'boolean / boolean / () => void',
-          description: 'کنترل وضعیت بسته‌شدن به صورت کنترل‌شده یا خودکار.',
-        },
-        {
-          name: 'headingLevel',
-          type: '2 | 3 | 4',
-          description: 'رندر عنوان به صورت تیتر معنایی در سلسله‌مراتب صفحه.',
-        },
-        {
-          name: 'role',
-          type: "'alert' | 'status' | 'note' | 'region'",
-          description: 'پیش‌فرض: alert برای danger، status برای success/warning، و note برای info.',
-        },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'جابه‌جایی فوکوس میان دکمه‌های اقدام و دکمهٔ بستن.' },
     { keys: 'Enter / Space', action: 'اجرای اقدام یا بستن پیام در صورت فعال بودن isDismissible.' },

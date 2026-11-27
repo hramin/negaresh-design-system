@@ -10,7 +10,7 @@ export const buttonGroupDoc: ComponentDoc = {
   base: 'Toolbar',
   summary:
     'ButtonGroup فقط چیدمان است و هر دکمه توقف Tab خودش را دارد. Toolbar یک توقف Tab است و با کلیدهای جهت حرکت می‌کند.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <Toolbar aria-label="گزارش">
@@ -57,36 +57,6 @@ export const buttonGroupDoc: ComponentDoc = {
     do: ['پانویس سطح‌ها: ButtonGroup.', 'ویرایشگرها و نوار گزارش: Toolbar با aria-label.'],
     dont: ['Toolbar برای دو دکمهٔ فرم؛ کاربر انتظار Tab دارد.'],
   },
-  api: [
-    {
-      name: 'ButtonGroup',
-      props: [
-        {
-          name: 'justify',
-          type: "'start' | 'end' | 'between'",
-          default: "'start'",
-          description: 'توزیع در جهت خط.',
-        },
-        {
-          name: 'stackOnMobile',
-          type: 'boolean',
-          description: 'زیر ۶۰۰ پیکسل دکمه‌ها تمام‌عرض و زیر هم.',
-        },
-      ],
-    },
-    {
-      name: 'Toolbar',
-      props: [
-        { name: 'aria-label', type: 'string', description: 'نام نوار ابزار.' },
-        {
-          name: 'orientation',
-          type: "'horizontal' | 'vertical'",
-          default: "'horizontal'",
-          description: 'جهت کلیدهای پیمایش.',
-        },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'ورود به نوار ابزار / خروج از آن' },
     { keys: '← / →', action: 'عنصر بعدی / قبلی (در فارسی چپ = بعدی)' },

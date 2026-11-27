@@ -43,7 +43,7 @@ export const skeletonDoc: ComponentDoc = {
   components: ['Skeleton'],
   summary:
     'جایگزین آرام و هم‌شکل محتوا هنگام بارگذاری اولیه (خطوط متن، بلوک، دایره و ردیف‌های جدول) با پالس شفافیت ملایم و توقف کامل در حالت کاهش حرکت.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -88,33 +88,6 @@ export const skeletonDoc: ComponentDoc = {
       'برای عملیات سریع زیر ۳۰۰ میلی‌ثانیه اسکلت نمایش ندهید تا صفحه چشمک نزند.',
     ],
   },
-  api: [
-    {
-      name: 'Skeleton',
-      props: [
-        {
-          name: 'variant',
-          type: "'text' | 'block' | 'circle' | 'table'",
-          default: "'text'",
-          description: 'شکل جایگزین.',
-        },
-        { name: 'lines', type: 'number', default: '3', description: 'تعداد سطرها در حالت text.' },
-        { name: 'rows / columns', type: 'number', default: '4 / 4', description: 'ابعاد شبکه در حالت table.' },
-        {
-          name: 'size',
-          type: "'sm' | 'md' | 'lg'",
-          default: "'md'",
-          description: 'اندازهٔ توکن‌محور برای حالت‌های block و circle.',
-        },
-        {
-          name: 'isAnimated',
-          type: 'boolean',
-          default: 'true',
-          description: 'پالس آرام شفافیت (در prefers-reduced-motion: reduce به صورت خودکار خاموش می‌شود).',
-        },
-      ],
-    },
-  ],
   a11y: [
     'هر Skeleton دارای aria-hidden="true" است تا صفحه‌خوان‌ها عناصر تزئینی خالی را نخوانند.',
     'تنها از انیمیشن opacity استفاده می‌کند (motion-icons.md) و در prefers-reduced-motion: reduce کاملاً ایستا می‌شود.',

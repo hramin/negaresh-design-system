@@ -1,0 +1,2 @@
+/* Cascade layer order matching @negaresh/theme-company and @negaresh/react (CLAUDE.md §6). */
+@layer nds.reset, nds.foundation, nds.components, nds.patterns, nds.utilities;

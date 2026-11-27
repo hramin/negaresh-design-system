@@ -1,5 +1,10 @@
 node_modules/
 dist/
+dist-theme/
+dist_keycloak/
+build_keycloak/
+public/keycloakify-dev-resources/
+packages/keycloak-theme/src/kc.gen.tsx
 .output/
 .turbo/
 coverage/

@@ -51,7 +51,7 @@ export const paginationDoc: ComponentDoc = {
   components: ['Pagination', 'LoadMore'],
   summary:
     'صفحه‌بندی با پیوندهای سروررندر و ارقام فارسی (formatNumber)، پیکان‌های منطقی آینه‌ای، فشرده‌سازی خودکار در موبایل و الگوی مکمل LoadMore.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   base: 'React Aria Link / Button',
   Example,
@@ -113,26 +113,6 @@ export const paginationDoc: ComponentDoc = {
       'در کنار LoadMore از اسکرول بی‌نهایت بدون دکمه استفاده نکنید؛ دسترسی به پاورقی صفحه را دشوار می‌کند.',
     ],
   },
-  api: [
-    {
-      name: 'Pagination',
-      props: [
-        { name: 'page / totalPages', type: 'number / number', description: 'شمارهٔ صفحهٔ جاری (از ۱) و کل صفحات.' },
-        { name: 'getPageHref', type: '(page: number) => string', description: 'سازندهٔ نشانی پیوندهای سروررندر (SSR).' },
-        { name: 'onPageChange', type: '(page: number) => void', description: 'فراخوانی هنگام تغییر صفحه.' },
-        { name: 'siblingCount / boundaryCount', type: 'number / number', default: '1 / 1', description: 'تعداد صفحات مجاور صفحهٔ جاری و لبه‌ها.' },
-        { name: 'showSummary', type: 'boolean', default: 'false', description: 'نمایش متن «صفحهٔ n از N» در دسکتاپ.' },
-      ],
-    },
-    {
-      name: 'LoadMore',
-      props: [
-        { name: 'loaded / total', type: 'number / number', description: 'تعداد موارد نمایش‌داده‌شده و کل موارد.' },
-        { name: 'href / onLoadMore / isLoading', type: 'string / () => void / boolean', description: 'پیوند SSR، اقدام بارگذاری و وضعیت در حال انجام.' },
-        { name: 'showProgress', type: 'boolean', default: 'true', description: 'نوار پیشرفت مویی نسبت بارگذاری.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت بین دکمه‌های قبلی، شماره صفحات و بعدی.' },
     { keys: 'Enter / Space', action: 'رفتن به صفحهٔ انتخاب‌شده یا بارگذاری دستهٔ بعدی.' },

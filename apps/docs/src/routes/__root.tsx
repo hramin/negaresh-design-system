@@ -18,6 +18,7 @@ import page from '../components/Page.module.css';
 import { Shell } from '../components/Shell.tsx';
 import { m } from '../lib/messages.ts';
 import { readThemeCookie, writeThemeCookie } from '../lib/theme.ts';
+import vazirmatnWoff2 from '@negaresh/theme-company/fonts/vazirmatn-subset.woff2?url';
 import appCss from '../styles.css?url';
 
 export const Route = createRootRoute({
@@ -33,6 +34,13 @@ export const Route = createRootRoute({
       { title: m.siteName },
     ],
     links: [
+      {
+        rel: 'preload',
+        as: 'font',
+        type: 'font/woff2',
+        href: vazirmatnWoff2,
+        crossOrigin: 'anonymous',
+      },
       { rel: 'stylesheet', href: appCss },
       // No favicon until the logos exist (Q-02); an empty icon avoids a 404 per page.
       { rel: 'icon', href: 'data:,' },

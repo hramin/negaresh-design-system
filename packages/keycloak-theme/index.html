@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>حساب کاربری نگرش</title>
+    <script>
+      (() => {
+        try {
+          const match = document.cookie.match(/(?:^|; )nds-theme=(light|dark|system)(?:;|$)/);
+          const stored = match ? match[1] : localStorage.getItem('nds-theme');
+          if (stored === 'light' || stored === 'dark') {
+            document.documentElement.setAttribute('data-theme', stored);
+          }
+        } catch {
+          // Ignore storage/cookie restrictions in sandboxed browsers.
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

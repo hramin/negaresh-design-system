@@ -30,7 +30,7 @@ export const imageDoc: ComponentDoc = {
   components: ['Image'],
   summary:
     'کامپوننت تصویر واکنش‌گرا با نسبت تصویر ثابت (aspect-ratio)، ویژگی‌های sizes/srcSet، بارگذاری تنبل پیش‌فرض، الزام تایپی alt و زیرنویس معنایی figure/figcaption.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -79,21 +79,6 @@ export const imageDoc: ComponentDoc = {
       'بهینه‌سازی سرور تصویر (sharp / imgproxy) در لایهٔ محصول انجام می‌شود، نه درون Image.',
     ],
   },
-  api: [
-    {
-      name: 'Image',
-      props: [
-        { name: 'src', type: 'string', description: 'نشانی تصویر (الزامی).' },
-        { name: 'alt', type: 'string', description: 'متن جایگزین الزامی (WCAG 2.2 AA).' },
-        { name: 'ratio', type: "'1/1' | '4/3' | '3/2' | '16/9' | '21/9' | '3/4' | 'auto'", default: "'auto'", description: 'نسبت ابعاد قاب برای جلوگیری از CLS.' },
-        { name: 'srcSet / sizes', type: 'string', description: 'نامزدهای تصویر واکنش‌گرا.' },
-        { name: 'loading', type: "'lazy' | 'eager'", default: "'lazy'", description: 'راهبرد بارگذاری مرورگر.' },
-        { name: 'fit', type: "'cover' | 'contain'", default: "'cover'", description: 'نحوهٔ جاگیری درون قاب.' },
-        { name: 'radius', type: "'none' | 'sm' | 'md' | 'lg'", default: "'none'", description: 'گردی گوشه‌ها از توکن‌های radius.' },
-        { name: 'caption', type: 'ReactNode', description: 'در صورت تنظیم، figure و figcaption معنایی می‌سازد.' },
-      ],
-    },
-  ],
   a11y: [
     'ویژگی alt در تایپ TypeScript اجباری است تا هیچ تصویر محتوایی بدون متن جایگزین منتشر نشود.',
     'در خطای بارگذاری، قاب آرام با آیکون تصویر و همان نسبت ابعاد و برچسب دسترس‌پذیر نمایش داده می‌شود.',

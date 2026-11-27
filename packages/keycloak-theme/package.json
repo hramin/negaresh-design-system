@@ -2,22 +2,66 @@
   "name": "@negaresh/keycloak-theme",
   "version": "0.0.0",
   "private": true,
-  "description": "Keycloak login theme (planned, P6).",
+  "description": "NDS Keycloak login theme built with Keycloakify: PhoneSignIn/OTP, PasswordSignIn, ForgotPassword, Register, VerifyMobile, TwoFactorSetup, Error, and Info.",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "exports": {
     ".": {
       "@negaresh/source": "./src/index.ts",
-      "types": "./dist/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "default": "./dist/index.js"
-    }
+    },
+    "./messages/fa": {
+      "@negaresh/source": "./src/messages/fa.ts",
+      "types": "./dist/types/messages/fa.d.ts",
+      "default": "./dist/messages/fa.js"
+    },
+    "./fixtures": {
+      "@negaresh/source": "./src/fixtures/index.ts",
+      "types": "./dist/types/fixtures/index.d.ts",
+      "default": "./dist/fixtures/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "dist_keycloak"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "typecheck": "tsc --noEmit",
+    "build": "vite build --config vite.lib.config.ts && tsc -p tsconfig.build.json && vite build",
+    "build:lib": "vite build --config vite.lib.config.ts && tsc -p tsconfig.build.json",
+    "build:theme": "vite build",
+    "build:jar": "vite build && env -u npm_config_cafile keycloakify build",
+    "test": "vitest run --config vite.lib.config.ts",
+    "typecheck": "env -u npm_config_cafile keycloakify update-kc-gen && tsc --noEmit",
     "lint": "biome lint ."
+  },
+  "dependencies": {
+    "@negaresh/icons": "workspace:*",
+    "@negaresh/react": "workspace:*",
+    "@negaresh/theme-company": "workspace:*",
+    "@negaresh/tokens": "workspace:*",
+    "@negaresh/utils": "workspace:*",
+    "keycloakify": "11.16.4"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.10",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.3.0",
+    "axe-core": "4.14.0",
+    "jsdom": "31.0.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
   }
 }

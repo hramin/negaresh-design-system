@@ -70,7 +70,7 @@ export const choiceCardDoc: ComponentDoc = {
   base: 'RadioField / CheckboxField',
   summary:
     'کارت انتخاب‌پذیر بر پایهٔ رادیو یا چک‌باکس با عنوان، توضیح، آیکون، برچسب کوتاه و قیمت تومانی؛ بدون سایهٔ ایستا.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -147,30 +147,6 @@ export const choiceCardDoc: ComponentDoc = {
       'تبدیل ریال/تومان را داخل کامپوننت انجام ندهید؛ واحد نمایش همیشه تومان است (D-26).',
     ],
   },
-  api: [
-    {
-      name: 'ChoiceCard',
-      props: [
-        {
-          name: 'control',
-          type: "'radio' | 'checkbox'",
-          default: "'radio'",
-          description: 'حالت رادیویی (داخل RadioGroup) یا چک‌باکسی (مستقل یا داخل CheckboxGroup).',
-        },
-        { name: 'title', type: 'ReactNode', description: 'عنوان اصلی کارت.' },
-        { name: 'description', type: 'ReactNode', description: 'توضیح تکمیلی زیر عنوان.' },
-        { name: 'icon', type: 'IconDefinition', description: 'آیکون آغاز کارت از @negaresh/icons.' },
-        {
-          name: 'price',
-          type: 'number | ReactNode',
-          description: 'قیمت تومانی (عدد با formatPrice قالب‌بندی می‌شود؛ ۰ → «رایگان»).',
-        },
-        { name: 'badge', type: 'ReactNode', description: 'برچسب کوتاه کنار عنوان (مانند «پیشنهادی»).' },
-        { name: 'value / isDisabled', type: 'string / boolean', description: 'مقدار و وضعیت غیرفعال.' },
-        { name: 'className / ref', type: 'string / Ref<HTMLInputElement>', description: '—' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'ورود به کارت انتخاب‌شده یا جابه‌جایی میان کارت‌های چک‌باکسی' },
     { keys: '↑ / ↓', action: 'تغییر انتخاب در حالت رادیویی' },

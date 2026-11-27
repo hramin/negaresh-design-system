@@ -37,7 +37,7 @@ export const disclosureDoc: ComponentDoc = {
   components: ['Disclosure', 'Accordion', 'AccordionItem'],
   summary:
     'بخش‌های بازشونده و آکاردئون ساخته‌شده روی React Aria Disclosure و DisclosureGroup برای پرسش‌های متداول (FAQ)، سرفصل دوره‌ها و راهنمای موبایل رجیستری.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   base: 'React Aria Disclosure / DisclosureGroup / DisclosurePanel',
   Example,
@@ -83,26 +83,6 @@ export const disclosureDoc: ComponentDoc = {
       'اطلاعات خطای حیاتی یا دکمه‌های اصلی فرم را درون بخش بسته پنهان نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'Disclosure',
-      props: [
-        { name: 'title', type: 'ReactNode', description: 'عنوان دکمهٔ باز/بسته کردن.' },
-        { name: 'icon / meta', type: 'IconDefinition / ReactNode', description: 'آیکن ابتدایی و متادیتای انتهایی (مانند مدت درس).' },
-        { name: 'variant', type: "'default' | 'surface' | 'plain'", default: "'default'", description: 'سبک قاب‌بندی.' },
-        { name: 'alwaysExpandedAbove', type: "'md'", description: 'در عرض ۹۰۰ پیکسل و بیشتر محتوا را همیشه نمایش می‌دهد و دکمه را پنهان می‌کند.' },
-        { name: 'isExpanded / defaultExpanded / onExpandedChange', type: 'boolean / boolean / (open: boolean) => void', description: 'وضعیت باز/بسته.' },
-      ],
-    },
-    {
-      name: 'Accordion',
-      props: [
-        { name: 'allowsMultipleExpanded', type: 'boolean', default: 'false', description: 'امکان باز بودن هم‌زمان چند بخش.' },
-        { name: 'variant', type: "'surface' | 'bordered' | 'plain'", default: "'surface'", description: 'چیدمان گروهی آیتم‌ها.' },
-        { name: 'expandedKeys / defaultExpandedKeys / onExpandedChange', type: 'Iterable<Key> / ...', description: 'مدیریت کلیدهای باز.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت بین دکمه‌های عنوان.' },
     { keys: 'Enter / Space', action: 'باز یا بسته کردن پنل محتوا.' },

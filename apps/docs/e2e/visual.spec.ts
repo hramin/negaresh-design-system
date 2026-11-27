@@ -1,5 +1,5 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
-import { COMPONENT_SLUGS, THEMES } from './routes.ts';
+import { ASSESSMENT_SLUGS, CHART_SLUGS, COMPONENT_SLUGS, PATTERN_SLUGS, THEMES } from './routes.ts';
 
 /**
  * Visual snapshots of every states gallery (docs/quality.md): light/dark × 1440/390.
@@ -71,6 +71,13 @@ const HIDE_HEADER_SLUGS = new Set([
   'disclosure',
   'user-menu',
   'footer',
+  'data-table',
+  'filter-bar',
+  'bulk-action-bar',
+  'list',
+  'stat-tile',
+  'timeline',
+  'diff-view',
 ]);
 
 const snap = (locator: Locator, name: string, hidePageHeader = false) =>
@@ -80,7 +87,7 @@ const snap = (locator: Locator, name: string, hidePageHeader = false) =>
     maxDiffPixelRatio: 0.001,
     // Tall new galleries must remain fully visible beneath the sticky page chrome.
     // Existing P2 captures keep their original settings and baselines.
-    ...(hidePageHeader ? { style: 'header { visibility: hidden !important; }' } : {}),
+    ...(hidePageHeader ? { style: '[data-docs-topbar] { visibility: hidden !important; }' } : {}),
   });
 
 const PREHIDE_HEADER_SLUGS = new Set([
@@ -116,6 +123,13 @@ const PREHIDE_HEADER_SLUGS = new Set([
   'disclosure',
   'user-menu',
   'footer',
+  'data-table',
+  'filter-bar',
+  'bulk-action-bar',
+  'list',
+  'stat-tile',
+  'timeline',
+  'diff-view',
 ]);
 
 for (const theme of THEMES) {
@@ -123,7 +137,7 @@ for (const theme of THEMES) {
     test(`gallery ${slug} (${theme})`, async ({ page }) => {
       await open(page, `/components/${slug}?theme=${theme}`);
       if (PREHIDE_HEADER_SLUGS.has(slug)) {
-        await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+        await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
       }
       await snap(
         page.locator(`[data-gallery="${slug}"]`),
@@ -133,9 +147,42 @@ for (const theme of THEMES) {
     });
   }
 
+  for (const slug of CHART_SLUGS) {
+    test(`chart gallery ${slug} (${theme})`, async ({ page }) => {
+      await open(page, `/charts/${slug}?theme=${theme}`);
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+      await snap(page.locator(`[data-gallery="chart-${slug}"]`), `chart-${slug}-${theme}.png`, true);
+    });
+  }
+
+  for (const slug of ASSESSMENT_SLUGS) {
+    test(`assessment gallery ${slug} (${theme})`, async ({ page }) => {
+      await open(page, `/assessment/${slug}?theme=${theme}`);
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+      await snap(
+        page.locator(`[data-gallery="assessment-${slug}"]`),
+        `assessment-${slug}-${theme}.png`,
+        true,
+      );
+    });
+  }
+
+  for (const slug of PATTERN_SLUGS) {
+    test(`pattern gallery ${slug} (${theme})`, async ({ page }) => {
+      await open(page, `/patterns/${slug}?theme=${theme}`);
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+      await snap(
+        page.locator(`[data-gallery="pattern-${slug}"]`),
+        `pattern-${slug}-${theme}.png`,
+        true,
+      );
+    });
+  }
+
   test(`icon grid (${theme})`, async ({ page }) => {
     await open(page, `/foundations/icons?theme=${theme}`);
-    await snap(page.locator('[data-gallery="icons"]'), `icons-${theme}.png`);
+    await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+    await snap(page.locator('[data-gallery="icons"]'), `icons-${theme}.png`, true);
   });
 
   test(`toast open floating notification (${theme})`, async ({ page }) => {
@@ -235,9 +282,11 @@ for (const theme of THEMES) {
     const trigger = page
       .locator('[data-interactive="tooltip"]')
       .getByRole('button', { name: 'کپی کد فعال‌سازی' });
-    await trigger.evaluate((el) => {
+    await page.keyboard.press('Tab');
+    await trigger.evaluate(async (el) => {
       el.scrollIntoView({ block: 'center' });
       window.scrollTo(0, Math.round(window.scrollY));
+      await new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())));
     });
     await trigger.focus();
     const tooltip = page.locator('[data-nds="Tooltip"]');
@@ -488,7 +537,7 @@ for (const theme of THEMES) {
 
   test(`tanstack-form-zod guide form (${theme})`, async ({ page }) => {
     await open(page, `/guides/tanstack-form-zod?theme=${theme}`);
-    await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+    await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
     await snap(
       page.locator('[data-gallery="tanstack-form-zod"]'),
       `tanstack-form-zod-${theme}.png`,
@@ -509,6 +558,41 @@ for (const theme of THEMES) {
       );
     });
   }
+
+  test(`admin-serials list (${theme})`, async ({ page }) => {
+    await open(page, `/reference/admin-serials?theme=${theme}`);
+    await page.addStyleTag({
+      content:
+        '[data-admin-sample] header, [data-admin-sample] [data-nds="SideNav"], [data-admin-sample] th { position: static !important; }',
+    });
+    await snap(page.locator('[data-admin-sample]'), `admin-serials-list-${theme}.png`, false);
+  });
+
+  test(`admin-serials detail (${theme})`, async ({ page }) => {
+    await open(page, `/reference/admin-serials/N25AG-EMV0K?theme=${theme}`);
+    await page.addStyleTag({
+      content:
+        '[data-admin-sample] header, [data-admin-sample] [data-nds="SideNav"] { position: static !important; }',
+    });
+    await snap(page.locator('[data-admin-sample]'), `admin-serials-detail-${theme}.png`, false);
+  });
+
+  test(`filter-bar mobile sheet open (${theme})`, async ({ page, isMobile }) => {
+    test.skip(!isMobile, 'mobile filter sheet drawer renders below 900 px');
+    await open(page, `/components/filter-bar?theme=${theme}`);
+    await page
+      .locator('[data-interactive="filter-bar"]')
+      .getByRole('button', { name: /^فیلترها/ })
+      .click();
+    await expect(page.locator('[data-nds="Sheet"]')).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
+    await expect(page.locator('[data-nds="SheetModal"][data-entering]')).toHaveCount(0);
+    await expect(page).toHaveScreenshot(`filter-bar-sheet-open-${theme}.png`, {
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.001,
+    });
+  });
 
   test.describe('interaction states', () => {
     test.skip(({ isMobile }) => isMobile, 'pointer and keyboard states are captured on desktop');
@@ -663,3 +747,64 @@ for (const theme of THEMES) {
     });
   });
 }
+
+test.describe('A4 assessment print baselines', () => {
+  test('MMPI-Teen-13 professional A4 print layout', async ({ page, isMobile }) => {
+    test.skip(isMobile, 'A4 print baselines run on desktop viewport');
+    await page.setViewportSize({ width: 794, height: 1123 });
+    await open(page, '/reference/assessment-report?fixture=mmpi-teen-13&mode=professional');
+    await page.emulateMedia({ media: 'print' });
+    await snap(page.locator('[data-nds="PrintLayout"]'), 'assessment-print-mmpi-teen-13.png');
+  });
+
+  test('Wellbeing-8 calm A4 print layout', async ({ page, isMobile }) => {
+    test.skip(isMobile, 'A4 print baselines run on desktop viewport');
+    await page.setViewportSize({ width: 794, height: 1123 });
+    await open(page, '/reference/assessment-report?fixture=wellbeing-8&mode=calm');
+    await page.emulateMedia({ media: 'print' });
+    await snap(page.locator('[data-nds="PrintLayout"]'), 'assessment-print-wellbeing-8-calm.png');
+  });
+});
+
+test.describe('P6 Wave 2 · Full-bleed Keycloak login baselines', () => {
+  for (const theme of THEMES) {
+    for (const screen of ['phone-signin', 'phone-otp', 'two-factor-setup'] as const) {
+      test(`keycloak-login ${screen} (${theme})`, async ({ page }) => {
+        await open(page, `/reference/keycloak-login?screen=${screen}&theme=${theme}`);
+        await snap(page.locator('[data-nds="AuthShell"]'), `keycloak-login-${screen}-${theme}.png`);
+      });
+    }
+  }
+});
+
+test.describe('P7 · Docs completion baselines (Playground, Product page, Brand Manifest)', () => {
+  for (const theme of THEMES) {
+    test(`playground gallery (${theme})`, async ({ page }) => {
+      await open(page, `/playground?theme=${theme}`);
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+      await snap(page.locator('[data-gallery="playground"]'), `p7-playground-${theme}.png`, true);
+    });
+
+    test(`products-registry gallery (${theme})`, async ({ page }) => {
+      await open(page, `/products/registry?theme=${theme}`);
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+      await snap(
+        page.locator('[data-gallery="products-registry"]'),
+        `p7-products-registry-${theme}.png`,
+        true,
+      );
+    });
+
+    test(`brand-sample-dummy gallery (${theme})`, async ({ page }) => {
+      await open(page, `/brands/sample-dummy/overview?theme=${theme}`);
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+      await snap(
+        page.locator('[data-gallery="brand-sample-dummy"]'),
+        `p7-brand-sample-dummy-${theme}.png`,
+        true,
+      );
+    });
+  }
+});
+
+

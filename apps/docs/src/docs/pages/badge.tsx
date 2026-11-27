@@ -29,7 +29,7 @@ export const badgeDoc: ComponentDoc = {
   components: ['Badge'],
   summary:
     'برچسب کپسولی غیرتعاملی برای نمایش دسته‌بندی، منبع باز شدن یا وضعیت کوتاه در شش لحن و دو اندازه، با نقطه یا آیکن اختیاری.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -100,28 +100,6 @@ export const badgeDoc: ComponentDoc = {
       'نقطهٔ رنگی را بدون متن نمایش ندهید.',
     ],
   },
-  api: [
-    {
-      name: 'Badge',
-      props: [
-        {
-          name: 'tone',
-          type: "'neutral' | 'accent' | 'info' | 'success' | 'warning' | 'danger'",
-          default: "'neutral'",
-          description: 'لحن معنایی یا خنثی نشان.',
-        },
-        {
-          name: 'size',
-          type: "'sm' | 'md'",
-          default: "'md'",
-          description: 'اندازهٔ کوچک (مناسب بالای تیتر و جدول فشرده) یا متوسط.',
-        },
-        { name: 'dot', type: 'boolean', default: 'false', description: 'نقطهٔ تزئینی پیش از متن.' },
-        { name: 'icon', type: 'IconDefinition', description: 'آیکن ۱۶ پیکسلی پیش از متن.' },
-        { name: 'children', type: 'ReactNode', description: 'متن نشان.' },
-      ],
-    },
-  ],
   a11y: [
     'نشان غیرتعاملی است و با متن خوانا همراه می‌شود تا معنا تنها به رنگ متکی نباشد.',
     'آیکن و نقطهٔ تزئینی با aria-hidden="true" علامت‌گذاری شده‌اند.',

@@ -66,7 +66,7 @@ export const datePickerDoc: ComponentDoc = {
   base: 'DatePicker, DateRangePicker, Calendar, RangeCalendar, PersianCalendar',
   summary:
     'انتخابگر تاریخ و بازهٔ تاریخ خورشیدی (جلالی) با شروع هفته از شنبه، مشخص‌سازی جمعه، منطقهٔ زمانی تهران، پیمایش کامل صفحه‌کلید راست‌به‌چپ و قرارداد ISO-8601 در لبهٔ API.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -173,46 +173,6 @@ export const datePickerDoc: ComponentDoc = {
       'منطقهٔ زمانی مرورگر را برای محاسبهٔ «امروز» فرض نکنید؛ پیش‌فرض سامانه منطقهٔ زمانی تهران (Asia/Tehran) است.',
     ],
   },
-  api: [
-    {
-      name: 'DatePicker',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب دیدنی و الزامی فیلد.' },
-        { name: 'value / defaultValue', type: 'string | null', description: 'تاریخ استاندارد ISO-8601 (YYYY-MM-DD).' },
-        { name: 'onChange', type: '(isoDate: string | null) => void', description: 'تاریخ انتخاب‌شده را به قالب ISO برمی‌گرداند.' },
-        { name: 'minValue / maxValue', type: 'string', description: 'کمینه و بیشینهٔ مجاز (ISO YYYY-MM-DD).' },
-        {
-          name: 'placeholderValue',
-          type: 'string',
-          default: 'امروز به وقت تهران',
-          description: 'تاریخ مرجع نمایش تقویم هنگام خالی بودن فیلد.',
-        },
-        { name: 'isDateUnavailable', type: '(isoDate: string) => boolean', description: 'روزهای غیرقابل انتخاب با خط‌خوردگی خوانا.' },
-        { name: 'description / errorMessage', type: 'ReactNode', description: 'متن راهنما و خطای اعتبارسنجی.' },
-        { name: 'isRequired / isDisabled / isReadOnly / isInvalid / isPending', type: 'boolean', description: 'وضعیت‌های فرم.' },
-        { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'اندازهٔ فیلد.' },
-        { name: 'placement', type: "PopoverProps['placement']", default: "'bottom start'", description: 'جهت باز شدن پاپ‌اور تقویم.' },
-      ],
-    },
-    {
-      name: 'DateRangePicker',
-      props: [
-        { name: 'value / defaultValue', type: 'DateRangeValue | null', description: 'بازهٔ `{ start, end }` به قالب ISO-8601.' },
-        { name: 'onChange', type: '(range: DateRangeValue | null) => void', description: 'اعلام تغییر بازه.' },
-        { name: 'startName / endName', type: 'string', description: 'نام فیلدهای فرم برای تاریخ شروع و پایان.' },
-        { name: 'allowsNonContiguousRanges', type: 'boolean', description: 'اجازهٔ عبور بازه از روزهای ناموجود.' },
-      ],
-    },
-    {
-      name: 'Calendar / RangeCalendar',
-      props: [
-        { name: 'value / defaultValue / onChange', type: 'string | DateRangeValue', description: 'مقدار و رویداد تغییر به قالب ISO-8601.' },
-        { name: 'focusedValue / defaultFocusedValue / onFocusChange', type: 'string', description: 'مدیریت تاریخ دارای فوکوس در شبکه.' },
-        { name: 'minValue / maxValue / isDateUnavailable', type: 'string / predicate', description: 'محدودیت‌های انتخاب روز.' },
-        { name: 'isDisabled / isReadOnly / isInvalid / errorMessage', type: 'boolean / ReactNode', description: '—' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: '↑ / ↓ (روی بخش‌های ورودی)', action: 'افزایش یا کاهش سال، ماه یا روز' },
     { keys: '← / → (روی بخش‌های ورودی)', action: 'جابه‌جایی میان بخش‌های سال، ماه و روز' },

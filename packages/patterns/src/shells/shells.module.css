@@ -1,0 +1,126 @@
+@layer nds.patterns {
+  /* ── AccountShell & AdminShell ─────────────────────────────────────────────────────── */
+  .shellFrame {
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-lg);
+    overflow: hidden;
+    background: var(--nds-bg-canvas);
+  }
+
+  .shellFrame[data-embedded="false"] {
+    border: 0;
+    border-radius: var(--nds-radius-none);
+    min-block-size: 100dvh;
+  }
+
+  .shellBody {
+    display: grid;
+    grid-template-columns: var(--nds-sidenav) minmax(0, 1fr);
+    gap: var(--nds-space-6);
+    padding: var(--nds-space-5);
+    align-items: start;
+  }
+
+  .shellContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-5);
+    min-inline-size: 0;
+  }
+
+  .pageHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--nds-space-4);
+  }
+
+  .desktopNavOnly {
+    display: block;
+  }
+
+  .mobileTriggerOnly {
+    display: none;
+  }
+
+  /* ── AccountContacts ───────────────────────────────────────────────────────────────── */
+  .contactList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-3);
+  }
+
+  .contactRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--nds-space-3);
+    padding: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-md);
+    background: var(--nds-bg-surface);
+  }
+
+  /* ── SettingsPage ──────────────────────────────────────────────────────────────────── */
+  .saveBar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--nds-space-3);
+    padding-block: var(--nds-space-3);
+    padding-inline: var(--nds-space-5);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-strong);
+    border-radius: var(--nds-radius-md);
+    background: var(--nds-bg-surface);
+  }
+
+  /* ── NotificationTemplatesEditor ───────────────────────────────────────────────────── */
+  .templateGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: var(--nds-space-5);
+    align-items: start;
+  }
+
+  .varChipList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--nds-space-2);
+  }
+
+  .previewBox {
+    padding: var(--nds-space-4);
+    border: var(--nds-border-width-hairline) solid var(--nds-border-default);
+    border-radius: var(--nds-radius-md);
+    background: var(--nds-bg-sunken);
+    white-space: pre-wrap;
+    line-height: var(--nds-leading-text);
+    color: var(--nds-fg-default);
+  }
+
+  @media (max-width: 899px) {
+    .shellBody,
+    .templateGrid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--nds-space-4);
+      padding: var(--nds-space-4);
+    }
+
+    .desktopNavOnly {
+      display: none;
+    }
+
+    .mobileTriggerOnly {
+      display: inline-flex;
+    }
+  }
+}

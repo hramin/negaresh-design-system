@@ -44,7 +44,7 @@ export const timeFieldDoc: ComponentDoc = {
   base: 'TimeField, DateInput, DateSegment',
   summary:
     'ورودی زمان ۲۴ ساعته با بخش‌های مجزای ساعت، دقیقه (و در صورت نیاز ثانیه)، ارقام فارسی tabular-nums، پیمایش صفحه‌کلید و قرارداد استاندارد HH:mm.',
-  status: 'review',
+  status: 'approved',
   products: ['N'],
   Example,
   Gallery: () => (
@@ -120,32 +120,6 @@ export const timeFieldDoc: ComponentDoc = {
       'برای انتخاب یک بازهٔ زمانی طولانی همراه با تاریخ از چند TimeField جداگانه استفاده نکنید؛ آن را در کنار DatePicker قرار دهید.',
     ],
   },
-  api: [
-    {
-      name: 'TimeField',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب دیدنی و الزامی فیلد.' },
-        { name: 'value / defaultValue', type: 'string | null', description: 'زمان ۲۴ ساعته به قالب HH:mm یا HH:mm:ss.' },
-        { name: 'onChange', type: '(value: string | null) => void', description: 'مقدار استاندارد HH:mm (یا HH:mm:ss) برمی‌گرداند.' },
-        { name: 'minValue / maxValue', type: 'string', description: 'کمینه و بیشینهٔ مجاز زمانی.' },
-        {
-          name: 'granularity',
-          type: "'hour' | 'minute' | 'second'",
-          default: "'minute'",
-          description: 'دقت نمایش بخش‌های زمان.',
-        },
-        { name: 'hourCycle', type: '12 | 24', default: '24', description: 'چرخهٔ ساعتی (پیش‌فرض ۲۴ ساعته).' },
-        { name: 'description / errorMessage', type: 'ReactNode', description: 'متن راهنما و پیام خطا.' },
-        {
-          name: 'isRequired / isDisabled / isReadOnly / isInvalid / isPending',
-          type: 'boolean',
-          description: 'وضعیت‌های فرم.',
-        },
-        { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'ارتفاع کنترل.' },
-        { name: 'className / ref', type: 'string / Ref<HTMLDivElement>', description: '—' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: '↑ / ↓', action: 'افزایش یا کاهش بخش فعال (ساعت، دقیقه یا ثانیه)' },
     { keys: '← / →', action: 'جابه‌جایی میان بخش‌های ساعت، دقیقه و ثانیه' },

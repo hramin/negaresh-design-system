@@ -26,7 +26,7 @@ export const statusBadgeDoc: ComponentDoc = {
   base: 'Badge',
   summary:
     'نگاشت نوع‌دار وضعیت‌های شش دامنهٔ محصولات نگارش (سفارش، پرداخت، سریال، بازبینی محتوا، گزارش و کارزار) به متن فارسی، آیکن و لحن یکسان.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -106,36 +106,6 @@ export const statusBadgeDoc: ComponentDoc = {
       'برای مقیاس شدت نتایج آزمون‌های روان‌شناسی از StatusBadge استفاده نکنید؛ نتایج آزمون مقیاس آرام اختصاصی خود را در P5 دارند.',
     ],
   },
-  api: [
-    {
-      name: 'StatusBadge',
-      props: [
-        {
-          name: 'domain',
-          type: "'order' | 'payment' | 'serial' | 'review' | 'report' | 'campaign'",
-          description: 'دامنهٔ کسب‌وکار برای انتخاب جدول نگاشت.',
-        },
-        {
-          name: 'status',
-          type: 'OrderStatus | PaymentStatus | SerialStatus | ReviewStatus | ReportStatus | CampaignStatus',
-          description: 'وضعیت نوع‌دار منطبق با domain انتخاب‌شده.',
-        },
-        {
-          name: 'label',
-          type: 'ReactNode',
-          description: 'جایگزینی اختیاری برچسب فارسی خوانده‌شده از NdsMessages.',
-        },
-        { name: 'size', type: "'sm' | 'md'", default: "'md'", description: 'اندازهٔ نشان.' },
-        {
-          name: 'showIcon',
-          type: 'boolean',
-          default: 'true',
-          description: 'نمایش آیکن نگاشت‌شده کنار واژهٔ وضعیت.',
-        },
-        { name: 'dot', type: 'boolean', default: 'false', description: 'نقطهٔ تزئینی در صورت نیاز.' },
-      ],
-    },
-  ],
   a11y: [
     'هر وضعیت به صورت خودکار ترکیبی از واژهٔ فارسی، آیکن معنایی و لحن رنگی با کنتراست حداقل ۴٫۵:۱ نمایش می‌دهد.',
     'تمام برچسب‌ها از NdsMessages خوانده می‌شوند (D-94) و هیچ رشتهٔ فارسی سخت‌کدشده‌ای در کامپوننت وجود ندارد.',

@@ -1,2 +1,16 @@
-// Entry point. Components arrive in a later phase (see docs/phases/).
-export {};
+// Cascade layer order must be imported first so @layer nds.patterns sorts cleanly above nds.components.
+import './layers.css';
+
+export * from './commerce/index.ts';
+export * from './content/index.ts';
+export * from './courses/index.ts';
+export * from './licensing/index.ts';
+export {
+  type PartialPatternMessages,
+  PatternMessagesProvider,
+  type PatternMessagesProviderProps,
+  usePatternMessages,
+} from './messages/context.tsx';
+export type { PatternMessages } from './messages/types.ts';
+export * from './shells/index.ts';
+export * from './test-platform/index.ts';

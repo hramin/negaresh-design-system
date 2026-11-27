@@ -1,0 +1,102 @@
+@layer nds.components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-3);
+    min-inline-size: 0;
+  }
+
+  .mainRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--nds-space-3);
+    min-inline-size: 0;
+  }
+
+  .searchWrap {
+    flex: 1 1 16rem;
+    min-inline-size: min(100%, 14rem);
+    max-inline-size: 24rem;
+  }
+
+  .desktopFilters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--nds-space-3);
+    flex: 1 1 auto;
+    min-inline-size: 0;
+  }
+
+  .mobileTriggerWrap {
+    display: none;
+    flex: none;
+  }
+
+  .mobileCount {
+    margin-inline-start: var(--nds-space-1);
+  }
+
+  .actions {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--nds-space-2);
+    margin-inline-start: auto;
+    flex: none;
+  }
+
+  .sheetBody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-4);
+    min-inline-size: 0;
+  }
+
+  .sheetFooter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--nds-space-2);
+    inline-size: 100%;
+  }
+
+  .chipsRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--nds-space-2);
+    min-inline-size: 0;
+  }
+
+  .chipsList {
+    flex: 0 1 auto;
+    min-inline-size: 0;
+  }
+
+  @media (max-width: 899px) {
+    .mainRow {
+      align-items: stretch;
+    }
+
+    .searchWrap {
+      flex: 1 1 100%;
+      max-inline-size: none;
+    }
+
+    .desktopFilters {
+      display: none;
+    }
+
+    .mobileTriggerWrap {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .actions {
+      margin-inline-start: auto;
+    }
+  }
+}

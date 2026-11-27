@@ -49,7 +49,7 @@ export const tagGroupDoc: ComponentDoc = {
   base: 'TagGroup, TagList, Tag',
   summary:
     'نمایش و مدیریت برچسب‌های انتخاب‌پذیر یا حذف‌پذیر همراه با فیلد ورود برچسب تازه؛ با کلیدهای پیمایش و برچسب‌های فارسی صفحه‌خوان.',
-  status: 'review',
+  status: 'approved',
   products: ['N'],
   Example,
   Gallery: () => (
@@ -138,46 +138,6 @@ export const tagGroupDoc: ComponentDoc = {
       'برچسب‌های طولانی چندخطی داخل TagGroup نگذارید.',
     ],
   },
-  api: [
-    {
-      name: 'TagGroup',
-      props: [
-        { name: 'label / aria-label', type: 'ReactNode / string', description: 'برچسب گروه.' },
-        { name: 'items', type: 'Iterable<T>', description: 'داده‌های پویا برای رندر برچسب‌ها.' },
-        { name: 'onRemove', type: '(keys: Set<Key>) => void', description: 'فعال‌سازی حذف برچسب‌ها.' },
-        {
-          name: 'selectionMode',
-          type: "'none' | 'single' | 'multiple'",
-          default: "'none'",
-          description: 'انتخاب برچسب‌ها.',
-        },
-        { name: 'size', type: "'sm' | 'md'", default: "'md'", description: 'اندازهٔ برچسب‌ها.' },
-        { name: 'emptyMessage / description / errorMessage', type: 'ReactNode', description: '—' },
-      ],
-    },
-    {
-      name: 'Tag',
-      props: [
-        { name: 'id', type: 'Key', description: 'کلید یکتا.' },
-        { name: 'icon', type: 'IconDefinition', description: 'آیکون آغاز برچسب.' },
-        { name: 'tone', type: "'neutral' | 'accent'", default: "'neutral'", description: 'تاکید دیداری.' },
-        { name: 'isDisabled', type: 'boolean', description: 'غیرفعال کردن برچسب.' },
-      ],
-    },
-    {
-      name: 'TagField',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب فیلد.' },
-        { name: 'value / defaultValue', type: 'readonly string[]', description: 'فهرست برچسب‌ها.' },
-        { name: 'onChange', type: '(tags: string[]) => void', description: 'اعلام تغییر فهرست برچسب‌ها.' },
-        { name: 'maxTags', type: 'number', description: 'سقف تعداد برچسب مجاز.' },
-        { name: 'allowDuplicates', type: 'boolean', default: 'false', description: 'اجازهٔ برچسب تکراری.' },
-        { name: 'validateTag', type: '(tag: string) => string | null | undefined', description: 'اعتبارسنجی اختصاصی.' },
-        { name: 'name', type: 'string', description: 'نام فیلد برای ارسال بومی فرم (ورودی‌های پنهان).' },
-        { name: 'isDisabled / isReadOnly / isRequired / isInvalid', type: 'boolean', description: '—' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: '← / → (در TagGroup)', action: 'پیمایش میان برچسب‌ها بر اساس جهت راست‌به‌چپ' },
     { keys: 'Delete / Backspace (روی Tag)', action: 'حذف برچسب دارای فوکوس' },

@@ -69,7 +69,7 @@ export const errorPageDoc: ComponentDoc = {
   components: ['ErrorState', 'ErrorPage'],
   summary:
     'قالب‌های آماده و آرام فارسی برای خطاهای ۴۰۳، ۴۰۴، ۴۱۰، ۵۰۰ و حالت نگهداری سامانه، هم برای بخش‌های درون‌صفحه (ErrorState) و هم برای مسیرهای تمام‌صفحه (ErrorPage).',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -136,37 +136,6 @@ export const errorPageDoc: ComponentDoc = {
       'متن خطاهای خام سرور یا کدهای انگلیسی بدون توضیح فارسی را مستقیم به کاربر نشان ندهید.',
     ],
   },
-  api: [
-    {
-      name: 'ErrorState',
-      props: [
-        {
-          name: 'status',
-          type: "403 | 404 | 410 | 500 | 'maintenance'",
-          default: '500',
-          description: 'پیش‌تنظیم خطا که کد، آیکن، لحن و متن فارسی پیش‌فرض را از NdsMessages می‌خواند.',
-        },
-        { name: 'code', type: 'ReactNode | false', description: 'بازنویسی یا پنهان کردن نشان کد وضعیت.' },
-        { name: 'title / description', type: 'ReactNode', description: 'بازنویسی تیتر و توضیح پیش‌فرض.' },
-        { name: 'action / actionHref / onAction', type: 'ReactNode / string / () => void', description: 'اقدام اصلی بازیابی.' },
-        { name: 'secondaryAction', type: 'ReactNode', description: 'اقدام ثانویه مانند تماس با پشتیبانی.' },
-        { name: 'details', type: 'ReactNode', description: 'اطلاعات تکمیلی مانند شناسهٔ پیگیری خطا.' },
-        { name: 'headingLevel', type: '1 | 2 | 3', default: '2', description: 'سطح تیتر (در ErrorPage پیش‌فرض ۱ است).' },
-      ],
-    },
-    {
-      name: 'ErrorPage',
-      props: [
-        { name: 'header / footer', type: 'ReactNode', description: 'بخش‌های اختیاری بالا و پایین صفحه.' },
-        {
-          name: 'embedded',
-          type: 'boolean',
-          default: 'false',
-          description: 'حذف ارتفاع 100dvh برای نمایش درون کارت یا گالری مستندات.',
-        },
-      ],
-    },
-  ],
   a11y: [
     'وضعیت ۵۰۰ با role="alert" و سایر وضعیت‌ها با role="status" اعلام می‌شوند.',
     'تمام متن‌های پیش‌فرض از NdsMessages.errorPresets خوانده می‌شوند و با لحن آرام و روشن نوشته شده‌اند (content.md).',

@@ -84,7 +84,7 @@ export const comboBoxDoc: ComponentDoc = {
   base: 'ComboBox, Popover, ListBox',
   summary:
     'ورودی متنی همراه با فهرست پیشنهادی پالایش‌پذیر؛ مناسب فهرست‌های بلند، بارگذاری ناهم‌زمان (async) و ساخت گزینهٔ تازه.',
-  status: 'review',
+  status: 'approved',
   products: ['N', 'T'],
   Example,
   Gallery: () => (
@@ -168,54 +168,6 @@ export const comboBoxDoc: ComponentDoc = {
       'گزینهٔ ساخت مورد تازه را بدون بررسی تکرار به کاربر نشان ندهید.',
     ],
   },
-  api: [
-    {
-      name: 'ComboBox / Autocomplete',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب دیدنی و الزامی.' },
-        { name: 'items / defaultItems', type: 'Iterable<T>', description: 'گزینه‌های پویا یا اولیه.' },
-        {
-          name: 'inputValue / defaultInputValue / onInputChange',
-          type: 'string / (value: string) => void',
-          description: 'متن جست‌وجو برای پالایش سمت کاربر یا سرور.',
-        },
-        { name: 'value / defaultValue / onChange', type: 'Key | null', description: 'کلید انتخاب‌شده.' },
-        {
-          name: 'isLoading / isPending',
-          type: 'boolean',
-          description: 'نشانگر بارگذاری ناهم‌زمان و حالت در حال انجام.',
-        },
-        {
-          name: 'emptyMessage',
-          type: 'ReactNode',
-          default: '«موردی یافت نشد»',
-          description: 'پیام هنگام نبودن نتیجه.',
-        },
-        {
-          name: 'onCreateOption / createOptionLabel',
-          type: '(query: string) => void',
-          description: 'فعال‌سازی گزینهٔ ساخت مورد تازه در انتهای فهرست.',
-        },
-        { name: 'allowsCustomValue', type: 'boolean', description: 'پذیرش مقدار خارج از فهرست.' },
-        {
-          name: 'menuTrigger',
-          type: "'input' | 'focus' | 'manual'",
-          default: "'input'",
-          description: 'زمان باز شدن فهرست پیشنهادها.',
-        },
-        { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'اندازهٔ فیلد.' },
-        { name: 'className / ref', type: 'string / Ref<HTMLInputElement>', description: '—' },
-      ],
-    },
-    {
-      name: 'ComboBoxItem',
-      props: [
-        { name: 'id', type: 'Key', description: 'کلید یکتای گزینه.' },
-        { name: 'textValue', type: 'string', description: 'متن برای جست‌وجو و پر کردن ورودی.' },
-        { name: 'icon / description / isDisabled', type: '—', description: '—' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'تایپ متن', action: 'باز کردن فهرست و پالایش پیشنهادها' },
     { keys: '↓ / ↑', action: 'حرکت میان پیشنهادها و گزینهٔ ساخت مورد تازه' },

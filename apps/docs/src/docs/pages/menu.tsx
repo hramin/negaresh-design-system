@@ -46,7 +46,7 @@ export const menuDoc: ComponentDoc = {
   base: 'Menu, MenuTrigger, SubmenuTrigger, Popover',
   summary:
     'فهرستی از اقدام‌ها که از یک دکمه باز می‌شود؛ با بخش، زیرمنو، توضیح، میان‌بر و انتخاب. لایهٔ شناور است و تنها جایی است که سایه دارد.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => <AccountMenu />,
   Gallery: () => (
@@ -88,47 +88,6 @@ export const menuDoc: ComponentDoc = {
     ],
     dont: ['ناوبری اصلی سایت در منو؛ آن نوار ناوبری است (P4).', 'بیش از دو سطح زیرمنو.'],
   },
-  api: [
-    {
-      name: 'MenuTrigger',
-      props: [
-        { name: 'isOpen / defaultOpen / onOpenChange', type: '—', description: 'کنترل باز بودن.' },
-      ],
-    },
-    {
-      name: 'Menu',
-      props: [
-        { name: 'onAction', type: '(key: Key) => void', description: 'اجرای گزینه.' },
-        {
-          name: 'selectionMode',
-          type: "'none' | 'single' | 'multiple'",
-          default: "'none'",
-          description: 'تیک کنار گزینهٔ انتخاب‌شده.',
-        },
-        {
-          name: 'placement',
-          type: "'bottom start' | …",
-          default: "'bottom start'",
-          description: 'جای پاپ‌اور نسبت به ماشه (منطقی).',
-        },
-      ],
-    },
-    {
-      name: 'MenuItem',
-      props: [
-        { name: 'id', type: 'Key', description: 'کلید.' },
-        { name: 'icon', type: 'IconDefinition', description: '—' },
-        { name: 'description', type: 'ReactNode', description: 'خط دوم.' },
-        { name: 'shortcut', type: 'string', description: 'میان‌بر لاتین، چپ‌به‌راست.' },
-        { name: 'tone', type: "'default' | 'danger'", default: "'default'", description: '—' },
-        { name: 'href', type: 'string', description: 'گزینهٔ پیوندی.' },
-      ],
-    },
-    {
-      name: 'MenuSection',
-      props: [{ name: 'title', type: 'ReactNode', description: 'عنوان دیدنی بخش.' }],
-    },
-  ],
   keyboard: [
     { keys: 'Enter / Space / ↓', action: 'باز کردن منو از ماشه' },
     { keys: '↑ / ↓', action: 'گزینهٔ قبلی / بعدی' },

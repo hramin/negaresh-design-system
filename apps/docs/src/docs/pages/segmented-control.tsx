@@ -41,7 +41,7 @@ export const segmentedControlDoc: ComponentDoc = {
   base: 'ToggleButtonGroup, ToggleButton',
   summary:
     'انتخاب تکی و سریع میان ۲ تا ۵ گزینهٔ کوتاه هم‌تراز روی یک ریل فرورفته؛ همیشه یک گزینه فعال باقی می‌ماند.',
-  status: 'review',
+  status: 'approved',
   products: ['N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -109,29 +109,6 @@ export const segmentedControlDoc: ComponentDoc = {
       'برای انتخاب چندگزینه‌ای هم‌زمان از SegmentedControl استفاده نکنید؛ ToggleButtonGroup برای چندانتخابی است.',
     ],
   },
-  api: [
-    {
-      name: 'SegmentedControl',
-      props: [
-        { name: 'label / aria-label', type: 'ReactNode / string', description: 'برچسب دیدنی یا دسترس‌پذیر.' },
-        { name: 'description', type: 'ReactNode', description: 'توضیح تکمیلی زیر ریل.' },
-        { name: 'value / defaultValue', type: 'Key', description: 'کلید گزینهٔ فعال.' },
-        { name: 'onChange', type: '(value: Key) => void', description: 'اعلام تغییر گزینه.' },
-        { name: 'size', type: "'sm' | 'md'", default: "'md'", description: 'هر دو اندازه ≥ ۴۴ پیکسل هدف لمسی دارند.' },
-        { name: 'fullWidth', type: 'boolean', default: 'false', description: 'توزیع هم‌عرض گزینه‌ها.' },
-        { name: 'isDisabled', type: 'boolean', description: 'غیرفعال کردن کل کنترل.' },
-      ],
-    },
-    {
-      name: 'SegmentedControlItem',
-      props: [
-        { name: 'id', type: 'Key', description: 'کلید یکتای گزینه.' },
-        { name: 'icon', type: 'IconDefinition', description: 'آیکون اختیاری آغاز گزینه.' },
-        { name: 'isDisabled', type: 'boolean', description: 'غیرفعال کردن همین گزینه.' },
-        { name: 'children', type: 'ReactNode', description: 'متن کوتاه گزینه.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'ورود و خروج از گروه با roving tabindex' },
     { keys: '← / →', action: 'جابه‌جایی میان گزینه‌ها بر اساس جهت راست‌به‌چپ' },

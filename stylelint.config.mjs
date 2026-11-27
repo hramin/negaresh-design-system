@@ -36,6 +36,10 @@ const physical = [
 export default {
   ignoreFiles: [
     '**/dist/**',
+    '**/dist-theme/**',
+    '**/dist_keycloak/**',
+    '**/build_keycloak/**',
+    '**/keycloakify-dev-resources/**',
     '**/.output/**',
     '**/node_modules/**',
     'reference/**',

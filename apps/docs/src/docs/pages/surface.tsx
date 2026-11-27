@@ -18,7 +18,7 @@ export const surfaceDoc: ComponentDoc = {
   components: ['Surface', 'Section', 'Divider'],
   summary:
     'سطح با رنگ زمینه، فاصله و یک خط مویی جدا می‌شود؛ بدون سایه و قاب (D-77). سطح تو در تو نمی‌شود؛ داخلش Section است.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <Surface aria-labelledby="ex-surface">
@@ -93,53 +93,6 @@ export const surfaceDoc: ComponentDoc = {
     ],
     dont: ['سایه روی سطح ساکن؛ سایه فقط برای لایه‌های شناور است.', 'Surface داخل Surface.'],
   },
-  api: [
-    {
-      name: 'Surface',
-      props: [
-        {
-          name: 'variant',
-          type: "'default' | 'plain'",
-          default: "'default'",
-          description: 'plain فقط چیدمان است، بدون زمینه و مرز.',
-        },
-        {
-          name: 'as',
-          type: 'ElementType',
-          default: "'section'",
-          description: 'با aria-labelledby یک ناحیهٔ نام‌دار می‌سازد.',
-        },
-      ],
-    },
-    {
-      name: 'Section',
-      props: [
-        {
-          name: 'tone',
-          type: "'default' | 'sunken'",
-          default: "'default'",
-          description: 'sunken برای پانویس اقدام‌ها.',
-        },
-      ],
-    },
-    {
-      name: 'Divider',
-      props: [
-        {
-          name: 'orientation',
-          type: "'horizontal' | 'vertical'",
-          default: "'horizontal'",
-          description: 'role="separator" از React Aria.',
-        },
-        {
-          name: 'tone',
-          type: "'default' | 'strong'",
-          default: "'default'",
-          description: 'strong برای جداکنندهٔ دیدنی‌تر.',
-        },
-      ],
-    },
-  ],
   a11y: [
     'Surface به‌صورت پیش‌فرض section است؛ بدون نام، ناحیه حساب نمی‌شود.',
     'Divider نقش separator دارد.',

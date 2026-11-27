@@ -1,0 +1,111 @@
+@layer nds.components {
+  .refGroup {
+    pointer-events: none;
+  }
+
+  .refLine {
+    stroke: var(--nds-viz-ref);
+    stroke-width: 1.4;
+    fill: none;
+  }
+
+  .refLine[data-tone="accent"] {
+    stroke: var(--nds-accent-default);
+  }
+
+  .refLine[data-tone="info"] {
+    stroke: var(--nds-info-fg);
+  }
+
+  .refLine[data-tone="warning"] {
+    stroke: var(--nds-warning-fg);
+  }
+
+  .refLine[data-tone="danger"] {
+    stroke: var(--nds-danger-fg);
+  }
+
+  .refLabel {
+    fill: var(--nds-fg-subtle);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-medium);
+    font-variant-numeric: tabular-nums;
+    paint-order: stroke;
+    stroke: var(--nds-bg-surface);
+    stroke-width: 3.5px;
+    stroke-linejoin: round;
+  }
+
+  .refLabel[data-tone="accent"] {
+    fill: var(--nds-accent-fg);
+  }
+
+  .refLabel[data-tone="warning"] {
+    fill: var(--nds-warning-fg);
+  }
+
+  .refLabel[data-tone="danger"] {
+    fill: var(--nds-danger-fg);
+  }
+
+  .bandGroup {
+    pointer-events: none;
+  }
+
+  .bandRect {
+    fill: var(--nds-viz-band);
+    opacity: 0.72;
+  }
+
+  .bandRect[data-tone="ok"] {
+    fill: var(--nds-success-bg);
+    opacity: 0.85;
+  }
+
+  .bandRect[data-tone="caution"] {
+    fill: var(--nds-warning-bg);
+    opacity: 0.85;
+  }
+
+  .bandRect[data-tone="severe"] {
+    fill: var(--nds-danger-bg);
+    opacity: 0.85;
+  }
+
+  .bandRect[data-tone="calm"] {
+    fill: var(--nds-accent-subtle);
+    opacity: 0.85;
+  }
+
+  .bandLabel {
+    fill: var(--nds-fg-subtle);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-medium);
+    paint-order: stroke;
+    stroke: var(--nds-bg-surface);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+
+  @media (forced-colors: active) {
+    .refLine {
+      stroke: CanvasText;
+    }
+
+    .refLabel,
+    .bandLabel {
+      fill: CanvasText;
+      stroke: none;
+    }
+
+    .bandRect {
+      fill: none;
+      stroke: GrayText;
+      stroke-dasharray: 2 2;
+      stroke-width: 1;
+      opacity: 1;
+    }
+  }
+}

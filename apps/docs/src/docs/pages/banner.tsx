@@ -45,7 +45,7 @@ export const bannerDoc: ComponentDoc = {
   components: ['Banner'],
   summary:
     'نوار اطلاع‌رسانی تمام‌عرض در بالای صفحه برای اعلان‌های سراسری، نگهداری سامانه یا هشدارهای مهم حساب با قابلیت اقدام و بستن.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -109,39 +109,6 @@ export const bannerDoc: ComponentDoc = {
       'برای خطاهای یک فرم یا کارت مشخص از InlineAlert استفاده کنید نه Banner.',
     ],
   },
-  api: [
-    {
-      name: 'Banner',
-      props: [
-        {
-          name: 'tone',
-          type: "'neutral' | 'info' | 'success' | 'warning' | 'danger'",
-          default: "'info'",
-          description: 'لحن بنر سراسری.',
-        },
-        { name: 'title', type: 'ReactNode', description: 'عبارت کوتاه آغازین پیش از متن اصلی.' },
-        { name: 'children', type: 'ReactNode', description: 'متن اصلی بنر.' },
-        { name: 'action', type: 'ReactNode', description: 'دکمه یا پیوند اقدام در انتهای سطر.' },
-        {
-          name: 'size',
-          type: "'default' | 'wide' | 'full'",
-          default: "'default'",
-          description: 'هم‌ترازی عرض محتوای درونی با کانتینر ۱۲۰۰، ۱۴۴۰ یا تمام‌عرض.',
-        },
-        {
-          name: 'isDismissible',
-          type: 'boolean',
-          default: 'false',
-          description: 'نمایش دکمهٔ بستن با هدف لمسی ۴۴×۴۴ پیکسل.',
-        },
-        {
-          name: 'isDismissed / defaultDismissed / onDismiss',
-          type: 'boolean / boolean / () => void',
-          description: 'مدیریت وضعیت بسته‌شدن.',
-        },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت میان دکمهٔ اقدام و دکمهٔ بستن.' },
     { keys: 'Enter / Space', action: 'فعال‌سازی اقدام یا بستن بنر.' },

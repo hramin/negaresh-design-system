@@ -38,7 +38,7 @@ export const spinnerDoc: ComponentDoc = {
   components: ['Spinner', 'GlobalLoadingBar'],
   summary:
     'شاخص بارگذاری دایره‌ای در سه اندازه برای بخش‌های کوچک و نوار باریک سراسری بالای صفحه برای ناوبری و بارگذاری مسیرها.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -86,51 +86,6 @@ export const spinnerDoc: ComponentDoc = {
       'برای بارگذاری کل ساختار یک کارت یا جدول از Spinner تنها استفاده نکنید؛ Skeleton تجربهٔ آرام‌تری می‌دهد.',
     ],
   },
-  api: [
-    {
-      name: 'Spinner',
-      props: [
-        { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'قطر حلقه (۱۶، ۲۰ یا ۲۴ پیکسل).' },
-        {
-          name: 'tone',
-          type: "'current' | 'accent' | 'muted' | 'inverse'",
-          default: "'accent'",
-          description: 'رنگ حلقه.',
-        },
-        {
-          name: 'label',
-          type: 'string',
-          default: 'messages.loading',
-          description: 'متن پنهان برای صفحه‌خوان در حالت غیرتزئینی.',
-        },
-        {
-          name: 'decorative',
-          type: 'boolean',
-          default: 'false',
-          description: 'مخفی کردن از فناوری‌های کمکی وقتی متن مرئی همراه آن هست.',
-        },
-      ],
-    },
-    {
-      name: 'GlobalLoadingBar',
-      props: [
-        { name: 'isLoading', type: 'boolean', description: 'نمایش یا عدم نمایش نوار.' },
-        { name: 'value', type: 'number', description: 'درصد اختیاری (۰ تا ۱۰۰)؛ در صورت نبودن نامعین است.' },
-        {
-          name: 'position',
-          type: "'fixed' | 'static'",
-          default: "'fixed'",
-          description: 'ثابت در بالای صفحه (--nds-z-toast) یا جاسازی‌شده در جریان صفحه.',
-        },
-        {
-          name: 'label',
-          type: 'string',
-          default: 'messages.globalLoadingLabel',
-          description: 'نام دسترس‌پذیر role="progressbar".',
-        },
-      ],
-    },
-  ],
   a11y: [
     'Spinner غیرتزئینی با role="status" و متن فارسی از NdsMessages وضعیت بارگذاری را اعلام می‌کند.',
     'GlobalLoadingBar با role="progressbar" و برچسب فارسی رندر می‌شود.',

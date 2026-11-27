@@ -28,7 +28,7 @@ export const emptyStateDoc: ComponentDoc = {
   components: ['EmptyState'],
   summary:
     'بلوک آرام برای فهرست‌ها، جداول و بخش‌های بدون داده که توضیح می‌دهد چه چیزی اینجا قرار می‌گیرد و اقدام نخست را پیشنهاد می‌کند.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -80,20 +80,6 @@ export const emptyStateDoc: ComponentDoc = {
       'عبارت‌های مبهم یا سرزنش‌کننده مانند «داده‌ای یافت نشد!» ننویسید.',
     ],
   },
-  api: [
-    {
-      name: 'EmptyState',
-      props: [
-        { name: 'title', type: 'ReactNode', description: 'تیتر اصلی وضعیت خالی (الزامی).' },
-        { name: 'description', type: 'ReactNode', description: 'توضیح کوتاه فارسی.' },
-        { name: 'icon', type: 'IconDefinition', description: 'آیکن راهنما (تزئینی با aria-hidden).' },
-        { name: 'action', type: 'ReactNode', description: 'اقدام اصلی پیشنهادی.' },
-        { name: 'secondaryAction', type: 'ReactNode', description: 'اقدام ثانویهٔ اختیاری.' },
-        { name: 'headingLevel', type: '2 | 3 | 4', default: '2', description: 'سطح تیتر در ساختار صفحه.' },
-        { name: 'size', type: "'sm' | 'md'", default: "'md'", description: 'چگالی فضای درونی.' },
-      ],
-    },
-  ],
   a11y: [
     'آیکن با aria-hidden="true" نشانه‌گذاری شده و تیتر با سطح headingLevel قابل تنظیم به ساختار صفحه متصل می‌شود.',
     'عرض متن توضیحی به ۴۶ کاراکتر (46ch) محدود شده تا خوانایی در دسکتاپ و موبایل حفظ شود.',

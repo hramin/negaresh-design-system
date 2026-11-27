@@ -78,7 +78,7 @@ export const toastDoc: ComponentDoc = {
   base: 'UNSTABLE_ToastRegion, UNSTABLE_Toast, UNSTABLE_ToastQueue',
   summary:
     'اعلان‌های شناور و صف‌بندی‌شده روی React Aria Components با سطح معکوس برای حالت خنثی، لحن‌های معنایی حاشیه‌دار، سایهٔ لایهٔ شناور (--nds-shadow-overlay)، اقدام اختیاری و مکث خودکار روی هاور و فوکوس.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -141,45 +141,6 @@ export const toastDoc: ComponentDoc = {
       'بیش از یک دکمهٔ اقدام کوتاه در هر اعلان قرار ندهید.',
     ],
   },
-  api: [
-    {
-      name: 'ToastProvider',
-      props: [
-        {
-          name: 'maxVisibleToasts',
-          type: 'number',
-          default: '3',
-          description: 'حداکثر تعداد اعلان‌های هم‌زمان روی صفحه.',
-        },
-        {
-          name: 'placement',
-          type: "'bottom-end' | 'bottom-center' | 'top-end'",
-          default: "'bottom-end'",
-          description: 'جایگاه منطقی ناحیهٔ اعلان در دسکتاپ.',
-        },
-        {
-          name: 'aria-label',
-          type: 'string',
-          default: 'messages.toastRegionLabel',
-          description: 'نام دسترس‌پذیر ناحیهٔ اعلان‌ها.',
-        },
-      ],
-    },
-    {
-      name: 'Toast',
-      props: [
-        { name: 'title', type: 'ReactNode', description: 'تیتر کوتاه اعلان.' },
-        { name: 'description', type: 'ReactNode', description: 'توضیح تکمیلی اختیاری.' },
-        {
-          name: 'tone',
-          type: "'neutral' | 'info' | 'success' | 'warning' | 'danger'",
-          default: "'neutral'",
-          description: 'لحن خنثی (معکوس) یا لحن معنایی حاشیه‌دار.',
-        },
-        { name: 'actionLabel / onAction', type: 'string / () => void', description: 'دکمهٔ اقدام کوتاه.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'F6', action: 'پرش سریع به ناحیهٔ اعلان‌های فعال (React Aria landmark).' },
     { keys: 'Tab / Shift+Tab', action: 'حرکت بین دکمهٔ اقدام و دکمهٔ بستن در اعلان.' },

@@ -38,7 +38,7 @@ export const tooltipDoc: ComponentDoc = {
   base: 'TooltipTrigger, Tooltip, OverlayArrow',
   summary:
     'برچسب متنی کوتاه روی سطح معکوس (--nds-bg-inverse / --nds-fg-inverse، foundations/color.md) که با هاور ماوس و فوکوس کیبورد ظاهر می‌شود. هرگز برای اطلاعات حیاتی استفاده نمی‌شود.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -86,26 +86,6 @@ export const tooltipDoc: ComponentDoc = {
       'برای راهنمای غنی کنار برچسب فیلد از ContextualHelp استفاده کنید.',
     ],
   },
-  api: [
-    {
-      name: 'TooltipTrigger',
-      props: [
-        { name: 'delay', type: 'number', default: '400', description: 'تأخیر نمایش هنگام هاور به میلی‌ثانیه.' },
-        { name: 'closeDelay', type: 'number', default: '150', description: 'تأخیر پنهان شدن به میلی‌ثانیه.' },
-        { name: 'isDisabled', type: 'boolean', default: 'false', description: 'غیرفعال کردن نمایش راهنما.' },
-        { name: 'trigger', type: "'focus'", description: 'محدود کردن نمایش به فوکوس کیبورد.' },
-      ],
-    },
-    {
-      name: 'Tooltip',
-      props: [
-        { name: 'children', type: 'string | number', description: 'متن ساده و کوتاه (ساختار فقط-متن).' },
-        { name: 'placement', type: "'top' | 'bottom' | 'start' | 'end'", default: "'top'", description: 'جایگذاری منطقی نسبت به محرک.' },
-        { name: 'showArrow', type: 'boolean', default: 'true', description: 'نمایش پیکان هم‌رنگ سطح معکوس.' },
-        { name: 'offset', type: 'number', default: '8', description: 'فاصلهٔ پیکسلی از محرک.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'نمایش فوری راهنما هنگام فوکوس کیبورد روی محرک.' },
     { keys: 'Escape', action: 'پنهان کردن فوری راهنمای فعال.' },

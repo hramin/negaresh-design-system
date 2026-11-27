@@ -16,7 +16,7 @@ export const iconDoc: ComponentDoc = {
   components: ['Icon'],
   summary:
     'آیکون‌های خطی روی شبکهٔ ۲۴، ضخامت خط از توکن، رنگ از متن. آیکون‌های جهت‌دار در راست‌به‌چپ قرینه می‌شوند.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <Inline gap="4">
@@ -69,25 +69,6 @@ export const iconDoc: ComponentDoc = {
     ],
     dont: ['ایموجی در رابط.', 'رنگ یا ضخامت خط دستی.'],
   },
-  api: [
-    {
-      name: 'Icon',
-      props: [
-        { name: 'icon', type: 'IconDefinition', description: 'از @negaresh/icons، مثلاً iconCopy.' },
-        {
-          name: 'size',
-          type: "'sm' | 'md' | 'lg'",
-          default: "'md'",
-          description: '۱۶، ۲۰، ۲۴ پیکسل.',
-        },
-        {
-          name: 'label',
-          type: 'string',
-          description: 'نام دسترس‌پذیر وقتی آیکون معنای مستقل دارد (role="img").',
-        },
-      ],
-    },
-  ],
   a11y: [
     'بدون label، aria-hidden="true" و focusable="false".',
     'آیکون تنها در دکمه را با IconButton و aria-label بسازید.',

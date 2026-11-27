@@ -1,6 +1,6 @@
 # Components
 
-Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026), P4 Waves 1–2 (Feedback and status, Overlays, and standalone Display primitives) are `approved` following owner confirmation on 25 Nov 2026, and P4 Wave 3 (Navigation) is `approved` following owner confirmation on 26 Nov 2026; docs pages are under `/components/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
+Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026), all P4 components are `approved` following owner confirmation (Waves 1–2 on 25 Nov 2026; Waves 3–4 on 26 Nov 2026), all P5 components (`@negaresh/charts` Wave 1 and `@negaresh/assessment` Wave 2) are `approved` following owner confirmation on 26 Nov 2026, and all P6 components (`@negaresh/patterns` Wave 1 on 26 Nov 2026 and `@negaresh/keycloak-theme` Wave 2 on 27 Nov 2026) are `approved` following owner confirmation; docs pages are under `/components/<name>`, `/charts/<name>`, `/assessment/<name>`, and `/patterns/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
 
 Every component documents: anatomy, props, all applicable states (default, hover, focus-visible, pressed, disabled, loading, invalid, empty, read-only), keyboard map, ARIA notes, RTL notes, do/don't, and a mobile example.
 
@@ -102,40 +102,74 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 | Component | Base | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| DataTable | `Table` | sort, select, sticky header, column visibility, density, stacks to cards on mobile, empty/loading/error | R, N, T | planned |
-| FilterBar | — | search + filters + chips + reset; filters move to Sheet on mobile | R, N, T | planned |
-| BulkActionBar | `Toolbar` | appears on selection | R, N, T | planned |
+| DataTable | `Table` | sort, select, sticky header, column visibility, density, stacks to cards on mobile, empty/loading/error | R, N, T | approved |
+| FilterBar | — | search + filters + chips + reset; filters move to Sheet on mobile | R, N, T | approved |
+| BulkActionBar | `Toolbar` | appears on selection | R, N, T | approved |
 | KeyValueList | — | label/value, LTR values, copyable | all | approved |
-| StatTile, StatGroup | — | value, delta, sparkline | R, N, T | planned |
-| Timeline / ActivityList | `GridList` | activations, audit, revisions | R, N, T | planned |
-| DiffView | — | revision compare | N | planned |
+| StatTile, StatGroup | — | value, delta, sparkline | R, N, T | approved |
+| Timeline / ActivityList | `GridList` | activations, audit, revisions | R, N, T | approved |
+| DiffView | — | revision compare | N | approved |
 | Avatar, AvatarGroup | — | image, initials | N, T | approved |
 | VerifiedBadge | Badge | expert licence | N | approved |
 | Card (generic) | — | media, body, footer; link card | all | approved |
-| List, GridList | `GridList` | selectable rows | all | planned |
+| List, GridList | `GridList` | selectable rows | all | approved |
 | Image | — | ratio, sizes, lazy; alt required prop | all | approved |
 
 ## Charts — `@negaresh/charts` (P5)
 
-IntervalBar · ProfileLine · Bar · Radar · Gauge · Sparkline · ChartFrame (title, takeaway, legend, table alternative) · ReferenceLine · Band. Products: T, V, N (reports), R (admin dashboard).
+| Component | Base | Notes | Products | Status |
+| --- | --- | --- | --- | --- |
+| ChartFrame | — | `<figure>` with title, one-sentence takeaway, legend, source/norm note, loading/empty/error states, and native JS-free `<details>` data table alternative (`/charts/chart-frame`) | T, V, N, R | approved |
+| ReferenceLine, Band | — | Reusable SSR SVG norm bands and dashed/dotted reference lines; automatically suppress rose/danger in `calm` mode (`/charts/chart-frame`) | T, V, N, R | approved |
+| IntervalBar | `d3-scale` | Signature horizontal score + confidence interval bar with norm bands, cut-offs, `professional` and `calm` severity scales, mobile container-query stacking (`/charts/interval-bar`) | T, V | approved |
+| ProfileLine | `d3-scale`, `d3-shape` | MMPI-style scale profile line with 50/65/70 reference lines, 40–60 norm band, vertical section dividers, non-diamond markers, keyboard-focusable points (`/charts/profile-line`) | T, V, N | approved |
+| Bar | `d3-scale` | Vertical and horizontal categorical comparison bars, direct Persian value labels, greyscale-safe SVG `<pattern>` fills for multi-series (`/charts/bar`) | R, N, T, V | approved |
+| Radar | `d3-scale`, `d3-shape` | Multi-axis professional/overview radar (D-67) with non-diamond vertex markers, always paired with visible data table (`/charts/radar`) | T, V | approved |
+| Gauge | `d3-scale`, `d3-shape` | Bounded semicircular single-index arc gauge with Persian number + required band word, segmented bands, `professional` and `calm` modes (`/charts/gauge`) | T, V, N | approved |
+| Sparkline | `d3-scale`, `d3-shape` | Axis-free compact inline trend SVG with required text summary, slots directly into `StatTile` (`/charts/sparkline`) | R, N, T | approved |
 
 ## Assessment kit — `@negaresh/assessment` (P5)
 
-| Component | Notes |
-| --- | --- |
-| QuestionItem | stem as legend, options as radio group; 2/4/6, Likert (5/7), forced choice; image options |
-| AnswerPage | n questions per page, validation per page, unanswered summary |
-| AnswerProgress | «صفحهٔ n از N» + bar, announced |
-| StartForm | demographics from schema (choice, number, text, Jalali date) |
-| ResumeOrRestart | one unfinished attempt per test |
-| ResultSummary | headline, type/profile/index |
-| ScoreTable | items with value, band, severity word |
-| InterpretationBlock | by section and severity; pro and calm variants |
-| ResultChart | chart spec → charts package |
-| ReportStatus | none, pending, ready, failed, purged; retry |
-| PrintLayout (A4) | header, chart, table, interpretation, footer note; 14 × 10 mm margins |
-| SubmittedPage | campaign "you can close this page" |
+| Component | Base | Notes | Products | Status |
+| --- | --- | --- | --- | --- |
+| QuestionItem | `fieldset` + `legend` + RAC `RadioGroup` | Stem as `<legend>`, real `<input type="radio">` option chips; 2/4/6 choices, Likert (5/7), forced choice, image options with required `alt` (`/assessment/question-item`) | T, V | approved |
+| AnswerPage | `QuestionItem` + `AnswerProgress` + `FormErrorSummary` | `n` questions per page, per-page required validation, unanswered summary with direct jump-to-radio focus, RTL page navigation (`/assessment/answer-flow`) | T, V | approved |
+| AnswerProgress | `ProgressBar` | «صفحهٔ n از N» + determinate bar, polite `role="status"` live announcement on page change (`/assessment/answer-flow`) | T, V | approved |
+| StartForm | `TextField`, `NumberField`, `Select`/`RadioGroup`, Jalali `DatePicker` | Schema-driven demographics (`choice`, `number`, `text`, `jalali-date`), campaign blocker states (`not_on_roster`, `already_taken`, `seats_full`, `closed`, `expired`), error summary (`/assessment/start-resume`) | T, V | approved |
+| ResumeOrRestart | `ProgressBar`, `KeyValueList`, `AlertDialog` | One unfinished attempt per test; Jalali last-saved & expiry timestamps; destructive restart guarded by `AlertDialog` (`/assessment/start-resume`) | T, V | approved |
+| ResultSummary | `Badge`, `InlineAlert`, `Code` | Headline, `profile`/`type`/`index`/`themes` kinds, Jalali completion metadata, validity callout; `professional` and `calm` (zero rose/danger) modes (`/assessment/result-overview`) | T, V | approved |
+| ScoreTable | `Badge`, `Code` | Grouped scale rows with Persian tabular digits, optional raw score & confidence interval, severity word + icon; `professional` and `calm` (zero rose/danger) modes (`/assessment/result-overview`) | T, V | approved |
+| InterpretationBlock | `Badge`, `Code` | Interpretation sections grouped by section, validity, and severity with recommendations; `professional` and `calm` (zero rose/danger) variants (`/assessment/interpretation-block`) | T, V | approved |
+| ResultChart | `@negaresh/charts` `ChartFrame` | Declarative `/api/v1` chart spec adapter (`profile-line`, `interval-bar`, `bar`, `radar`, `gauge`) with automatic table/legend builders and `calm`/`professional` propagation (`/assessment/result-overview`) | T, V | approved |
+| ReportStatus | `StatusBadge(domain="report")`, `Spinner`, `InlineAlert` | All 5 report lifecycle states (`none`, `pending`, `ready`, `failed`, `purged`) with Jalali retention timestamps, download/print actions, and retry (`/assessment/report-status`) | T, V | approved |
+| PrintLayout (A4) | `@page` A4 (14 × 10 mm) + `LogoSlot` | Header, charts, score table, interpretation, confidentiality footer; `break-inside: avoid`, automatic light-paper print fidelity, Playwright A4 PDF & screen-vs-print parity (`/assessment/print-layout`, `/reference/assessment-report`) | T, N, V | approved |
+| SubmittedPage | `Icon`, `Code` | Stripped campaign completion confirmation («می‌توانید این صفحه را ببندید»), Jalali submission timestamp, LTR tracking code (`/assessment/report-status`) | T, V | approved |
 
 ## Patterns — `@negaresh/patterns` (P6)
 
-See `patterns.md`.
+See `patterns.md`. P6 Wave 1 product patterns are `approved` following owner confirmation on 26 Nov 2026; P6 Wave 2 (`@negaresh/keycloak-theme` identity/auth theme) is `approved` following owner confirmation on 27 Nov 2026. Docs pages live under `/patterns/<slug>` and `/reference/keycloak-login`.
+
+| Pattern | Base / Reused | Notes | Products | Status |
+| --- | --- | --- | --- | --- |
+| Price, ProductCard, ProductPage, Wishlist | `Card`, `Image`, `ChoiceCard`, `Accordion`, `ToggleButton`, `formatPrice` | Toman-only pricing (D-26), gallery thumbnails, edition picker, requirements, FAQ, wishlist (`/patterns/commerce-catalog`) | N, R, T | approved |
+| Cart, OrderSummary, Checkout, GatewayPicker, PaymentResult | `Stepper`, `ChoiceCard`, `PhoneField`, `KeyValueList`, `CopyButton`, `EmptyState` | Qty steppers, coupon code, digital-only checkout shortcut, admin-ordered gateways, success/cancelled/failed payment states (`/patterns/commerce-checkout`) | N, R, T | approved |
+| OrderDetail, Invoice (A4 print) | `StatusBadge(order)`, `Timeline`, `KeyValueList`, `LogoSlot`, `@page` A4 | Order lifecycle timeline, Toman breakdown, A4 14 × 10 mm printable invoice with Jalali dates (`/patterns/commerce-orders`) | N, T | approved |
+| CodeDisplay, ActivationFlow, MyActivations | `SerialField`, `UsageMeter`, `CopyButton`, `InlineAlert`, `KeyValueList` | LTR activation codes, FR-11 errors, FR-12 repeat-PC banner, limit → buy +1 CTA, rate-limited resend (`/patterns/licensing-activation`) | R, N | approved |
+| LimitEditor, SerialBatchGenerator, AlertChannels, AuditLog | `NumberField`, `Timeline`, `Select`, `Switch`, `FilterBar`, `DataTable`, `DiffView` | FR-23 limit source badge + reason override, batch preview + CSV export, SMS/email/Telegram/Bale + 2 recipients, IP/diff audit (`/patterns/licensing-admin`) | R | approved |
+| ContentCard (×4), BlogFeed, ContentBlocks, ArticlePage, Poll | `Card`, `Image`, `FilterBar`, `LoadMore`, `Accordion`, `InlineAlert`, `CopyButton` | Article/Post/Quote/Poll cards, ≤ 5 featured slider, 11 JSON block types (CalloutBox ×4, ContentCallout ×3), byline + TOC + poll expert note (`/patterns/content-editorial`) | N | approved |
+| ExpertDirectory, ExpertProfile, WriterWorkspace, ReviewQueue | `FilterBar`, `Avatar`, `VerifiedBadge`, `Tabs`, `StatusBadge(review)`, `DatePicker`, `TimeField`, `DiffView` | Privacy-safe expert directory/profile, 5-state writer editor shell (`editorSlot` per Q-04), revision diff/restore, editorial queue (`/patterns/content-experts`) | N | approved |
+| CoursePage, CoursePlayer, LessonNav, CourseProgress, MyCourses | `Accordion`, `ProgressBar`, `SegmentedControl`, `ToggleButton`, `Price` | Syllabus, 16:9 player frame + speed/resume, 90% completion rule, enrolled course filters (`/patterns/courses`) | N | approved |
+| AccountShell, AccountContacts, AdminShell, SettingsPage, NotificationTemplatesEditor | `TopBar`, `UserMenu` (reusing `AccountPill`), `SideNav`, `Sheet`, `OTPField`, `AlertDialog`, `StatGroup` | Account/Admin workspace shells, multi-mobile OTP verification & removal guard, dirty Save bar, live template variable preview (`/patterns/account-admin-shells`) | R, N, T | approved |
+| TestCatalog, TestDashboard | `FilterBar`, `Price`, `StatGroup`, `StatusBadge(report)` | Free/sale/org-rate test cards and dashboard with slots for approved P5 `@negaresh/assessment` components (`/patterns/test-platform-catalog`) | T | approved |
+| CampaignBuilder, ShareLinkPanel, RosterImport, SeatMeter, CampaignParticipants, OrgWallet, B2BPanel | `DatePicker`, `FileUpload`, `UsageMeter`, `DataTable`, `PhoneField`, `CopyButton`, `AlertDialog` | Org campaigns, LTR share link + CSV export, paste/CSV roster validation, Toman wallet + ledger, one-time B2B API keys (`/patterns/test-platform-org`) | T | approved |
+
+## Login theme — `@negaresh/keycloak-theme` (P6)
+
+Built with Keycloakify (`11.16.4`) targeting Keycloak 26+ (`negaresh-keycloak-theme.jar`) on top of `@negaresh/theme-company`, `@negaresh/tokens`, `@negaresh/react`, `@negaresh/icons`, and `@negaresh/utils`.
+
+| Screen group | Base / Keycloak `pageId` | Notes | Products | Status |
+| --- | --- | --- | --- | --- |
+| AuthShell, PhoneSignIn (OTP), PasswordSignIn, ForgotPassword, Register | `login-phone.ftl`, `login-sms-otp.ftl`, `login.ftl`, `login-reset-password.ftl`, `login-update-password.ftl`, `register.ftl` | Focus template (zero resting shadows, D-77), Iranian mobile normalisation & 6-digit SMS OTP (60-s resend, 2-min expiry, rate-limit, CAPTCHA slot), LTR email/phone isolation (D-86), SMS recovery & registration (`/patterns/identity-sign-in`, `/reference/keycloak-login`) | all | approved |
+| VerifyMobile, TwoFactorSetup, ErrorScreen, InfoScreen, KcPage | `verify-mobile.ftl`, `login-config-totp.ftl`, `login-otp.ftl`, `error.ftl`, `info.ftl` | Migrated-user mobile verification, staff authenticator QR + copyable LTR base32 manual key + TOTP challenge, calm error/info screens with copyable LTR reference code, `fa-IR` message bundle (D-94) (`/patterns/identity-security`, `/reference/keycloak-login`) | all | approved |
+
+

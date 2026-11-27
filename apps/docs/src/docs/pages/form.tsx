@@ -72,7 +72,7 @@ export const formDoc: ComponentDoc = {
   base: 'Form, fieldset / legend',
   summary:
     'فرم با اعتبارسنجی بومی یا مدیریت‌شده، گروه معنایی فیلدها، خطاهای نام‌گذاری‌شدهٔ سرور و خلاصه‌ای با پیوند به ورودی خطادار.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -179,87 +179,6 @@ export const formDoc: ComponentDoc = {
       'اعتبارسنجی مرورگر را جایگزین اعتبارسنجی سرور ندانید.',
     ],
   },
-  api: [
-    {
-      name: 'Form',
-      props: [
-        {
-          name: 'validationErrors',
-          type: 'Record<string, string | string[]>',
-          description:
-            'خطای سرور بر اساس name فیلد؛ در رفتار native، ویرایش پس از خروج از فیلد یا ارسال دوباره ارزیابی می‌شود.',
-        },
-        {
-          name: 'validationBehavior',
-          type: "'native' | 'aria'",
-          default: "'native'",
-          description: 'native ارسال نامعتبر را متوقف می‌کند؛ aria برای اعتبارسنجی مدیریت‌شده است.',
-        },
-        {
-          name: 'onSubmit / onReset / onInvalid',
-          type: '(event: FormEvent<HTMLFormElement>) => void',
-          description:
-            'رویدادهای ارسال، بازنشانی و نامعتبرشدن؛ برای درخواست سفارشی از preventDefault استفاده کنید.',
-        },
-        {
-          name: 'action / method / encType / target',
-          type: 'HTML form attributes',
-          description: 'ویژگی‌های استاندارد ارسال فرم؛ بدون وابستگی به کلاینت API محصول.',
-        },
-        {
-          name: 'className / ref',
-          type: 'string / Ref<HTMLFormElement>',
-          description: 'کلاس ریشه و دسترسی به فرم واقعی.',
-        },
-      ],
-    },
-    {
-      name: 'FieldGroup',
-      props: [
-        {
-          name: 'label',
-          type: 'ReactNode',
-          description: 'عنوان الزامی گروه؛ با legend روی fieldset.',
-        },
-        {
-          name: 'description / errorMessage / isInvalid',
-          type: 'ReactNode / ReactNode / boolean',
-          description: 'راهنما و خطای مرتبط با گروه.',
-        },
-        {
-          name: 'isDisabled',
-          type: 'boolean',
-          description: 'غیرفعال‌کردن فیلدهای گروه با رفتار بومی fieldset.',
-        },
-        {
-          name: 'children / name / id / className / ref',
-          type: 'ReactNode / string / string / string / Ref<HTMLFieldSetElement>',
-          description: 'محتوا و ویژگی‌های ریشهٔ معنایی گروه.',
-        },
-      ],
-    },
-    {
-      name: 'FormErrorSummary',
-      props: [
-        {
-          name: 'errors',
-          type: 'readonly {id: string; message: ReactNode}[]',
-          description: 'هر شناسه به ورودی واقعی اشاره می‌کند؛ فهرست خالی چیزی رندر نمی‌کند.',
-        },
-        {
-          name: 'title',
-          type: 'ReactNode',
-          default: 'messages.errorSummaryTitle',
-          description: 'عنوان فارسی؛ مقدار پیش‌فرض از کاتالوگ پیام‌ها می‌آید.',
-        },
-        {
-          name: 'id / className / ref',
-          type: 'string / string / Ref<HTMLDivElement>',
-          description: 'ویژگی‌های ریشهٔ خلاصه.',
-        },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت منطقی میان فیلدها، پیوندهای خطا و دکمه‌های فرم.' },
     {

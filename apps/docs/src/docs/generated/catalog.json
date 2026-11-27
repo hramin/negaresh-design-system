@@ -1,0 +1,1729 @@
+{
+  "components": [
+    {
+      "section": "components",
+      "slug": "theme-provider",
+      "title": "ThemeProvider",
+      "summary": "ریشهٔ هر برنامه: حالت روشن/تیره، تراکم، زبان React Aria و کاتالوگ پیام‌ها. انتخاب کاربر در کوکی می‌ماند تا رندر سرور بدون پرش باشد.",
+      "components": [
+        "ThemeProvider"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "layout",
+      "title": "چیدمان",
+      "summary": "محصولات صفحه‌ها را با این چهار جزء می‌چینند، نه با CSS چیدمان؛ فاصله‌ها فقط از توکن‌های فاصله می‌آیند.",
+      "components": [
+        "Stack",
+        "Inline",
+        "Grid",
+        "Container"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "surface",
+      "title": "سطح و جداکننده",
+      "summary": "سطح با رنگ زمینه، فاصله و یک خط مویی جدا می‌شود؛ بدون سایه و قاب (D-77). سطح تو در تو نمی‌شود؛ داخلش Section است.",
+      "components": [
+        "Surface",
+        "Section",
+        "Divider"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "typography",
+      "title": "متن و عنوان",
+      "summary": "متن با اندازه، وزن و رنگ توکنی. فارسی هرگز ایتالیک یا با فاصلهٔ حروف نمی‌شود؛ تأکید با وزن است.",
+      "components": [
+        "Text",
+        "Heading"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "ltr-code",
+      "title": "جزیرهٔ چپ‌به‌راست و کد",
+      "summary": "سریال، کد سیستم، کد فعال‌سازی، شمارهٔ سفارش، نشانی وب و ایمیل چپ‌به‌راست و با ارقام لاتین نمایش داده می‌شوند (D-86).",
+      "components": [
+        "Ltr",
+        "Code"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "icon",
+      "title": "آیکون",
+      "summary": "آیکون‌های خطی روی شبکهٔ ۲۴، ضخامت خط از توکن، رنگ از متن. آیکون‌های جهت‌دار در راست‌به‌چپ قرینه می‌شوند.",
+      "components": [
+        "Icon"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "logo-slot",
+      "title": "جای لوگو",
+      "summary": "هسته فقط جای لوگو را تعریف می‌کند (D-14، D-37): نشان، نام و برچسب محصول با فضای خالی. تا رسیدن لوگوهای تازه (Q-02) جای‌نما نشان داده می‌شود.",
+      "components": [
+        "LogoSlot"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "a11y-helpers",
+      "title": "کمک‌های دسترس‌پذیری",
+      "summary": "SkipLink اولین عنصر قابل فوکوس صفحه است و از سرصفحه می‌پرد؛ VisuallyHidden متنی برای صفحه‌خوان نگه می‌دارد که دیده نمی‌شود.",
+      "components": [
+        "SkipLink",
+        "VisuallyHidden"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "button",
+      "title": "دکمه",
+      "summary": "برچسب با فعل شروع می‌شود و نتیجه را می‌گوید. در هر سطح حداکثر یک دکمهٔ اصلی. هدف لمسی همیشه دست‌کم ۴۴ پیکسل.",
+      "components": [
+        "Button",
+        "LinkButton",
+        "IconButton"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Button, Link"
+    },
+    {
+      "section": "components",
+      "slug": "link",
+      "title": "پیوند",
+      "summary": "پیوند همیشه زیرخط دارد تا فقط به رنگ وابسته نباشد. پیوند بیرونی آیکون و توضیح پنهان «در زبانهٔ تازه باز می‌شود» دارد.",
+      "components": [
+        "Link"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Link"
+    },
+    {
+      "section": "components",
+      "slug": "button-group",
+      "title": "گروه دکمه و نوار ابزار",
+      "summary": "ButtonGroup فقط چیدمان است و هر دکمه توقف Tab خودش را دارد. Toolbar یک توقف Tab است و با کلیدهای جهت حرکت می‌کند.",
+      "components": [
+        "ButtonGroup",
+        "Toolbar"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Toolbar"
+    },
+    {
+      "section": "components",
+      "slug": "toggle-button",
+      "title": "دکمهٔ دوحالته",
+      "summary": "دکمه‌ای که روشن یا خاموش می‌ماند، یا گروهی که یک یا چند گزینه را انتخاب می‌کند؛ حالت انتخاب با رنگ زمینه، مرز و وزن نشان داده می‌شود.",
+      "components": [
+        "ToggleButton",
+        "ToggleButtonGroup"
+      ],
+      "status": "approved",
+      "products": [
+        "N",
+        "T"
+      ],
+      "base": "ToggleButton, ToggleButtonGroup"
+    },
+    {
+      "section": "components",
+      "slug": "copy-button",
+      "title": "دکمهٔ کپی",
+      "summary": "مقدار نرمال‌شده (بدون فاصله) را کپی می‌کند، برچسب به «کپی شد» تغییر می‌کند و نتیجه در ناحیهٔ زندهٔ مؤدبانه اعلام می‌شود.",
+      "components": [
+        "CopyButton"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ],
+      "base": "Button"
+    },
+    {
+      "section": "components",
+      "slug": "menu",
+      "title": "منو",
+      "summary": "فهرستی از اقدام‌ها که از یک دکمه باز می‌شود؛ با بخش، زیرمنو، توضیح، میان‌بر و انتخاب. لایهٔ شناور است و تنها جایی است که سایه دارد.",
+      "components": [
+        "MenuTrigger",
+        "Menu",
+        "MenuItem",
+        "MenuSection",
+        "MenuSeparator",
+        "SubmenuTrigger"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Menu, MenuTrigger, SubmenuTrigger, Popover"
+    },
+    {
+      "section": "components",
+      "slug": "top-bar",
+      "title": "نوار بالایی",
+      "summary": "نوار بالای صفحه با جای لوگو، پیوندهای ناوبری اصلی، جای دکمهٔ منوی موبایل و اقدام‌های پایانی. با خط مویی و پس‌زمینهٔ نیمه‌شفاف از صفحه جدا می‌شود و سایهٔ ثابت ندارد (D-77).",
+      "components": [
+        "TopBar",
+        "TopBarBrand",
+        "TopBarNav",
+        "TopBarNavLink"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Link"
+    },
+    {
+      "section": "components",
+      "slug": "account-pill",
+      "title": "قرص حساب کاربری",
+      "summary": "دکمهٔ فشردهٔ حساب کاربری برای نوار بالایی؛ معمولاً ماشهٔ منوی کاربری است. در دسکتاپ برچسب (شمارهٔ پوشیده یا نام) و آواتار را نشان می‌دهد و در موبایل به دکمهٔ آواتار با هدف ۴۴×۴۴ پیکسل تبدیل می‌شود.",
+      "components": [
+        "AccountPill"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Button"
+    },
+    {
+      "section": "components",
+      "slug": "text-field",
+      "title": "فیلد متن",
+      "summary": "ورودی تک‌خطی با برچسب، راهنما، خطا، پیشوند و پسوند؛ شمارندهٔ نویسه و اعتبارسنجی بدون حذف رفتار بومی ویرایش.",
+      "components": [
+        "TextField"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "TextField"
+    },
+    {
+      "section": "components",
+      "slug": "text-area",
+      "title": "متن چندخطی",
+      "summary": "برای پیام و توضیح چندخطی. ارتفاع با محتوا رشد می‌کند و شمارندهٔ فارسی، راهنما و خطا کنار متن باقی می‌مانند.",
+      "components": [
+        "TextArea"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "TextField + TextArea"
+    },
+    {
+      "section": "components",
+      "slug": "search-field",
+      "title": "جست‌وجو",
+      "summary": "ورودی جست‌وجو با پاک‌کردن، ارسال با Enter و راهنمای اختیاری میان‌بر. مقدار جست‌وجو و نتیجهٔ ارسال از هم مستقل‌اند.",
+      "components": [
+        "SearchField"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "SearchField"
+    },
+    {
+      "section": "components",
+      "slug": "phone-field",
+      "title": "شمارهٔ همراه",
+      "summary": "شمارهٔ همراه ایرانی با ورودی لاتین و جهت مستقل. پیشوندها و ارقام فارسی و عربی پذیرفته می‌شوند؛ شمارهٔ کامل به قالب +989… نرمال می‌شود.",
+      "components": [
+        "PhoneField"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "TextField + @negaresh/utils"
+    },
+    {
+      "section": "components",
+      "slug": "serial-field",
+      "title": "سریال و کد",
+      "summary": "سریال با حروف بزرگ و الگوی ۵–۵ نمایش داده می‌شود؛ مقدار ذخیره‌شده فاصله و خط تیره ندارد. CodeField برای کدهای عمومی بدون محدودیت طول سریال است.",
+      "components": [
+        "SerialField",
+        "CodeField"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ],
+      "base": "TextField + @negaresh/utils"
+    },
+    {
+      "section": "components",
+      "slug": "password-field",
+      "title": "گذرواژه",
+      "summary": "گذرواژه با امکان نمایش یا پنهان کردن و راهنمای قدرت از برنامه. چسباندن و مدیر گذرواژه مسدود نمی‌شوند.",
+      "components": [
+        "PasswordField"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "TextField + Button"
+    },
+    {
+      "section": "components",
+      "slug": "form",
+      "title": "فرم و خطاهای آن",
+      "summary": "فرم با اعتبارسنجی بومی یا مدیریت‌شده، گروه معنایی فیلدها، خطاهای نام‌گذاری‌شدهٔ سرور و خلاصه‌ای با پیوند به ورودی خطادار.",
+      "components": [
+        "Form",
+        "FieldGroup",
+        "FormErrorSummary"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Form, fieldset / legend"
+    },
+    {
+      "section": "components",
+      "slug": "select",
+      "title": "فهرست انتخاب",
+      "summary": "انتخاب یک یا چند گزینه از فهرست بازشو؛ با بخش‌بندی، آیکون، توضیح، پیکان راست‌به‌چپ و پشتیبانی از اعتبارسنجی فرم.",
+      "components": [
+        "Select",
+        "SelectItem",
+        "SelectSection",
+        "SelectSeparator"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Select, Popover, ListBox"
+    },
+    {
+      "section": "components",
+      "slug": "combobox",
+      "title": "فیلد جست‌وجو و انتخاب",
+      "summary": "ورودی متنی همراه با فهرست پیشنهادی پالایش‌پذیر؛ مناسب فهرست‌های بلند، بارگذاری ناهم‌زمان (async) و ساخت گزینهٔ تازه.",
+      "components": [
+        "ComboBox",
+        "Autocomplete",
+        "ComboBoxItem",
+        "ComboBoxSection",
+        "ComboBoxSeparator"
+      ],
+      "status": "approved",
+      "products": [
+        "N",
+        "T"
+      ],
+      "base": "ComboBox, Popover, ListBox"
+    },
+    {
+      "section": "components",
+      "slug": "checkbox",
+      "title": "چک‌باکس و گروه چک‌باکس",
+      "summary": "انتخاب مستقل یا چندگانه با پشتیبانی از حالت نیمه‌انتخاب‌شده (indeterminate)، توضیح هر گزینه، چیدمان عمودی/افقی و اعتبارسنجی گروهی.",
+      "components": [
+        "Checkbox",
+        "CheckboxGroup"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "CheckboxField, CheckboxButton, CheckboxGroup"
+    },
+    {
+      "section": "components",
+      "slug": "radio-group",
+      "title": "گروه رادیویی",
+      "summary": "انتخاب انحصاری یک گزینه از میان چند گزینه با چیدمان عمودی یا افقی، توضیح اختصاصی هر گزینه و پیمایش کیبوردی راست‌به‌چپ.",
+      "components": [
+        "RadioGroup",
+        "Radio"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "RadioGroup, RadioField, RadioButton"
+    },
+    {
+      "section": "components",
+      "slug": "choice-card",
+      "title": "کارت انتخاب",
+      "summary": "کارت انتخاب‌پذیر بر پایهٔ رادیو یا چک‌باکس با عنوان، توضیح، آیکون، برچسب کوتاه و قیمت تومانی؛ بدون سایهٔ ایستا.",
+      "components": [
+        "ChoiceCard"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ],
+      "base": "RadioField / CheckboxField"
+    },
+    {
+      "section": "components",
+      "slug": "segmented-control",
+      "title": "کنترل بخش‌بندی‌شده",
+      "summary": "انتخاب تکی و سریع میان ۲ تا ۵ گزینهٔ کوتاه هم‌تراز روی یک ریل فرورفته؛ همیشه یک گزینه فعال باقی می‌ماند.",
+      "components": [
+        "SegmentedControl",
+        "SegmentedControlItem"
+      ],
+      "status": "approved",
+      "products": [
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "ToggleButtonGroup, ToggleButton"
+    },
+    {
+      "section": "components",
+      "slug": "switch",
+      "title": "کلید دووضعیتی",
+      "summary": "کلید روشن/خاموش برای تنظیمات دوتایی با اعمال فوری؛ همراه با توضیح اختیاری، حرکت راست‌به‌چپ دستگیره و احترام به کاهش حرکت.",
+      "components": [
+        "Switch"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "SwitchField, SwitchButton"
+    },
+    {
+      "section": "components",
+      "slug": "tag-group",
+      "title": "گروه برچسب و فیلد برچسب",
+      "summary": "نمایش و مدیریت برچسب‌های انتخاب‌پذیر یا حذف‌پذیر همراه با فیلد ورود برچسب تازه؛ با کلیدهای پیمایش و برچسب‌های فارسی صفحه‌خوان.",
+      "components": [
+        "TagGroup",
+        "Tag",
+        "TagField"
+      ],
+      "status": "approved",
+      "products": [
+        "N"
+      ],
+      "base": "TagGroup, TagList, Tag"
+    },
+    {
+      "section": "components",
+      "slug": "number-field",
+      "title": "فیلد عددی",
+      "summary": "ورودی عددی دسترس‌پذیر با نمایش ارقام فارسی و tabular-nums، پذیرش هم‌زمان ارقام فارسی، عربی و لاتین، دکمه‌های گام‌بردار ۴۴ پیکسلی و قالب‌بندی Intl.NumberFormat.",
+      "components": [
+        "NumberField"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "NumberField, Group, Input, Button"
+    },
+    {
+      "section": "components",
+      "slug": "slider",
+      "title": "لغزنده و لغزندهٔ بازه‌ای",
+      "summary": "انتخاب مقدار تکی یا بازه‌ای روی محور پیوسته یا گام‌بندی‌شده؛ با خط‌کش ارقام فارسی، خروجی زندهٔ tabular-nums، جهت راست‌به‌چپ و هدف لمسی ۴۴ پیکسلی.",
+      "components": [
+        "Slider",
+        "RangeSlider"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V"
+      ],
+      "base": "Slider, SliderTrack, SliderThumb, SliderOutput"
+    },
+    {
+      "section": "components",
+      "slug": "date-picker",
+      "title": "تقویم و انتخابگر تاریخ جلالی",
+      "summary": "انتخابگر تاریخ و بازهٔ تاریخ خورشیدی (جلالی) با شروع هفته از شنبه، مشخص‌سازی جمعه، منطقهٔ زمانی تهران، پیمایش کامل صفحه‌کلید راست‌به‌چپ و قرارداد ISO-8601 در لبهٔ API.",
+      "components": [
+        "DatePicker",
+        "DateRangePicker",
+        "Calendar",
+        "RangeCalendar"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ],
+      "base": "DatePicker, DateRangePicker, Calendar, RangeCalendar, PersianCalendar"
+    },
+    {
+      "section": "components",
+      "slug": "time-field",
+      "title": "فیلد زمان",
+      "summary": "ورودی زمان ۲۴ ساعته با بخش‌های مجزای ساعت، دقیقه (و در صورت نیاز ثانیه)، ارقام فارسی tabular-nums، پیمایش صفحه‌کلید و قرارداد استاندارد HH:mm.",
+      "components": [
+        "TimeField"
+      ],
+      "status": "approved",
+      "products": [
+        "N"
+      ],
+      "base": "TimeField, DateInput, DateSegment"
+    },
+    {
+      "section": "components",
+      "slug": "otp-field",
+      "title": "کد یک‌بارمصرف (OTP)",
+      "summary": "ورودی ۶ رقمی کد یک‌بارمصرف با ترتیب چپ‌به‌راست ارقام لاتین در صفحهٔ راست‌به‌چپ، تبدیل خودکار ارقام فارسی/عربی، جای‌گذاری هوشمند پیامک، تکمیل خودکار one-time-code و شمارشگر ارسال دوباره.",
+      "components": [
+        "OTPField"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Input, ProgressBar, FormValidationContext"
+    },
+    {
+      "section": "components",
+      "slug": "file-upload",
+      "title": "بارگذاری پرونده (FileUpload / DropZone)",
+      "summary": "منطقهٔ کشیدن و رها کردن همراه با دکمهٔ دسترس‌پذیر انتخاب پرونده، اعتبارسنجی فارسی نوع/حجم/تعداد، فهرست پرونده‌ها با دکمهٔ حذف و حالت‌های پیشرفت و خطا.",
+      "components": [
+        "FileUpload",
+        "DropZone"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ],
+      "base": "DropZone, FileTrigger, ProgressBar"
+    },
+    {
+      "section": "components",
+      "slug": "inline-alert",
+      "title": "پیام درون‌متنی (InlineAlert)",
+      "summary": "بلوک بازخورد درون‌صفحه در چهار لحن معنایی (اطلاع، موفق، هشدار، خطا) با آیکن، عنوان، اقدام‌های مرتبط و قابلیت بستن، بدون سایهٔ ساکن.",
+      "components": [
+        "InlineAlert"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "banner",
+      "title": "بنر صفحه (Banner)",
+      "summary": "نوار اطلاع‌رسانی تمام‌عرض در بالای صفحه برای اعلان‌های سراسری، نگهداری سامانه یا هشدارهای مهم حساب با قابلیت اقدام و بستن.",
+      "components": [
+        "Banner"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "toast",
+      "title": "اعلان شناور (Toast / ToastRegion)",
+      "summary": "اعلان‌های شناور و صف‌بندی‌شده روی React Aria Components با سطح معکوس برای حالت خنثی، لحن‌های معنایی حاشیه‌دار، سایهٔ لایهٔ شناور (--nds-shadow-overlay)، اقدام اختیاری و مکث خودکار روی هاور و فوکوس.",
+      "components": [
+        "Toast",
+        "ToastRegion",
+        "ToastProvider",
+        "createToastQueue",
+        "useToast"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "UNSTABLE_ToastRegion, UNSTABLE_Toast, UNSTABLE_ToastQueue"
+    },
+    {
+      "section": "components",
+      "slug": "badge",
+      "title": "نشان (Badge)",
+      "summary": "برچسب کپسولی غیرتعاملی برای نمایش دسته‌بندی، منبع باز شدن یا وضعیت کوتاه در شش لحن و دو اندازه، با نقطه یا آیکن اختیاری.",
+      "components": [
+        "Badge"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "status-badge",
+      "title": "نشان وضعیت دامنه (StatusBadge)",
+      "summary": "نگاشت نوع‌دار وضعیت‌های شش دامنهٔ محصولات نگارش (سفارش، پرداخت، سریال، بازبینی محتوا، گزارش و کارزار) به متن فارسی، آیکن و لحن یکسان.",
+      "components": [
+        "StatusBadge"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Badge"
+    },
+    {
+      "section": "components",
+      "slug": "progress-meter",
+      "title": "نوار پیشرفت و سنجش (ProgressBar / Meter)",
+      "summary": "نمایش پیشرفت عملیات زمان‌بر (معین یا نامعین) با ProgressBar و سنجش مقدار در بازهٔ مشخص با Meter، هر دو روی React Aria با ارقام فارسی و جهت پرشدن راست‌به‌چپ.",
+      "components": [
+        "ProgressBar",
+        "Meter"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "ProgressBar, Meter"
+    },
+    {
+      "section": "components",
+      "slug": "usage-meter",
+      "title": "سنجشگر مصرف سهمیه (UsageMeter)",
+      "summary": "نشانگر سهمیهٔ فعال‌سازی یا صندلی‌های کارزار با بخش‌های مجزای کپسولی (تا ۱۰ سهمیه) یا نوار پیوسته (برای سقف‌های بزرگ)، یادداشت منبع سقف (FR-23) و حالت تکمیل ظرفیت.",
+      "components": [
+        "UsageMeter"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "T"
+      ],
+      "base": "Meter"
+    },
+    {
+      "section": "components",
+      "slug": "spinner",
+      "title": "چرخنده و نوار بارگذاری (Spinner / GlobalLoadingBar)",
+      "summary": "شاخص بارگذاری دایره‌ای در سه اندازه برای بخش‌های کوچک و نوار باریک سراسری بالای صفحه برای ناوبری و بارگذاری مسیرها.",
+      "components": [
+        "Spinner",
+        "GlobalLoadingBar"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "skeleton",
+      "title": "اسکلت بارگذاری (Skeleton)",
+      "summary": "جایگزین آرام و هم‌شکل محتوا هنگام بارگذاری اولیه (خطوط متن، بلوک، دایره و ردیف‌های جدول) با پالس شفافیت ملایم و توقف کامل در حالت کاهش حرکت.",
+      "components": [
+        "Skeleton"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "empty-state",
+      "title": "وضعیت خالی (EmptyState)",
+      "summary": "بلوک آرام برای فهرست‌ها، جداول و بخش‌های بدون داده که توضیح می‌دهد چه چیزی اینجا قرار می‌گیرد و اقدام نخست را پیشنهاد می‌کند.",
+      "components": [
+        "EmptyState"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "error-page",
+      "title": "وضعیت و صفحهٔ خطا (ErrorState / ErrorPage)",
+      "summary": "قالب‌های آماده و آرام فارسی برای خطاهای ۴۰۳، ۴۰۴، ۴۱۰، ۵۰۰ و حالت نگهداری سامانه، هم برای بخش‌های درون‌صفحه (ErrorState) و هم برای مسیرهای تمام‌صفحه (ErrorPage).",
+      "components": [
+        "ErrorState",
+        "ErrorPage"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "dialog",
+      "title": "پنجرهٔ گفتگو و هشدار (Dialog / AlertDialog)",
+      "summary": "پنجرهٔ مودال و پیام تأیید مسدودکننده بر پایهٔ React Aria با تلهٔ فوکوس، بازگشت فوکوس به دکمهٔ بازکننده، سایهٔ لایهٔ شناور (--nds-shadow-overlay) و تبدیل خودکار به برگهٔ پایینی در موبایل (زیر ۹۰۰ پیکسل، D-90).",
+      "components": [
+        "DialogTrigger",
+        "Dialog",
+        "AlertDialog"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "ModalOverlay, Modal, Dialog, DialogTrigger"
+    },
+    {
+      "section": "components",
+      "slug": "sheet",
+      "title": "کشو و برگهٔ لغزنده (Sheet / Drawer)",
+      "summary": "پنل کشویی کنار صفحه در دسکتاپ با جایگذاری منطقی (start / end) و برگهٔ پایینی در موبایل (زیر ۹۰۰ پیکسل). به سادگی در جایگاه mobileMenu نوار بالایی (TopBar) ترکیب می‌شود.",
+      "components": [
+        "Sheet",
+        "Drawer",
+        "SheetTrigger"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "ModalOverlay, Modal, Dialog, DialogTrigger"
+    },
+    {
+      "section": "components",
+      "slug": "popover",
+      "title": "پنجرهٔ شناور (Popover)",
+      "summary": "لایهٔ شناور متصل به محرک بر پایهٔ React Aria با سایهٔ --nds-shadow-overlay، پیکان اختیاری و جایگذاری منطقی سازگار با راست‌به‌چپ.",
+      "components": [
+        "Popover",
+        "PopoverTrigger"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Popover, OverlayArrow, Dialog, DialogTrigger"
+    },
+    {
+      "section": "components",
+      "slug": "tooltip",
+      "title": "راهنمای کوتاه (Tooltip)",
+      "summary": "برچسب متنی کوتاه روی سطح معکوس (--nds-bg-inverse / --nds-fg-inverse، foundations/color.md) که با هاور ماوس و فوکوس کیبورد ظاهر می‌شود. هرگز برای اطلاعات حیاتی استفاده نمی‌شود.",
+      "components": [
+        "TooltipTrigger",
+        "Tooltip"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "TooltipTrigger, Tooltip, OverlayArrow"
+    },
+    {
+      "section": "components",
+      "slug": "contextual-help",
+      "title": "راهنمای بافتی (ContextualHelp)",
+      "summary": "دکمهٔ راهنمای (i) یا (?) کنار برچسب فیلدها و تیتر بخش‌ها با ترکیب DialogTrigger و Popover و هدف لمسی تضمینی حداقل ۴۴×۴۴ پیکسل.",
+      "components": [
+        "ContextualHelp"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "DialogTrigger + Popover"
+    },
+    {
+      "section": "components",
+      "slug": "avatar",
+      "title": "تصویر نمایه (Avatar / AvatarGroup)",
+      "summary": "نمایش تصویر نمایه با جایگزین خودکار حروف اول نام فارسی (بدون چسبندگی حروف)، جایگزین آیکون کاربر و گروه هم‌پوشان با شمارندهٔ فارسی سرریز (formatNumber).",
+      "components": [
+        "Avatar",
+        "AvatarGroup"
+      ],
+      "status": "approved",
+      "products": [
+        "N",
+        "T"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "verified-badge",
+      "title": "نشان پروانهٔ تأییدشده (VerifiedBadge)",
+      "summary": "نشان تأیید پروانهٔ متخصصان در صفحهٔ پروفایل و فهرست متخصصان نگارش، ساخته‌شده روی Badge موج ۱ با آیکون سپر، برچسب بومی فارسی و شمارهٔ پروانهٔ اختیاری با ارقام فارسی.",
+      "components": [
+        "VerifiedBadge"
+      ],
+      "status": "approved",
+      "products": [
+        "N"
+      ],
+      "base": "Badge (Wave 1)"
+    },
+    {
+      "section": "components",
+      "slug": "card",
+      "title": "کارت (Card)",
+      "summary": "کارت عمومی با جایگاه‌های media، body و footer و گونهٔ کارت پیوندی تعاملی. مطابق D-77 تنها با تُن پس‌زمینه و یک خط مویی جدا می‌شود و سایهٔ ثابت ندارد.",
+      "components": [
+        "Card",
+        "CardMedia",
+        "CardBody",
+        "CardFooter"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "Link (در حالت کارت پیوندی)"
+    },
+    {
+      "section": "components",
+      "slug": "image",
+      "title": "تصویر (Image)",
+      "summary": "کامپوننت تصویر واکنش‌گرا با نسبت تصویر ثابت (aspect-ratio)، ویژگی‌های sizes/srcSet، بارگذاری تنبل پیش‌فرض، الزام تایپی alt و زیرنویس معنایی figure/figcaption.",
+      "components": [
+        "Image"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "key-value-list",
+      "title": "فهرست کلید و مقدار (KeyValueList)",
+      "summary": "فهرست معنایی <dl> برای نمایش جفت‌های برچسب/مقدار با ایزوله‌سازی خودکار مقادیر چپ‌به‌راست و کدها (D-86) و ردیف‌های قابل کپی با استفادهٔ مجدد از CopyButton.",
+      "components": [
+        "KeyValueList",
+        "KeyValueItem"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "side-nav",
+      "title": "ناوبری کناری (SideNav)",
+      "summary": "منوی کناری گروه‌بندی‌شده برای پنل کاربری و مدیریت با پشتیبانی از نشان عددی فارسی، فیلتر بر اساس نقش کاربری و تبدیل خودکار به TabStrip افقی زیر ۹۰۰ پیکسل (D-90).",
+      "components": [
+        "SideNav",
+        "SideNavGroup",
+        "SideNavItem"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ],
+      "base": "React Aria Link + Disclosure"
+    },
+    {
+      "section": "components",
+      "slug": "tab-strip",
+      "title": "نوار زبانهٔ پیمایشی (TabStrip)",
+      "summary": "نوار ناوبری افقی قابل پیمایش برای نمای موبایل (زیر ۹۰۰ پیکسل) با پشتیبانی از پیوندهای سروررندر، نشان فارسی و هدف لمسی ۴۴ پیکسلی بدون ایجاد اسکرول افقی صفحه.",
+      "components": [
+        "TabStrip",
+        "TabStripItem"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ],
+      "base": "React Aria Link / Button"
+    },
+    {
+      "section": "components",
+      "slug": "tabs",
+      "title": "زبانه‌ها (Tabs)",
+      "summary": "زبانه‌های دسترس‌پذیر ساخته‌شده روی React Aria Tabs با جهت افقی و عمودی (برگ سوم روانما)، پیمایش کیبورد راست‌به‌چپ، نشان فارسی و دو سبک underline و pill.",
+      "components": [
+        "Tabs",
+        "TabList",
+        "Tab",
+        "TabPanel"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "React Aria Tabs / TabList / Tab / TabPanel"
+    },
+    {
+      "section": "components",
+      "slug": "breadcrumbs",
+      "title": "مسیر راهنما (Breadcrumbs)",
+      "summary": "نمایش سلسله‌مراتب صفحات ساخته‌شده روی React Aria Breadcrumbs با جداکنندهٔ آینه‌ای در RTL و جمع‌کردن خودکار مسیرهای میانی در یک منوی دسترس‌پذیر.",
+      "components": [
+        "Breadcrumbs",
+        "BreadcrumbItem"
+      ],
+      "status": "approved",
+      "products": [
+        "N",
+        "T"
+      ],
+      "base": "React Aria Breadcrumbs / Breadcrumb + Menu"
+    },
+    {
+      "section": "components",
+      "slug": "pagination",
+      "title": "صفحه‌بندی و بارگذاری بیشتر (Pagination / LoadMore)",
+      "summary": "صفحه‌بندی با پیوندهای سروررندر و ارقام فارسی (formatNumber)، پیکان‌های منطقی آینه‌ای، فشرده‌سازی خودکار در موبایل و الگوی مکمل LoadMore.",
+      "components": [
+        "Pagination",
+        "LoadMore"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "React Aria Link / Button"
+    },
+    {
+      "section": "components",
+      "slug": "stepper",
+      "title": "مراحل انجام کار (Stepper)",
+      "summary": "نشانگر مراحل خطی با حالت‌های انجام‌شده (done)، فعلی (aria-current=\"step\") و بعدی، شماره‌گذاری فارسی (formatNumber) و دو چیدمان عمودی (راهنمای رجیستری) و افقی.",
+      "components": [
+        "Stepper",
+        "StepperStep"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "disclosure",
+      "title": "بخش بازشونده و آکاردئون (Disclosure / Accordion)",
+      "summary": "بخش‌های بازشونده و آکاردئون ساخته‌شده روی React Aria Disclosure و DisclosureGroup برای پرسش‌های متداول (FAQ)، سرفصل دوره‌ها و راهنمای موبایل رجیستری.",
+      "components": [
+        "Disclosure",
+        "Accordion",
+        "AccordionItem"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "React Aria Disclosure / DisclosureGroup / DisclosurePanel"
+    },
+    {
+      "section": "components",
+      "slug": "user-menu",
+      "title": "منوی حساب کاربری (UserMenu)",
+      "summary": "ترکیب کامپوننت‌های تأییدشدهٔ AccountPill، Menu و Avatar با پشتیبانی از تعویض نقش کاربری، تغییر زندهٔ نمایهٔ رنگ (روشن/تیره/سیستم) و اقدام خروج.",
+      "components": [
+        "UserMenu"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "AccountPill + MenuTrigger + Menu + Avatar"
+    },
+    {
+      "section": "components",
+      "slug": "footer",
+      "title": "پاورقی (Footer)",
+      "summary": "پاورقی معنایی صفحه با ستون برند، گروه‌های پیوند واکنش‌گرا، پیوندهای بیرونی دسترس‌پذیر و ردیف حقوقی جداشده با خط مویی (بدون سایهٔ ساکن، D-77).",
+      "components": [
+        "Footer",
+        "FooterGroup",
+        "FooterLink"
+      ],
+      "status": "approved",
+      "products": [
+        "N",
+        "T"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "data-table",
+      "title": "جدول داده (DataTable)",
+      "summary": "جدول کامل داده‌های مدیریتی روی React Aria Table با مرتب‌سازی، انتخاب ردیف، سرصفحهٔ چسبان، کنترل نمایش ستون‌ها، تراکم راحت/فشرده، حالت‌های خالی/بارگذاری/خطا و تبدیل خودکار به کارت‌های ستونی زیر ۹۰۰ پیکسل.",
+      "components": [
+        "DataTable"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ],
+      "base": "React Aria Table"
+    },
+    {
+      "section": "components",
+      "slug": "filter-bar",
+      "title": "نوار جست‌وجو و فیلتر (FilterBar)",
+      "summary": "ترکیب SearchField، کنترل‌های فیلتر درون‌خطی دسکتاپ، برچسب‌های فیلتر فعال قابل حذف (TagGroup) و بازنشانی؛ زیر ۹۰۰ پیکسل فیلترها به کشوی Sheet منتقل می‌شوند.",
+      "components": [
+        "FilterBar"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "bulk-action-bar",
+      "title": "نوار اقدام‌های گروهی (BulkActionBar)",
+      "summary": "نوار زمینه‌ای بر پایهٔ React Aria Toolbar که پس از انتخاب ردیف‌ها در جدول یا فهرست ظاهر می‌شود، شمارش فارسی موارد انتخاب‌شده را اعلام می‌کند و اقدام‌های گروهی و لغو انتخاب را در یک توقف Tab در دسترس قرار می‌دهد.",
+      "components": [
+        "BulkActionBar"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ],
+      "base": "React Aria Toolbar"
+    },
+    {
+      "section": "components",
+      "slug": "list",
+      "title": "فهرست انتخاب‌پذیر (List · GridList)",
+      "summary": "فهرست ردیف‌های انتخاب‌پذیر روی React Aria GridList با ناوبری کامل صفحه‌کلید، اسلات‌های آیکون/آواتار، فراداده و دکمه‌های اقدام، همراه با حالت‌های خالی و بارگذاری.",
+      "components": [
+        "GridList",
+        "GridListItem",
+        "List",
+        "ListItem"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ],
+      "base": "React Aria GridList"
+    },
+    {
+      "section": "components",
+      "slug": "stat-tile",
+      "title": "کاشی شاخص (StatTile · StatGroup)",
+      "summary": "نمایش شاخص‌های عددی کلیدی با ارقام هم‌عرض فارسی (tabular-nums)، روند تغییر همراه با آیکون و متن (هرگز رنگ به تنهایی)، و اسلات sparkline برای نمودارک‌های فاز P5.",
+      "components": [
+        "StatTile",
+        "StatGroup"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ]
+    },
+    {
+      "section": "components",
+      "slug": "timeline",
+      "title": "خط زمانی و فهرست رویدادها (Timeline · ActivityList)",
+      "summary": "نمایش تاریخچهٔ فعال‌سازی‌ها، گزارش ممیزی و نسخه‌های ویرایشی با زمان‌بندی جلالی تهران، آیکون‌های وضعیت و پشتیبانی از ناوبری صفحه‌کلید در ActivityList.",
+      "components": [
+        "Timeline",
+        "TimelineItem",
+        "ActivityList",
+        "ActivityListItem"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ],
+      "base": "React Aria GridList (ActivityList) / Semantic <ol> (Timeline)"
+    },
+    {
+      "section": "components",
+      "slug": "diff-view",
+      "title": "مقایسهٔ تغییرات (DiffView)",
+      "summary": "مقایسهٔ نسخه‌های متنی یا پیکربندی با نمایش افزوده‌ها و حذف‌ها به کمک علامت، آیکون، برچسب‌های <ins>/<del> و رنگ‌های معنایی (هرگز رنگ به تنهایی)، با پشتیبانی از کدهای LTR.",
+      "components": [
+        "DiffView",
+        "computeLineDiff"
+      ],
+      "status": "approved",
+      "products": [
+        "N",
+        "R"
+      ]
+    }
+  ],
+  "charts": [
+    {
+      "section": "charts",
+      "slug": "chart-frame",
+      "title": "قاب نمودار، خط مرجع و بازه (ChartFrame · ReferenceLine · Band)",
+      "summary": "قاب استاندارد هر نمودار در دیزاین سیستم نگرش شامل عنوان، پیام یک‌جمله‌ای، راهنما، منبع و جدول جایگزین بومی (<details>)، همراه با اجزای پایهٔ ReferenceLine و Band.",
+      "components": [
+        "ChartFrame",
+        "ReferenceLine",
+        "Band"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V",
+        "N",
+        "R"
+      ]
+    },
+    {
+      "section": "charts",
+      "slug": "interval-bar",
+      "title": "نمودار بازه‌ای (IntervalBar)",
+      "summary": "نمودار شاخص سیستم برای نمایش نمره همراه با بازهٔ اطمینان، بازه‌های هنجار و خطوط مرجع؛ با دو نمای حرفه‌ای و آرام و چیدمان واکنش‌گرا در موبایل.",
+      "components": [
+        "IntervalBar"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "charts",
+      "slug": "profile-line",
+      "title": "نمودار خطی نیمرخ (ProfileLine)",
+      "summary": "نمودار خطی مقیاس‌های روان‌سنجی (مانند MMPI) با خطوط مرجع ۵۰/۶۵/۷۰، بازهٔ هنجار، جداکننده‌های بخشی و نقاط قابل فوکوس با نشانگرهای غیرلوزی.",
+      "components": [
+        "ProfileLine"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V",
+        "N"
+      ]
+    },
+    {
+      "section": "charts",
+      "slug": "bar",
+      "title": "نمودار ستونی (Bar)",
+      "summary": "نمودار ستونی عمودی و افقی برای مقایسهٔ دسته‌ها با برچسب‌های عددی مستقیم فارسی و هاشورهای SVG برای تفکیک در چاپ سیاه‌وسفید.",
+      "components": [
+        "Bar"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "charts",
+      "slug": "radar",
+      "title": "نمودار رادار (Radar)",
+      "summary": "نمودار چندمحورهٔ مروری (تنها برای بافت حرفه‌ای مطابق D-67) که همواره همراه با جدول داده‌های نمایان، خط‌چین و نشانگرهای غیرلوزی ارائه می‌شود.",
+      "components": [
+        "Radar"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "charts",
+      "slug": "gauge",
+      "title": "شاخص قوسی (Gauge)",
+      "summary": "نمایش یک شاخص واحد روی مقیاس کران‌دار (مانند ۰ تا ۱۰۰) همراه با عدد فارسی هم‌عرض و برچسب متنی الزامی بازه.",
+      "components": [
+        "Gauge"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V",
+        "N"
+      ]
+    },
+    {
+      "section": "charts",
+      "slug": "sparkline",
+      "title": "نمودارک روند (Sparkline)",
+      "summary": "نمودار خطی فشرده و بدون محور برای نمایش روند کوتاه داخل StatTile؛ همیشه همراه با خلاصهٔ متنی دسترس‌پذیر (summary).",
+      "components": [
+        "Sparkline"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ]
+    }
+  ],
+  "assessment": [
+    {
+      "section": "assessment",
+      "slug": "question-item",
+      "title": "پرسش آزمون (QuestionItem)",
+      "summary": "واحد استاندارد هر پرسش آزمون با صورت پرسش در تگ legend و گزینه‌های واقعی radio؛ پشتیبانی از ۲/۴/۶ گزینه، لیکرت ۵ و ۷، انتخاب اجباری و گزینه‌های تصویری.",
+      "components": [
+        "QuestionItem"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V"
+      ],
+      "base": "fieldset + legend + React Aria RadioGroup"
+    },
+    {
+      "section": "assessment",
+      "slug": "answer-flow",
+      "title": "صفحهٔ پاسخ‌دهی و پیشرفت (AnswerPage · AnswerProgress)",
+      "summary": "جریان پاسخ‌دهی چندصفحه‌ای با نمایش و اعلام صوتی پیشرفت («صفحهٔ n از N»)، اعتبارسنجی هر صفحه و خلاصهٔ پرسش‌های بی‌پاسخ با پرش مستقیم فوکوس.",
+      "components": [
+        "AnswerPage",
+        "AnswerProgress"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V"
+      ],
+      "base": "FormErrorSummary + ProgressBar + QuestionItem"
+    },
+    {
+      "section": "assessment",
+      "slug": "start-resume",
+      "title": "فرم شروع و ادامهٔ آزمون (StartForm · ResumeOrRestart)",
+      "summary": "فرم اطلاعات پایه مبتنی بر اسکیما (انتخاب، عدد، متن، تاریخ شمسی) همراه با خطاهای مسدودکنندهٔ کارزار و کارت تصمیم‌گیری ادامه یا شروع دوبارهٔ تلاش ناتمام.",
+      "components": [
+        "StartForm",
+        "ResumeOrRestart"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V"
+      ],
+      "base": "TextField · NumberField · Select · DatePicker · AlertDialog"
+    },
+    {
+      "section": "assessment",
+      "slug": "result-overview",
+      "title": "خلاصه، نمودار و جدول نمرات (ResultSummary · ResultChart · ScoreTable)",
+      "summary": "نمایش ساختاریافتهٔ خروجی `/api/v1` آزمون‌ها در هر دو نمای حرفه‌ای (بالینی) و آرام (نوجوان/والدین بدون رنگ رز) همراه با آداپتور خودکار نمودارها و جدول نمرات.",
+      "components": [
+        "ResultSummary",
+        "ResultChart",
+        "ScoreTable"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V"
+      ],
+      "base": "@negaresh/charts + Badge + InlineAlert"
+    },
+    {
+      "section": "assessment",
+      "slug": "interpretation-block",
+      "title": "بلوک تفسیر نتایج (InterpretationBlock)",
+      "summary": "نمایش بخش‌بندی‌شدهٔ تفسیر متنی نتایج بر پایهٔ بخش، روایی پاسخ‌دهی و سطح شدت در دو نمای حرفه‌ای (بالینی) و آرام (بدون رنگ رز و لحن هشداردهنده).",
+      "components": [
+        "InterpretationBlock"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V"
+      ],
+      "base": "Badge + Code"
+    },
+    {
+      "section": "assessment",
+      "slug": "report-status",
+      "title": "وضعیت گزارش و صفحهٔ ثبت نهایی (ReportStatus · SubmittedPage)",
+      "summary": "کارت چرخهٔ عمر گزارش PDF (هر ۵ وضعیت none، pending، ready، failed و purged با دکمهٔ تلاش دوباره) و صفحهٔ تأیید ثبت کارزار («می‌توانید این صفحه را ببندید»).",
+      "components": [
+        "ReportStatus",
+        "SubmittedPage"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "V"
+      ],
+      "base": "StatusBadge(domain=\"report\") + Spinner + InlineAlert"
+    },
+    {
+      "section": "assessment",
+      "slug": "print-layout",
+      "title": "چیدمان چاپ A4 (PrintLayout)",
+      "summary": "قالب گزارش A4 با حاشیهٔ ۱۴×۱۰ میلی‌متر، سرصفحهٔ سازمان و شناسه، جلوگیری از شکستن نمودارها و کارت‌ها میان صفحات (break-inside: avoid)، چاپ سیاه‌وسفید امن و هم‌ارزی کامل صفحه و PDF.",
+      "components": [
+        "PrintLayout"
+      ],
+      "status": "approved",
+      "products": [
+        "T",
+        "N",
+        "V"
+      ],
+      "base": "@page A4 (14 × 10 mm) + LogoSlot + ResultSummary + ResultChart"
+    }
+  ],
+  "patterns": [
+    {
+      "section": "patterns",
+      "slug": "commerce-catalog",
+      "title": "فروشگاه · کاتالوگ، صفحهٔ محصول و علاقه‌مندی‌ها",
+      "summary": "نمایش قیمت تنها به تومان (D-26)، کارت محصول با دکمهٔ علاقه‌مندی، صفحهٔ کامل محصول با گالری و انتخاب ویرایش، و فهرست علاقه‌مندی‌ها.",
+      "components": [
+        "Price",
+        "ProductCard",
+        "ProductPage",
+        "Wishlist"
+      ],
+      "status": "approved",
+      "products": [
+        "N",
+        "R",
+        "T"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "commerce-checkout",
+      "title": "فروشگاه · سبد خرید، تسویهٔ حساب و نتیجهٔ پرداخت",
+      "summary": "سبد خرید با کنترل تعداد و کد تخفیف، تسویهٔ چندمرحله‌ای با حذف خودکار نشانی برای کالاهای دیجیتال، انتخابگر درگاه و نتیجهٔ پرداخت.",
+      "components": [
+        "Cart",
+        "OrderSummary",
+        "Checkout",
+        "GatewayPicker",
+        "PaymentResult"
+      ],
+      "status": "approved",
+      "products": [
+        "N",
+        "R",
+        "T"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "commerce-orders",
+      "title": "فروشگاه · جزئیات سفارش و فاکتور چاپی A4",
+      "summary": "نمایش روند وضعیت سفارش با تایم‌لاین و برچسب دامنهٔ سفارش، همراه با فاکتور رسمی A4 آمادهٔ چاپ با تاریخ شمسی و مبالغ تومان.",
+      "components": [
+        "OrderDetail",
+        "Invoice"
+      ],
+      "status": "approved",
+      "products": [
+        "N",
+        "T"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "licensing-activation",
+      "title": "مجوز و رجیستری · فعال‌سازی، نمایش کد و سوابق من",
+      "summary": "جریان فعال‌سازی رجیستری با خطاهای مشخص FR-11، یادداشت رایانهٔ تکراری بدون کسر سهمیه (FR-12)، نمایش بزرگ کد LTR و فهرست فعال‌سازی‌های کاربر.",
+      "components": [
+        "CodeDisplay",
+        "ActivationFlow",
+        "MyActivations"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "licensing-admin",
+      "title": "مجوز و رجیستری · سقف‌ها، تولید سریال، هشدارها و ممیزی",
+      "summary": "الگوهای مدیریتی رجیستری: ویرایشگر سقف با نمایش منبع FR-23، تولید دسته‌ای سریال با خروجی CSV، کانال‌های هشدار و گزارش ممیزی.",
+      "components": [
+        "LimitEditor",
+        "SerialBatchGenerator",
+        "AlertChannels",
+        "AuditLog"
+      ],
+      "status": "approved",
+      "products": [
+        "R"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "content-editorial",
+      "title": "مجله و محتوا · خوراک، کارت‌های ۴گانه، بلوک‌ها، مقاله و نظرسنجی",
+      "summary": "خوراک مجله با اسلایدر برگزیده (حداکثر ۵ مورد)، ۴ نوع کارت محتوا، رندرر ساختاریافتهٔ ۱۱ نوع بلوک، صفحهٔ کامل مقاله و نظرسنجی با یادداشت متخصص.",
+      "components": [
+        "ContentCard",
+        "BlogFeed",
+        "ContentBlocks",
+        "ArticlePage",
+        "Poll"
+      ],
+      "status": "approved",
+      "products": [
+        "N"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "content-experts",
+      "title": "مجله و محتوا · متخصصان، میز کار نویسنده و صف بازبینی",
+      "summary": "دایرکتوری و پروفایل متخصصان با حفظ حریم خصوصی اطلاعات تماس، میز کار ۵مرحله‌ای نویسنده با مقایسهٔ نسخه‌ها و صف بازبینی تحریریه.",
+      "components": [
+        "ExpertDirectory",
+        "ExpertProfile",
+        "WriterWorkspace",
+        "ReviewQueue"
+      ],
+      "status": "approved",
+      "products": [
+        "N"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "courses",
+      "title": "دوره‌ها · صفحهٔ دوره، پخش‌کننده، ناوبری درس و پیشرفت ۹۰٪",
+      "summary": "مجموعهٔ کامل الگوهای آموزش ویدیویی: معرفی و سرفصل دوره، پخش‌کننده با کنترل سرعت و ادامهٔ پخش، قانون تکمیل ۹۰٪ و دوره‌های من.",
+      "components": [
+        "CoursePage",
+        "CoursePlayer",
+        "LessonNav",
+        "CourseProgress",
+        "MyCourses"
+      ],
+      "status": "approved",
+      "products": [
+        "N"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "account-admin-shells",
+      "title": "پوسته‌های حساب و مدیریت · AccountShell، AdminShell، تماس‌ها و قالب اعلان",
+      "summary": "پوستهٔ حساب کاربری (بازاستفاده از `AccountPill` و `UserMenu`)، مدیریت شماره‌های تأییدشده، پوستهٔ مدیریت چندنقشی، صفحهٔ تنظیمات و ویرایشگر قالب اعلان.",
+      "components": [
+        "AccountShell",
+        "AccountContacts",
+        "AdminShell",
+        "SettingsPage",
+        "NotificationTemplatesEditor"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "test-platform-catalog",
+      "title": "پلتفرم آزمون · کاتالوگ آزمون‌ها و پیشخوان کاربر",
+      "summary": "کاتالوگ آزمون‌های روان‌شناختی (رایگان، تخفیف‌دار و تعرفهٔ سازمانی) و پیشخوان کاربر با ادامهٔ آزمون نیمه‌تمام، گزارش‌های آماده و نتایج اخیر.",
+      "components": [
+        "TestCatalog",
+        "TestDashboard"
+      ],
+      "status": "approved",
+      "products": [
+        "T"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "test-platform-org",
+      "title": "پلتفرم آزمون · کارزار سازمانی، کیف پول و دسترسی B2B",
+      "summary": "ساخت کارزار آزمون سازمانی، پنل پیوند اشتراک‌گذاری و خروجی CSV، ورود فهرست شرکت‌کنندگان، سهمیهٔ صندلی، کیف پول تومانی سازمان و مدیریت کلیدهای API.",
+      "components": [
+        "CampaignBuilder",
+        "ShareLinkPanel",
+        "RosterImport",
+        "SeatMeter",
+        "CampaignParticipants",
+        "OrgWallet",
+        "B2BPanel"
+      ],
+      "status": "approved",
+      "products": [
+        "T"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "identity-sign-in",
+      "title": "پوستهٔ Keycloak · ورود با موبایل/رمز، بازیابی و ثبت‌نام",
+      "summary": "صفحه‌های اصلی ورود، کد پیامکی ۶ رقمی، ورود با ایمیل و رمز عبور، بازیابی پیامکی و ثبت‌نام در `@negaresh/keycloak-theme` (ساخته‌شده با Keycloakify 11.16.4 برای Keycloak 26+).",
+      "components": [
+        "AuthShell",
+        "PhoneSignIn",
+        "PasswordSignIn",
+        "ForgotPassword",
+        "Register"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    },
+    {
+      "section": "patterns",
+      "slug": "identity-security",
+      "title": "پوستهٔ Keycloak · تأیید موبایل، دومرحله‌ای و خطا/اطلاع",
+      "summary": "صفحه‌های اقدام الزامی تأیید موبایل کاربران منتقل‌شده، راه‌اندازی و چالش ورود دومرحله‌ای (TOTP) همکاران، و صفحه‌های خطا و اطلاع در `@negaresh/keycloak-theme`.",
+      "components": [
+        "VerifyMobile",
+        "TwoFactorSetup",
+        "ErrorScreen",
+        "InfoScreen",
+        "KcPage"
+      ],
+      "status": "approved",
+      "products": [
+        "R",
+        "N",
+        "T",
+        "V"
+      ]
+    }
+  ]
+}

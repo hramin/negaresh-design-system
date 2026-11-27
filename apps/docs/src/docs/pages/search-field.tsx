@@ -2,7 +2,7 @@ import { Code, SearchField, Stack, Text } from '@negaresh/react';
 import { useState } from 'react';
 import type { ComponentDoc } from '../types.ts';
 import { GalleryRow, State } from '../ui.tsx';
-import { fieldA11y, fieldApi, fieldKeyboard, fieldRtl } from './field-docs.ts';
+import { fieldA11y, fieldKeyboard, fieldRtl } from './field-docs.ts';
 import styles from './fields.module.css';
 
 function Example() {
@@ -37,7 +37,7 @@ export const searchFieldDoc: ComponentDoc = {
   base: 'SearchField',
   summary:
     'ورودی جست‌وجو با پاک‌کردن، ارسال با Enter و راهنمای اختیاری میان‌بر. مقدار جست‌وجو و نتیجهٔ ارسال از هم مستقل‌اند.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -107,21 +107,6 @@ export const searchFieldDoc: ComponentDoc = {
       'نمایش راهنمای میان‌بر را معادل ثبت خودکار میان‌بر سراسری ندانید.',
     ],
   },
-  api: [
-    fieldApi('SearchField', [
-      { name: 'onSubmit', type: '(value: string) => void', description: 'ارسال عبارت با Enter.' },
-      {
-        name: 'onClear',
-        type: '() => void',
-        description: 'پس از پاک‌کردن با دکمه یا رفتار بومی React Aria.',
-      },
-      {
-        name: 'shortcutHint',
-        type: 'ReactNode',
-        description: 'راهنمای میان‌بر؛ ثبت میان‌بر سراسری مسئولیت برنامه است.',
-      },
-    ]),
-  ],
   keyboard: [
     ...fieldKeyboard,
     { keys: 'Enter', action: 'ارسال عبارت جست‌وجو.' },

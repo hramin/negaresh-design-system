@@ -1,0 +1,108 @@
+@layer nds.components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nds-space-3);
+    min-inline-size: 0;
+    inline-size: 100%;
+    align-items: center;
+  }
+
+  .svg {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 26rem;
+    block-size: auto;
+    overflow: visible;
+  }
+
+  .ring {
+    fill: none;
+    stroke: var(--nds-viz-grid);
+    stroke-width: 1;
+  }
+
+  .spoke {
+    stroke: var(--nds-viz-grid);
+    stroke-width: 1;
+  }
+
+  .ringLabel {
+    fill: var(--nds-fg-subtle);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .axisLabel {
+    fill: var(--nds-fg-muted);
+    font-family: var(--nds-font-sans);
+    font-size: var(--nds-text-xs);
+    font-weight: var(--nds-weight-medium);
+  }
+
+  .seriesArea {
+    fill-opacity: 0.14;
+    stroke-width: 2.2;
+    stroke-linejoin: round;
+  }
+
+  .pointTrigger {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .pointTrigger:focus-visible {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
+  .focusHalo {
+    fill: none;
+    stroke: var(--nds-focus-ring);
+    stroke-width: 2;
+    opacity: 0;
+  }
+
+  .pointTrigger:focus-visible .focusHalo,
+  .pointTrigger[data-active="true"] .focusHalo {
+    opacity: 1;
+  }
+
+  .readout {
+    inline-size: 100%;
+    padding-block: var(--nds-space-2);
+    padding-inline: var(--nds-space-3);
+    border-radius: var(--nds-radius-sm);
+    background: var(--nds-bg-sunken);
+    color: var(--nds-fg-muted);
+    font-size: var(--nds-text-xs);
+    line-height: var(--nds-leading-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (forced-colors: active) {
+    .ring,
+    .spoke {
+      stroke: GrayText;
+    }
+
+    .ringLabel,
+    .axisLabel {
+      fill: CanvasText;
+    }
+
+    .seriesArea {
+      fill: none;
+      stroke: CanvasText;
+    }
+
+    .pointTrigger:focus-visible {
+      outline-color: Highlight;
+    }
+
+    .focusHalo {
+      stroke: Highlight;
+    }
+  }
+}

@@ -2,7 +2,7 @@ import { Stack, TextField } from '@negaresh/react';
 import { useState } from 'react';
 import type { ComponentDoc } from '../types.ts';
 import { GalleryRow, State } from '../ui.tsx';
-import { fieldA11y, fieldApi, fieldKeyboard, fieldRtl } from './field-docs.ts';
+import { fieldA11y, fieldKeyboard, fieldRtl } from './field-docs.ts';
 import styles from './fields.module.css';
 
 function Example() {
@@ -29,7 +29,7 @@ export const textFieldDoc: ComponentDoc = {
   base: 'TextField',
   summary:
     'ورودی تک‌خطی با برچسب، راهنما، خطا، پیشوند و پسوند؛ شمارندهٔ نویسه و اعتبارسنجی بدون حذف رفتار بومی ویرایش.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -124,30 +124,6 @@ export const textFieldDoc: ComponentDoc = {
       'برای شمارهٔ تلفن یا سریال، منطق نرمال‌سازی را دوباره ننویسید؛ از فیلد تخصصی استفاده کنید.',
     ],
   },
-  api: [
-    fieldApi('TextField', [
-      {
-        name: 'prefix / suffix',
-        type: 'ReactNode',
-        description: 'محتوای همراه پیش و پس از ورودی؛ معنای آن در راهنما توضیح داده شود.',
-      },
-      {
-        name: 'showCharacterCount / maxLength',
-        type: 'boolean / number',
-        description: 'شمارندهٔ فارسی و حداکثر نویسهٔ مجاز.',
-      },
-      {
-        name: 'type / inputMode / autoComplete / placeholder',
-        type: 'string',
-        description: 'نوع، صفحه‌کلید مناسب، تکمیل خودکار و مثال کوتاه ورودی.',
-      },
-      {
-        name: 'minLength / pattern',
-        type: 'number / string',
-        description: 'محدودیت بومی ورودی؛ خطای قابل‌فهم نیز ارائه کنید.',
-      },
-    ]),
-  ],
   keyboard: fieldKeyboard,
   a11y: fieldA11y,
   rtl: fieldRtl,
