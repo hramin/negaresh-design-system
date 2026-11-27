@@ -68,3 +68,32 @@ jobs:
             apps/docs/playwright-report
             apps/docs/test-results
           retention-days: 14
+
+  keycloak-jar:
+    name: Keycloak theme JAR packaging
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: pnpm install --frozen-lockfile
+      - name: Build workspace dependencies and package Keycloak 26+ JAR
+        run: |
+          pnpm --filter @negaresh/keycloak-theme^... build
+          pnpm --filter @negaresh/keycloak-theme build:jar
+      - name: Upload Keycloak theme JAR
+        uses: actions/upload-artifact@v7
+        with:
+          name: negaresh-keycloak-theme-jar
+          path: packages/keycloak-theme/dist_keycloak/*.jar
+          retention-days: 14
+
