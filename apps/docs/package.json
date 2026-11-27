@@ -17,6 +17,7 @@
     "@negaresh/assessment": "workspace:*",
     "@negaresh/charts": "workspace:*",
     "@negaresh/icons": "workspace:*",
+    "@negaresh/keycloak-theme": "workspace:*",
     "@negaresh/patterns": "workspace:*",
     "@negaresh/react": "workspace:*",
     "@negaresh/theme-company": "workspace:*",

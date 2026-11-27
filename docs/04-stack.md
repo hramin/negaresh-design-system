@@ -64,7 +64,7 @@ Checked on 13 Nov 2026 against the npm registry; API usage checked with Context7
 | Playwright image | mcr.microsoft.com/playwright:v1.65.0-noble | Docker | 13 Nov 2026 | Visual baselines and CI e2e (D-96) |
 | d3-scale / d3-shape (@types/d3-scale / @types/d3-shape) | 4.0.3 / 3.2.1 (4.0.9 / 3.2.0) | npm + installed `.d.ts` | 26 Nov 2026 | Installed in `@negaresh/charts` (P5 Wave 1); pure SVG math/path generation, zero d3 DOM access |
 | @inlang/paraglide-js | 3.2.2 | npm | 13 Nov 2026 | **Now 3.x, not 2.x** as the status table above says; re-check the TanStack integration before adopting (first strings catalogue) |
-| keycloakify | 11.16.4 | npm | 13 Nov 2026 | P6 |
+| keycloakify | 11.16.4 | npm + installed `.d.ts` | 26 Nov 2026 | Installed in `@negaresh/keycloak-theme` (P6 Wave 2); Vite plugin (`keycloakify/vite-plugin`) targets Keycloak 26+ (`all-other-versions` JAR `negaresh-keycloak-theme.jar`) |
 | turbo / pnpm / @changesets/cli / typescript | 2.11.11 / 12.18.0 / 3.0.3 / 6.0.3 | npm | 13 Nov 2026 | Installed. pnpm via Corepack (`packageManager`). **TypeScript 6.0.3, not 7.0** (see D-93) |
 | @biomejs/biome / stylelint | 2.6.7 / 18.0.0 | npm | 13 Nov 2026 | Installed. Biome 2.6 uses `"preset": "recommended"` |
 | Node.js | 22.22.2+ | — | 13 Nov 2026 | `.nvmrc`; stylelint 18 needs ≥ 22.22.2 |
