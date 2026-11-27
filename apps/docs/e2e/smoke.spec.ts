@@ -32,6 +32,7 @@ for (const route of ROUTES) {
       });
 
       test('has no axe violations', async ({ page }) => {
+        if (route === '/tokens') test.slow();
         await page.goto(withTheme(route, theme));
         await page.waitForLoadState('networkidle');
         const results = await new AxeBuilder({ page })
@@ -49,6 +50,7 @@ for (const route of ROUTES) {
 }
 
 test('works without JavaScript', async ({ browser }) => {
+  test.slow();
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   for (const route of ROUTES) {

@@ -87,7 +87,7 @@ const snap = (locator: Locator, name: string, hidePageHeader = false) =>
     maxDiffPixelRatio: 0.001,
     // Tall new galleries must remain fully visible beneath the sticky page chrome.
     // Existing P2 captures keep their original settings and baselines.
-    ...(hidePageHeader ? { style: 'header { visibility: hidden !important; }' } : {}),
+    ...(hidePageHeader ? { style: '[data-docs-topbar] { visibility: hidden !important; }' } : {}),
   });
 
 const PREHIDE_HEADER_SLUGS = new Set([
@@ -137,7 +137,7 @@ for (const theme of THEMES) {
     test(`gallery ${slug} (${theme})`, async ({ page }) => {
       await open(page, `/components/${slug}?theme=${theme}`);
       if (PREHIDE_HEADER_SLUGS.has(slug)) {
-        await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+        await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
       }
       await snap(
         page.locator(`[data-gallery="${slug}"]`),
@@ -150,7 +150,7 @@ for (const theme of THEMES) {
   for (const slug of CHART_SLUGS) {
     test(`chart gallery ${slug} (${theme})`, async ({ page }) => {
       await open(page, `/charts/${slug}?theme=${theme}`);
-      await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
       await snap(page.locator(`[data-gallery="chart-${slug}"]`), `chart-${slug}-${theme}.png`, true);
     });
   }
@@ -158,7 +158,7 @@ for (const theme of THEMES) {
   for (const slug of ASSESSMENT_SLUGS) {
     test(`assessment gallery ${slug} (${theme})`, async ({ page }) => {
       await open(page, `/assessment/${slug}?theme=${theme}`);
-      await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
       await snap(
         page.locator(`[data-gallery="assessment-${slug}"]`),
         `assessment-${slug}-${theme}.png`,
@@ -170,7 +170,7 @@ for (const theme of THEMES) {
   for (const slug of PATTERN_SLUGS) {
     test(`pattern gallery ${slug} (${theme})`, async ({ page }) => {
       await open(page, `/patterns/${slug}?theme=${theme}`);
-      await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
       await snap(
         page.locator(`[data-gallery="pattern-${slug}"]`),
         `pattern-${slug}-${theme}.png`,
@@ -181,7 +181,8 @@ for (const theme of THEMES) {
 
   test(`icon grid (${theme})`, async ({ page }) => {
     await open(page, `/foundations/icons?theme=${theme}`);
-    await snap(page.locator('[data-gallery="icons"]'), `icons-${theme}.png`);
+    await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+    await snap(page.locator('[data-gallery="icons"]'), `icons-${theme}.png`, true);
   });
 
   test(`toast open floating notification (${theme})`, async ({ page }) => {
@@ -536,7 +537,7 @@ for (const theme of THEMES) {
 
   test(`tanstack-form-zod guide form (${theme})`, async ({ page }) => {
     await open(page, `/guides/tanstack-form-zod?theme=${theme}`);
-    await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+    await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
     await snap(
       page.locator('[data-gallery="tanstack-form-zod"]'),
       `tanstack-form-zod-${theme}.png`,
@@ -775,4 +776,35 @@ test.describe('P6 Wave 2 · Full-bleed Keycloak login baselines', () => {
     }
   }
 });
+
+test.describe('P7 · Docs completion baselines (Playground, Product page, Brand Manifest)', () => {
+  for (const theme of THEMES) {
+    test(`playground gallery (${theme})`, async ({ page }) => {
+      await open(page, `/playground?theme=${theme}`);
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+      await snap(page.locator('[data-gallery="playground"]'), `p7-playground-${theme}.png`, true);
+    });
+
+    test(`products-registry gallery (${theme})`, async ({ page }) => {
+      await open(page, `/products/registry?theme=${theme}`);
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+      await snap(
+        page.locator('[data-gallery="products-registry"]'),
+        `p7-products-registry-${theme}.png`,
+        true,
+      );
+    });
+
+    test(`brand-sample-dummy gallery (${theme})`, async ({ page }) => {
+      await open(page, `/brands/sample-dummy/overview?theme=${theme}`);
+      await page.addStyleTag({ content: '[data-docs-topbar] { visibility: hidden !important; }' });
+      await snap(
+        page.locator('[data-gallery="brand-sample-dummy"]'),
+        `p7-brand-sample-dummy-${theme}.png`,
+        true,
+      );
+    });
+  }
+});
+
 
