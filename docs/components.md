@@ -147,7 +147,7 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 ## Patterns — `@negaresh/patterns` (P6)
 
-See `patterns.md`. P6 Wave 1 product patterns are `approved` following owner confirmation on 26 Nov 2026; P6 Wave 2 (`@negaresh/keycloak-theme` identity/auth flows) remains `planned`. Docs pages live under `/patterns/<slug>`.
+See `patterns.md`. P6 Wave 1 product patterns are `approved` following owner confirmation on 26 Nov 2026; P6 Wave 2 (`@negaresh/keycloak-theme` identity/auth theme) is in `review`. Docs pages live under `/patterns/<slug>` and `/reference/keycloak-login`.
 
 | Pattern | Base / Reused | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
@@ -162,5 +162,14 @@ See `patterns.md`. P6 Wave 1 product patterns are `approved` following owner con
 | AccountShell, AccountContacts, AdminShell, SettingsPage, NotificationTemplatesEditor | `TopBar`, `UserMenu` (reusing `AccountPill`), `SideNav`, `Sheet`, `OTPField`, `AlertDialog`, `StatGroup` | Account/Admin workspace shells, multi-mobile OTP verification & removal guard, dirty Save bar, live template variable preview (`/patterns/account-admin-shells`) | R, N, T | approved |
 | TestCatalog, TestDashboard | `FilterBar`, `Price`, `StatGroup`, `StatusBadge(report)` | Free/sale/org-rate test cards and dashboard with slots for approved P5 `@negaresh/assessment` components (`/patterns/test-platform-catalog`) | T | approved |
 | CampaignBuilder, ShareLinkPanel, RosterImport, SeatMeter, CampaignParticipants, OrgWallet, B2BPanel | `DatePicker`, `FileUpload`, `UsageMeter`, `DataTable`, `PhoneField`, `CopyButton`, `AlertDialog` | Org campaigns, LTR share link + CSV export, paste/CSV roster validation, Toman wallet + ledger, one-time B2B API keys (`/patterns/test-platform-org`) | T | approved |
-| Identity & auth theme (`@negaresh/keycloak-theme`) | Keycloakify + `@negaresh/react` + `@negaresh/theme-company` | PhoneSignIn (OTP), PasswordSignIn, ForgotPassword, Register, VerifyMobile, TwoFactorSetup, Error/Info (P6 Wave 2) | all | planned |
+
+## Login theme — `@negaresh/keycloak-theme` (P6)
+
+Built with Keycloakify (`11.16.4`) targeting Keycloak 26+ (`negaresh-keycloak-theme.jar`) on top of `@negaresh/theme-company`, `@negaresh/tokens`, `@negaresh/react`, `@negaresh/icons`, and `@negaresh/utils`.
+
+| Screen group | Base / Keycloak `pageId` | Notes | Products | Status |
+| --- | --- | --- | --- | --- |
+| AuthShell, PhoneSignIn (OTP), PasswordSignIn, ForgotPassword, Register | `login-phone.ftl`, `login-sms-otp.ftl`, `login.ftl`, `login-reset-password.ftl`, `login-update-password.ftl`, `register.ftl` | Focus template (zero resting shadows, D-77), Iranian mobile normalisation & 6-digit SMS OTP (60-s resend, 2-min expiry, rate-limit, CAPTCHA slot), LTR email/phone isolation (D-86), SMS recovery & registration (`/patterns/identity-sign-in`, `/reference/keycloak-login`) | all | review |
+| VerifyMobile, TwoFactorSetup, ErrorScreen, InfoScreen, KcPage | `verify-mobile.ftl`, `login-config-totp.ftl`, `login-otp.ftl`, `error.ftl`, `info.ftl` | Migrated-user mobile verification, staff authenticator QR + copyable LTR base32 manual key + TOTP challenge, calm error/info screens with copyable LTR reference code, `fa-IR` message bundle (D-94) (`/patterns/identity-security`, `/reference/keycloak-login`) | all | review |
+
 

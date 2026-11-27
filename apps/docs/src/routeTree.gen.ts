@@ -24,6 +24,7 @@ import { Route as GuidesTanstackFormZodRouteImport } from './routes/guides/tanst
 import { Route as PatternsIndexRouteImport } from './routes/patterns/index'
 import { Route as PatternsSlugRouteImport } from './routes/patterns/$slug'
 import { Route as ReferenceAssessmentReportRouteImport } from './routes/reference/assessment-report'
+import { Route as ReferenceKeycloakLoginRouteImport } from './routes/reference/keycloak-login'
 import { Route as ReferenceRegistryActivationRouteImport } from './routes/reference/registry-activation'
 import { Route as ReferenceAdminSerialsIndexRouteImport } from './routes/reference/admin-serials/index'
 import { Route as ReferenceAdminSerialsSerialRouteImport } from './routes/reference/admin-serials/$serial'
@@ -104,6 +105,11 @@ const ReferenceAssessmentReportRoute =
     path: '/reference/assessment-report',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ReferenceKeycloakLoginRoute = ReferenceKeycloakLoginRouteImport.update({
+  id: '/reference/keycloak-login',
+  path: '/reference/keycloak-login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReferenceRegistryActivationRoute =
   ReferenceRegistryActivationRouteImport.update({
     id: '/reference/registry-activation',
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/patterns/$slug': typeof PatternsSlugRoute
   '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
+  '/reference/keycloak-login': typeof ReferenceKeycloakLoginRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
   '/assessment/': typeof AssessmentIndexRoute
   '/charts/': typeof ChartsIndexRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/patterns/$slug': typeof PatternsSlugRoute
   '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
+  '/reference/keycloak-login': typeof ReferenceKeycloakLoginRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
   '/assessment': typeof AssessmentIndexRoute
   '/charts': typeof ChartsIndexRoute
@@ -176,6 +184,7 @@ export interface FileRoutesById {
   '/guides/tanstack-form-zod': typeof GuidesTanstackFormZodRoute
   '/patterns/$slug': typeof PatternsSlugRoute
   '/reference/assessment-report': typeof ReferenceAssessmentReportRoute
+  '/reference/keycloak-login': typeof ReferenceKeycloakLoginRoute
   '/reference/registry-activation': typeof ReferenceRegistryActivationRoute
   '/assessment/': typeof AssessmentIndexRoute
   '/charts/': typeof ChartsIndexRoute
@@ -198,6 +207,7 @@ export interface FileRouteTypes {
     | '/guides/tanstack-form-zod'
     | '/patterns/$slug'
     | '/reference/assessment-report'
+    | '/reference/keycloak-login'
     | '/reference/registry-activation'
     | '/assessment/'
     | '/charts/'
@@ -218,6 +228,7 @@ export interface FileRouteTypes {
     | '/guides/tanstack-form-zod'
     | '/patterns/$slug'
     | '/reference/assessment-report'
+    | '/reference/keycloak-login'
     | '/reference/registry-activation'
     | '/assessment'
     | '/charts'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
     | '/guides/tanstack-form-zod'
     | '/patterns/$slug'
     | '/reference/assessment-report'
+    | '/reference/keycloak-login'
     | '/reference/registry-activation'
     | '/assessment/'
     | '/charts/'
@@ -259,6 +271,7 @@ export interface RootRouteChildren {
   GuidesTanstackFormZodRoute: typeof GuidesTanstackFormZodRoute
   PatternsSlugRoute: typeof PatternsSlugRoute
   ReferenceAssessmentReportRoute: typeof ReferenceAssessmentReportRoute
+  ReferenceKeycloakLoginRoute: typeof ReferenceKeycloakLoginRoute
   ReferenceRegistryActivationRoute: typeof ReferenceRegistryActivationRoute
   AssessmentIndexRoute: typeof AssessmentIndexRoute
   ChartsIndexRoute: typeof ChartsIndexRoute
@@ -375,6 +388,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReferenceAssessmentReportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reference/keycloak-login': {
+      id: '/reference/keycloak-login'
+      path: '/reference/keycloak-login'
+      fullPath: '/reference/keycloak-login'
+      preLoaderRoute: typeof ReferenceKeycloakLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reference/registry-activation': {
       id: '/reference/registry-activation'
       path: '/reference/registry-activation'
@@ -411,6 +431,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesTanstackFormZodRoute: GuidesTanstackFormZodRoute,
   PatternsSlugRoute: PatternsSlugRoute,
   ReferenceAssessmentReportRoute: ReferenceAssessmentReportRoute,
+  ReferenceKeycloakLoginRoute: ReferenceKeycloakLoginRoute,
   ReferenceRegistryActivationRoute: ReferenceRegistryActivationRoute,
   AssessmentIndexRoute: AssessmentIndexRoute,
   ChartsIndexRoute: ChartsIndexRoute,

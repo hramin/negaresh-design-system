@@ -31,6 +31,7 @@ export const m = {
     adminSerialsList: 'پنل مدیریت · فهرست سریال‌ها',
     adminSerialDetail: 'پنل مدیریت · جزئیات سریال',
     assessmentReport: 'گزارش چاپی A4 آزمون',
+    keycloakLogin: 'پوستهٔ ورود Keycloak',
   },
   /** Footer build stamp: «build <branch>@<short sha>» (Latin, LTR: it is a code). */
   build: (branch: string, sha: string) => `build ${branch}@${sha}`,

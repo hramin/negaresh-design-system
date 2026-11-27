@@ -84,6 +84,7 @@ const NAV: {
         label: m.nav.adminSerialDetail,
       },
       { to: '/reference/assessment-report', label: m.nav.assessmentReport },
+      { to: '/reference/keycloak-login', label: m.nav.keycloakLogin },
     ],
   },
 ];
