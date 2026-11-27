@@ -51,7 +51,7 @@ export const reportStatusDoc: ComponentDoc = {
   base: 'StatusBadge(domain="report") + Spinner + InlineAlert',
   summary:
     'کارت چرخهٔ عمر گزارش PDF (هر ۵ وضعیت none، pending، ready، failed و purged با دکمهٔ تلاش دوباره) و صفحهٔ تأیید ثبت کارزار («می‌توانید این صفحه را ببندید»).',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V'],
   Example,
   Gallery: () => (
@@ -114,25 +114,6 @@ export const reportStatusDoc: ComponentDoc = {
       'گزارش‌های حذف‌شده پس از ۱۸۰ روز (purged) را با خطای سیستم (failed) اشتباه نگیرید.',
     ],
   },
-  api: [
-    {
-      name: 'ReportStatus',
-      props: [
-        { name: 'status', type: "'none' | 'pending' | 'ready' | 'failed' | 'purged'", description: 'وضعیت فعلی فایل PDF' },
-        { name: 'generatedAt / expiresAt', type: 'string | Date', description: 'زمان ساخت و مهلت نگهداری ۱۸۰ روزه (شمسی تهران)' },
-        { name: 'downloadHref / onDownload / onPrint', type: 'string / callbacks', description: 'اقدام‌های دریافت و چاپ در وضعیت ready' },
-        { name: 'onGenerate / onRetry', type: 'callbacks', description: 'ساخت تازه در none/purged یا تلاش دوباره در failed' },
-      ],
-    },
-    {
-      name: 'SubmittedPage',
-      props: [
-        { name: 'organizationName / testTitle', type: 'ReactNode', description: 'نام سازمان برگزارکننده و عنوان آزمون' },
-        { name: 'canCloseNote', type: 'ReactNode', default: "'نیاز به اقدام دیگری نیست؛ می‌توانید این صفحه را ببندید.'", description: 'پیام اطمینان‌بخش پایان آزمون' },
-        { name: 'submittedAt / trackingCode', type: 'string | Date / string', description: 'زمان ثبت شمسی و کد پیگیری LTR' },
-      ],
-    },
-  ],
   a11y: [
     'وضعیت pending در ناحیهٔ زندهٔ role="status" با Spinner دارای برچسب متنی اعلام می‌شود و failed از InlineAlert با role="alert" استفاده می‌کند.',
     'ReportStatus به‌طور خودکار در @media print پنهان می‌شود تا وارد خروجی چاپی A4 نشود.',

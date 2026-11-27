@@ -95,7 +95,7 @@ export const timelineDoc: ComponentDoc = {
   base: 'React Aria GridList (ActivityList) / Semantic <ol> (Timeline)',
   summary:
     'نمایش تاریخچهٔ فعال‌سازی‌ها، گزارش ممیزی و نسخه‌های ویرایشی با زمان‌بندی جلالی تهران، آیکون‌های وضعیت و پشتیبانی از ناوبری صفحه‌کلید در ActivityList.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -151,34 +151,6 @@ export const timelineDoc: ComponentDoc = {
       'تنها با رنگ دایرهٔ خط زمانی نوع رویداد را تفکیک نکنید؛ آیکون یا برچسب متنی همراه آن بگذارید.',
     ],
   },
-  api: [
-    {
-      name: 'Timeline',
-      props: [
-        { name: 'items', type: 'readonly TimelineEntry[]', description: 'آرایهٔ رویدادها (یا استفاده از فرزندان TimelineItem).' },
-        { name: 'density', type: "'comfortable' | 'compact'", default: "'comfortable'", description: 'فاصلهٔ عمودی بین رویدادها.' },
-        { name: 'isLoading / loadingCount', type: 'boolean / number', default: 'false / 3', description: 'حالت بارگذاری اسکلتون با aria-busy.' },
-        { name: 'emptyState', type: 'ReactNode', description: 'جایگزین حالت خالی پیش‌فرض.' },
-      ],
-    },
-    {
-      name: 'ActivityList',
-      props: [
-        { name: 'selectionMode', type: "'none' | 'single' | 'multiple'", default: "'none'", description: 'حالت انتخاب ردیف‌ها روی React Aria GridList.' },
-        { name: 'selectedKeys / onSelectionChange', type: 'Selection / (keys) => void', description: 'مدیریت انتخاب کنترل‌شده.' },
-        { name: 'onAction', type: '(key: Key) => void', description: 'اقدام هنگام کلیک یا Enter روی رویداد.' },
-      ],
-    },
-    {
-      name: 'TimelineEntry / TimelineItem',
-      props: [
-        { name: 'title / description', type: 'ReactNode', description: 'عنوان و توضیح رویداد.' },
-        { name: 'timestamp / timestampFormat', type: "DateInput / 'datetime' | 'date' | 'relative'", default: "'datetime'", description: 'قالب‌بندی خودکار جلالی در <time>.' },
-        { name: 'tone / icon', type: 'TimelineTone / IconDefinition', default: "'neutral'", description: 'لحن معنایی همراه با آیکون پیش‌فرض.' },
-        { name: 'actor / badge / meta / details / actions', type: 'ReactNode', description: 'کنشگر، برچسب وضعیت، فراداده و جزئیات.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'ArrowDown / ArrowUp', action: 'حرکت بین رویدادهای ActivityList.' },
     { keys: 'Space / Enter', action: 'انتخاب یا اجرای اقدام ردیف در ActivityList.' },

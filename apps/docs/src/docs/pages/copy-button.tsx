@@ -9,7 +9,7 @@ export const copyButtonDoc: ComponentDoc = {
   base: 'Button',
   summary:
     'مقدار نرمال‌شده (بدون فاصله) را کپی می‌کند، برچسب به «کپی شد» تغییر می‌کند و نتیجه در ناحیهٔ زندهٔ مؤدبانه اعلام می‌شود.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example: () => (
     <Stack gap="3" align="center">
@@ -44,28 +44,6 @@ export const copyButtonDoc: ComponentDoc = {
     ],
     dont: ['کپی مقدار با فاصله یا خط تیرهٔ نمایشی.'],
   },
-  api: [
-    {
-      name: 'CopyButton',
-      props: [
-        { name: 'value', type: 'string', description: 'متنی که کپی می‌شود.' },
-        {
-          name: 'children',
-          type: 'ReactNode',
-          default: 'messages.copy',
-          description: 'برچسب دیدنی.',
-        },
-        { name: 'variant / size / fullWidth', type: '—', description: 'مثل Button.' },
-        { name: 'onCopy', type: '(value: string) => void', description: 'پس از کپی موفق.' },
-        {
-          name: 'feedbackDuration',
-          type: 'number',
-          default: '1800',
-          description: 'مدت حالت موفق (میلی‌ثانیه).',
-        },
-      ],
-    },
-  ],
   keyboard: [{ keys: 'Enter / Space', action: 'کپی' }],
   a11y: [
     'اعلام «کپی شد» یا «کپی نشد…» با role="status".',

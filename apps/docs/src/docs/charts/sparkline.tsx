@@ -73,7 +73,7 @@ export const sparklineDoc: ComponentDoc = {
   components: ['Sparkline'],
   summary:
     'نمودار خطی فشرده و بدون محور برای نمایش روند کوتاه داخل StatTile؛ همیشه همراه با خلاصهٔ متنی دسترس‌پذیر (summary).',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -151,19 +151,6 @@ export const sparklineDoc: ComponentDoc = {
       'برای مقایسهٔ دقیق اعداد یا نمایش محورها و خطوط آستانه از Sparkline استفاده نکنید؛ ProfileLine یا Bar انتخاب درست است.',
     ],
   },
-  api: [
-    {
-      name: 'Sparkline',
-      props: [
-        { name: 'values', type: 'readonly number[]', description: 'آرایهٔ مرتب مقادیر (قدیمی‌ترین به جدیدترین).' },
-        { name: 'summary', type: 'string', description: 'خلاصهٔ متنی الزامی برای aria-label و <title>.' },
-        { name: 'tone', type: "'accent' | 'positive' | 'negative' | 'neutral' | 1..6", default: "'accent'", description: 'لحن رنگ خط.' },
-        { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'اندازهٔ فشردهٔ نمودارک.' },
-        { name: 'baseline', type: 'number', description: 'مقدار اختیاری خط مبنای نقطه‌چین.' },
-        { name: 'highlightLast', type: 'boolean', default: 'true', description: 'نمایش نقطهٔ پایانی روی آخرین مقدار.' },
-      ],
-    },
-  ],
   a11y: [
     'SVG دارای role="img"، aria-label={summary} و عنصر <title> است تا کاربران صفحه‌خوان خلاصهٔ روند را بشنوند.',
     'بدون نیاز به جاوااسکریپت روی سرور رندر می‌شود و در حالت forced-colors با CanvasText خواناست.',

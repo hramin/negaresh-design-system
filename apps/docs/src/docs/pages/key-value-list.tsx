@@ -59,7 +59,7 @@ export const keyValueListDoc: ComponentDoc = {
   components: ['KeyValueList', 'KeyValueItem'],
   summary:
     'فهرست معنایی <dl> برای نمایش جفت‌های برچسب/مقدار با ایزوله‌سازی خودکار مقادیر چپ‌به‌راست و کدها (D-86) و ردیف‌های قابل کپی با استفادهٔ مجدد از CopyButton.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -115,27 +115,6 @@ export const keyValueListDoc: ComponentDoc = {
       'برای مقایسهٔ چند رکورد هم‌ساختار از KeyValueList استفاده نکنید؛ آن کار DataTable است.',
     ],
   },
-  api: [
-    {
-      name: 'KeyValueList',
-      props: [
-        { name: 'layout', type: "'horizontal' | 'stacked'", default: "'horizontal'", description: 'افقی دو‌ستونه (ستونی در عرض باریک) یا همیشه ستونی.' },
-        { name: 'divided', type: 'boolean', default: 'true', description: 'خط جداکنندهٔ مویی بین ردیف‌ها.' },
-        { name: 'density', type: "'comfortable' | 'compact'", default: "'comfortable'", description: 'تراکم عمودی ردیف‌ها.' },
-        { name: 'items', type: 'readonly KeyValueEntry[]', description: 'آرایهٔ اختیاری به جای فرزندان KeyValueItem.' },
-      ],
-    },
-    {
-      name: 'KeyValueItem',
-      props: [
-        { name: 'label / value', type: 'ReactNode', description: 'برچسب (<dt>) و مقدار (<dd>).' },
-        { name: 'ltr', type: 'boolean', default: 'false', description: 'ایزوله‌سازی چپ‌به‌راست با Ltr.' },
-        { name: 'code', type: 'boolean', default: 'false', description: 'نمایش کد تک‌عرض چپ‌به‌راست با Code.' },
-        { name: 'copyValue', type: 'string', description: 'افزودن CopyButton برای کپی مقدار نرمال‌شده.' },
-        { name: 'copyLabel', type: 'string', description: 'نام دسترس‌پذیر سفارشی دکمهٔ کپی (پیش‌فرض: «کپی <برچسب>»).' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'حرکت بین دکمه‌های کپی در ردیف‌های قابل کپی.' },
     { keys: 'Enter / Space', action: 'کپی مقدار و اعلام «کپی شد» در ناحیهٔ زنده.' },

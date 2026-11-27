@@ -85,7 +85,7 @@ export const listDoc: ComponentDoc = {
   base: 'React Aria GridList',
   summary:
     'فهرست ردیف‌های انتخاب‌پذیر روی React Aria GridList با ناوبری کامل صفحه‌کلید، اسلات‌های آیکون/آواتار، فراداده و دکمه‌های اقدام، همراه با حالت‌های خالی و بارگذاری.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -166,28 +166,6 @@ export const listDoc: ComponentDoc = {
       'برای داده‌های چندستونه که نیاز به مرتب‌سازی و مقایسهٔ ستونی دارند از List استفاده نکنید؛ از DataTable بهره ببرید.',
     ],
   },
-  api: [
-    {
-      name: 'GridList / List',
-      props: [
-        { name: 'selectionMode', type: "'none' | 'single' | 'multiple'", default: "'none'", description: 'فعال‌سازی انتخاب تکی یا چندتایی با چک‌باکس داخلی.' },
-        { name: 'selectedKeys / defaultSelectedKeys / onSelectionChange', type: 'Selection', description: 'مدیریت کلیدهای انتخاب‌شده.' },
-        { name: 'onAction', type: '(key: Key) => void', description: 'اقدام هنگام فعال‌سازی ردیف.' },
-        { name: 'density', type: "'comfortable' | 'compact'", default: "'comfortable'", description: 'تراکم عمودی ردیف‌ها.' },
-        { name: 'divided / bordered', type: 'boolean', default: 'true / true', description: 'جداکنندهٔ مویی بین ردیف‌ها و قاب سطح بیرونی.' },
-        { name: 'isLoading / emptyState', type: 'boolean / ReactNode', description: 'حالت بارگذاری اسکلتون و نمای خالی.' },
-      ],
-    },
-    {
-      name: 'GridListItem / ListItem',
-      props: [
-        { name: 'id', type: 'Key', description: 'شناسهٔ یکتای ردیف.' },
-        { name: 'title / description', type: 'ReactNode', description: 'عنوان و توضیح ردیف.' },
-        { name: 'leading / meta / actions', type: 'ReactNode', description: 'اسلات‌های آیکون/آواتار، فراداده و اقدام‌های انتهای سطر.' },
-        { name: 'isDisabled / href / onAction', type: 'boolean / string / () => void', description: 'غیرفعال‌سازی یا ناوبری ردیف.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'ArrowDown / ArrowUp', action: 'حرکت بین ردیف‌ها با roving tabindex.' },
     { keys: 'Space', action: 'تغییر وضعیت انتخاب ردیف.' },

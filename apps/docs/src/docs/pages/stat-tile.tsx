@@ -89,7 +89,7 @@ export const statTileDoc: ComponentDoc = {
   components: ['StatTile', 'StatGroup'],
   summary:
     'نمایش شاخص‌های عددی کلیدی با ارقام هم‌عرض فارسی (tabular-nums)، روند تغییر همراه با آیکون و متن (هرگز رنگ به تنهایی)، و اسلات sparkline برای نمودارک‌های فاز P5.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -150,28 +150,6 @@ export const statTileDoc: ComponentDoc = {
       'سایهٔ استراحت یا قاب تزئینی به کاشی‌ها اضافه نکنید (D-77).',
     ],
   },
-  api: [
-    {
-      name: 'StatTile',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'عنوان شاخص در بالای کاشی.' },
-        { name: 'value', type: 'number | ReactNode', description: 'مقدار شاخص (اعداد خودکار فارسی و tabular-nums می‌شوند).' },
-        { name: 'format', type: "'number' | 'toman' | 'percent'", default: "'number'", description: 'قالب‌بندی عددی از @negaresh/utils.' },
-        { name: 'delta', type: 'StatDelta', description: 'شاخص تغییر شامل value، direction (up/down/neutral)، sentiment و label.' },
-        { name: 'sparkline', type: 'ReactNode', description: 'اسلات نمودارک برای یکپارچه‌سازی تمیز با @negaresh/charts در P5.' },
-        { name: 'density', type: "'comfortable' | 'compact'", default: "'comfortable'", description: 'تراکم فاصله‌گذاری داخلی.' },
-        { name: 'isLoading', type: 'boolean', default: 'false', description: 'نمایش Skeleton با aria-busy.' },
-        { name: 'href / onPress', type: 'string / () => void', description: 'تبدیل کاشی به پیوند یا دکمهٔ دسترس‌پذیر.' },
-      ],
-    },
-    {
-      name: 'StatGroup',
-      props: [
-        { name: 'columns', type: "2 | 3 | 4 | 'auto'", default: "'auto'", description: 'تعداد ستون در دسکتاپ؛ زیر ۹۰۰ پیکسل به ۲ و در عرض باریک به ۱ ستون می‌شکند.' },
-        { name: 'aria-label', type: 'string', description: 'برچسب گروه شاخص‌ها (نقش group).' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'حرکت بین کاشی‌های تعاملی (دارای href یا onPress).' },
     { keys: 'Enter / Space', action: 'اجرای اقدام یا باز کردن پیوند کاشی.' },

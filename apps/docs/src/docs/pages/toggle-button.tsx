@@ -10,7 +10,7 @@ export const toggleButtonDoc: ComponentDoc = {
   base: 'ToggleButton, ToggleButtonGroup',
   summary:
     'دکمه‌ای که روشن یا خاموش می‌ماند، یا گروهی که یک یا چند گزینه را انتخاب می‌کند؛ حالت انتخاب با رنگ زمینه، مرز و وزن نشان داده می‌شود.',
-  status: 'review',
+  status: 'approved',
   products: ['N', 'T'],
   Example: () => (
     <ToggleButtonGroup aria-label="نمای نتیجه" defaultSelectedKeys={['pro']}>
@@ -78,42 +78,6 @@ export const toggleButtonDoc: ComponentDoc = {
     do: ['۲ تا ۵ گزینهٔ کوتاه؛ بیشتر از آن Select (P3).'],
     dont: ['ToggleButton برای اقدامی که فوراً اجرا می‌شود؛ آن Button است.'],
   },
-  api: [
-    {
-      name: 'ToggleButton',
-      props: [
-        { name: 'isSelected / defaultSelected', type: 'boolean', description: 'کنترل‌شده / اولیه.' },
-        { name: 'onChange', type: '(isSelected: boolean) => void', description: '—' },
-        { name: 'id', type: 'Key', description: 'کلید داخل گروه.' },
-        { name: 'iconStart', type: 'IconDefinition', description: '—' },
-        { name: 'size', type: "'sm' | 'md'", default: "'md'", description: '—' },
-      ],
-    },
-    {
-      name: 'ToggleButtonGroup',
-      props: [
-        {
-          name: 'selectionMode',
-          type: "'single' | 'multiple'",
-          default: "'single'",
-          description: 'تکی: نقش radio؛ چندتایی: aria-pressed.',
-        },
-        { name: 'selectedKeys / defaultSelectedKeys', type: 'Iterable<Key>', description: '—' },
-        { name: 'onSelectionChange', type: '(keys: Set<Key>) => void', description: '—' },
-        {
-          name: 'disallowEmptySelection',
-          type: 'boolean',
-          description: 'همیشه یک گزینه انتخاب بماند.',
-        },
-        {
-          name: 'orientation',
-          type: "'horizontal' | 'vertical'",
-          default: "'horizontal'",
-          description: '—',
-        },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Space / Enter', action: 'تغییر حالت' },
     { keys: '← / →', action: 'گزینهٔ بعدی / قبلی در گروه' },

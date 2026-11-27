@@ -16,7 +16,7 @@ export const layoutDoc: ComponentDoc = {
   components: ['Stack', 'Inline', 'Grid', 'Container'],
   summary:
     'محصولات صفحه‌ها را با این چهار جزء می‌چینند، نه با CSS چیدمان؛ فاصله‌ها فقط از توکن‌های فاصله می‌آیند.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <Stack gap="5">
@@ -84,68 +84,6 @@ export const layoutDoc: ComponentDoc = {
     ],
     dont: ['margin دستی بین اجزا؛ gap را به والد بدهید.', 'left/right یا عرض پیکسلی خام.'],
   },
-  api: [
-    {
-      name: 'Stack',
-      props: [
-        {
-          name: 'gap',
-          type: "SpaceStep ('0'…'24')",
-          default: "'4'",
-          description: 'فاصله بین فرزندان (توکن فاصله).',
-        },
-        {
-          name: 'align',
-          type: "'start' | 'center' | 'end' | 'stretch'",
-          default: "'stretch'",
-          description: 'هم‌ترازی در محور عرضی.',
-        },
-        { name: 'as', type: 'ElementType', default: "'div'", description: 'عنصر HTML.' },
-      ],
-    },
-    {
-      name: 'Inline',
-      props: [
-        { name: 'gap', type: 'SpaceStep', default: "'2'", description: 'فاصله بین فرزندان.' },
-        {
-          name: 'align',
-          type: "'start' | 'center' | 'end' | 'baseline' | 'stretch'",
-          default: "'center'",
-          description: 'هم‌ترازی عمودی.',
-        },
-        {
-          name: 'justify',
-          type: "'start' | 'center' | 'end' | 'between'",
-          default: "'start'",
-          description: 'توزیع در جهت خط (start در فارسی سمت راست است).',
-        },
-        { name: 'wrap', type: 'boolean', default: 'true', description: 'شکستن به خط بعد.' },
-      ],
-    },
-    {
-      name: 'Grid',
-      props: [
-        { name: 'columns', type: 'number', description: 'تعداد ستون ثابت.' },
-        {
-          name: 'minItemSize',
-          type: 'var(--nds-…)',
-          description: 'حداقل عرض هر خانه برای auto-fill؛ فقط ارجاع به توکن.',
-        },
-        { name: 'gap', type: 'SpaceStep', default: "'4'", description: 'فاصلهٔ خانه‌ها.' },
-      ],
-    },
-    {
-      name: 'Container',
-      props: [
-        {
-          name: 'size',
-          type: "'narrow' | 'default' | 'wide'",
-          default: "'default'",
-          description: 'بیشینهٔ عرض با حاشیهٔ ۲۴ (۱۶ در موبایل).',
-        },
-      ],
-    },
-  ],
   a11y: ['این اجزا معنای دسترس‌پذیری ندارند؛ برای فهرست‌ها as="ul" و برای بخش‌ها as="section" بدهید.'],
   rtl: ['همهٔ جهت‌ها منطقی‌اند: start/end به‌جای left/right؛ در فارسی start سمت راست است.'],
 };

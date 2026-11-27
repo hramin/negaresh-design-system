@@ -48,7 +48,7 @@ export const tabStripDoc: ComponentDoc = {
   components: ['TabStrip', 'TabStripItem'],
   summary:
     'نوار ناوبری افقی قابل پیمایش برای نمای موبایل (زیر ۹۰۰ پیکسل) با پشتیبانی از پیوندهای سروررندر، نشان فارسی و هدف لمسی ۴۴ پیکسلی بدون ایجاد اسکرول افقی صفحه.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   base: 'React Aria Link / Button',
   Example,
@@ -85,25 +85,6 @@ export const tabStripDoc: ComponentDoc = {
       'برای تعویض پنل‌های محتوا در یک صفحه بدون تغییر مسیر، از Tabs استفاده کنید نه TabStrip.',
     ],
   },
-  api: [
-    {
-      name: 'TabStrip',
-      props: [
-        { name: 'items', type: 'readonly TabStripItemData[]', description: 'فهرست اختیاری آیتم‌ها به جای فرزندان TabStripItem.' },
-        { name: 'selectedKey / onSelect', type: 'Key / (key: Key) => void', description: 'کنترل آیتم فعال در حالت دکمه‌ای.' },
-        { name: 'as', type: "'nav' | 'div'", default: "'nav'", description: 'تگ ریشه (در حالت توکار داخل SideNav مقدار div بدهید).' },
-        { name: 'aria-label', type: 'string', default: "'ناوبری بخش‌ها'", description: 'نام دسترس‌پذیر landmark.' },
-      ],
-    },
-    {
-      name: 'TabStripItem',
-      props: [
-        { name: 'href / onPress', type: 'string / () => void', description: 'نشانی پیوند (React Aria Link) یا اقدام دکمه‌ای.' },
-        { name: 'isCurrent', type: 'boolean', default: 'false', description: 'نشانهٔ بخش فعلی با aria-current="page".' },
-        { name: 'icon / badge / isDisabled', type: 'IconDefinition / ReactNode | number / boolean', description: 'آیکن، نشان عددی فارسی و حالت غیرفعال.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت بین پیوندها و دکمه‌های نوار.' },
     { keys: 'Enter / Space', action: 'باز کردن بخش انتخاب‌شده.' },

@@ -66,7 +66,7 @@ export const commerceCatalogDoc: ComponentDoc = {
   components: ['Price', 'ProductCard', 'ProductPage', 'Wishlist'],
   summary:
     'نمایش قیمت تنها به تومان (D-26)، کارت محصول با دکمهٔ علاقه‌مندی، صفحهٔ کامل محصول با گالری و انتخاب ویرایش، و فهرست علاقه‌مندی‌ها.',
-  status: 'review',
+  status: 'approved',
   products: ['N', 'R', 'T'],
   Example: CommerceCatalogExample,
   Gallery: () => (
@@ -116,42 +116,6 @@ export const commerceCatalogDoc: ComponentDoc = {
       'امتیاز ستاره‌ای یا دیدگاه فروشگاه اضافه نکنید (در D-01/Q-05 از دامنه خارج است).',
     ],
   },
-  api: [
-    {
-      name: 'Price',
-      props: [
-        { name: 'amount', type: 'number', description: 'مبلغ صحیح به تومان (صفر → «رایگان»).' },
-        { name: 'originalAmount', type: 'number', description: 'قیمت پیش از تخفیف برای نمایش خط‌خورده و درصد تخفیف.' },
-        { name: 'isOrgRate', type: 'boolean', default: 'false', description: 'نمایش برچسب تعرفهٔ سازمانی.' },
-        { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'اندازهٔ نمایش قیمت.' },
-      ],
-    },
-    {
-      name: 'ProductCard',
-      props: [
-        { name: 'product', type: 'ProductCardItem', description: 'اطلاعات تصویر، عنوان، تعداد ویرایش و قیمت محصول.' },
-        { name: 'onToggleWishlist', type: '(id, selected) => void', description: 'تغییر وضعیت علاقه‌مندی.' },
-        { name: 'onAddToCart', type: '(id) => void', description: 'افزودن به سبد خرید.' },
-      ],
-    },
-    {
-      name: 'ProductPage',
-      props: [
-        { name: 'gallery', type: 'ProductGalleryItem[]', description: 'تصاویر محصول با متن جایگزین اجباری.' },
-        { name: 'editions', type: 'ProductEdition[]', description: 'فهرست ویرایش‌های قابل انتخاب.' },
-        { name: 'systemRequirements', type: 'KeyValueEntry[]', description: 'جدول نیازمندی‌های سیستم.' },
-        { name: 'faqs', type: 'ProductFaqItem[]', description: 'پرسش‌های متداول.' },
-      ],
-    },
-    {
-      name: 'Wishlist',
-      props: [
-        { name: 'items', type: 'ProductCardItem[]', description: 'محصولات ذخیره‌شده.' },
-        { name: 'onMoveToCart', type: '(id) => void', description: 'انتقال محصول به سبد خرید.' },
-        { name: 'onRemove', type: '(id) => void', description: 'حذف محصول از فهرست.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'جابه‌جایی میان بندانگشتی‌های گالری، کارت‌های ویرایش و دکمهٔ علاقه‌مندی' },
     { keys: 'Space / Enter', action: 'انتخاب تصویر گالری، ویرایش یا افزودن به سبد خرید' },
@@ -200,7 +164,7 @@ export const commerceCheckoutDoc: ComponentDoc = {
   components: ['Cart', 'OrderSummary', 'Checkout', 'GatewayPicker', 'PaymentResult'],
   summary:
     'سبد خرید با کنترل تعداد و کد تخفیف، تسویهٔ چندمرحله‌ای با حذف خودکار نشانی برای کالاهای دیجیتال، انتخابگر درگاه و نتیجهٔ پرداخت.',
-  status: 'review',
+  status: 'approved',
   products: ['N', 'R', 'T'],
   Example: CommerceCheckoutExample,
   Gallery: () => (
@@ -259,32 +223,6 @@ export const commerceCheckoutDoc: ComponentDoc = {
       'در `PaymentResult` وضعیت را تنها با رنگ نشان ندهید؛ آیکون، برچسب و عنوان متنی اجباری‌اند.',
     ],
   },
-  api: [
-    {
-      name: 'Cart',
-      props: [
-        { name: 'items', type: 'CartLineItem[]', description: 'اقلام سبد خرید.' },
-        { name: 'onQuantityChange', type: '(id, qty) => void', description: 'تغییر تعداد کالا.' },
-        { name: 'onApplyCoupon', type: '(code) => void', description: 'اعمال کد تخفیف.' },
-      ],
-    },
-    {
-      name: 'Checkout',
-      props: [
-        { name: 'isDigitalOnly', type: 'boolean', default: 'false', description: 'حذف گام‌های نشانی و ارسال برای محصولات دیجیتال.' },
-        { name: 'requiresSignIn', type: 'boolean', default: 'false', description: 'افزودن گام ورود پیش از پرداخت.' },
-        { name: 'gateways', type: 'PaymentGatewayOption[]', description: 'درگاه‌های فعال به ترتیب مدیر.' },
-      ],
-    },
-    {
-      name: 'PaymentResult',
-      props: [
-        { name: 'status', type: "'success' | 'cancelled' | 'failed'", description: 'وضعیت بازگشت از درگاه.' },
-        { name: 'trackingCode', type: 'string', description: 'کد پیگیری بانکی (LTR قابل کپی).' },
-        { name: 'onRetry', type: '() => void', description: 'تلاش دوباره در وضعیت ناموفق یا لغو.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Enter', action: 'تغییر تعداد، اعمال کد تخفیف و حرکت بین گام‌های تسویه' },
     { keys: 'ArrowUp / ArrowDown', action: 'انتخاب روش ارسال یا درگاه پرداخت' },
@@ -304,7 +242,7 @@ export const commerceOrdersDoc: ComponentDoc = {
   components: ['OrderDetail', 'Invoice'],
   summary:
     'نمایش روند وضعیت سفارش با تایم‌لاین و برچسب دامنهٔ سفارش، همراه با فاکتور رسمی A4 آمادهٔ چاپ با تاریخ شمسی و مبالغ تومان.',
-  status: 'review',
+  status: 'approved',
   products: ['N', 'T'],
   Example: () => (
     <OrderDetail
@@ -344,25 +282,6 @@ export const commerceOrdersDoc: ComponentDoc = {
       'تاریخ فاکتور را به میلادی یا بدون منطقهٔ زمانی تهران نمایش ندهید.',
     ],
   },
-  api: [
-    {
-      name: 'OrderDetail',
-      props: [
-        { name: 'orderNumber', type: 'string', description: 'شمارهٔ سفارش (LTR).' },
-        { name: 'status', type: 'OrderStatus', description: 'وضعیت دامنهٔ سفارش برای `StatusBadge`.' },
-        { name: 'timeline', type: 'TimelineEntry[]', description: 'تاریخچهٔ تغییرات وضعیت سفارش.' },
-        { name: 'items', type: 'OrderLineItem[]', description: 'اقلام فاکتور.' },
-      ],
-    },
-    {
-      name: 'Invoice',
-      props: [
-        { name: 'invoiceNumber', type: 'string', description: 'شمارهٔ فاکتور (LTR).' },
-        { name: 'issuedAt', type: 'DateInput', description: 'تاریخ صدور به شمسی (تهران).' },
-        { name: 'seller / buyer', type: 'KeyValueEntry[]', description: 'مشخصات فروشنده و خریدار.' },
-      ],
-    },
-  ],
   a11y: [
     'جدول اقلام دارای سرستون‌های `<th scope="col">` و ظرف اسکرول افقی ایمن در موبایل است.',
     'برچسب وضعیت سفارش از `StatusBadge(domain="order")` با آیکون و واژه استفاده می‌کند.',

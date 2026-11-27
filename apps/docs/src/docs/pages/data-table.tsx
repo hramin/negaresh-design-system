@@ -218,7 +218,7 @@ export const dataTableDoc: ComponentDoc = {
   base: 'React Aria Table',
   summary:
     'جدول کامل داده‌های مدیریتی روی React Aria Table با مرتب‌سازی، انتخاب ردیف، سرصفحهٔ چسبان، کنترل نمایش ستون‌ها، تراکم راحت/فشرده، حالت‌های خالی/بارگذاری/خطا و تبدیل خودکار به کارت‌های ستونی زیر ۹۰۰ پیکسل.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -308,21 +308,6 @@ export const dataTableDoc: ComponentDoc = {
       'جدول را بدون حالت خالی (EmptyState)، بارگذاری (Skeleton) و خطا (ErrorState) رها نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'DataTable<T>',
-      props: [
-        { name: 'columns / rows / getRowKey', type: 'DataTableColumn<T>[] / T[] / (r) => Key', description: 'تعریف ستون‌ها، داده‌ها و کلید یکتای هر ردیف.' },
-        { name: 'selectionMode / selectedKeys / onSelectionChange', type: "'none' | 'single' | 'multiple'", default: "'none'", description: 'انتخاب ردیف‌ها با چک‌باکس ۴۴ پیکسلی.' },
-        { name: 'sortDescriptor / onSortChange', type: 'SortDescriptor', description: 'مرتب‌سازی کنترل‌شده یا خودکار (با sortValue).' },
-        { name: 'stickyHeader', type: 'boolean', default: 'false', description: 'چسبان کردن سرصفحه در بالای ناحیهٔ اسکرول جدول.' },
-        { name: 'density / showDensityToggle', type: "'comfortable' | 'compact' / boolean", default: "'comfortable' / false", description: 'تراکم ردیف‌ها و نمایش کلید تغییر تراکم.' },
-        { name: 'enableColumnVisibility / visibleColumns', type: 'boolean / Iterable<string>', default: 'false', description: 'منوی انتخاب ستون‌های قابل نمایش.' },
-        { name: 'mobileCards', type: 'boolean', default: 'true', description: 'تبدیل خودکار ردیف‌ها به کارت‌های ستونی زیر ۹۰۰ پیکسل (تک‌درخت DOM، سازگار با SSR).' },
-        { name: 'isLoading / error / onRetry / emptyState', type: 'boolean / ReactNode', description: 'حالت‌های بارگذاری، خطا و خالی با کامپوننت‌های موج ۱.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'ArrowUp / ArrowDown / ArrowLeft / ArrowRight', action: 'حرکت بین ردیف‌ها و سلول‌های جدول در جهت راست‌به‌چپ.' },
     { keys: 'Space', action: 'انتخاب یا لغو انتخاب ردیف متمرکز.' },

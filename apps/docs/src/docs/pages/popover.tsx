@@ -53,7 +53,7 @@ export const popoverDoc: ComponentDoc = {
   base: 'Popover, OverlayArrow, Dialog, DialogTrigger',
   summary:
     'لایهٔ شناور متصل به محرک بر پایهٔ React Aria با سایهٔ --nds-shadow-overlay، پیکان اختیاری و جایگذاری منطقی سازگار با راست‌به‌چپ.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -94,19 +94,6 @@ export const popoverDoc: ComponentDoc = {
       'برای تصمیم‌های مسدودکننده از Dialog یا AlertDialog استفاده کنید.',
     ],
   },
-  api: [
-    {
-      name: 'Popover',
-      props: [
-        { name: 'placement', type: 'PopoverPlacement', default: "'bottom'", description: 'جایگذاری منطقی نسبت به محرک (RTL-aware).' },
-        { name: 'showArrow', type: 'boolean', default: 'false', description: 'نمایش پیکان هم‌راستا با محرک.' },
-        { name: 'offset', type: 'number', default: '8 (یا 12 با پیکان)', description: 'فاصلهٔ پیکسلی از محرک.' },
-        { name: 'shouldFlip', type: 'boolean', default: 'true', description: 'برگرداندن خودکار در لبهٔ نما.' },
-        { name: 'title', type: 'ReactNode', description: 'عنوان اختیاری متصل به aria-labelledby.' },
-        { name: 'isNonModal', type: 'boolean', default: 'false', description: 'اجازهٔ تعامل مستقیم با بیرون پاپ‌اور.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Enter / Space', action: 'باز کردن پاپ‌اور از روی محرک.' },
     { keys: 'Tab / Shift+Tab', action: 'حرکت بین کنترل‌های داخلی پاپ‌اور.' },

@@ -79,7 +79,7 @@ export const fileUploadDoc: ComponentDoc = {
   base: 'DropZone, FileTrigger, ProgressBar',
   summary:
     'منطقهٔ کشیدن و رها کردن همراه با دکمهٔ دسترس‌پذیر انتخاب پرونده، اعتبارسنجی فارسی نوع/حجم/تعداد، فهرست پرونده‌ها با دکمهٔ حذف و حالت‌های پیشرفت و خطا.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -158,59 +158,6 @@ export const fileUploadDoc: ComponentDoc = {
       'حالت پیشرفت یا خطای پرونده را تنها با رنگ نشان ندهید؛ از درصد فارسی، آیکون و پیام صریح استفاده کنید.',
     ],
   },
-  api: [
-    {
-      name: 'FileUpload',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب الزامی فیلد بارگذاری.' },
-        {
-          name: 'items / defaultItems / onItemsChange',
-          type: 'readonly FileUploadItem[] / (items: FileUploadItem[]) => void',
-          description: 'فهرست کنترل‌شده یا اولیهٔ پرونده‌ها (ساختار ساده و سازگار با SSR).',
-        },
-        {
-          name: 'onSelectFiles / onRemove / onReject',
-          type: '(files: File[]) => void / (id: string) => void / (rejections: FileRejection[]) => void',
-          description: 'رویدادهای انتخاب، حذف و رد شدن پرونده‌ها همراه با کد و پیام فارسی خطا.',
-        },
-        {
-          name: 'accept / maxFileSize / maxFiles / allowsMultiple',
-          type: 'readonly string[] / number / number / boolean',
-          description: 'قواعد اعتبارسنجی نوع پرونده، سقف حجم به بایت، حداکثر تعداد و انتخاب چندگانه.',
-        },
-        {
-          name: 'prompt / hint / actionLabel / description / errorMessage',
-          type: 'ReactNode',
-          description: 'متن‌های راهنما و خطا؛ مقادیر پیش‌فرض از NdsMessages خوانده می‌شوند.',
-        },
-        {
-          name: 'id / name / isDisabled / isInvalid / isRequired / className / ref',
-          type: 'Field props',
-          description: 'شناسهٔ دکمهٔ انتخاب (برای FormErrorSummary)، اتصال به validationErrors فرم و ویژگی‌های ریشه.',
-        },
-      ],
-    },
-    {
-      name: 'DropZone',
-      props: [
-        {
-          name: 'prompt / hint / actionLabel',
-          type: 'ReactNode',
-          description: 'متن دعوت به رهاسازی، راهنمای کوتاه و عنوان دکمهٔ FileTrigger.',
-        },
-        {
-          name: 'accept / allowsMultiple / onSelectFiles',
-          type: 'readonly string[] / boolean / (files: File[]) => void',
-          description: 'فیلتر اولیه و بازگردانی پرونده‌های رهاشده یا انتخاب‌شده.',
-        },
-        {
-          name: 'isDisabled / isInvalid / buttonId / aria-label / aria-labelledby',
-          type: 'boolean / string',
-          description: 'حالت‌های غیرفعال/خطادار و نام دسترس‌پذیر ناحیهٔ رهاسازی.',
-        },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت میان ناحیهٔ DropZone، دکمهٔ «انتخاب پرونده» و دکمه‌های حذف پرونده‌ها.' },
     { keys: 'Enter / Space روی دکمهٔ انتخاب', action: 'باز کردن پنجرهٔ انتخاب پروندهٔ سیستم‌عامل (جایگزین بدون کشیدن).' },

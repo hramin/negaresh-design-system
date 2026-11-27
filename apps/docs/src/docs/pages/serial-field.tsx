@@ -2,7 +2,7 @@ import { Code, CodeField, SerialField, Stack, Text } from '@negaresh/react';
 import { useState } from 'react';
 import type { ComponentDoc } from '../types.ts';
 import { GalleryRow, State } from '../ui.tsx';
-import { fieldA11y, fieldApi, fieldKeyboard } from './field-docs.ts';
+import { fieldA11y, fieldKeyboard } from './field-docs.ts';
 import styles from './fields.module.css';
 
 function Example() {
@@ -40,7 +40,7 @@ export const serialFieldDoc: ComponentDoc = {
   base: 'TextField + @negaresh/utils',
   summary:
     'سریال با حروف بزرگ و الگوی ۵–۵ نمایش داده می‌شود؛ مقدار ذخیره‌شده فاصله و خط تیره ندارد. CodeField برای کدهای عمومی بدون محدودیت طول سریال است.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -138,34 +138,6 @@ export const serialFieldDoc: ComponentDoc = {
       'متن اضافی را پنهانی قطع نکنید؛ خطای مشخص نشان دهید.',
     ],
   },
-  api: [
-    fieldApi('SerialField', [
-      {
-        name: 'groups',
-        type: 'readonly number[]',
-        default: '[5, 5]',
-        description: 'طول گروه‌های سریال برای نمایش و اعتبارسنجی.',
-      },
-      {
-        name: 'showPatternHint',
-        type: 'boolean',
-        default: 'true',
-        description: 'نمایش راهنمای الگوی سریال.',
-      },
-      {
-        name: 'onChange',
-        type: '(value: string) => void',
-        description: 'مقدار نرمال‌شده با حروف بزرگ، ارقام لاتین و بدون فاصله/خط تیره.',
-      },
-    ]),
-    fieldApi('CodeField', [
-      {
-        name: 'value / onChange',
-        type: 'string / (value: string) => void',
-        description: 'نرمال‌سازی مشترک کد؛ بدون اجبار الگوی ۵–۵ یا طول سریال.',
-      },
-    ]),
-  ],
   keyboard: fieldKeyboard,
   a11y: fieldA11y,
   rtl: [

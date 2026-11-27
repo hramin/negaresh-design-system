@@ -151,7 +151,7 @@ export const sideNavDoc: ComponentDoc = {
   components: ['SideNav', 'SideNavGroup', 'SideNavItem'],
   summary:
     'منوی کناری گروه‌بندی‌شده برای پنل کاربری و مدیریت با پشتیبانی از نشان عددی فارسی، فیلتر بر اساس نقش کاربری و تبدیل خودکار به TabStrip افقی زیر ۹۰۰ پیکسل (D-90).',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   base: 'React Aria Link + Disclosure',
   Example,
@@ -196,25 +196,6 @@ export const sideNavDoc: ComponentDoc = {
       'در زیر ۹۰۰ پیکسل دو نوار ناوبری هم‌زمان رندر نکنید؛ adaptToTabStrip این جابه‌جایی را در یک landmark واحد انجام می‌دهد.',
     ],
   },
-  api: [
-    {
-      name: 'SideNav',
-      props: [
-        { name: 'groups', type: 'readonly SideNavGroupData[]', description: 'آرایهٔ گروه‌ها و پیوندها (پشتیبانی از تبدیل خودکار به TabStrip در موبایل).' },
-        { name: 'userRoles', type: 'readonly string[]', description: 'نقش‌های فعال کاربر برای فیلتر کردن گروه‌ها و آیتم‌ها.' },
-        { name: 'adaptToTabStrip', type: 'boolean', default: 'true', description: 'تبدیل خودکار به TabStrip افقی قابل پیمایش در عرض زیر ۹۰۰ پیکسل.' },
-        { name: 'aria-label', type: 'string', default: "'منوی کناری'", description: 'نام دسترس‌پذیر landmark ناوبری.' },
-      ],
-    },
-    {
-      name: 'SideNavGroup / SideNavItem',
-      props: [
-        { name: 'title / isCollapsible', type: 'ReactNode / boolean', description: 'عنوان گروه و امکان باز/بسته‌شدن با Disclosure.' },
-        { name: 'href / onPress', type: 'string / () => void', description: 'پیوند سروررندر یا اقدام دکمه‌ای.' },
-        { name: 'isCurrent / badge / roles', type: 'boolean / ReactNode | number / string[]', description: 'صفحهٔ فعلی (aria-current=page)، نشان فارسی و نقش‌های مجاز.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت بین گروه‌های بازشونده و پیوندهای ناوبری.' },
     { keys: 'Enter / Space', action: 'باز کردن پیوند یا باز/بسته کردن گروه قابل جمع‌شدن.' },

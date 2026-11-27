@@ -31,7 +31,7 @@ export const verifiedBadgeDoc: ComponentDoc = {
   base: 'Badge (Wave 1)',
   summary:
     'نشان تأیید پروانهٔ متخصصان در صفحهٔ پروفایل و فهرست متخصصان نگارش، ساخته‌شده روی Badge موج ۱ با آیکون سپر، برچسب بومی فارسی و شمارهٔ پروانهٔ اختیاری با ارقام فارسی.',
-  status: 'review',
+  status: 'approved',
   products: ['N'],
   Example,
   Gallery: () => (
@@ -62,17 +62,6 @@ export const verifiedBadgeDoc: ComponentDoc = {
       'صرفاً آیکون بدون متن نمایش ندهید؛ برچسب فارسی همیشه همراه آیکون سپر می‌آید.',
     ],
   },
-  api: [
-    {
-      name: 'VerifiedBadge',
-      props: [
-        { name: 'label', type: 'ReactNode', default: '«پروانهٔ تأییدشده»', description: 'متن نشان (از NdsMessages.verifiedExpert).' },
-        { name: 'licenceNumber', type: 'string | number', description: 'شمارهٔ پروانهٔ اختیاری؛ به ارقام فارسی تبدیل می‌شود.' },
-        { name: 'size', type: "'sm' | 'md'", default: "'md'", description: 'اندازهٔ نشان برگرفته از Badge.' },
-        { name: 'tone', type: "'success' | 'accent'", default: "'success'", description: 'لحن رنگ آرام سبز (success) یا فیروزه‌ای (accent).' },
-      ],
-    },
-  ],
   a11y: [
     'بر پایهٔ Badge موج ۱ ساخته شده و هرگز تنها به رنگ متکی نیست: آیکون سپر + متن فارسی «پروانهٔ تأییدشده».',
     'کنتراست هر دو لحن success و accent در حالت روشن و تیره توسط tokens:check تضمین می‌شود.',

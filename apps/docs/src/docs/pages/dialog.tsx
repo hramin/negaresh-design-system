@@ -86,7 +86,7 @@ export const dialogDoc: ComponentDoc = {
   base: 'ModalOverlay, Modal, Dialog, DialogTrigger',
   summary:
     'پنجرهٔ مودال و پیام تأیید مسدودکننده بر پایهٔ React Aria با تلهٔ فوکوس، بازگشت فوکوس به دکمهٔ بازکننده، سایهٔ لایهٔ شناور (--nds-shadow-overlay) و تبدیل خودکار به برگهٔ پایینی در موبایل (زیر ۹۰۰ پیکسل، D-90).',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -152,36 +152,6 @@ export const dialogDoc: ComponentDoc = {
       'بیش از یک مودال را هم‌زمان روی هم باز نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'DialogTrigger',
-      props: [
-        { name: 'isOpen / defaultOpen', type: 'boolean', description: 'وضعیت باز بودن کنترل‌شده یا اولیه.' },
-        { name: 'onOpenChange', type: '(isOpen: boolean) => void', description: 'رویداد تغییر وضعیت باز/بسته.' },
-        { name: 'children', type: '[ReactElement, ReactElement]', description: 'دکمهٔ محرک و پس از آن Dialog یا AlertDialog.' },
-      ],
-    },
-    {
-      name: 'Dialog',
-      props: [
-        { name: 'title', type: 'ReactNode', description: 'عنوان متصل به aria-labelledby.' },
-        { name: 'description', type: 'ReactNode', description: 'توضیح تکمیلی زیر عنوان.' },
-        { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'حداکثر عرض پنجره در دسکتاپ.' },
-        { name: 'footer', type: 'ReactNode | ((close) => ReactNode)', description: 'بخش اقدام‌های پایین با پس‌زمینهٔ فرورفته.' },
-        { name: 'showCloseButton', type: 'boolean', default: 'true', description: 'نمایش دکمهٔ بستن با هدف ۴۴×۴۴ پیکسل.' },
-        { name: 'isDismissable', type: 'boolean', default: 'true', description: 'امکان بستن با کلیک روی پس‌زمینه.' },
-      ],
-    },
-    {
-      name: 'AlertDialog',
-      props: [
-        { name: 'title', type: 'ReactNode', description: 'عنوان الزامی پیام تأیید.' },
-        { name: 'tone', type: "'default' | 'danger'", default: "'default'", description: 'لحن عادی یا مخرب (همراه با آیکون و دکمهٔ danger).' },
-        { name: 'confirmLabel / cancelLabel', type: 'ReactNode', default: '«تأیید» / «انصراف»', description: 'برچسب دکمه‌های تأیید و انصراف.' },
-        { name: 'onConfirm / onCancel', type: '() => void | Promise<void>', description: 'رویداد تأیید (پشتیبانی از Promise) و انصراف.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'گردش فوکوس درون تلهٔ فوکوس پنجره.' },
     { keys: 'Escape', action: 'بستن پنجره و بازگشت فوکوس به دکمهٔ بازکننده.' },

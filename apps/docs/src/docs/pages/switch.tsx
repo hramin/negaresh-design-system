@@ -31,7 +31,7 @@ export const switchDoc: ComponentDoc = {
   base: 'SwitchField, SwitchButton',
   summary:
     'کلید روشن/خاموش برای تنظیمات دوتایی با اعمال فوری؛ همراه با توضیح اختیاری، حرکت راست‌به‌چپ دستگیره و احترام به کاهش حرکت.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -75,20 +75,6 @@ export const switchDoc: ComponentDoc = {
       'در فرم‌هایی که نیازمند دکمهٔ «ثبت» هستند (مانند پذیرش قوانین) از Switch استفاده نکنید؛ Checkbox مناسب‌تر است.',
     ],
   },
-  api: [
-    {
-      name: 'Switch',
-      props: [
-        { name: 'children', type: 'ReactNode', description: 'برچسب دیدنی کلید.' },
-        { name: 'description', type: 'ReactNode', description: 'توضیح تکمیلی متصل به ورودی.' },
-        { name: 'isSelected / defaultSelected', type: 'boolean', description: 'وضعیت روشن/خاموش.' },
-        { name: 'onChange', type: '(isSelected: boolean) => void', description: '—' },
-        { name: 'isDisabled / isReadOnly', type: 'boolean', description: 'غیرفعال یا فقط‌خواندنی.' },
-        { name: 'name / value / id', type: 'string', description: 'ویژگی‌های ارسال فرم و شناسه.' },
-        { name: 'className / ref', type: 'string / Ref<HTMLInputElement>', description: '—' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'جابه‌جایی فوکوس روی کلید' },
     { keys: 'Space / Enter', action: 'تغییر وضعیت روشن و خاموش' },

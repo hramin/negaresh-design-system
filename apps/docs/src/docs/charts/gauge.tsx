@@ -84,7 +84,7 @@ export const gaugeDoc: ComponentDoc = {
   components: ['Gauge'],
   summary:
     'نمایش یک شاخص واحد روی مقیاس کران‌دار (مانند ۰ تا ۱۰۰) همراه با عدد فارسی هم‌عرض و برچسب متنی الزامی بازه.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V', 'N'],
   Example,
   Gallery: () => (
@@ -146,20 +146,6 @@ export const gaugeDoc: ComponentDoc = {
       'برای مقایسهٔ چندین مقیاس در کنار هم از چند Gauge پیاپی استفاده نکنید؛ IntervalBar بسیار خواناتر است.',
     ],
   },
-  api: [
-    {
-      name: 'Gauge',
-      props: [
-        { name: 'value', type: 'number', description: 'مقدار فعلی شاخص.' },
-        { name: 'domain', type: 'readonly [number, number]', description: 'کمینه و بیشینهٔ مقیاس.' },
-        { name: 'label', type: 'string', description: 'نام کوتاه شاخص در مرکز قوس.' },
-        { name: 'bandWord', type: 'string', description: 'واژهٔ الزامی وضعیت/بازه (هرگز رنگ به تنهایی).' },
-        { name: 'severity', type: "'ok' | 'caution' | 'severe'", description: 'شدت معنایی قوس و برچسب.' },
-        { name: 'mode', type: "'professional' | 'calm'", default: "'professional'", description: 'در حالت calm هیچ رنگ قرمز/رز استفاده نمی‌شود.' },
-        { name: 'bands', type: 'readonly BandSpec[]', description: 'بازه‌های بخش‌بندی‌شده روی قوس.' },
-      ],
-    },
-  ],
   a11y: [
     'SVG دارای role="img" و aria-label ترکیبی شامل نام شاخص، مقدار فارسی و واژهٔ وضعیت است.',
     'در چاپ و حالت forced-colors، مقدار عددی، کرانه‌های کمینه/بیشینه و کپسول وضعیت کاملاً خوانا می‌مانند.',

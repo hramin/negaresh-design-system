@@ -17,7 +17,7 @@ export const themeProviderDoc: ComponentDoc = {
   components: ['ThemeProvider'],
   summary:
     'ریشهٔ هر برنامه: حالت روشن/تیره، تراکم، زبان React Aria و کاتالوگ پیام‌ها. انتخاب کاربر در کوکی می‌ماند تا رندر سرور بدون پرش باشد.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <Stack gap="2">
@@ -52,41 +52,6 @@ export const themeProviderDoc: ComponentDoc = {
     ],
     dont: ['شاخه زدن در کامپوننت‌ها بر اساس حالت؛ نام توکن‌ها در هر دو حالت یکی است.'],
   },
-  api: [
-    {
-      name: 'ThemeProvider',
-      props: [
-        {
-          name: 'messages',
-          type: 'NdsMessages',
-          description: 'رشته‌هایی که کامپوننت‌ها خودشان نشان می‌دهند.',
-        },
-        {
-          name: 'defaultTheme',
-          type: "'light' | 'dark' | 'system'",
-          default: "'system'",
-          description: 'انتخاب اولیه (از کوکی).',
-        },
-        {
-          name: 'onThemeChange',
-          type: '(choice) => void',
-          description: 'ذخیرهٔ انتخاب (serializeThemeCookie).',
-        },
-        {
-          name: 'density',
-          type: "'comfortable' | 'compact'",
-          default: "'comfortable'",
-          description: 'compact برای جدول‌های مدیریت.',
-        },
-        {
-          name: 'locale',
-          type: 'string',
-          default: "'fa-IR-u-ca-persian'",
-          description: 'زبان و تقویم React Aria.',
-        },
-      ],
-    },
-  ],
   a11y: [
     'I18nProvider جهت و تقویم را به همهٔ اجزای React Aria می‌دهد.',
     'رشته‌های پنهان React Aria (مانند دکمهٔ «بستن» در پاپ‌اور و پیام نگه‌داشتن منو) از طریق فرهنگ فارسی داخلی بومی‌سازی می‌شوند؛ در SSR می‌توانید ReactAriaLocalizationScript را در <head> بگذارید.',

@@ -39,7 +39,7 @@ export const avatarDoc: ComponentDoc = {
   components: ['Avatar', 'AvatarGroup'],
   summary:
     'نمایش تصویر نمایه با جایگزین خودکار حروف اول نام فارسی (بدون چسبندگی حروف)، جایگزین آیکون کاربر و گروه هم‌پوشان با شمارندهٔ فارسی سرریز (formatNumber).',
-  status: 'review',
+  status: 'approved',
   products: ['N', 'T'],
   Example,
   Gallery: () => (
@@ -94,28 +94,6 @@ export const avatarDoc: ComponentDoc = {
       'حروف فارسی را بدون فاصله کنار هم نگذارید؛ Avatar به طور خودکار بین دو حرف فارسی فاصله می‌گذارد تا به واژهٔ ناخواسته نچسبند.',
     ],
   },
-  api: [
-    {
-      name: 'Avatar',
-      props: [
-        { name: 'src', type: 'string', description: 'نشانی تصویر نمایه؛ در خطای بارگذاری به حروف اول برمی‌گردد.' },
-        { name: 'name', type: 'string', description: 'نام کامل برای استخراج حروف اول و alt پیش‌فرض.' },
-        { name: 'alt', type: 'string', description: 'متن جایگزین؛ برای حالت تزئینی کنار نام، alt="" بدهید.' },
-        { name: 'initials', type: 'string', description: 'جایگزین دستی برای حروف اول.' },
-        { name: 'size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'", description: 'قطر نمایه (۲۴ تا ۶۴ پیکسل).' },
-        { name: 'tone', type: "'neutral' | 'accent' | 'info' | 'success'", default: "'neutral'", description: 'لحن پس‌زمینه در حالت حروف اول.' },
-      ],
-    },
-    {
-      name: 'AvatarGroup',
-      props: [
-        { name: 'max', type: 'number', description: 'حداکثر تعداد نمایه‌های آشکار پیش از نشان سرریز.' },
-        { name: 'total', type: 'number', description: 'شمار کل اعضا در صورت ارسال زیرمجموعه.' },
-        { name: 'size', type: 'AvatarSize', default: "'md'", description: 'اندازهٔ هماهنگ همهٔ اعضا و شمارنده.' },
-        { name: 'aria-label', type: 'string', description: 'نام دسترس‌پذیر گروه.' },
-      ],
-    },
-  ],
   a11y: [
     'نشان سرریز دارای برچسب خوانا برای صفحه‌خوان («۳ نفر دیگر») است و عدد نمایشی با formatNumber به ارقام فارسی تبدیل می‌شود.',
     'عنوان‌های رایج فارسی مانند «دکتر» هنگام استخراج حروف اول نادیده گرفته می‌شوند.',

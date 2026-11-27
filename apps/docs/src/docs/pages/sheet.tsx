@@ -134,7 +134,7 @@ export const sheetDoc: ComponentDoc = {
   base: 'ModalOverlay, Modal, Dialog, DialogTrigger',
   summary:
     'پنل کشویی کنار صفحه در دسکتاپ با جایگذاری منطقی (start / end) و برگهٔ پایینی در موبایل (زیر ۹۰۰ پیکسل). به سادگی در جایگاه mobileMenu نوار بالایی (TopBar) ترکیب می‌شود.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -177,19 +177,6 @@ export const sheetDoc: ComponentDoc = {
       'از جهت فیزیکی چپ/راست در API استفاده نکنید؛ همیشه start یا end را برگزینید.',
     ],
   },
-  api: [
-    {
-      name: 'Sheet / Drawer',
-      props: [
-        { name: 'side', type: "'start' | 'end' | 'bottom'", default: "'start'", description: 'لبهٔ منطقی در دسکتاپ؛ زیر ۹۰۰ پیکسل همیشه bottom sheet.' },
-        { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'عرض کشو در دسکتاپ (۳۲۰، ۴۰۰ یا ۵۶۰ پیکسل).' },
-        { name: 'title / description', type: 'ReactNode', description: 'عنوان و توضیح بالای کشو.' },
-        { name: 'footer', type: 'ReactNode | ((close) => ReactNode)', description: 'بخش اقدام‌های پایین با پس‌زمینهٔ فرورفته.' },
-        { name: 'showCloseButton', type: 'boolean', default: 'true', description: 'دکمهٔ بستن کشو با هدف لمسی ۴۴×۴۴ پیکسل.' },
-        { name: 'isDismissable', type: 'boolean', default: 'true', description: 'امکان بستن با کلیک بیرون کشو.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت درون تلهٔ فوکوس کشو.' },
     { keys: 'Escape', action: 'بستن کشو و بازگرداندن فوکوس به دکمهٔ محرک.' },

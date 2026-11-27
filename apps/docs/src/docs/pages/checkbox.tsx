@@ -47,7 +47,7 @@ export const checkboxDoc: ComponentDoc = {
   base: 'CheckboxField, CheckboxButton, CheckboxGroup',
   summary:
     'انتخاب مستقل یا چندگانه با پشتیبانی از حالت نیمه‌انتخاب‌شده (indeterminate)، توضیح هر گزینه، چیدمان عمودی/افقی و اعتبارسنجی گروهی.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -121,46 +121,6 @@ export const checkboxDoc: ComponentDoc = {
       'برای انتخاب یک گزینه از میان چند مورد انحصاری، RadioGroup به کار ببرید.',
     ],
   },
-  api: [
-    {
-      name: 'Checkbox',
-      props: [
-        { name: 'children', type: 'ReactNode', description: 'برچسب دیدنی چک‌باکس.' },
-        { name: 'description', type: 'ReactNode', description: 'توضیح تکمیلی متصل به ورودی.' },
-        { name: 'isSelected / defaultSelected', type: 'boolean', description: 'کنترل‌شده / اولیه.' },
-        { name: 'onChange', type: '(isSelected: boolean) => void', description: '—' },
-        { name: 'isIndeterminate', type: 'boolean', description: 'حالت نیمه‌انتخاب‌شده (خط تیره).' },
-        { name: 'value / name', type: 'string', description: 'مقدار در CheckboxGroup یا فرم.' },
-        {
-          name: 'isDisabled / isReadOnly / isRequired / isInvalid',
-          type: 'boolean',
-          description: 'حالت‌های کنترلی و اعتبارسنجی.',
-        },
-        { name: 'errorMessage', type: 'ReactNode', description: 'خطای چک‌باکس تکی.' },
-        { name: 'className / ref', type: 'string / Ref<HTMLInputElement>', description: '—' },
-      ],
-    },
-    {
-      name: 'CheckboxGroup',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب گروه.' },
-        { name: 'value / defaultValue', type: 'string[]', description: 'مقادیر انتخاب‌شده.' },
-        { name: 'onChange', type: '(value: string[]) => void', description: '—' },
-        {
-          name: 'orientation',
-          type: "'vertical' | 'horizontal'",
-          default: "'vertical'",
-          description: 'چیدمان گزینه‌ها.',
-        },
-        { name: 'description / errorMessage', type: 'ReactNode', description: 'راهنما و خطای گروه.' },
-        {
-          name: 'isRequired / isDisabled / isReadOnly / isInvalid',
-          type: 'boolean',
-          description: '—',
-        },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت میان چک‌باکس‌ها' },
     { keys: 'Space', action: 'تغییر وضعیت انتخاب چک‌باکس دارای فوکوس' },

@@ -33,7 +33,7 @@ export const radioGroupDoc: ComponentDoc = {
   base: 'RadioGroup, RadioField, RadioButton',
   summary:
     'انتخاب انحصاری یک گزینه از میان چند گزینه با چیدمان عمودی یا افقی، توضیح اختصاصی هر گزینه و پیمایش کیبوردی راست‌به‌چپ.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -107,38 +107,6 @@ export const radioGroupDoc: ComponentDoc = {
       'گزینه‌های بلند با توضیح چندخطی را افقی نچینید.',
     ],
   },
-  api: [
-    {
-      name: 'RadioGroup',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب دیدنی گروه.' },
-        { name: 'value / defaultValue', type: 'string', description: 'مقدار انتخاب‌شده.' },
-        { name: 'onChange', type: '(value: string) => void', description: 'اعلام تغییر انتخاب.' },
-        {
-          name: 'orientation',
-          type: "'vertical' | 'horizontal'",
-          default: "'vertical'",
-          description: 'چیدمان عمودی یا افقی و جهت کلیدهای پیمایش.',
-        },
-        { name: 'description / errorMessage', type: 'ReactNode', description: 'راهنما و خطای گروه.' },
-        {
-          name: 'isRequired / isDisabled / isReadOnly / isInvalid',
-          type: 'boolean',
-          description: 'حالت‌های اعتبارسنجی و دسترسی.',
-        },
-        { name: 'name / id', type: 'string', description: 'نام ارسال فرم و شناسه.' },
-      ],
-    },
-    {
-      name: 'Radio',
-      props: [
-        { name: 'value', type: 'string', description: 'مقدار گزینه.' },
-        { name: 'children', type: 'ReactNode', description: 'برچسب گزینه.' },
-        { name: 'description', type: 'ReactNode', description: 'توضیح تکمیلی گزینه.' },
-        { name: 'isDisabled', type: 'boolean', description: 'غیرفعال کردن همین گزینه.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'ورود به گزینهٔ انتخاب‌شده (یا نخستین گزینه) و خروج از گروه' },
     { keys: '↑ / ↓ (عمودی) · ← / → (افقی)', action: 'جابه‌جایی و انتخاب گزینهٔ قبلی/بعدی' },

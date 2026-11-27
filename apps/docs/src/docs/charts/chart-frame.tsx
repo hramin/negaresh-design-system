@@ -152,7 +152,7 @@ export const chartFrameDoc: ComponentDoc = {
   components: ['ChartFrame', 'ReferenceLine', 'Band'],
   summary:
     'قاب استاندارد هر نمودار در دیزاین سیستم نگرش شامل عنوان، پیام یک‌جمله‌ای، راهنما، منبع و جدول جایگزین بومی (<details>)، همراه با اجزای پایهٔ ReferenceLine و Band.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V', 'N', 'R'],
   Example,
   Gallery: () => (
@@ -206,40 +206,6 @@ export const chartFrameDoc: ComponentDoc = {
       'در ChartFrame از سایه‌های تزئینی یا قاب‌های اضافی استفاده نکنید (D-77).',
     ],
   },
-  api: [
-    {
-      name: 'ChartFrame',
-      props: [
-        { name: 'title', type: 'ReactNode', description: 'عنوان نمودار (الزامی).' },
-        { name: 'takeaway', type: 'ReactNode', description: 'خلاصهٔ یک‌جمله‌ای نکتهٔ اصلی نمودار.' },
-        { name: 'legend', type: 'readonly ChartLegendItem[]', description: 'راهنمای سری‌ها شامل رنگ، خط‌چین و شکل نشانگر غیرلوزی.' },
-        { name: 'sourceNote', type: 'ReactNode', description: 'یادداشت منبع یا هنجار در پایین قاب.' },
-        { name: 'state', type: "'ready' | 'loading' | 'empty' | 'error'", default: "'ready'", description: 'وضعیت دادهٔ نمودار.' },
-        { name: 'table', type: 'ChartTableData', description: 'داده‌های جدول جایگزین دسترس‌پذیر.' },
-        { name: 'tableMode', type: "'toggle' | 'visible' | 'sr-only'", default: "'toggle'", description: 'نحوهٔ نمایش جدول جایگزین (حالت toggle بدون جاوااسکریپت کار می‌کند).' },
-        { name: 'onRetry', type: '() => void', description: 'کال‌بک دکمهٔ تلاش دوباره در حالت error.' },
-      ],
-    },
-    {
-      name: 'ReferenceLine',
-      props: [
-        { name: 'orientation', type: "'vertical' | 'horizontal'", description: 'جهت خط مرجع در SVG.' },
-        { name: 'position', type: 'number', description: 'مختصات عمود بر خط.' },
-        { name: 'start / end', type: 'number', description: 'مبدأ و مقصد خط مرجع.' },
-        { name: 'tone', type: "'ref' | 'accent' | 'info' | 'warning' | 'danger'", default: "'ref'", description: 'لحن معنایی خط (در حالت calm رنگ danger به accent تبدیل می‌شود).' },
-        { name: 'lineStyle', type: "'dashed' | 'dotted' | 'solid'", default: "'dashed'", description: 'الگوی خط برای خوانایی در چاپ سیاه‌وسفید.' },
-      ],
-    },
-    {
-      name: 'Band',
-      props: [
-        { name: 'orientation', type: "'vertical' | 'horizontal'", description: 'جهت بازه در محور.' },
-        { name: 'fromCoord / toCoord', type: 'number', description: 'مختصات شروع و پایان بازه.' },
-        { name: 'spanStart / spanEnd', type: 'number', description: 'گسترهٔ عمود بر بازه.' },
-        { name: 'tone', type: "'band' | 'ok' | 'caution' | 'severe' | 'calm'", default: "'band'", description: 'لحن بازه (در حالت calm رنگ severe به calm تبدیل می‌شود).' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'انتقال فوکوس به دکمهٔ «جدول داده‌ها» (<summary>)' },
     { keys: 'Enter / Space', action: 'باز یا بسته کردن جدول داده‌های جایگزین (حتی بدون جاوااسکریپت)' },

@@ -47,7 +47,7 @@ export const usageMeterDoc: ComponentDoc = {
   base: 'Meter',
   summary:
     'نشانگر سهمیهٔ فعال‌سازی یا صندلی‌های کارزار با بخش‌های مجزای کپسولی (تا ۱۰ سهمیه) یا نوار پیوسته (برای سقف‌های بزرگ)، یادداشت منبع سقف (FR-23) و حالت تکمیل ظرفیت.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'T'],
   Example,
   Gallery: () => (
@@ -120,39 +120,6 @@ export const usageMeterDoc: ComponentDoc = {
       'مقادیر را با ارقام لاتین دستی قالب‌بندی نکنید؛ کامپوننت به صورت خودکار از messages.usageOf استفاده می‌کند.',
     ],
   },
-  api: [
-    {
-      name: 'UsageMeter',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب سهمیه (الزامی).' },
-        { name: 'used', type: 'number', description: 'تعداد سهمیهٔ مصرف‌شده.' },
-        { name: 'limit', type: 'number', description: 'سقف مؤثر کل.' },
-        {
-          name: 'sourceNote',
-          type: 'ReactNode',
-          description: 'توضیح منبع سقف مؤثر (سریال، مشتری، محصول یا سراسری).',
-        },
-        {
-          name: 'maxSegments',
-          type: 'number',
-          default: '10',
-          description: 'حداکثر تعداد قطعات مجزا پیش از تبدیل خودکار به نوار پیوسته.',
-        },
-        {
-          name: 'isFull',
-          type: 'boolean',
-          default: 'used >= limit',
-          description: 'بازنویسی دستی وضعیت تکمیل سقف.',
-        },
-        {
-          name: 'showFullIndicator',
-          type: 'boolean',
-          default: 'false',
-          description: 'نمایش آیکن و متن هشدار «سقف پر شده است» در حالت تکمیل ظرفیت.',
-        },
-      ],
-    },
-  ],
   a11y: [
     'بر پایهٔ React Aria Meter (role="meter") پیاده‌سازی شده و aria-valuetext فارسی (و در حالت پر عبارت «سقف پر شده است») را اعلام می‌کند.',
     'قطعات بصری با aria-hidden="true" از شلوغی صفحه‌خوان جلوگیری می‌کنند.',

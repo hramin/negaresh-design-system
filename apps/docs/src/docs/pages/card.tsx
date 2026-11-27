@@ -87,7 +87,7 @@ export const cardDoc: ComponentDoc = {
   base: 'Link (در حالت کارت پیوندی)',
   summary:
     'کارت عمومی با جایگاه‌های media، body و footer و گونهٔ کارت پیوندی تعاملی. مطابق D-77 تنها با تُن پس‌زمینه و یک خط مویی جدا می‌شود و سایهٔ ثابت ندارد.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -165,24 +165,6 @@ export const cardDoc: ComponentDoc = {
       'به کارت سایهٔ ثابت (box-shadow) اضافه نکنید (D-77).',
     ],
   },
-  api: [
-    {
-      name: 'Card',
-      props: [
-        { name: 'variant', type: "'default' | 'sunken' | 'plain'", default: "'default'", description: 'تُن سطح کارت بدون سایه.' },
-        { name: 'orientation', type: "'vertical' | 'horizontal'", default: "'vertical'", description: 'جهت چیدمان رسانه و بدنه.' },
-        { name: 'href', type: 'string', description: 'در صورت تنظیم، کارت به عنوان پیوند تعاملی React Aria رندر می‌شود.' },
-        { name: 'as', type: "'article' | 'div' | 'section' | 'li'", default: "'article'", description: 'برچسب معنایی در حالت غیرپیوندی.' },
-        { name: 'isDisabled', type: 'boolean', description: 'غیرفعال کردن کارت پیوندی.' },
-      ],
-    },
-    {
-      name: 'CardMedia / CardBody / CardFooter',
-      props: [
-        { name: 'CardFooter.tone', type: "'default' | 'sunken'", default: "'default'", description: 'پس‌زمینهٔ پاورقی کارت.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'فوکوس روی کارت پیوندی (در حالت دارای href) با حلقهٔ ۲ پیکسلی.' },
     { keys: 'Enter', action: 'باز کردن مقصد کارت پیوندی.' },

@@ -60,7 +60,7 @@ export const selectDoc: ComponentDoc = {
   base: 'Select, Popover, ListBox',
   summary:
     'انتخاب یک یا چند گزینه از فهرست بازشو؛ با بخش‌بندی، آیکون، توضیح، پیکان راست‌به‌چپ و پشتیبانی از اعتبارسنجی فرم.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -143,55 +143,6 @@ export const selectDoc: ComponentDoc = {
       'فهرست‌های بسیار طولانی و جست‌وجوپذیر را در Select نگذارید؛ از ComboBox استفاده کنید.',
     ],
   },
-  api: [
-    {
-      name: 'Select',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب دیدنی و الزامی.' },
-        {
-          name: 'selectionMode',
-          type: "'single' | 'multiple'",
-          default: "'single'",
-          description: 'انتخاب تکی یا چندتایی.',
-        },
-        {
-          name: 'value / defaultValue',
-          type: 'Key | null (تکی) · readonly Key[] (چندتایی)',
-          description: 'مقدار کنترل‌شده یا اولیه.',
-        },
-        { name: 'onChange', type: '(value) => void', description: 'اعلام تغییر انتخاب.' },
-        {
-          name: 'placeholder',
-          type: 'string',
-          default: '«موردی را انتخاب کنید»',
-          description: 'متن پیش‌فرض هنگام خالی بودن انتخاب.',
-        },
-        { name: 'description / errorMessage', type: 'ReactNode', description: 'راهنما و خطا.' },
-        {
-          name: 'isRequired / isDisabled / isInvalid / isPending',
-          type: 'boolean',
-          description: 'الزامی، غیرفعال، خطادار و در حال انجام.',
-        },
-        { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'اندازهٔ ماشه.' },
-        { name: 'items', type: 'Iterable<T>', description: 'گزینه‌های پویا.' },
-        { name: 'disabledKeys', type: 'Iterable<Key>', description: 'کلیدهای غیرفعال.' },
-        { name: 'className / ref', type: 'string / Ref<HTMLButtonElement>', description: '—' },
-      ],
-    },
-    {
-      name: 'SelectItem',
-      props: [
-        { name: 'id', type: 'Key', description: 'کلید یکتا.' },
-        { name: 'textValue', type: 'string', description: 'متن ساده برای جست‌وجو و نمایش ماشه.' },
-        { name: 'icon / description', type: 'IconDefinition / ReactNode', description: '—' },
-        { name: 'isDisabled', type: 'boolean', description: 'غیرفعال کردن گزینه.' },
-      ],
-    },
-    {
-      name: 'SelectSection',
-      props: [{ name: 'title', type: 'ReactNode', description: 'عنوان بخش.' }],
-    },
-  ],
   keyboard: [
     { keys: 'Enter / Space / ↓ / ↑', action: 'باز کردن فهرست از روی ماشه' },
     { keys: '↓ / ↑ / Home / End', action: 'حرکت میان گزینه‌ها' },

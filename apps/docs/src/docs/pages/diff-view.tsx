@@ -43,7 +43,7 @@ export const diffViewDoc: ComponentDoc = {
   components: ['DiffView', 'computeLineDiff'],
   summary:
     'مقایسهٔ نسخه‌های متنی یا پیکربندی با نمایش افزوده‌ها و حذف‌ها به کمک علامت، آیکون، برچسب‌های <ins>/<del> و رنگ‌های معنایی (هرگز رنگ به تنهایی)، با پشتیبانی از کدهای LTR.',
-  status: 'review',
+  status: 'approved',
   products: ['N', 'R'],
   Example,
   Gallery: () => (
@@ -112,20 +112,6 @@ export const diffViewDoc: ComponentDoc = {
       'تغییرات را صرفاً با رنگ پس‌زمینه نشان ندهید؛ نشانگرهای +/− و برچسب‌های <ins>/<del> همواره حفظ می‌شوند.',
     ],
   },
-  api: [
-    {
-      name: 'DiffView',
-      props: [
-        { name: 'before / after', type: 'string', description: 'متن نسخهٔ قبل و بعد برای محاسبهٔ خودکار تفاوت خطی (computeLineDiff).' },
-        { name: 'lines', type: 'readonly DiffLine[]', description: 'خطوط آماده همراه با inlineSegments اختیاری برای برجسته‌سازی درون‌خطی.' },
-        { name: 'beforeLabel / afterLabel', type: 'ReactNode', description: 'برچسب نسخهٔ قدیم و جدید در سرصفحه و ستون‌های Split.' },
-        { name: 'mode / defaultMode / onModeChange', type: "'unified' | 'split'", default: "'unified'", description: 'نمای یکپارچه یا کنار هم (زیر ۹۰۰ پیکسل خودکار ستونی می‌شود).' },
-        { name: 'allowModeToggle', type: 'boolean', default: 'false', description: 'نمایش کلید تغییر حالت یکپارچه/کنار هم در سرصفحه.' },
-        { name: 'isCode / dir', type: "boolean / 'rtl' | 'ltr' | 'auto'", default: 'false', description: 'نمایش تک‌عرض چپ‌به‌راست ایزوله برای کدها و سریال‌ها.' },
-        { name: 'showLineNumbers', type: 'boolean', default: 'true', description: 'نمایش ستون شمارهٔ خطوط با ارقام فارسی.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / ArrowLeft / ArrowRight', action: 'تغییر بین نمای «یکپارچه» و «کنار هم» در گروه دکمه‌های سرصفحه.' },
   ],

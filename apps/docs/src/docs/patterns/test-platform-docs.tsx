@@ -35,7 +35,7 @@ export const testPlatformCatalogDoc: ComponentDoc = {
   components: ['TestCatalog', 'TestDashboard'],
   summary:
     'کاتالوگ آزمون‌های روان‌شناختی (رایگان، تخفیف‌دار و تعرفهٔ سازمانی) و پیشخوان کاربر با ادامهٔ آزمون نیمه‌تمام، گزارش‌های آماده و نتایج اخیر.',
-  status: 'review',
+  status: 'approved',
   products: ['T'],
   Example: () => <TestCatalog tests={sampleTestCatalog} onStartOrBuy={() => {}} />,
   Gallery: () => (
@@ -58,23 +58,6 @@ export const testPlatformCatalogDoc: ComponentDoc = {
       'در `@negaresh/patterns` وابستگی مستقیم به `@negaresh/assessment` یا `@negaresh/charts` ایجاد نکنید (docs/03-architecture.md).',
     ],
   },
-  api: [
-    {
-      name: 'TestCatalog',
-      props: [
-        { name: 'tests', type: 'TestCatalogItem[]', description: 'فهرست آزمون‌ها با قیمت رایگان/تخفیف‌دار/سازمانی.' },
-        { name: 'onStartOrBuy', type: '(testId) => void', description: 'شروع یا تهیهٔ آزمون.' },
-      ],
-    },
-    {
-      name: 'TestDashboard',
-      props: [
-        { name: 'stats', type: 'StatTileProps[]', description: 'کاشی‌های آمار (پشتیبانی از اسلات `sparkline`).' },
-        { name: 'resumeSlot', type: 'ReactNode', description: 'اسلات اختیاری برای تزریق `ResumeOrRestart` از `@negaresh/assessment`.' },
-        { name: 'reports', type: 'DashboardReportItem[]', description: 'فهرست گزارش‌های آماده و نتایج اخیر.' },
-      ],
-    },
-  ],
   a11y: [
     'وضعیت گزارش‌ها از `StatusBadge(domain="report")` با آیکون و واژه نمایش داده می‌شود.',
   ],
@@ -116,7 +99,7 @@ export const testPlatformOrgDoc: ComponentDoc = {
   ],
   summary:
     'ساخت کارزار آزمون سازمانی، پنل پیوند اشتراک‌گذاری و خروجی CSV، ورود فهرست شرکت‌کنندگان، سهمیهٔ صندلی، کیف پول تومانی سازمان و مدیریت کلیدهای API.',
-  status: 'review',
+  status: 'approved',
   products: ['T'],
   Example: TestPlatformOrgExample,
   Gallery: () => (
@@ -169,30 +152,6 @@ export const testPlatformOrgDoc: ComponentDoc = {
       'موجودی یا تراکنش‌های `OrgWallet` را به ریال نمایش ندهید (D-26).',
     ],
   },
-  api: [
-    {
-      name: 'CampaignBuilder / ShareLinkPanel / RosterImport / SeatMeter',
-      props: [
-        { name: 'testOptions', type: '{ id, label }[]', description: 'آزمون‌های قابل انتخاب در کارزار.' },
-        { name: 'shareUrl', type: 'string', description: 'نشانی عمومی کارزار (LTR قابل کپی).' },
-        { name: 'used / limit', type: 'number', description: 'ظرفیت صندلی در `SeatMeter`.' },
-      ],
-    },
-    {
-      name: 'OrgWallet',
-      props: [
-        { name: 'balance', type: 'number', description: 'موجودی کیف پول به تومان.' },
-        { name: 'ledger', type: 'WalletLedgerEntry[]', description: 'تاریخچهٔ تراکنش‌های کیف پول.' },
-      ],
-    },
-    {
-      name: 'B2BPanel',
-      props: [
-        { name: 'clients', type: 'B2BClientItem[]', description: 'کلاینت‌های متصل و مصرف سهمیه.' },
-        { name: 'newlyCreatedKey', type: 'string', description: 'کلید یک‌بارنمایش جدید (LTR قابل کپی).' },
-      ],
-    },
-  ],
   a11y: [
     'فهرست شرکت‌کنندگان و گردش مالی کیف پول از `DataTable` با تبدیل خودکار به کارت در موبایل استفاده می‌کنند.',
     'شمارش ردیف‌های معتبر و نامعتبر در `RosterImport` به‌صورت زنده و بدون اتکا به رنگ تنها نمایش داده می‌شود.',

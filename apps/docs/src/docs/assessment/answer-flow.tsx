@@ -72,7 +72,7 @@ export const answerFlowDoc: ComponentDoc = {
   base: 'FormErrorSummary + ProgressBar + QuestionItem',
   summary:
     'جریان پاسخ‌دهی چندصفحه‌ای با نمایش و اعلام صوتی پیشرفت («صفحهٔ n از N»)، اعتبارسنجی هر صفحه و خلاصهٔ پرسش‌های بی‌پاسخ با پرش مستقیم فوکوس.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V'],
   Example,
   Gallery: () => (
@@ -130,27 +130,6 @@ export const answerFlowDoc: ComponentDoc = {
       'دکمهٔ صفحهٔ قبلی و بعدی را در موبایل کنار هم فشرده نکنید؛ در عرض کمتر از ۹۰۰ پیکسل به‌صورت تمام‌عرض چیده می‌شوند.',
     ],
   },
-  api: [
-    {
-      name: 'AnswerProgress',
-      props: [
-        { name: 'currentPage', type: 'number', description: 'شمارهٔ صفحهٔ فعال (یک‌مبنا)' },
-        { name: 'totalPages', type: 'number', description: 'تعداد کل صفحات آزمون' },
-        { name: 'answeredCount / totalQuestions', type: 'number', description: 'تعداد پرسش‌های پاسخ‌داده‌شده از کل' },
-      ],
-    },
-    {
-      name: 'AnswerPage',
-      props: [
-        { name: 'title', type: 'ReactNode', description: 'عنوان آزمون بالای نوار پیشرفت' },
-        { name: 'questions', type: 'readonly QuestionDefinition[]', description: 'فهرست پرسش‌های صفحهٔ جاری' },
-        { name: 'currentPage / totalPages', type: 'number', description: 'صفحهٔ فعلی و کل صفحات' },
-        { name: 'answers / defaultAnswers / onAnswerChange', type: 'Record<string, string>', description: 'پاسخ‌های صفحه' },
-        { name: 'onPreviousPage / onNextPage / onSubmit', type: 'callbacks', description: 'ناوبری و ثبت نهایی پس از اعتبارسنجی' },
-        { name: 'isSubmitting / isDraftSaved', type: 'boolean', default: 'false', description: 'وضعیت ارسال و ذخیرهٔ خودکار' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'حرکت بین خلاصهٔ خطا، پرسش‌ها و دکمه‌های ناوبری' },
     { keys: 'Enter (روی دکمهٔ ثبت/بعدی)', action: 'اعتبارسنجی صفحه و انتقال فوکوس به اولین پرسش بی‌پاسخ در صورت خطا' },

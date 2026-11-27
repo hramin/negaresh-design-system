@@ -86,7 +86,7 @@ export const barDoc: ComponentDoc = {
   components: ['Bar'],
   summary:
     'نمودار ستونی عمودی و افقی برای مقایسهٔ دسته‌ها با برچسب‌های عددی مستقیم فارسی و هاشورهای SVG برای تفکیک در چاپ سیاه‌وسفید.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -151,19 +151,6 @@ export const barDoc: ComponentDoc = {
       'از گرادیان یا افکت سه‌بعدی روی ستون‌ها استفاده نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'Bar',
-      props: [
-        { name: 'categories', type: 'readonly BarCategory[]', description: 'دسته‌های محور.' },
-        { name: 'series', type: 'readonly BarSeries[]', description: '۱ تا ۶ سری عددی.' },
-        { name: 'orientation', type: "'vertical' | 'horizontal'", default: "'vertical'", description: 'جهت ستون‌ها.' },
-        { name: 'domain', type: 'readonly [number, number]', description: 'دامنهٔ عددی اختیاری (پیش‌فرض از ۰ تا ۱٫۱۵ برابر بیشینه).' },
-        { name: 'showDirectLabels', type: 'boolean', default: 'true', description: 'نمایش مستقیم مقدار فارسی روی هر ستون.' },
-        { name: 'referenceLines', type: 'readonly ReferenceLineSpec[]', description: 'خطوط هدف یا میانگین.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'ورود به ستون‌های نمودار' },
     { keys: 'ArrowLeft / ArrowRight (عمودی) · ArrowUp / ArrowDown (افقی)', action: 'پیمایش ستون‌ها و خوانش مقدار دقیق' },

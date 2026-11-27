@@ -31,7 +31,7 @@ export const contentEditorialDoc: ComponentDoc = {
   components: ['ContentCard', 'BlogFeed', 'ContentBlocks', 'ArticlePage', 'Poll'],
   summary:
     'خوراک مجله با اسلایدر برگزیده (حداکثر ۵ مورد)، ۴ نوع کارت محتوا، رندرر ساختاریافتهٔ ۱۱ نوع بلوک، صفحهٔ کامل مقاله و نظرسنجی با یادداشت متخصص.',
-  status: 'review',
+  status: 'approved',
   products: ['N'],
   Example: () => (
     <BlogFeed
@@ -100,36 +100,6 @@ export const contentEditorialDoc: ComponentDoc = {
       'بخش دیدگاه وبلاگ اضافه نکنید (در D-01/Q-06 خارج از دامنه است).',
     ],
   },
-  api: [
-    {
-      name: 'ContentCard',
-      props: [
-        { name: 'item', type: 'ArticleCardData | PostCardData | QuoteCardData | PollCardData', description: 'دادهٔ متمایز ۴ نوع کارت.' },
-      ],
-    },
-    {
-      name: 'BlogFeed',
-      props: [
-        { name: 'featured', type: 'FeaturedSlide[]', description: 'تا ۵ اسلاید برگزیده.' },
-        { name: 'authors', type: 'FeedAuthor[]', description: 'نوار نویسندگان.' },
-        { name: 'items', type: 'ContentCardItem[]', description: 'خوراک ترکیبی مطالب.' },
-      ],
-    },
-    {
-      name: 'ContentBlocks',
-      props: [
-        { name: 'blocks', type: 'ContentBlock[]', description: 'آرایهٔ بلوک‌های JSON ساختاریافته (۱۱ نوع).' },
-      ],
-    },
-    {
-      name: 'Poll',
-      props: [
-        { name: 'mode', type: "'single' | 'multiple'", default: "'single'", description: 'تک‌انتخابی یا چندانتخابی.' },
-        { name: 'status', type: "'open' | 'closed'", default: "'open'", description: 'باز یا بسته‌بودن نظرسنجی.' },
-        { name: 'expertNote', type: 'string', description: 'توضیح تخصصی پس از رأی‌دهی.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Enter', action: 'جابه‌جایی میان اسلایدهای برگزیده، فیلترها و ثبت رأی در نظرسنجی' },
   ],
@@ -149,7 +119,7 @@ export const contentExpertsDoc: ComponentDoc = {
   components: ['ExpertDirectory', 'ExpertProfile', 'WriterWorkspace', 'ReviewQueue'],
   summary:
     'دایرکتوری و پروفایل متخصصان با حفظ حریم خصوصی اطلاعات تماس، میز کار ۵مرحله‌ای نویسنده با مقایسهٔ نسخه‌ها و صف بازبینی تحریریه.',
-  status: 'review',
+  status: 'approved',
   products: ['N'],
   Example: () => <ExpertDirectory experts={sampleExperts} />,
   Gallery: () => (
@@ -190,36 +160,6 @@ export const contentExpertsDoc: ComponentDoc = {
       'ارسال درخواست اصلاح در `ReviewQueue` را بدون یادداشت راهنما برای نویسنده مجاز نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'ExpertDirectory',
-      props: [
-        { name: 'experts', type: 'ExpertSummary[]', description: 'فهرست متخصصان بدون اطلاعات تماس خصوصی.' },
-      ],
-    },
-    {
-      name: 'ExpertProfile',
-      props: [
-        { name: 'expert', type: 'ExpertSummary', description: 'اطلاعات سرصفحهٔ متخصص.' },
-        { name: 'education', type: 'string[]', description: 'فهرست تحصیلات و پروانه.' },
-        { name: 'authoredContent', type: 'ContentCardItem[]', description: 'مطالب تألیف‌شده در تب‌های تفکیک‌شده.' },
-      ],
-    },
-    {
-      name: 'WriterWorkspace',
-      props: [
-        { name: 'documents', type: 'WriterDocument[]', description: 'فهرست مطالب نویسنده با وضعیت بازبینی.' },
-        { name: 'editorSlot', type: 'ReactNode', description: 'جایگاه ویرایشگر بلوکی محصول (Q-04).' },
-      ],
-    },
-    {
-      name: 'ReviewQueue',
-      props: [
-        { name: 'items', type: 'ReviewQueueItem[]', description: 'صف مطالب ارسالی برای بازبینی.' },
-        { name: 'onApprove / onRequestChanges', type: '(id, note) => void', description: 'تأیید یا درخواست اصلاح.' },
-      ],
-    },
-  ],
   a11y: [
     'فهرست مطالب در `WriterWorkspace` و `ReviewQueue` از دکمه‌های `aria-current="true"` با حداقل ارتفاع ۴۴ پیکسل استفاده می‌کند.',
   ],

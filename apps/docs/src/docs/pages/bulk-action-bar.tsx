@@ -87,7 +87,7 @@ export const bulkActionBarDoc: ComponentDoc = {
   base: 'React Aria Toolbar',
   summary:
     'نوار زمینه‌ای بر پایهٔ React Aria Toolbar که پس از انتخاب ردیف‌ها در جدول یا فهرست ظاهر می‌شود، شمارش فارسی موارد انتخاب‌شده را اعلام می‌کند و اقدام‌های گروهی و لغو انتخاب را در یک توقف Tab در دسترس قرار می‌دهد.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -142,19 +142,6 @@ export const bulkActionBarDoc: ComponentDoc = {
       'اقدام‌های غیرمرتبط با ردیف‌های انتخاب‌شده (مانند «ساخت مورد جدید») را درون BulkActionBar قرار ندهید.',
     ],
   },
-  api: [
-    {
-      name: 'BulkActionBar',
-      props: [
-        { name: 'selectedCount', type: 'number', description: 'تعداد موارد انتخاب‌شده (با formatNumber فارسی می‌شود؛ در ۰ پنهان است مگر alwaysVisible).' },
-        { name: 'totalCount', type: 'number', description: 'تعداد کل موارد؛ در صورت کمتر بودن selectedCount دکمهٔ «انتخاب همه» نمایش می‌یابد.' },
-        { name: 'onSelectAll', type: '() => void', description: 'انتخاب همهٔ موارد موجود.' },
-        { name: 'onClearSelection', type: '() => void', description: 'پاک کردن انتخاب فعلی.' },
-        { name: 'alwaysVisible', type: 'boolean', default: 'false', description: 'نمایش نوار حتی در حالت صفر انتخاب (برای پیش‌نمایش).' },
-        { name: 'children', type: 'ReactNode', description: 'دکمه‌ها و منوهای اقدام گروهی داخل Toolbar.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'ورود به نوار اقدام‌های گروهی با یک توقف Tab.' },
     { keys: 'ArrowLeft / ArrowRight', action: 'حرکت بین دکمه‌های اقدام در جهت راست‌به‌چپ.' },

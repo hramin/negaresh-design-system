@@ -69,7 +69,7 @@ export const radarDoc: ComponentDoc = {
   components: ['Radar'],
   summary:
     'نمودار چندمحورهٔ مروری (تنها برای بافت حرفه‌ای مطابق D-67) که همواره همراه با جدول داده‌های نمایان، خط‌چین و نشانگرهای غیرلوزی ارائه می‌شود.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V'],
   Example,
   Gallery: () => (
@@ -106,18 +106,6 @@ export const radarDoc: ComponentDoc = {
       'بیش از ۳ سری روی رادار نکشید تا چندضلعی‌ها خوانا بمانند.',
     ],
   },
-  api: [
-    {
-      name: 'Radar',
-      props: [
-        { name: 'axes', type: 'readonly RadarAxis[]', description: 'محورهای شعاعی (پیشنهاد ۴ تا ۸ بُعد).' },
-        { name: 'series', type: 'readonly RadarSeries[]', description: 'سری‌های مقایسه با مقادیر هم‌راستا با axes.' },
-        { name: 'domain', type: 'readonly [number, number]', description: 'دامنهٔ عددی محور شعاعی (مثلاً [0, 100]).' },
-        { name: 'rings', type: 'number', default: '4', description: 'تعداد حلقه‌های هم‌مرکز.' },
-        { name: 'ariaLabel', type: 'string', description: 'نام دسترس‌پذیر نمودار.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'ورود به رئوس چندضلعی' },
     { keys: 'ArrowLeft / ArrowRight', action: 'حرکت بین محورها و خوانش عدد دقیق در نوار وضعیت' },

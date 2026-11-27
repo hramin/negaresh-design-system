@@ -55,7 +55,7 @@ export const stepperDoc: ComponentDoc = {
   components: ['Stepper', 'StepperStep'],
   summary:
     'نشانگر مراحل خطی با حالت‌های انجام‌شده (done)، فعلی (aria-current="step") و بعدی، شماره‌گذاری فارسی (formatNumber) و دو چیدمان عمودی (راهنمای رجیستری) و افقی.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -112,17 +112,6 @@ export const stepperDoc: ComponentDoc = {
       'تنها به رنگ برای تمایز مراحل تکیه نکنید؛ Stepper تیک، عدد فارسی و متن وضعیت مخفی برای صفحه‌خوان را همراه می‌کند.',
     ],
   },
-  api: [
-    {
-      name: 'Stepper',
-      props: [
-        { name: 'steps', type: 'readonly StepperStepData[]', description: 'آرایهٔ مراحل با عنوان، توضیح و وضعیت.' },
-        { name: 'currentStep', type: 'number', description: 'شمارهٔ مرحلهٔ جاری (از ۱) برای محاسبهٔ خودکار done/current/upcoming.' },
-        { name: 'orientation', type: "'vertical' | 'horizontal'", default: "'vertical'", description: 'جهت چیدمان مراحل.' },
-        { name: 'asNav', type: 'boolean', default: 'false', description: 'در صورت true بودن، فهرست را درون <nav> قرار می‌دهد.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Enter', action: 'در مراحل تعاملی (دارای href یا onPress) پیمایش و فعال‌سازی مرحله.' },
   ],

@@ -8,7 +8,7 @@ export const ltrDoc: ComponentDoc = {
   components: ['Ltr', 'Code'],
   summary:
     'سریال، کد سیستم، کد فعال‌سازی، شمارهٔ سفارش، نشانی وب و ایمیل چپ‌به‌راست و با ارقام لاتین نمایش داده می‌شوند (D-86).',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <Stack gap="2">
@@ -56,28 +56,6 @@ export const ltrDoc: ComponentDoc = {
     ],
     dont: ['ارقام فارسی در کدها.', 'رشته‌های مختلط بدون جدا کردن؛ ترتیب کلمات به هم می‌ریزد.'],
   },
-  api: [
-    {
-      name: 'Ltr',
-      props: [{ name: 'lang', type: 'string', description: 'زبان جزیره وقتی کد نیست، مثلاً en.' }],
-    },
-    {
-      name: 'Code',
-      props: [
-        {
-          name: 'children',
-          type: 'string | number',
-          description: 'ارقام فارسی و عربی به لاتین تبدیل می‌شوند.',
-        },
-        {
-          name: 'size',
-          type: "'inline' | 'display'",
-          default: "'inline'",
-          description: 'display برای کد فعال‌سازی بزرگ.',
-        },
-      ],
-    },
-  ],
   a11y: ['dir="ltr" و translate="no" روی کد؛ صفحه‌خوان کد را بی‌تغییر می‌خواند.'],
   rtl: ['unicode-bidi: isolate تا جزیره ترتیب کلمات اطراف را به هم نزند.'],
 };

@@ -60,7 +60,7 @@ export const questionItemDoc: ComponentDoc = {
   base: 'fieldset + legend + React Aria RadioGroup',
   summary:
     'واحد استاندارد هر پرسش آزمون با صورت پرسش در تگ legend و گزینه‌های واقعی radio؛ پشتیبانی از ۲/۴/۶ گزینه، لیکرت ۵ و ۷، انتخاب اجباری و گزینه‌های تصویری.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V'],
   Example,
   Gallery: () => (
@@ -162,23 +162,6 @@ export const questionItemDoc: ComponentDoc = {
       'حلقهٔ فوکوس گزینه‌ها را پنهان نکنید؛ تمرکز کیبورد باید روی خود کارت گزینه دیده شود.',
     ],
   },
-  api: [
-    {
-      name: 'QuestionItem',
-      props: [
-        { name: 'id', type: 'string', description: 'شناسهٔ پایدار پرسش و fieldset برای پرش خطا' },
-        { name: 'number', type: 'number', description: 'شمارهٔ یک‌مبنای پرسش (قالب‌بندی با ارقام فارسی)' },
-        { name: 'stem', type: 'ReactNode', description: 'صورت پرسش در تگ legend' },
-        { name: 'description', type: 'ReactNode', description: 'توضیح راهنمای اختیاری متصل به aria-describedby' },
-        { name: 'options', type: 'readonly QuestionOption[]', description: 'گزینه‌های رادیویی (۲/۴/۶، لیکرت، انتخاب اجباری یا تصویر)' },
-        { name: 'variant', type: "'standard' | 'likert' | 'forced-choice' | 'image'", default: "'standard'", description: 'نوع چیدمان بصری گزینه‌ها' },
-        { name: 'columns', type: '1 | 2 | 3', default: '1', description: 'تعداد ستون در دسکتاپ برای حالت standard' },
-        { name: 'value / defaultValue / onChange', type: 'string', description: 'مدیریت کنترل‌شده یا غیرکنترل‌شدهٔ پاسخ' },
-        { name: 'isInvalid / errorMessage', type: 'boolean / ReactNode', description: 'نمایش خطای درون‌خطی با role="alert"' },
-        { name: 'isDisabled / isReadOnly', type: 'boolean', default: 'false', description: 'حالت غیرفعال یا فقط‌خواندنی' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'ورود و خروج از گروه رادیویی پرسش' },
     { keys: 'ArrowLeft / ArrowRight', action: 'جابه‌جایی میان گزینه‌های لیکرت در جهت راست‌به‌چپ' },

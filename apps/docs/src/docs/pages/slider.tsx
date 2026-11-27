@@ -53,7 +53,7 @@ export const sliderDoc: ComponentDoc = {
   base: 'Slider, SliderTrack, SliderThumb, SliderOutput',
   summary:
     'انتخاب مقدار تکی یا بازه‌ای روی محور پیوسته یا گام‌بندی‌شده؛ با خط‌کش ارقام فارسی، خروجی زندهٔ tabular-nums، جهت راست‌به‌چپ و هدف لمسی ۴۴ پیکسلی.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V'],
   Example,
   Gallery: () => (
@@ -120,37 +120,6 @@ export const sliderDoc: ComponentDoc = {
       'برای ورود عدد دقیق مانند مبلغ فاکتور یا ظرفیت دقیق از Slider استفاده نکنید؛ NumberField دقیق‌تر و سریع‌تر است.',
     ],
   },
-  api: [
-    {
-      name: 'Slider',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب دیدنی لغزنده.' },
-        { name: 'value / defaultValue', type: 'number', description: 'مقدار کنترل‌شده یا اولیه.' },
-        { name: 'onChange / onChangeEnd', type: '(value: number) => void', description: 'اعلام تغییر زنده یا پایان کشیدن.' },
-        { name: 'minValue / maxValue / step', type: 'number', default: '0 / 100 / 1', description: 'کمینه، بیشینه و گام.' },
-        { name: 'ticks', type: 'readonly number[]', description: 'مقادیر خط‌کش فارسی زیر ریل.' },
-        { name: 'formatValue / formatTick', type: '(value: number) => string', description: 'قالب‌بندی سفارشی خروجی یا خط‌کش.' },
-        { name: 'showValue', type: 'boolean', default: 'true', description: 'نمایش مقدار زنده در بالای ریل.' },
-        { name: 'orientation', type: "'horizontal' | 'vertical'", default: "'horizontal'", description: 'جهت افقی یا عمودی.' },
-        { name: 'isDisabled', type: 'boolean', description: 'غیرفعال کردن لغزنده.' },
-        { name: 'className / ref', type: 'string / Ref<HTMLDivElement>', description: '—' },
-      ],
-    },
-    {
-      name: 'RangeSlider',
-      props: [
-        { name: 'value / defaultValue', type: '[number, number]', description: 'بازهٔ کنترل‌شده یا اولیه [کمینه، بیشینه].' },
-        { name: 'onChange / onChangeEnd', type: '(value: [number, number]) => void', description: 'اعلام تغییر بازه.' },
-        {
-          name: 'thumbLabels',
-          type: '[string, string]',
-          default: "['حد پایین', 'حد بالا']",
-          description: 'برچسب دسترس‌پذیر هر دو دستگیره برای صفحه‌خوان.',
-        },
-        { name: 'startName / endName', type: 'string', description: 'نام فیلدهای ارسال فرم برای دو سر بازه.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: '← / ↑', action: 'در چیدمان راست‌به‌چپ: افزایش مقدار به اندازهٔ یک گام' },
     { keys: '→ / ↓', action: 'در چیدمان راست‌به‌چپ: کاهش مقدار به اندازهٔ یک گام' },

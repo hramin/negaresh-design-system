@@ -1,7 +1,7 @@
 import { PasswordField } from '@negaresh/react';
 import type { ComponentDoc } from '../types.ts';
 import { GalleryRow, State } from '../ui.tsx';
-import { fieldA11y, fieldApi, fieldKeyboard, fieldRtl } from './field-docs.ts';
+import { fieldA11y, fieldKeyboard, fieldRtl } from './field-docs.ts';
 import styles from './fields.module.css';
 
 export const passwordFieldDoc: ComponentDoc = {
@@ -11,7 +11,7 @@ export const passwordFieldDoc: ComponentDoc = {
   base: 'TextField + Button',
   summary:
     'گذرواژه با امکان نمایش یا پنهان کردن و راهنمای قدرت از برنامه. چسباندن و مدیر گذرواژه مسدود نمی‌شوند.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <div className={styles.example} data-interactive="password-field">
@@ -92,21 +92,6 @@ export const passwordFieldDoc: ComponentDoc = {
       'از این جزء انتظار امتیازدهی یا احراز هویت سرور نداشته باشید.',
     ],
   },
-  api: [
-    fieldApi('PasswordField', [
-      {
-        name: 'strengthHint',
-        type: 'ReactNode',
-        description:
-          'راهنمای قدرت از برنامهٔ میزبان؛ این جزء الگوریتم امتیازدهی یا کتابخانهٔ تازه ندارد.',
-      },
-      {
-        name: 'autoComplete',
-        type: "'current-password' | 'new-password'",
-        description: 'نوع تکمیل خودکار؛ چسباندن و مدیر گذرواژه پشتیبانی می‌شوند.',
-      },
-    ]),
-  ],
   keyboard: [
     ...fieldKeyboard,
     { keys: 'Enter / Space روی دکمهٔ نمایش', action: 'تغییر نمایش گذرواژه؛ مقدار ورودی حفظ می‌شود.' },

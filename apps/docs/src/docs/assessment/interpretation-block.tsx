@@ -36,7 +36,7 @@ export const interpretationBlockDoc: ComponentDoc = {
   base: 'Badge + Code',
   summary:
     'نمایش بخش‌بندی‌شدهٔ تفسیر متنی نتایج بر پایهٔ بخش، روایی پاسخ‌دهی و سطح شدت در دو نمای حرفه‌ای (بالینی) و آرام (بدون رنگ رز و لحن هشداردهنده).',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V'],
   Example,
   Gallery: () => (
@@ -84,16 +84,6 @@ export const interpretationBlockDoc: ComponentDoc = {
       'شدت یک بخش را فقط با نوار رنگی کنار کارت منتقل نکنید؛ برچسب متنی + آیکون الزامی است.',
     ],
   },
-  api: [
-    {
-      name: 'InterpretationBlock',
-      props: [
-        { name: 'sections', type: 'readonly AssessmentInterpretationSection[]', description: 'آرایهٔ بخش‌های تفسیر (بخش، عنوان، متن، شدت، روایی، پیشنهادها)' },
-        { name: 'title', type: 'ReactNode', default: "'تفسیر نتایج'", description: 'عنوان کلی بلوک تفسیر' },
-        { name: 'mode', type: "'professional' | 'calm'", default: "'professional'", description: 'حالت مخاطب (بالینی در برابر آرام)' },
-      ],
-    },
-  ],
   a11y: [
     'هر بخش تفسیر به‌صورت <article> با سلسله‌مراتب عنوانی منظم (h3 -> h4) و نشان شدت دارای واژه + آیکون رندر می‌شود.',
     'هر کارت دارای break-inside: avoid است تا در چاپ A4 میان دو صفحه شکسته نشود.',

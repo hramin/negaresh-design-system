@@ -211,7 +211,7 @@ export const identitySignInDoc: ComponentDoc = {
   components: ['AuthShell', 'PhoneSignIn', 'PasswordSignIn', 'ForgotPassword', 'Register'],
   summary:
     'صفحه‌های اصلی ورود، کد پیامکی ۶ رقمی، ورود با ایمیل و رمز عبور، بازیابی پیامکی و ثبت‌نام در `@negaresh/keycloak-theme` (ساخته‌شده با Keycloakify 11.16.4 برای Keycloak 26+).',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: IdentitySignInExample,
   Gallery: () => (
@@ -309,48 +309,6 @@ export const identitySignInDoc: ComponentDoc = {
       'در خطاهای ورود از پیام‌های فنی یا سرزنش‌کننده مانند «Error 401» استفاده نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'AuthShell',
-      props: [
-        { name: 'title / subtitle / eyebrow', type: 'ReactNode', description: 'عنوان، توضیح کوتاه و برچسب مرحله در بالای کارت ورود.' },
-        { name: 'banner', type: 'AuthBannerMessage', description: 'پیام وضعیت سرور (`InlineAlert` با آیکون و واژه).' },
-        { name: 'embedded', type: 'boolean', default: 'false', description: 'حالت پیش‌نمایش بدون لندمارک تکراری (`header`/`main`/`footer`/`h1`).' },
-        { name: 'showThemeToggle', type: 'boolean', default: '!embedded', description: 'نمایش کلید روشن/تیره/سیستم در نوار بالای صفحهٔ ورود.' },
-      ],
-    },
-    {
-      name: 'PhoneSignIn (login-phone.ftl, login-sms-otp.ftl)',
-      props: [
-        { name: 'step', type: "'phone' | 'otp'", default: "'phone'", description: 'مرحلهٔ ورود شماره یا تأیید کد ۶ رقمی.' },
-        { name: 'resendSecondsRemaining / codeExpiryMinutes', type: 'number', default: '60 / 2', description: 'شمارش معکوس ارسال دوباره و مهلت اعتبار کد به ارقام فارسی.' },
-        { name: 'rateLimitedSeconds', type: 'number', description: 'نمایش هشدار سقف درخواست و غیرفعال‌سازی موقت ارسال.' },
-        { name: 'captchaSlot', type: 'ReactNode', description: 'جایگاه اختیاری CAPTCHA داخل `<fieldset>` معنایی.' },
-      ],
-    },
-    {
-      name: 'PasswordSignIn (login.ftl)',
-      props: [
-        { name: 'defaultUsername / allowRememberMe / allowForgotPassword', type: 'string / boolean', description: 'تنظیمات همگام با `kcContext.realm`.' },
-        { name: 'socialProviders', type: 'readonly SocialProviderItem[]', description: 'دکمه‌های ورود از طریق ارائه‌دهندگان SSO.' },
-        { name: 'isLocked', type: 'boolean', default: 'false', description: 'نمایش هشدار قفل موقت و غیرفعال‌سازی فرم.' },
-      ],
-    },
-    {
-      name: 'ForgotPassword (login-reset-password.ftl, login-update-password.ftl)',
-      props: [
-        { name: 'mode', type: "'sms' | 'identifier'", default: "'sms'", description: 'بازیابی سه‌مرحله‌ای پیامکی یا ارسال پیوند استاندارد Keycloak.' },
-        { name: 'step', type: "'identify' | 'otp' | 'reset' | 'sent'", default: "'identify'", description: 'مرحلهٔ فعال جریان بازیابی رمز.' },
-      ],
-    },
-    {
-      name: 'Register (register.ftl)',
-      props: [
-        { name: 'emailRequired / passwordRequired / termsRequired', type: 'boolean', description: 'پیکربندی فیلدهای الزامی همگام با سیاست User Profile در Keycloak.' },
-        { name: 'fieldErrors', type: 'RegisterFieldErrors', description: 'نگاشت خطاهای سمت سرور به هر فیلد و `FormErrorSummary`.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'جابه‌جایی منظم میان فیلدها، نمایش رمز، دکمهٔ ارسال دوباره و پیوندهای کمکی.' },
     { keys: 'Paste (Ctrl+V)', action: 'جای‌گذاری یکجای کد ۶ رقمی OTP در خانه‌های `OTPField`.' },
@@ -373,7 +331,7 @@ export const identitySecurityDoc: ComponentDoc = {
   components: ['VerifyMobile', 'TwoFactorSetup', 'ErrorScreen', 'InfoScreen', 'KcPage'],
   summary:
     'صفحه‌های اقدام الزامی تأیید موبایل کاربران منتقل‌شده، راه‌اندازی و چالش ورود دومرحله‌ای (TOTP) همکاران، و صفحه‌های خطا و اطلاع در `@negaresh/keycloak-theme`.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: IdentitySecurityExample,
   Gallery: () => (
@@ -449,39 +407,6 @@ export const identitySecurityDoc: ComponentDoc = {
       'پیام خطا را بدون اقدام بعدی مشخص (بازگشت به برنامه یا پشتیبانی) رها نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'VerifyMobile (verify-mobile.ftl)',
-      props: [
-        { name: 'step', type: "'phone' | 'otp'", default: "'phone'", description: 'مرحلهٔ ثبت شماره یا تأیید پیامکی برای کاربران منتقل‌شده.' },
-        { name: 'showMigrationNotice', type: 'boolean', default: 'true', description: 'نمایش اعلان راهنمای انتقال حساب پیشین.' },
-        { name: 'signOutHref / onSignOut', type: 'string / () => void', description: 'امکان خروج از حساب در صورت اشتباه بودن کاربر.' },
-      ],
-    },
-    {
-      name: 'TwoFactorSetup (login-config-totp.ftl, login-otp.ftl)',
-      props: [
-        { name: 'mode', type: "'setup' | 'challenge'", default: "'setup'", description: 'راه‌اندازی اولیهٔ Authenticator یا وارد کردن کد در ورود بعدی.' },
-        { name: 'qrImageSrc / manualSecret / rawSecret', type: 'string', description: 'تصویر QR، کلید خوانای base32 و مقدار خام برای فیلد مخفی `totpSecret` و کپی بدون فاصله.' },
-        { name: 'credentials', type: 'readonly TotpCredentialOption[]', description: 'فهرست دستگاه‌های ثبت‌شده در حالت `challenge`.' },
-      ],
-    },
-    {
-      name: 'ErrorScreen (error.ftl) & InfoScreen (info.ftl)',
-      props: [
-        { name: 'title / message', type: 'ReactNode', description: 'عنوان و متن اصلی پیام دریافت‌شده از Keycloak.' },
-        { name: 'referenceCode', type: 'string', description: 'کد پیگیری LTR قابل کپی برای پشتیبانی در `ErrorScreen`.' },
-        { name: 'requiredActions', type: 'readonly string[]', description: 'فهرست اقدامات باقی‌مانده در `InfoScreen`.' },
-      ],
-    },
-    {
-      name: 'KcPage (Keycloakify Adapter)',
-      props: [
-        { name: 'kcContext', type: 'KcContext', description: 'زمینهٔ تزریق‌شده توسط Keycloakify برای نگاشت خودکار همهٔ `pageId`ها و fallback به `DefaultPage`.' },
-        { name: 'embedded', type: 'boolean', default: 'false', description: 'حالت غیرتمام‌صفحه برای آزمون و پیش‌نمایش.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Enter / Space', action: 'کپی کلید دستی TOTP یا کد پیگیری خطا با اعلان صوتی `role="status"`.' },
     { keys: 'ArrowUp / ArrowDown', action: 'جابه‌جایی میان گزینه‌های دستگاه احراز هویت در حالت `challenge`.' },

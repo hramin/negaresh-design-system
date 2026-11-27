@@ -81,7 +81,7 @@ export const resultOverviewDoc: ComponentDoc = {
   base: '@negaresh/charts + Badge + InlineAlert',
   summary:
     'نمایش ساختاریافتهٔ خروجی `/api/v1` آزمون‌ها در هر دو نمای حرفه‌ای (بالینی) و آرام (نوجوان/والدین بدون رنگ رز) همراه با آداپتور خودکار نمودارها و جدول نمرات.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V'],
   Example,
   Gallery: () => (
@@ -175,36 +175,6 @@ export const resultOverviewDoc: ComponentDoc = {
       'نمودار رادار را بدون جدول دادهٔ مرئی نمایش ندهید (ResultChart به‌صورت پیش‌فرض tableMode="visible" را برای رادار اعمال می‌کند).',
     ],
   },
-  api: [
-    {
-      name: 'ResultSummary',
-      props: [
-        { name: 'testTitle / kind', type: "ReactNode / 'profile' | 'type' | 'index' | 'themes'", description: 'عنوان آزمون و شکل کلی نتیجه' },
-        { name: 'mode', type: "'professional' | 'calm'", default: "'professional'", description: 'حالت مخاطب (بالینی در برابر آرام)' },
-        { name: 'headline / calmHeadline', type: 'ReactNode', description: 'تیتر اصلی نتیجه برای هر دو مخاطب' },
-        { name: 'primaryBadge / calmPrimaryBadge', type: 'ReactNode', description: 'برچسب کد نیمرخ، تیپ یا شاخص' },
-        { name: 'indexScore / indexDomain', type: 'number / [number, number]', description: 'عدد شاخص کلی در نتایج نوع index' },
-        { name: 'validity', type: 'AssessmentValidityNotice', description: 'کال‌اوت روایی پاسخ‌دهی (در نمای آرام بدون رنگ هشدار)' },
-      ],
-    },
-    {
-      name: 'ResultChart',
-      props: [
-        { name: 'spec', type: 'AssessmentChartSpec', description: 'مشخصهٔ نمودار از `/api/v1` (profile-line، interval-bar، bar، radar، gauge)' },
-        { name: 'mode', type: "'professional' | 'calm'", default: "'professional'", description: 'انتقال حالت مخاطب به نمودار و جدول' },
-        { name: 'tableMode', type: "'toggle' | 'visible' | 'sr-only'", description: 'حالت نمایش جدول جایگزین در ChartFrame' },
-        { name: 'state / onRetry', type: 'ChartFrameState / () => void', description: 'مدیریت حالت‌های بارگذاری، خالی و خطا' },
-      ],
-    },
-    {
-      name: 'ScoreTable',
-      props: [
-        { name: 'items', type: 'readonly AssessmentScoreItem[]', description: 'ردیف‌های نمرات مقیاس‌ها با دسته‌بندی اختیاری section' },
-        { name: 'mode', type: "'professional' | 'calm'", default: "'professional'", description: 'تنظیم رنگ و واژه‌های شدت' },
-        { name: 'showCode / showRawScore / showInterval', type: 'boolean', description: 'نمایش ستون‌های کد مقیاس، نمرهٔ خام و بازهٔ اطمینان' },
-      ],
-    },
-  ],
   a11y: [
     'ScoreTable داخل ظرف دارای tabIndex={0} و role="region" قرار دارد تا در عرض‌های کم با کیبورد پیمایش شود (WCAG 2.1.1).',
     'شدت هر مقیاس علاوه بر رنگ، دارای آیکون معنایی و برچسب فارسی صریح است.',

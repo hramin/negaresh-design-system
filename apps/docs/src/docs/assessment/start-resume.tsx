@@ -61,7 +61,7 @@ export const startResumeDoc: ComponentDoc = {
   base: 'TextField · NumberField · Select · DatePicker · AlertDialog',
   summary:
     'فرم اطلاعات پایه مبتنی بر اسکیما (انتخاب، عدد، متن، تاریخ شمسی) همراه با خطاهای مسدودکنندهٔ کارزار و کارت تصمیم‌گیری ادامه یا شروع دوبارهٔ تلاش ناتمام.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V'],
   Example,
   Gallery: () => (
@@ -124,29 +124,6 @@ export const startResumeDoc: ComponentDoc = {
       'اطلاعاتی را که پیش‌تر در فرآیند دریافت شده دوباره از کاربر نپرسید (WCAG 3.3.7).',
     ],
   },
-  api: [
-    {
-      name: 'StartForm',
-      props: [
-        { name: 'title / description', type: 'ReactNode', description: 'عنوان و توضیح بالای فرم' },
-        { name: 'fields', type: 'readonly DemographicField[]', description: 'آرایهٔ فیلدهای اسکیما (choice، number، text، jalali-date)' },
-        { name: 'values / defaultValues / onValuesChange', type: 'StartFormValues', description: 'مقادیر فرم' },
-        { name: 'onSubmit', type: '(values: StartFormValues) => void', description: 'فراخوانی پس از عبور از اعتبارسنجی' },
-        { name: 'blocker', type: "'not_on_roster' | 'already_taken' | 'seats_full' | 'closed' | 'expired'", description: 'نمایش هشدار مسدودکنندهٔ کارزار و غیرفعال کردن ارسال' },
-        { name: 'serverErrors / isPending', type: 'Record<string, string> / boolean', description: 'خطاهای سمت سرور و وضعیت انتظار ارسال' },
-      ],
-    },
-    {
-      name: 'ResumeOrRestart',
-      props: [
-        { name: 'testTitle', type: 'ReactNode', description: 'عنوان آزمون ناتمام' },
-        { name: 'lastSavedAt / expiresAt', type: 'string | Date', description: 'زمان آخرین ذخیره و انقضا (قالب‌بندی شمسی تهران)' },
-        { name: 'answeredCount / totalQuestions', type: 'number', description: 'تعداد پرسش‌های پاسخ‌داده‌شده از کل' },
-        { name: 'onResume / onRestart', type: 'callbacks', description: 'ادامهٔ تلاش فعلی یا پاک‌سازی و شروع دوباره' },
-        { name: 'confirmRestart', type: 'boolean', default: 'true', description: 'محافظت از شروع دوباره با پنجرهٔ AlertDialog' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab / Shift+Tab', action: 'جابه‌جایی بین فیلدهای اسکیما و دکمه‌های اقدام' },
     { keys: 'Escape', action: 'بستن پنجرهٔ تأیید شروع دوباره و بازگردانی فوکوس به دکمهٔ محرک' },

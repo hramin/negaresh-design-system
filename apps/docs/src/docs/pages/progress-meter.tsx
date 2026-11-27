@@ -38,7 +38,7 @@ export const progressMeterDoc: ComponentDoc = {
   base: 'ProgressBar, Meter',
   summary:
     'نمایش پیشرفت عملیات زمان‌بر (معین یا نامعین) با ProgressBar و سنجش مقدار در بازهٔ مشخص با Meter، هر دو روی React Aria با ارقام فارسی و جهت پرشدن راست‌به‌چپ.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -95,50 +95,6 @@ export const progressMeterDoc: ComponentDoc = {
       'ProgressBar نامعین را بدون برچسب متنی واضح رها نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'ProgressBar',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب مرئی بالای نوار.' },
-        { name: 'value', type: 'number', default: '0', description: 'مقدار فعلی در بازه.' },
-        { name: 'minValue / maxValue', type: 'number', default: '0 / 100', description: 'کران‌های بازه.' },
-        {
-          name: 'isIndeterminate',
-          type: 'boolean',
-          default: 'false',
-          description: 'حالت نامعین وقتی درصد دقیق مشخص نیست.',
-        },
-        {
-          name: 'valueLabel',
-          type: 'ReactNode',
-          description: 'متن سفارشی مقدار؛ پیش‌فرض درصد فارسی از formatPercent.',
-        },
-        {
-          name: 'tone',
-          type: "'accent' | 'success' | 'warning' | 'danger'",
-          default: "'accent'",
-          description: 'رنگ نوار پرشونده.',
-        },
-        { name: 'size', type: "'sm' | 'md'", default: "'md'", description: 'ضخامت نوار.' },
-      ],
-    },
-    {
-      name: 'Meter',
-      props: [
-        { name: 'label', type: 'ReactNode', description: 'برچسب مرئی بالای سنجشگر.' },
-        { name: 'value', type: 'number', description: 'مقدار اندازه‌گیری‌شده (الزامی).' },
-        { name: 'minValue / maxValue', type: 'number', default: '0 / 100', description: 'کران‌های بازه.' },
-        { name: 'valueLabel', type: 'ReactNode', description: 'متن قالب‌بندی‌شدهٔ مقدار.' },
-        {
-          name: 'tone',
-          type: "'accent' | 'success' | 'warning' | 'danger'",
-          default: "'accent'",
-          description: 'رنگ نوار پرشونده.',
-        },
-        { name: 'size', type: "'sm' | 'md'", default: "'md'", description: 'ضخامت نوار.' },
-      ],
-    },
-  ],
   a11y: [
     'ProgressBar نقش role="progressbar" و Meter نقش role="meter" را با aria-valuenow، aria-valuemin، aria-valuemax و aria-valuetext فارسی منتشر می‌کنند.',
     'در prefers-reduced-motion: reduce حرکت نوار نامعین متوقف و گذارها حذف می‌شوند.',

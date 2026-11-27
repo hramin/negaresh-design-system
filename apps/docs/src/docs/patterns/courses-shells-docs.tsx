@@ -62,7 +62,7 @@ export const coursesDoc: ComponentDoc = {
   components: ['CoursePage', 'CoursePlayer', 'LessonNav', 'CourseProgress', 'MyCourses'],
   summary:
     'مجموعهٔ کامل الگوهای آموزش ویدیویی: معرفی و سرفصل دوره، پخش‌کننده با کنترل سرعت و ادامهٔ پخش، قانون تکمیل ۹۰٪ و دوره‌های من.',
-  status: 'review',
+  status: 'approved',
   products: ['N'],
   Example: CoursePlayerExample,
   Gallery: () => (
@@ -111,30 +111,6 @@ export const coursesDoc: ComponentDoc = {
       'برای پخش ویدیو، پلیر سنگین خارجی را وارد پکیج NDS نکنید؛ از `mediaSlot` در اپلیکیشن محصول استفاده کنید.',
     ],
   },
-  api: [
-    {
-      name: 'CourseProgress',
-      props: [
-        { name: 'completedLessons / totalLessons', type: 'number', description: 'تعداد درس‌های تکمیل‌شده و کل درس‌ها.' },
-        { name: 'completionThreshold', type: 'number', default: '90', description: 'حد نصاب تکمیل دوره (درصد).' },
-      ],
-    },
-    {
-      name: 'CoursePlayer',
-      props: [
-        { name: 'mediaSlot', type: 'ReactNode', description: 'جایگاه پلیر ویدیوی محصول (پیش‌فرض: پوستر ۱۶:۹).' },
-        { name: 'resumeTimestamp', type: 'string', description: 'زمان ذخیرهٔ قبلی برای اعلان ادامهٔ پخش.' },
-        { name: 'onSpeedChange', type: '(speed) => void', description: 'تغییر سرعت پخش (۰.۷۵× تا ۲×).' },
-      ],
-    },
-    {
-      name: 'LessonNav',
-      props: [
-        { name: 'chapters', type: 'CourseChapter[]', description: 'فصل‌ها و درس‌های دوره.' },
-        { name: 'activeLessonId', type: 'string', description: 'شناسهٔ درس فعال (`aria-current="page"`).' },
-      ],
-    },
-  ],
   a11y: [
     'درس جاری در `LessonNav` با `aria-current="page"` مشخص می‌شود و سرعت پخش از `SegmentedControl` دسترس‌پذیر استفاده می‌کند.',
   ],
@@ -205,7 +181,7 @@ export const accountAdminShellsDoc: ComponentDoc = {
   ],
   summary:
     'پوستهٔ حساب کاربری (بازاستفاده از `AccountPill` و `UserMenu`)، مدیریت شماره‌های تأییدشده، پوستهٔ مدیریت چندنقشی، صفحهٔ تنظیمات و ویرایشگر قالب اعلان.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example: ShellsExample,
   Gallery: () => (
@@ -266,36 +242,6 @@ export const accountAdminShellsDoc: ComponentDoc = {
       'در حالت تعبیه‌شده داخل صفحهٔ دیگر (`embedded={true}`) تگ `<main>` دوم تولید نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'AccountShell',
-      props: [
-        { name: 'userMenu', type: 'UserMenuProps', description: 'تنظیمات منوی کاربر (بازاستفاده از `AccountPill`).' },
-        { name: 'navGroups', type: 'SideNavGroupData[]', description: 'گروه‌های ناوبری (تبدیل خودکار به `TabStrip` زیر ۹۰۰px).' },
-        { name: 'embedded', type: 'boolean', default: 'false', description: 'حذف `<main>` و `<SkipLink>` در پیش‌نمایش‌های تعبیه‌شده.' },
-      ],
-    },
-    {
-      name: 'AccountContacts',
-      props: [
-        { name: 'mobiles', type: 'VerifiedMobileItem[]', description: 'شماره‌های موبایل تأییدشده (ماسک‌شده).' },
-        { name: 'onAddMobile / onRemoveMobile', type: 'callbacks', description: 'افزودن با تأیید OTP و حذف با تأیید `AlertDialog`.' },
-      ],
-    },
-    {
-      name: 'AdminShell',
-      props: [
-        { name: 'userRoles', type: 'string[]', description: 'نقش‌های فعال برای فیلتر خودکار گروه‌های `SideNav`.' },
-        { name: 'breadcrumbs', type: 'BreadcrumbItemData[]', description: 'مسیر صفحهٔ مدیریت.' },
-      ],
-    },
-    {
-      name: 'NotificationTemplatesEditor',
-      props: [
-        { name: 'templates', type: 'NotificationTemplate[]', description: 'قالب‌های پیامک، ایمیل، تلگرام و بله.' },
-      ],
-    },
-  ],
   a11y: [
     'در موبایل (`< 900px`)، `AccountShell` به `TabStrip` اسکرول‌پذیر و `AdminShell` به منوی کشویی `Sheet` تغییر چیدمان می‌دهند.',
     'نوار ذخیرهٔ `SettingsPage` وضعیت تغییرات را با `role="status"` اعلام می‌کند.',

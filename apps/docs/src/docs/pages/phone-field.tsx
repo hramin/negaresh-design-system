@@ -2,7 +2,7 @@ import { Code, PhoneField, Stack, Text } from '@negaresh/react';
 import { useState } from 'react';
 import type { ComponentDoc } from '../types.ts';
 import { GalleryRow, State } from '../ui.tsx';
-import { fieldA11y, fieldApi, fieldKeyboard } from './field-docs.ts';
+import { fieldA11y, fieldKeyboard } from './field-docs.ts';
 import styles from './fields.module.css';
 
 function Example() {
@@ -34,7 +34,7 @@ export const phoneFieldDoc: ComponentDoc = {
   base: 'TextField + @negaresh/utils',
   summary:
     'شمارهٔ همراه ایرانی با ورودی لاتین و جهت مستقل. پیشوندها و ارقام فارسی و عربی پذیرفته می‌شوند؛ شمارهٔ کامل به قالب +989… نرمال می‌شود.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example,
   Gallery: () => (
@@ -117,21 +117,6 @@ export const phoneFieldDoc: ComponentDoc = {
       'از type="number" برای شمارهٔ تلفن استفاده نکنید؛ صفر نخست باید باقی بماند.',
     ],
   },
-  api: [
-    fieldApi('PhoneField', [
-      {
-        name: 'value / defaultValue',
-        type: 'string',
-        description: 'شمارهٔ کامل یا متن در حال ویرایش؛ ارقام فارسی و عربی نیز پذیرفته می‌شوند.',
-      },
-      {
-        name: 'onChange',
-        type: '(value: string) => void',
-        description:
-          'برای شمارهٔ کامل معتبر +989…؛ برای مقدار ناتمام یا نامعتبر، متن قابل‌ویرایش با ارقام لاتین.',
-      },
-    ]),
-  ],
   keyboard: fieldKeyboard,
   a11y: fieldA11y,
   rtl: [

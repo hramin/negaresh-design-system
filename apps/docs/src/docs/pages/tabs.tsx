@@ -94,7 +94,7 @@ export const tabsDoc: ComponentDoc = {
   components: ['Tabs', 'TabList', 'Tab', 'TabPanel'],
   summary:
     'زبانه‌های دسترس‌پذیر ساخته‌شده روی React Aria Tabs با جهت افقی و عمودی (برگ سوم روانما)، پیمایش کیبورد راست‌به‌چپ، نشان فارسی و دو سبک underline و pill.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   base: 'React Aria Tabs / TabList / Tab / TabPanel',
   Example,
@@ -193,24 +193,6 @@ export const tabsDoc: ComponentDoc = {
       'برای ناوبری اصلی بین صفحات مستقل از Tabs استفاده نکنید؛ آن کار TopBar یا SideNav است.',
     ],
   },
-  api: [
-    {
-      name: 'Tabs',
-      props: [
-        { name: 'orientation', type: "'horizontal' | 'vertical'", default: "'horizontal'", description: 'جهت چیدمان و پیمایش کیبورد.' },
-        { name: 'variant', type: "'underline' | 'pill'", default: "'underline'", description: 'سبک نمایشی زبانه‌ها (بدون سایهٔ ساکن).' },
-        { name: 'selectedKey / defaultSelectedKey / onSelectionChange', type: 'Key / Key / (key: Key) => void', description: 'مدیریت کنترل‌شده یا غیرکنترل‌شدهٔ زبانهٔ فعال.' },
-        { name: 'keyboardActivation', type: "'automatic' | 'manual'", default: "'automatic'", description: 'فعال‌سازی فوری با کلید جهت‌دار یا با Enter/Space.' },
-      ],
-    },
-    {
-      name: 'Tab / TabPanel',
-      props: [
-        { name: 'id', type: 'Key', description: 'شناسهٔ مشترک میان Tab و TabPanel متناظر.' },
-        { name: 'icon / badge / isDisabled', type: 'IconDefinition / ReactNode | number / boolean', description: 'آیکن، نشان فارسی و وضعیت غیرفعال روی Tab.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'ArrowLeft / ArrowRight', action: 'حرکت بین زبانه‌های افقی در راست‌به‌چپ (ArrowLeft = بعدی، ArrowRight = قبلی).' },
     { keys: 'ArrowDown / ArrowUp', action: 'حرکت بین زبانه‌های عمودی.' },

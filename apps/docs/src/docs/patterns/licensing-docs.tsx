@@ -67,7 +67,7 @@ export const licensingActivationDoc: ComponentDoc = {
   components: ['CodeDisplay', 'ActivationFlow', 'MyActivations'],
   summary:
     'جریان فعال‌سازی رجیستری با خطاهای مشخص FR-11، یادداشت رایانهٔ تکراری بدون کسر سهمیه (FR-12)، نمایش بزرگ کد LTR و فهرست فعال‌سازی‌های کاربر.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N'],
   Example: ActivationExample,
   Gallery: () => (
@@ -104,31 +104,6 @@ export const licensingActivationDoc: ComponentDoc = {
       'کد سیستم، سریال یا کد فعال‌سازی را با ارقام فارسی نمایش ندهید (D-86).',
     ],
   },
-  api: [
-    {
-      name: 'CodeDisplay',
-      props: [
-        { name: 'code', type: 'string', description: 'کد فعال‌سازی (LTR monospace).' },
-        { name: 'isRepeatPc', type: 'boolean', default: 'false', description: 'نمایش یادداشت FR-12.' },
-        { name: 'sentByChannels', type: 'string', description: 'توضیح ارسال پیامک/ایمیل.' },
-      ],
-    },
-    {
-      name: 'ActivationFlow',
-      props: [
-        { name: 'systemCode', type: 'string', description: 'کد سیستم پیش‌پر شده از برنامهٔ ویندوز.' },
-        { name: 'errorKind', type: 'ActivationErrorKind', description: 'یکی از ۴ خطای رسمی FR-11.' },
-        { name: 'usage', type: '{ used, limit, sourceNote? }', description: 'سهمیهٔ فعال‌سازی و منبع سقف.' },
-      ],
-    },
-    {
-      name: 'MyActivations',
-      props: [
-        { name: 'records', type: 'ActivationRecord[]', description: 'فهرست فعال‌سازی‌های ثبت‌شده.' },
-        { name: 'onResendCode', type: '(id) => void', description: 'ارسال مجدد کد با پشتیبانی از محدودیت نرخ.' },
-      ],
-    },
-  ],
   a11y: [
     'خطاهای فعال‌سازی از `InlineAlert` همراه با پیوند به فیلد و دکمهٔ اقدام جایگزین استفاده می‌کنند.',
     'دکمهٔ کپی از `CopyButton` با اعلان زندهٔ موفقیت استفاده می‌کند.',
@@ -162,7 +137,7 @@ export const licensingAdminDoc: ComponentDoc = {
   components: ['LimitEditor', 'SerialBatchGenerator', 'AlertChannels', 'AuditLog'],
   summary:
     'الگوهای مدیریتی رجیستری: ویرایشگر سقف با نمایش منبع FR-23، تولید دسته‌ای سریال با خروجی CSV، کانال‌های هشدار و گزارش ممیزی.',
-  status: 'review',
+  status: 'approved',
   products: ['R'],
   Example: LicensingAdminExample,
   Gallery: () => (
@@ -203,36 +178,6 @@ export const licensingAdminDoc: ComponentDoc = {
       'نشانی IP و شناسهٔ سریال را بدون ایزوله‌سازی `<Code>` نمایش ندهید.',
     ],
   },
-  api: [
-    {
-      name: 'LimitEditor',
-      props: [
-        { name: 'effectiveLimit', type: 'number', description: 'سقف مؤثر فعلی.' },
-        { name: 'source', type: "'serial' | 'customer' | 'product' | 'global'", description: 'منبع سقف مؤثر (FR-23).' },
-        { name: 'history', type: 'TimelineEntry[]', description: 'تاریخچهٔ تغییرات سقف.' },
-      ],
-    },
-    {
-      name: 'SerialBatchGenerator',
-      props: [
-        { name: 'products', type: 'SerialProductOption[]', description: 'فهرست محصولات برای صدور سریال.' },
-        { name: 'onExportCsv', type: '(serials) => void', description: 'خروجی CSV از سریال‌های پیش‌نمایش.' },
-      ],
-    },
-    {
-      name: 'AlertChannels',
-      props: [
-        { name: 'channels', type: 'AlertChannelConfig[]', description: 'تنظیمات پیامک، ایمیل، تلگرام و بله.' },
-        { name: 'primaryRecipient / secondaryRecipient', type: 'string', description: 'دو گیرندهٔ هشدار.' },
-      ],
-    },
-    {
-      name: 'AuditLog',
-      props: [
-        { name: 'entries', type: 'AuditLogEntry[]', description: 'فهرست رویدادهای ممیزی همراه با before/after.' },
-      ],
-    },
-  ],
   a11y: [
     'جدول ممیزی در عرض زیر ۹۰۰ پیکسل به کارت‌های خوانا تبدیل می‌شود و مقایسهٔ تغییرات با `DiffView` دسترس‌پذیر باز می‌شود.',
   ],

@@ -87,7 +87,7 @@ export const profileLineDoc: ComponentDoc = {
   components: ['ProfileLine'],
   summary:
     'نمودار خطی مقیاس‌های روان‌سنجی (مانند MMPI) با خطوط مرجع ۵۰/۶۵/۷۰، بازهٔ هنجار، جداکننده‌های بخشی و نقاط قابل فوکوس با نشانگرهای غیرلوزی.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V', 'N'],
   Example,
   Gallery: () => (
@@ -151,20 +151,6 @@ export const profileLineDoc: ComponentDoc = {
       'از محور عمودی دوگانه (dual axis) استفاده نکنید.',
     ],
   },
-  api: [
-    {
-      name: 'ProfileLine',
-      props: [
-        { name: 'categories', type: 'readonly ProfileLineCategory[]', description: 'مقیاس‌های محور افقی (id، label و shortLabel اختیاری).' },
-        { name: 'series', type: 'readonly ProfileLineSeries[]', description: '۱ تا ۶ سری داده؛ مقدار null خط را به‌صورت تمیز قطع می‌کند.' },
-        { name: 'domain', type: 'readonly [number, number]', description: 'دامنهٔ محور عمودی (مثلاً [30, 85]).' },
-        { name: 'bands', type: 'readonly BandSpec[]', description: 'بازه‌های افقی هنجار.' },
-        { name: 'referenceLines', type: 'readonly ReferenceLineSpec[]', description: 'خطوط مرجع افقی (۵۰، ۶۵، ۷۰).' },
-        { name: 'dividers', type: 'readonly ProfileLineDivider[]', description: 'جداکننده‌های عمودی میان گروه‌های مقیاس.' },
-        { name: 'showValueLabels', type: 'boolean', default: 'true (single)', description: 'نمایش عدد مستقیم بالای هر نقطه.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'ورود به نقاط داده‌ای نمودار' },
     { keys: 'ArrowLeft / ArrowRight', action: 'حرکت بین نقاط در جهت خوانش RTL و به‌روزرسانی خوانش زنده' },

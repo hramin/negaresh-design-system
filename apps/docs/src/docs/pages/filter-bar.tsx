@@ -90,7 +90,7 @@ export const filterBarDoc: ComponentDoc = {
   components: ['FilterBar'],
   summary:
     'ترکیب SearchField، کنترل‌های فیلتر درون‌خطی دسکتاپ، برچسب‌های فیلتر فعال قابل حذف (TagGroup) و بازنشانی؛ زیر ۹۰۰ پیکسل فیلترها به کشوی Sheet منتقل می‌شوند.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T'],
   Example,
   Gallery: () => (
@@ -147,19 +147,6 @@ export const filterBarDoc: ComponentDoc = {
       'کنترل‌های فیلتر را در موبایل در چند ردیف فشرده روی هم نچینید؛ FilterBar به طور خودکار کشوی Sheet را زیر ۹۰۰ پیکسل فعال می‌کند.',
     ],
   },
-  api: [
-    {
-      name: 'FilterBar',
-      props: [
-        { name: 'searchValue / onSearchChange / searchPlaceholder', type: 'string / (v: string) => void', description: 'مدیریت ورودی SearchField.' },
-        { name: 'filters', type: 'ReactNode', description: 'کنترل‌های فیلتر؛ در دسکتاپ درون‌خطی و در موبایل (< ۹۰۰px) درون Sheet.' },
-        { name: 'activeFilters', type: 'readonly FilterChip[]', description: 'برچسب‌های فیلتر فعال زیر نوار.' },
-        { name: 'onRemoveFilter / onReset', type: '(id: string) => void / () => void', description: 'حذف تک‌فیلتر یا پاک کردن همهٔ فیلترها.' },
-        { name: 'sheetTitle', type: 'ReactNode', default: "'فیلتر کردن نتایج'", description: 'عنوان کشوی فیلترها در موبایل.' },
-        { name: 'actions', type: 'ReactNode', description: 'اقدام‌های اختیاری در انتهای سطر.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'حرکت بین جست‌وجو، کنترل‌های فیلتر (یا دکمهٔ فیلترها در موبایل)، برچسب‌ها و دکمهٔ پاک کردن.' },
     { keys: 'Delete / Backspace', action: 'حذف برچسب فیلتر متمرکز در TagGroup.' },

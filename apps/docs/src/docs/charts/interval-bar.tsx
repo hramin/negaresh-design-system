@@ -105,7 +105,7 @@ export const intervalBarDoc: ComponentDoc = {
   components: ['IntervalBar'],
   summary:
     'نمودار شاخص سیستم برای نمایش نمره همراه با بازهٔ اطمینان، بازه‌های هنجار و خطوط مرجع؛ با دو نمای حرفه‌ای و آرام و چیدمان واکنش‌گرا در موبایل.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'V'],
   Example,
   Gallery: () => (
@@ -166,21 +166,6 @@ export const intervalBarDoc: ComponentDoc = {
       'بازهٔ اطمینان را بدون توضیح منبع هنجار در sourceNote نمایش ندهید.',
     ],
   },
-  api: [
-    {
-      name: 'IntervalBar',
-      props: [
-        { name: 'items', type: 'readonly IntervalBarItem[]', description: 'ردیف‌های مقیاس شامل label، value، low/high اختیاری و severity.' },
-        { name: 'domain', type: 'readonly [number, number]', description: 'دامنهٔ عددی محور افقی.' },
-        { name: 'ticks', type: 'readonly number[]', description: 'درجه‌های صریح محور عددی.' },
-        { name: 'bands', type: 'readonly BandSpec[]', description: 'بازه‌های هنجار سایه‌دار روی مسیر.' },
-        { name: 'referenceLines', type: 'readonly ReferenceLineSpec[]', description: 'خطوط مرجع عمودی (میانگین، آستانه).' },
-        { name: 'mode', type: "'professional' | 'calm'", default: "'professional'", description: 'مقیاس شدت حرفه‌ای یا آرام (بدون رنگ رز).' },
-        { name: 'dir', type: "'rtl' | 'ltr'", default: "'rtl'", description: 'جهت محور عددی (کم به زیاد از آغاز به پایان خط).' },
-        { name: 'ariaLabel', type: 'string', description: 'نام دسترس‌پذیر نمودار.' },
-      ],
-    },
-  ],
   keyboard: [
     { keys: 'Tab', action: 'فوکوس روی نشانگر ردیف بعدی' },
     { keys: 'ArrowDown / ArrowUp', action: 'جابه‌جایی سریع میان مقیاس‌ها و به‌روزرسانی نوار خوانش زنده' },

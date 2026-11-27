@@ -6,15 +6,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build",
+    "generate:props": "node scripts/generate-props.ts",
+    "build": "node scripts/generate-props.ts && vite build",
     "start": "srvx --prod --port 3000 -s ../client dist/server/server.js",
     "typecheck": "tsc --noEmit",
     "lint": "biome lint .",
+    "test": "vitest run",
     "test:e2e": "playwright test --trace off",
     "test:visual": "NDS_VISUAL=1 playwright test e2e/visual.spec.ts --trace off"
   },
   "dependencies": {
     "@negaresh/assessment": "workspace:*",
+    "@negaresh/brand-ravanma": "workspace:*",
     "@negaresh/charts": "workspace:*",
     "@negaresh/icons": "workspace:*",
     "@negaresh/keycloak-theme": "workspace:*",
@@ -41,6 +44,8 @@
     "pixelmatch": "8.0.0",
     "pngjs": "7.0.0",
     "srvx": "1.0.8",
-    "vite": "8.3.8"
+    "typescript": "6.0.3",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
   }
 }

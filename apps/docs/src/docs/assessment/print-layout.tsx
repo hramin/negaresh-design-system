@@ -119,7 +119,7 @@ export const printLayoutDoc: ComponentDoc = {
   base: '@page A4 (14 × 10 mm) + LogoSlot + ResultSummary + ResultChart',
   summary:
     'قالب گزارش A4 با حاشیهٔ ۱۴×۱۰ میلی‌متر، سرصفحهٔ سازمان و شناسه، جلوگیری از شکستن نمودارها و کارت‌ها میان صفحات (break-inside: avoid)، چاپ سیاه‌وسفید امن و هم‌ارزی کامل صفحه و PDF.',
-  status: 'review',
+  status: 'approved',
   products: ['T', 'N', 'V'],
   Example,
   Gallery: () => (
@@ -209,20 +209,6 @@ export const printLayoutDoc: ComponentDoc = {
       'پس‌زمینهٔ تیره را روی کاغذ چاپ نکنید؛ PrintLayout هنگام چاپ به‌طور خودکار توکن‌های کاغذ روشن را فعال می‌کند.',
     ],
   },
-  api: [
-    {
-      name: 'PrintLayout',
-      props: [
-        { name: 'title', type: 'ReactNode', description: 'عنوان گزارش در سرصفحهٔ A4' },
-        { name: 'organizationName / logo / productLabel', type: 'ReactNode', description: 'مشخصات سازمان و جایگاه لوگو (LogoSlot)' },
-        { name: 'mode', type: "'professional' | 'calm'", description: 'نشان حالت گزارش در سرصفحه' },
-        { name: 'takerName / issuedAt / referenceId', type: 'ReactNode / Date / string', description: 'اطلاعات آزمون‌دهنده، تاریخ صدور شمسی و شناسهٔ LTR' },
-        { name: 'screenActions', type: 'ReactNode', description: 'دکمه‌های نمایشی که در @media print پنهان می‌شوند' },
-        { name: 'normNote / footerNote', type: 'ReactNode', description: 'مرجع هنجار و یادداشت محرمانگی پاصفحه' },
-        { name: 'forceLightPaper', type: 'boolean', default: 'false', description: 'قفل کردن توکن‌های کاغذ روشن در نمایش و چاپ' },
-      ],
-    },
-  ],
   a11y: [
     'PrintLayout از نشانه‌گذاری معنایی <article>، <header> و <footer> استفاده می‌کند و در حالت بدون جاوااسکریپت کاملاً خواناست.',
     'در Playwright CI فایل PDF واقعی A4 ساخته و ابعاد ۵۹۵×۸۴۲ پوینت، تعداد صفحات، فونت Vazirmatn و هم‌ارزی تصویری صفحه و چاپ بررسی می‌شود.',

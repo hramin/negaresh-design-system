@@ -95,7 +95,7 @@ export const topBarDoc: ComponentDoc = {
   base: 'Link',
   summary:
     'نوار بالای صفحه با جای لوگو، پیوندهای ناوبری اصلی، جای دکمهٔ منوی موبایل و اقدام‌های پایانی. با خط مویی و پس‌زمینهٔ نیمه‌شفاف از صفحه جدا می‌شود و سایهٔ ثابت ندارد (D-77).',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => <SampleBar navLabel="نمونهٔ زندهٔ ناوبری" withMobileMenu />,
   Gallery: () => (
@@ -151,81 +151,6 @@ export const topBarDoc: ComponentDoc = {
       'افزودن سایهٔ ثابت یا نوار دوم چسبان زیر نوار بالایی.',
     ],
   },
-  api: [
-    {
-      name: 'TopBar',
-      props: [
-        {
-          name: 'brand',
-          type: 'ReactNode',
-          description: 'جای برند در ابتدای سطر (TopBarBrand + LogoSlot).',
-        },
-        { name: 'nav', type: 'ReactNode', description: 'ناوبری اصلی (TopBarNav).' },
-        {
-          name: 'actions',
-          type: 'ReactNode',
-          description: 'اقدام‌های انتهای سطر (تغییر حالت، AccountPill).',
-        },
-        {
-          name: 'mobileMenu',
-          type: 'ReactNode',
-          description: 'دکمهٔ منوی موبایل؛ فقط زیر ۹۰۰ پیکسل دیده می‌شود.',
-        },
-        {
-          name: 'size',
-          type: "'default' | 'wide'",
-          default: "'default'",
-          description: 'عرض ظرف درونی (۱۲۰۰ یا ۱۴۴۰ پیکسل).',
-        },
-        { name: 'sticky', type: 'boolean', default: 'true', description: 'چسبان در بالای نما.' },
-        {
-          name: 'as',
-          type: "'header' | 'div'",
-          default: "'header'",
-          description: 'برچسب ریشه؛ برای پیش‌نمایش‌های توکار از div استفاده کنید.',
-        },
-      ],
-    },
-    {
-      name: 'TopBarBrand',
-      props: [
-        { name: 'href', type: 'string', description: 'نشانی صفحهٔ اصلی.' },
-        { name: 'aria-label', type: 'string', description: 'نام دسترس‌پذیر پیوند برند.' },
-        { name: 'children', type: 'ReactNode', description: 'معمولاً LogoSlot.' },
-      ],
-    },
-    {
-      name: 'TopBarNav',
-      props: [
-        { name: 'aria-label', type: 'string', description: 'الزامی؛ نام نشانهٔ ناوبری.' },
-        {
-          name: 'hideOnMobile',
-          type: 'boolean',
-          default: 'true',
-          description: 'پنهان کردن زیر ۹۰۰ پیکسل (D-90).',
-        },
-      ],
-    },
-    {
-      name: 'TopBarNavLink',
-      props: [
-        { name: 'href', type: 'string', description: 'مقصد پیوند.' },
-        {
-          name: 'isCurrent',
-          type: 'boolean',
-          default: 'false',
-          description: 'تنظیم aria-current="page" و حالت صفحهٔ فعال.',
-        },
-        {
-          name: 'isDisabled',
-          type: 'boolean',
-          default: 'false',
-          description: 'غیرفعال کردن پیوند.',
-        },
-        { name: 'onPress', type: '(e) => void', description: 'رویداد انتخاب.' },
-      ],
-    },
-  ],
   keyboard: [
     {
       keys: 'Tab / Shift+Tab',

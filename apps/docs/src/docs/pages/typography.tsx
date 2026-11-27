@@ -29,7 +29,7 @@ export const typographyDoc: ComponentDoc = {
   components: ['Text', 'Heading'],
   summary:
     'متن با اندازه، وزن و رنگ توکنی. فارسی هرگز ایتالیک یا با فاصلهٔ حروف نمی‌شود؛ تأکید با وزن است.',
-  status: 'review',
+  status: 'approved',
   products: ['R', 'N', 'T', 'V'],
   Example: () => (
     <Stack gap="2">
@@ -92,40 +92,6 @@ export const typographyDoc: ComponentDoc = {
       'انتخاب سطح عنوان برای اندازه؛ سطح ساختار سند است و اندازه جداگانه تنظیم می‌شود.',
     ],
   },
-  api: [
-    {
-      name: 'Text',
-      props: [
-        { name: 'as', type: 'ElementType', default: "'span'", description: 'عنصر HTML.' },
-        { name: 'size', type: "'2xs' … '5xl'", description: 'توکن اندازه؛ بدون آن ارث می‌برد.' },
-        {
-          name: 'weight',
-          type: "'regular' | 'medium' | 'semibold' | 'bold' | 'heavy'",
-          description: '۴۰۰ تا ۸۰۰.',
-        },
-        {
-          name: 'tone',
-          type: "'default' | 'muted' | 'subtle' | 'disabled' | 'accent' | 'success' | 'warning' | 'danger' | 'info' | 'inverse'",
-          description: 'رنگ معنایی.',
-        },
-        { name: 'leading', type: "'tight' | 'ui' | 'text'", description: 'ارتفاع خط.' },
-        { name: 'tabular', type: 'boolean', description: 'ارقام هم‌عرض.' },
-        { name: 'measure', type: 'boolean', description: 'سقف ۶۶ کاراکتر.' },
-      ],
-    },
-    {
-      name: 'Heading',
-      props: [
-        { name: 'level', type: '1 | 2 | 3 | 4 | 5 | 6', description: 'عنصر h1 تا h6.' },
-        {
-          name: 'size',
-          type: 'TextSize',
-          default: 'بر اساس سطح',
-          description: 'h1 ۳۲ (موبایل ۲۵)، h2 ۲۱، h3 ۱۸.',
-        },
-      ],
-    },
-  ],
   a11y: [
     'سطح عنوان‌ها را پشت سر هم نگه دارید؛ یک h1 در هر صفحه.',
     'رنگ متن روی زمینه‌های رنگی از توکن fg همان وضعیت است.',
