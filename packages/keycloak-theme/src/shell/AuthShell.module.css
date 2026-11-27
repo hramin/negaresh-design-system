@@ -44,7 +44,7 @@
 
   .cardWrap {
     inline-size: 100%;
-    max-inline-size: calc(var(--nds-container-narrow) - var(--nds-space-24) - var(--nds-space-16));
+    max-inline-size: calc(var(--nds-content-narrow) - var(--nds-space-24) - var(--nds-space-16));
     min-inline-size: 0;
   }
 

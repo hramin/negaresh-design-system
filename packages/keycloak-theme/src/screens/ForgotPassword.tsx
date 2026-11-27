@@ -216,7 +216,7 @@ export function ForgotPassword({
             {m.common.backToSignIn}
           </Link>
         ) : (
-          <Button type="button" variant="ghost" size="sm" onPress={() => onBackToSignIn?.()}>
+          <Button type="button" variant="ghost" onPress={() => onBackToSignIn?.()}>
             {m.common.backToSignIn}
           </Button>
         )}
@@ -313,7 +313,6 @@ export function ForgotPassword({
               <Button
                 type="button"
                 variant="ghost"
-                size="sm"
                 iconStart={iconEdit}
                 onPress={() => {
                   if (controlledStep === undefined) setInternalStep('identify');

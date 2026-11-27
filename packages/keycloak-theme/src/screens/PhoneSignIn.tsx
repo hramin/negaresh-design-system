@@ -232,7 +232,6 @@ export function PhoneSignIn({
             <Button
               type="button"
               variant="ghost"
-              size="sm"
               onPress={() => onNavigateRegister?.()}
             >
               {m.phoneSignIn.createAccountAction}
@@ -326,7 +325,6 @@ export function PhoneSignIn({
                 <Button
                   type="button"
                   variant="ghost"
-                  size="sm"
                   iconStart={iconEdit}
                   onPress={handleEditPhone}
                 >

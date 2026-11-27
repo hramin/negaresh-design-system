@@ -88,7 +88,6 @@ export function ErrorScreen({
               </Ltr>
               <CopyButton
                 value={referenceCode}
-                size="sm"
                 aria-label={m.errorScreen.copyReferenceCode}
               >
                 {m.errorScreen.copyReferenceCode}

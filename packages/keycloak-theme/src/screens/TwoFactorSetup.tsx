@@ -194,7 +194,6 @@ export function TwoFactorSetup({
                     <Button
                       type="button"
                       variant="ghost"
-                      size="sm"
                       onPress={() => setShowManualKey((prev) => !prev)}
                     >
                       {showManualKey ? m.twoFactorSetup.hideManualKey : m.twoFactorSetup.showManualKey}
@@ -208,7 +207,6 @@ export function TwoFactorSetup({
                       </Ltr>
                       <CopyButton
                         value={copyValue}
-                        size="sm"
                         aria-label={m.twoFactorSetup.manualKeyCopyLabel}
                       >
                         {m.twoFactorSetup.manualKeyCopyLabel}

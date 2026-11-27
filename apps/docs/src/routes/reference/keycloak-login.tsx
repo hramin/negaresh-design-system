@@ -152,7 +152,8 @@ function KeycloakLoginReferencePage() {
     default:
       return (
         <PhoneSignIn
-          step="phone"
+          key={screen}
+          defaultStep="phone"
           defaultPhone={sampleAuthFixtures.phoneDisplayInput}
           passwordSignInHref="/reference/keycloak-login?screen=password-signin"
           registerHref="/reference/keycloak-login?screen=register"

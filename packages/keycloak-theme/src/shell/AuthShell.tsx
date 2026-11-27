@@ -83,15 +83,9 @@ function ShellThemeToggle({
           }
         }}
       >
-        <ToggleButton id="light" size="sm">
-          {m.shell.themeLight}
-        </ToggleButton>
-        <ToggleButton id="dark" size="sm">
-          {m.shell.themeDark}
-        </ToggleButton>
-        <ToggleButton id="system" size="sm">
-          {m.shell.themeSystem}
-        </ToggleButton>
+        <ToggleButton id="light">{m.shell.themeLight}</ToggleButton>
+        <ToggleButton id="dark">{m.shell.themeDark}</ToggleButton>
+        <ToggleButton id="system">{m.shell.themeSystem}</ToggleButton>
       </ToggleButtonGroup>
     </div>
   );

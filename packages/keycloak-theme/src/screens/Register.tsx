@@ -174,7 +174,7 @@ export function Register({
             {m.register.signInAction}
           </Link>
         ) : (
-          <Button type="button" variant="ghost" size="sm" onPress={() => onNavigateSignIn?.()}>
+          <Button type="button" variant="ghost" onPress={() => onNavigateSignIn?.()}>
             {m.register.signInAction}
           </Button>
         )}

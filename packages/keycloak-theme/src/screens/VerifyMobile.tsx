@@ -151,7 +151,6 @@ export function VerifyMobile({
           <Button
             type="button"
             variant="ghost"
-            size="sm"
             iconStart={iconSignOut}
             onPress={() => onSignOut?.()}
           >
@@ -241,7 +240,6 @@ export function VerifyMobile({
                 <Button
                   type="button"
                   variant="ghost"
-                  size="sm"
                   iconStart={iconEdit}
                   onPress={() => {
                     if (controlledStep === undefined) setInternalStep('phone');

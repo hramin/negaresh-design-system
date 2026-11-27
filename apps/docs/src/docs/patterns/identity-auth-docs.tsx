@@ -227,7 +227,7 @@ export const identitySignInDoc: ComponentDoc = {
               <Text size="sm" tone="muted">
                 جایگاه ویجت CAPTCHA (بدون وابستگی خارجی در NDS)
               </Text>
-              <Button type="button" variant="ghost" size="sm">
+              <Button type="button" variant="ghost">
                 تأیید امنیتی
               </Button>
             </Inline>

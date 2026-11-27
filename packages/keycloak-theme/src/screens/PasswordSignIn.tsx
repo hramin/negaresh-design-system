@@ -175,7 +175,7 @@ export function PasswordSignIn({
               {m.passwordSignIn.createAccountAction}
             </Link>
           ) : (
-            <Button type="button" variant="ghost" size="sm" onPress={() => onNavigateRegister?.()}>
+            <Button type="button" variant="ghost" onPress={() => onNavigateRegister?.()}>
               {m.passwordSignIn.createAccountAction}
             </Button>
           )}
@@ -262,7 +262,7 @@ export function PasswordSignIn({
                     {m.passwordSignIn.forgotPasswordAction}
                   </Link>
                 ) : (
-                  <Button type="button" variant="ghost" size="sm" onPress={() => onForgotPassword?.()}>
+                  <Button type="button" variant="ghost" onPress={() => onForgotPassword?.()}>
                     {m.passwordSignIn.forgotPasswordAction}
                   </Button>
                 ))}

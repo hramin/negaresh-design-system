@@ -17,12 +17,9 @@ import { Register } from '../screens/Register.tsx';
 import { TwoFactorSetup } from '../screens/TwoFactorSetup.tsx';
 import { VerifyMobile } from '../screens/VerifyMobile.tsx';
 import type { AuthBannerMessage } from '../shell/AuthShell.tsx';
-import { useI18n } from './i18n.ts';
 import type { KcContext } from './KcContext.ts';
 
-const DefaultPage = lazy(() => import('keycloakify/login/DefaultPage'));
-const Template = lazy(() => import('keycloakify/login/Template'));
-const UserProfileFormFields = lazy(() => import('keycloakify/login/UserProfileFormFields'));
+const DefaultFallback = lazy(() => import('./DefaultFallback.tsx'));
 
 function mapKcBanner(
   message: KcContext['message'],
@@ -71,10 +68,9 @@ export interface KcPageProps {
 /**
  * Keycloakify login theme router mapping every Negaresh Identity & Auth `pageId`
  * to its corresponding NDS screen component, with native Keycloak POST bindings
- * and a safe Keycloakify `DefaultPage` fallback for unmapped pages.
+ * and a safe lazy-loaded Keycloakify `DefaultPage` fallback for unmapped pages.
  */
 export default function KcPage({ kcContext, embedded = false }: KcPageProps) {
-  const { i18n } = useI18n({ kcContext });
   const banner = mapKcBanner(kcContext.message);
   const productName = kcContext.client?.name || undefined;
   const shellProps = {
@@ -329,15 +325,7 @@ export default function KcPage({ kcContext, embedded = false }: KcPageProps) {
       default:
         return (
           <Suspense>
-            <DefaultPage
-              kcContext={kcContext}
-              i18n={i18n}
-              classes={{}}
-              Template={Template}
-              doUseDefaultCss={false}
-              UserProfileFormFields={UserProfileFormFields}
-              doMakeUserConfirmPassword={true}
-            />
+            <DefaultFallback kcContext={kcContext} />
           </Suspense>
         );
     }
