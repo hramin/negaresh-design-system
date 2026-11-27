@@ -1,5 +1,5 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
-import { ASSESSMENT_SLUGS, CHART_SLUGS, COMPONENT_SLUGS, THEMES } from './routes.ts';
+import { ASSESSMENT_SLUGS, CHART_SLUGS, COMPONENT_SLUGS, PATTERN_SLUGS, THEMES } from './routes.ts';
 
 /**
  * Visual snapshots of every states gallery (docs/quality.md): light/dark × 1440/390.
@@ -162,6 +162,18 @@ for (const theme of THEMES) {
       await snap(
         page.locator(`[data-gallery="assessment-${slug}"]`),
         `assessment-${slug}-${theme}.png`,
+        true,
+      );
+    });
+  }
+
+  for (const slug of PATTERN_SLUGS) {
+    test(`pattern gallery ${slug} (${theme})`, async ({ page }) => {
+      await open(page, `/patterns/${slug}?theme=${theme}`);
+      await page.addStyleTag({ content: 'header { visibility: hidden !important; }' });
+      await snap(
+        page.locator(`[data-gallery="pattern-${slug}"]`),
+        `pattern-${slug}-${theme}.png`,
         true,
       );
     });

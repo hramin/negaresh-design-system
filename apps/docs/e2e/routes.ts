@@ -96,6 +96,20 @@ export const ASSESSMENT_SLUGS = [
   'print-layout',
 ] as const;
 
+export const PATTERN_SLUGS = [
+  'commerce-catalog',
+  'commerce-checkout',
+  'commerce-orders',
+  'licensing-activation',
+  'licensing-admin',
+  'content-editorial',
+  'content-experts',
+  'courses',
+  'account-admin-shells',
+  'test-platform-catalog',
+  'test-platform-org',
+] as const;
+
 export const ROUTES = [
   '/',
   '/tokens',
@@ -107,6 +121,8 @@ export const ROUTES = [
   ...CHART_SLUGS.map((s) => `/charts/${s}`),
   '/assessment',
   ...ASSESSMENT_SLUGS.map((s) => `/assessment/${s}`),
+  '/patterns',
+  ...PATTERN_SLUGS.map((s) => `/patterns/${s}`),
   '/guides/tanstack-form-zod',
   '/reference/registry-activation',
   '/reference/registry-activation?state=error',
