@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as DecisionsRouteImport } from './routes/decisions'
 import { Route as HealthzRouteImport } from './routes/healthz'
+import { Route as PlaygroundRouteImport } from './routes/playground'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as StartRouteImport } from './routes/start'
 import { Route as TokensRouteImport } from './routes/tokens'
 import { Route as AssessmentIndexRouteImport } from './routes/assessment/index'
@@ -64,6 +66,16 @@ const DecisionsRoute = DecisionsRouteImport.update({
 const HealthzRoute = HealthzRouteImport.update({
   id: '/healthz',
   path: '/healthz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlaygroundRoute = PlaygroundRouteImport.update({
+  id: '/playground',
+  path: '/playground',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StartRoute = StartRouteImport.update({
@@ -237,6 +249,8 @@ export interface FileRoutesByFullPath {
   '/changelog': typeof ChangelogRoute
   '/decisions': typeof DecisionsRoute
   '/healthz': typeof HealthzRoute
+  '/playground': typeof PlaygroundRoute
+  '/search': typeof SearchRoute
   '/start': typeof StartRoute
   '/tokens': typeof TokensRoute
   '/assessment/$slug': typeof AssessmentSlugRoute
@@ -275,6 +289,8 @@ export interface FileRoutesByTo {
   '/changelog': typeof ChangelogRoute
   '/decisions': typeof DecisionsRoute
   '/healthz': typeof HealthzRoute
+  '/playground': typeof PlaygroundRoute
+  '/search': typeof SearchRoute
   '/start': typeof StartRoute
   '/tokens': typeof TokensRoute
   '/assessment/$slug': typeof AssessmentSlugRoute
@@ -314,6 +330,8 @@ export interface FileRoutesById {
   '/changelog': typeof ChangelogRoute
   '/decisions': typeof DecisionsRoute
   '/healthz': typeof HealthzRoute
+  '/playground': typeof PlaygroundRoute
+  '/search': typeof SearchRoute
   '/start': typeof StartRoute
   '/tokens': typeof TokensRoute
   '/assessment/$slug': typeof AssessmentSlugRoute
@@ -354,6 +372,8 @@ export interface FileRouteTypes {
     | '/changelog'
     | '/decisions'
     | '/healthz'
+    | '/playground'
+    | '/search'
     | '/start'
     | '/tokens'
     | '/assessment/$slug'
@@ -392,6 +412,8 @@ export interface FileRouteTypes {
     | '/changelog'
     | '/decisions'
     | '/healthz'
+    | '/playground'
+    | '/search'
     | '/start'
     | '/tokens'
     | '/assessment/$slug'
@@ -430,6 +452,8 @@ export interface FileRouteTypes {
     | '/changelog'
     | '/decisions'
     | '/healthz'
+    | '/playground'
+    | '/search'
     | '/start'
     | '/tokens'
     | '/assessment/$slug'
@@ -469,6 +493,8 @@ export interface RootRouteChildren {
   ChangelogRoute: typeof ChangelogRoute
   DecisionsRoute: typeof DecisionsRoute
   HealthzRoute: typeof HealthzRoute
+  PlaygroundRoute: typeof PlaygroundRoute
+  SearchRoute: typeof SearchRoute
   StartRoute: typeof StartRoute
   TokensRoute: typeof TokensRoute
   AssessmentSlugRoute: typeof AssessmentSlugRoute
@@ -531,6 +557,20 @@ declare module '@tanstack/react-router' {
       path: '/healthz'
       fullPath: '/healthz'
       preLoaderRoute: typeof HealthzRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/playground': {
+      id: '/playground'
+      path: '/playground'
+      fullPath: '/playground'
+      preLoaderRoute: typeof PlaygroundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/start': {
@@ -765,6 +805,8 @@ const rootRouteChildren: RootRouteChildren = {
   ChangelogRoute: ChangelogRoute,
   DecisionsRoute: DecisionsRoute,
   HealthzRoute: HealthzRoute,
+  PlaygroundRoute: PlaygroundRoute,
+  SearchRoute: SearchRoute,
   StartRoute: StartRoute,
   TokensRoute: TokensRoute,
   AssessmentSlugRoute: AssessmentSlugRoute,

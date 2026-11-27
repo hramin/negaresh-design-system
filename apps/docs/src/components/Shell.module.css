@@ -46,6 +46,13 @@
     color: var(--nds-fg-subtle);
   }
 
+  .topbarActions {
+    display: flex;
+    align-items: center;
+    gap: var(--nds-space-2);
+    flex-shrink: 0;
+  }
+
   .nav {
     grid-area: nav;
     padding: var(--nds-space-6) var(--nds-space-4);

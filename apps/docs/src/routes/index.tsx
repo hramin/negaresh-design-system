@@ -78,6 +78,20 @@ function Overview() {
             <Link to="/patterns">الگوهای محصول</Link>
           </li>
           <li>
+            <Link
+              to="/playground"
+              search={{
+                preset: 'button',
+                canvasTheme: 'light',
+                density: 'comfortable',
+                dir: 'rtl',
+                viewport: 'full',
+              }}
+            >
+              زمین بازی تعاملی (Playground)
+            </Link>
+          </li>
+          <li>
             <Link to="/brands">افزونه‌های برند (docs.manifest.ts)</Link>
           </li>
           <li>

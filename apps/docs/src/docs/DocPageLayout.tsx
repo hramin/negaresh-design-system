@@ -8,6 +8,7 @@ import {
   Surface,
   Text,
 } from '@negaresh/react';
+import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import styles from '../components/Page.module.css';
 import { TableWrap } from '../components/TableWrap.tsx';
@@ -20,6 +21,21 @@ import {
 import type { ComponentDoc } from './types.ts';
 import ui from './ui.module.css';
 import { CodeBlock, List, PropsTable } from './ui.tsx';
+
+const PLAYGROUND_SLUGS: Record<string, string> = {
+  button: 'button',
+  'text-field': 'text-field',
+  select: 'select',
+  'choice-card': 'choice-card',
+  'status-badge': 'status-badge',
+  'inline-alert': 'inline-alert',
+  'usage-meter': 'usage-meter',
+  'stat-tile': 'stat-tile',
+  'interval-bar': 'interval-bar',
+  'question-item': 'question-item',
+  'commerce-catalog': 'product-card',
+  'identity-sign-in': 'phone-signin',
+};
 
 /**
  * Shared documentation page template for `/components/$slug`, `/charts/$slug`,
@@ -38,6 +54,7 @@ export function DocPageLayout({
   const [frame, setFrame] = useState<'desktop' | 'mobile'>('desktop');
   const autoApis = getAutoComponentApis(doc.components);
   const importSnippet = buildImportSnippet(doc.components);
+  const playgroundPreset = PLAYGROUND_SLUGS[doc.slug];
 
   return (
     <article className={styles.page}>
@@ -87,6 +104,21 @@ export function DocPageLayout({
               <SegmentedControlItem id="mobile">قاب موبایل (۳۹۰px)</SegmentedControlItem>
             </SegmentedControl>
           </div>
+          {playgroundPreset && (
+            <Link
+              to="/playground"
+              search={{
+                preset: playgroundPreset,
+                canvasTheme: 'light',
+                density: 'comfortable',
+                dir: 'rtl',
+                viewport: 'full',
+              }}
+              className={styles.link}
+            >
+              باز کردن در زمین بازی تعاملی
+            </Link>
+          )}
         </div>
         <CodeBlock code={importSnippet} label="نحوهٔ فراخوانی (import)" copyLabel="کپی import" />
       </section>

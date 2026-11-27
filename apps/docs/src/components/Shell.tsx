@@ -10,6 +10,7 @@ import {
 } from '../docs/catalog.ts';
 import { m } from '../lib/messages.ts';
 import { THEME_CHOICES } from '../lib/theme.ts';
+import { DocsSearch } from './DocsSearch.tsx';
 import styles from './Shell.module.css';
 
 const NAV: {
@@ -98,8 +99,10 @@ const NAV: {
   },
   ...buildBrandNavGroups(),
   {
-    title: m.navGroups.guides,
+    title: m.navGroups.tools,
     items: [
+      { to: '/playground', label: m.nav.playground },
+      { to: '/search', label: m.nav.search },
       { to: '/guides/tanstack-form-zod', label: m.nav.formAdapter },
       { to: '/changelog', label: m.nav.changelog },
       { to: '/decisions', label: m.nav.decisions },
@@ -121,7 +124,7 @@ const NAV: {
   },
 ];
 
-/** RTL site shell: skip link, top bar with theme switch, side navigation, main content. */
+/** RTL site shell: skip link, top bar with search & theme switch, side navigation, main content. */
 export function Shell({ children }: { children: ReactNode }) {
   return (
     <div className={styles.shell}>
@@ -133,7 +136,10 @@ export function Shell({ children }: { children: ReactNode }) {
             {m.siteNameLatin}
           </span>
         </Link>
-        <ThemeSwitch />
+        <div className={styles.topbarActions}>
+          <DocsSearch />
+          <ThemeSwitch />
+        </div>
       </header>
       <nav className={styles.nav} aria-label={m.navLabel}>
         {NAV.map((group) => (
