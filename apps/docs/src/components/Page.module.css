@@ -179,16 +179,17 @@
   }
 
   /* Mobile composition: tables become stacked cards below 900 px (CLAUDE.md §3). */
-  .mobileOnly {
-    display: none;
-  }
-
   .cards {
     display: flex;
     flex-direction: column;
     gap: var(--nds-space-2);
     padding: 0;
     list-style: none;
+  }
+
+  .mobileOnly,
+  .cards.mobileOnly {
+    display: none;
   }
 
   .card {
@@ -248,6 +249,10 @@
 
     .mobileOnly {
       display: block;
+    }
+
+    .cards.mobileOnly {
+      display: flex;
     }
 
     .page {

@@ -89,13 +89,12 @@ export function DocsSearch() {
       <button
         type="button"
         className={styles.trigger}
-        aria-label={m.search.triggerLabel}
         aria-keyshortcuts="Control+K Meta+K"
         data-testid="docs-search-trigger"
         onClick={openModal}
       >
         <Icon icon={iconSearch} size="sm" />
-        <span className={styles.triggerLabel}>جست‌وجو…</span>
+        <span className={styles.triggerLabel}>جست‌وجو</span>
         <kbd className={styles.kbd} dir="ltr">
           {m.search.shortcutHint}
         </kbd>

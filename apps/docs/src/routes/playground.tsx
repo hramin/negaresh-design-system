@@ -163,6 +163,7 @@ function PlaygroundPage() {
 
           <div className={pg.workspace}>
             <div className={pg.stageShell}>
+              <Heading level={2}>پیش‌نمایش زنده</Heading>
               <div className={search.canvasTheme === 'split' ? pg.splitGrid : undefined}>
                 {modes.map((mode) => (
                   <section

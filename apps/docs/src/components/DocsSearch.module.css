@@ -131,14 +131,13 @@
   }
 
   @media (width < 900px) {
-    .triggerLabel,
     .kbd {
       display: none;
     }
 
     .trigger {
-      justify-content: center;
-      padding-inline: 0;
+      inline-size: 100%;
+      justify-content: flex-start;
     }
   }
 }

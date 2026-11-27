@@ -137,8 +137,10 @@ export function Shell({ children }: { children: ReactNode }) {
           </span>
         </Link>
         <div className={styles.topbarActions}>
-          <DocsSearch />
           <ThemeSwitch />
+          <div className={styles.topbarSearch}>
+            <DocsSearch />
+          </div>
         </div>
       </header>
       <nav className={styles.nav} aria-label={m.navLabel}>

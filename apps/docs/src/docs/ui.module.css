@@ -124,6 +124,8 @@
 
   .latinInline {
     display: inline-block;
+    max-inline-size: 100%;
+    overflow-wrap: anywhere;
     unicode-bidi: isolate;
     text-align: start;
   }
@@ -132,6 +134,7 @@
     display: none;
     flex-direction: column;
     gap: var(--nds-space-2);
+    min-inline-size: 0;
     padding: 0;
     list-style: none;
   }
@@ -153,6 +156,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--nds-space-2);
+    min-inline-size: 0;
   }
 
   .mobilePropMeta {
@@ -171,9 +175,12 @@
     font-size: var(--nds-text-sm);
     line-height: var(--nds-leading-ui);
     color: var(--nds-fg-muted);
+    overflow-wrap: anywhere;
   }
 
   .codeBlock {
+    min-inline-size: 0;
+    max-inline-size: 100%;
     border: var(--nds-border-width-hairline) solid var(--nds-border-default);
     border-radius: var(--nds-surface-radius);
     background: var(--nds-bg-surface);
@@ -225,31 +232,6 @@
     background: var(--nds-bg-canvas);
   }
 
-  .exampleMobileFrame {
-    margin-inline: auto;
-    inline-size: calc(var(--nds-space-24) * 4 + var(--nds-border-width-hairline) * 6);
-    max-inline-size: 100%;
-    padding: var(--nds-space-4);
-    border: var(--nds-border-width-hairline) solid var(--nds-border-strong);
-    border-radius: var(--nds-radius-lg);
-    background: var(--nds-bg-canvas);
-    container-type: inline-size;
-  }
-
-  .exampleFooterBar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--nds-space-3);
-  }
-
-  .frameToggleWrap {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--nds-space-2);
-  }
-
   .propsMeta {
     font-size: var(--nds-text-xs);
     color: var(--nds-fg-subtle);
@@ -267,10 +249,6 @@
 
     .mobilePropCards {
       display: flex;
-    }
-
-    .frameToggleWrap {
-      display: none;
     }
   }
 }

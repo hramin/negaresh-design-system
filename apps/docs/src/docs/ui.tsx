@@ -46,7 +46,13 @@ export function CodeBlock({
           {copyLabel}
         </CopyButton>
       </div>
-      <pre className={styles.codePre} dir="ltr" lang="en">
+      <pre
+        className={styles.codePre}
+        dir="ltr"
+        lang="en"
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable code regions must be keyboard-reachable
+        tabIndex={0}
+      >
         <code>{code}</code>
       </pre>
     </section>

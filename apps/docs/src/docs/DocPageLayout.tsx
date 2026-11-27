@@ -1,15 +1,5 @@
-import {
-  Heading,
-  Inline,
-  Section,
-  SegmentedControl,
-  SegmentedControlItem,
-  Stack,
-  Surface,
-  Text,
-} from '@negaresh/react';
+import { Heading, Inline, Section, Stack, Surface, Text } from '@negaresh/react';
 import { Link } from '@tanstack/react-router';
-import { useState } from 'react';
 import styles from '../components/Page.module.css';
 import { TableWrap } from '../components/TableWrap.tsx';
 import { PRODUCT_NAMES, STATUS_NAMES } from './labels.ts';
@@ -51,7 +41,6 @@ export function DocPageLayout({
   galleryClassName?: string | undefined;
 }) {
   const { Example, Gallery } = doc;
-  const [frame, setFrame] = useState<'desktop' | 'mobile'>('desktop');
   const autoApis = getAutoComponentApis(doc.components);
   const importSnippet = buildImportSnippet(doc.components);
   const playgroundPreset = PLAYGROUND_SLUGS[doc.slug];
@@ -86,41 +75,8 @@ export function DocPageLayout({
           نمونه
         </Heading>
         <div className={ui.example}>
-          <div className={frame === 'mobile' ? ui.exampleMobileFrame : undefined}>
-            <Example />
-          </div>
+          <Example />
         </div>
-        <div className={ui.exampleFooterBar}>
-          <div className={ui.frameToggleWrap}>
-            <SegmentedControl
-              aria-label="نمای نمونه"
-              size="sm"
-              value={frame}
-              onChange={(k) => {
-                if (k === 'desktop' || k === 'mobile') setFrame(k);
-              }}
-            >
-              <SegmentedControlItem id="desktop">نمای دسکتاپ</SegmentedControlItem>
-              <SegmentedControlItem id="mobile">قاب موبایل (۳۹۰px)</SegmentedControlItem>
-            </SegmentedControl>
-          </div>
-          {playgroundPreset && (
-            <Link
-              to="/playground"
-              search={{
-                preset: playgroundPreset,
-                canvasTheme: 'light',
-                density: 'comfortable',
-                dir: 'rtl',
-                viewport: 'full',
-              }}
-              className={styles.link}
-            >
-              باز کردن در زمین بازی تعاملی
-            </Link>
-          )}
-        </div>
-        <CodeBlock code={importSnippet} label="نحوهٔ فراخوانی (import)" copyLabel="کپی import" />
       </section>
 
       <section className={styles.section} aria-labelledby="states">
@@ -164,9 +120,27 @@ export function DocPageLayout({
       </section>
 
       <section className={styles.section} aria-labelledby="props">
-        <Heading level={2} id="props">
-          ویژگی‌ها
-        </Heading>
+        <div className={ui.propsHeader}>
+          <Heading level={2} id="props">
+            ویژگی‌ها
+          </Heading>
+          {playgroundPreset && (
+            <Link
+              to="/playground"
+              search={{
+                preset: playgroundPreset,
+                canvasTheme: 'light',
+                density: 'comfortable',
+                dir: 'rtl',
+                viewport: 'full',
+              }}
+              className={styles.link}
+            >
+              باز کردن در زمین بازی تعاملی
+            </Link>
+          )}
+        </div>
+        <CodeBlock code={importSnippet} label="نحوهٔ فراخوانی (import)" copyLabel="کپی import" />
         <p className={ui.propsMeta}>
           استخراج خودکار از تعاریف TypeScript ({PROPS_GENERATOR_META.tsVersion}) بدون نیاز به
           ویرایش دستی (تصمیم D-93).
