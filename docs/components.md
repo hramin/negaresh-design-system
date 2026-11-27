@@ -1,6 +1,6 @@
 # Components
 
-Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026), all P4 components are `approved` following owner confirmation (Waves 1–2 on 25 Nov 2026; Waves 3–4 on 26 Nov 2026), all P5 components (`@negaresh/charts` Wave 1 and `@negaresh/assessment` Wave 2) are `approved` following owner confirmation on 26 Nov 2026, and P6 Wave 1 (`@negaresh/patterns`) product patterns are `approved` following owner confirmation on 26 Nov 2026; docs pages are under `/components/<name>`, `/charts/<name>`, `/assessment/<name>`, and `/patterns/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
+Status: `planned` → `building` → `review` → `approved`. P2 components are `approved` following owner confirmation on 16 Nov 2026 (P2 follow-up on 21 Nov 2026), all P3 components are `approved` following owner confirmation (Waves 1–2 on 21 Nov 2026; Waves 3–4 on 25 Nov 2026), all P4 components are `approved` following owner confirmation (Waves 1–2 on 25 Nov 2026; Waves 3–4 on 26 Nov 2026), all P5 components (`@negaresh/charts` Wave 1 and `@negaresh/assessment` Wave 2) are `approved` following owner confirmation on 26 Nov 2026, and all P6 components (`@negaresh/patterns` Wave 1 on 26 Nov 2026 and `@negaresh/keycloak-theme` Wave 2 on 27 Nov 2026) are `approved` following owner confirmation; docs pages are under `/components/<name>`, `/charts/<name>`, `/assessment/<name>`, and `/patterns/<name>` on the NDS site. Products: R = Registry, N = Negaresh main site, T = Test platform, V = Ravanma. Phase = build phase (see `phases/`).
 
 Every component documents: anatomy, props, all applicable states (default, hover, focus-visible, pressed, disabled, loading, invalid, empty, read-only), keyboard map, ARIA notes, RTL notes, do/don't, and a mobile example.
 
@@ -147,7 +147,7 @@ Every component documents: anatomy, props, all applicable states (default, hover
 
 ## Patterns — `@negaresh/patterns` (P6)
 
-See `patterns.md`. P6 Wave 1 product patterns are `approved` following owner confirmation on 26 Nov 2026; P6 Wave 2 (`@negaresh/keycloak-theme` identity/auth theme) is in `review`. Docs pages live under `/patterns/<slug>` and `/reference/keycloak-login`.
+See `patterns.md`. P6 Wave 1 product patterns are `approved` following owner confirmation on 26 Nov 2026; P6 Wave 2 (`@negaresh/keycloak-theme` identity/auth theme) is `approved` following owner confirmation on 27 Nov 2026. Docs pages live under `/patterns/<slug>` and `/reference/keycloak-login`.
 
 | Pattern | Base / Reused | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
@@ -169,7 +169,7 @@ Built with Keycloakify (`11.16.4`) targeting Keycloak 26+ (`negaresh-keycloak-th
 
 | Screen group | Base / Keycloak `pageId` | Notes | Products | Status |
 | --- | --- | --- | --- | --- |
-| AuthShell, PhoneSignIn (OTP), PasswordSignIn, ForgotPassword, Register | `login-phone.ftl`, `login-sms-otp.ftl`, `login.ftl`, `login-reset-password.ftl`, `login-update-password.ftl`, `register.ftl` | Focus template (zero resting shadows, D-77), Iranian mobile normalisation & 6-digit SMS OTP (60-s resend, 2-min expiry, rate-limit, CAPTCHA slot), LTR email/phone isolation (D-86), SMS recovery & registration (`/patterns/identity-sign-in`, `/reference/keycloak-login`) | all | review |
-| VerifyMobile, TwoFactorSetup, ErrorScreen, InfoScreen, KcPage | `verify-mobile.ftl`, `login-config-totp.ftl`, `login-otp.ftl`, `error.ftl`, `info.ftl` | Migrated-user mobile verification, staff authenticator QR + copyable LTR base32 manual key + TOTP challenge, calm error/info screens with copyable LTR reference code, `fa-IR` message bundle (D-94) (`/patterns/identity-security`, `/reference/keycloak-login`) | all | review |
+| AuthShell, PhoneSignIn (OTP), PasswordSignIn, ForgotPassword, Register | `login-phone.ftl`, `login-sms-otp.ftl`, `login.ftl`, `login-reset-password.ftl`, `login-update-password.ftl`, `register.ftl` | Focus template (zero resting shadows, D-77), Iranian mobile normalisation & 6-digit SMS OTP (60-s resend, 2-min expiry, rate-limit, CAPTCHA slot), LTR email/phone isolation (D-86), SMS recovery & registration (`/patterns/identity-sign-in`, `/reference/keycloak-login`) | all | approved |
+| VerifyMobile, TwoFactorSetup, ErrorScreen, InfoScreen, KcPage | `verify-mobile.ftl`, `login-config-totp.ftl`, `login-otp.ftl`, `error.ftl`, `info.ftl` | Migrated-user mobile verification, staff authenticator QR + copyable LTR base32 manual key + TOTP challenge, calm error/info screens with copyable LTR reference code, `fa-IR` message bundle (D-94) (`/patterns/identity-security`, `/reference/keycloak-login`) | all | approved |
 
 
