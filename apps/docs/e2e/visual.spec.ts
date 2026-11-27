@@ -762,3 +762,15 @@ test.describe('A4 assessment print baselines', () => {
     await snap(page.locator('[data-nds="PrintLayout"]'), 'assessment-print-wellbeing-8-calm.png');
   });
 });
+
+test.describe('P6 Wave 2 · Full-bleed Keycloak login baselines', () => {
+  for (const theme of THEMES) {
+    for (const screen of ['phone-signin', 'phone-otp', 'two-factor-setup'] as const) {
+      test(`keycloak-login ${screen} (${theme})`, async ({ page }) => {
+        await open(page, `/reference/keycloak-login?screen=${screen}&theme=${theme}`);
+        await snap(page.locator('[data-nds="AuthShell"]'), `keycloak-login-${screen}-${theme}.png`);
+      });
+    }
+  }
+});
+

@@ -108,6 +108,8 @@ export const PATTERN_SLUGS = [
   'account-admin-shells',
   'test-platform-catalog',
   'test-platform-org',
+  'identity-sign-in',
+  'identity-security',
 ] as const;
 
 export const ROUTES = [
@@ -132,6 +134,9 @@ export const ROUTES = [
   '/reference/admin-serials/N25AG-EMV0K',
   '/reference/assessment-report',
   '/reference/assessment-report?fixture=wellbeing-8&mode=calm',
+  '/reference/keycloak-login?screen=phone-signin',
+  '/reference/keycloak-login?screen=phone-otp',
+  '/reference/keycloak-login?screen=two-factor-setup',
 ] as const;
 
 export const THEMES = ['light', 'dark'] as const;
