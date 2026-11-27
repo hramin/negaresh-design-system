@@ -156,6 +156,8 @@ export interface CartProps {
   onApplyCoupon?: ((code: string) => void) | undefined;
   onRemoveCoupon?: (() => void) | undefined;
   onProceedToCheckout?: (() => void) | undefined;
+  /** Optional unique accessible name when multiple carts appear on a page. */
+  'aria-label'?: string | undefined;
   className?: string | undefined;
   ref?: Ref<HTMLElement> | undefined;
 }
@@ -172,6 +174,7 @@ export function Cart({
   onApplyCoupon,
   onRemoveCoupon,
   onProceedToCheckout,
+  'aria-label': ariaLabel,
   className,
   ref,
 }: CartProps) {
@@ -179,7 +182,7 @@ export function Cart({
   const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
 
   return (
-    <section ref={ref} data-nds="Cart" aria-label={commerce.cartTitle} className={className}>
+    <section ref={ref} data-nds="Cart" aria-label={ariaLabel ?? commerce.cartTitle} className={className}>
       <Stack gap="4">
         <Heading level={2}>{commerce.cartTitle}</Heading>
         {items.length === 0 ? (
@@ -681,7 +684,7 @@ export function PaymentResult({
       {trackingCode && status === 'success' && (
         <Inline gap="2">
           <Code>{trackingCode}</Code>
-          <CopyButton value={trackingCode} size="sm" variant="secondary" />
+          <CopyButton value={trackingCode} variant="secondary" />
         </Inline>
       )}
 

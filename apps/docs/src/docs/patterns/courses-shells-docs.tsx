@@ -217,7 +217,7 @@ export const accountAdminShellsDoc: ComponentDoc = {
           productLabel="حساب نگرش"
           pageTitle="پیشخوان حساب کاربری"
           pageDescription="خلاصهٔ سفارش‌ها، سریال‌های فعال و دوره‌های آموزشی شما."
-          userMenu={{ ...sampleUserMenu, 'aria-label': 'منوی حساب کاربری (نمونهٔ حساب)' }}
+          userMenu={{ ...sampleUserMenu, 'aria-label': `حساب کاربری (پوستهٔ حساب) ${sampleUserMenu.label}` }}
           navGroups={sampleAccountNav}
           stats={sampleShellStats}
         >
@@ -235,11 +235,11 @@ export const accountAdminShellsDoc: ComponentDoc = {
           pageDescription="پیکربندی و ممیزی سقف مجوزهای نرم‌افزارهای نگرش."
           breadcrumbs={sampleBreadcrumbs}
           pageActions={
-            <Button size="sm" variant="primary">
+            <Button variant="primary">
               صدور سریال جدید
             </Button>
           }
-          userMenu={{ ...sampleUserMenu, 'aria-label': 'منوی حساب کاربری (نمونهٔ مدیریت)' }}
+          userMenu={{ ...sampleUserMenu, 'aria-label': `حساب کاربری (پنل مدیریت) ${sampleUserMenu.label}` }}
           navGroups={sampleAdminNav}
           userRoles={['admin']}
         >

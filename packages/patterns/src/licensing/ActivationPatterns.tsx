@@ -108,6 +108,7 @@ export interface ActivationFlowProps {
   isSubmitting?: boolean | undefined;
   onSubmit?: ((serial: string) => void) | undefined;
   onBuyExtraSlot?: (() => void) | undefined;
+  'aria-label'?: string | undefined;
   className?: string | undefined;
   ref?: Ref<HTMLElement> | undefined;
 }
@@ -131,6 +132,7 @@ export function ActivationFlow({
   isSubmitting = false,
   onSubmit,
   onBuyExtraSlot,
+  'aria-label': ariaLabel,
   className,
   ref,
 }: ActivationFlowProps) {
@@ -149,7 +151,7 @@ export function ActivationFlow({
     <section
       ref={ref}
       data-nds="ActivationFlow"
-      aria-label={productName}
+      aria-label={ariaLabel ?? productName}
       className={cx(styles.activationGrid, className)}
     >
       <Surface>
@@ -192,7 +194,6 @@ export function ActivationFlow({
                 actions={
                   errorKind === 'limit_reached' && onBuyExtraSlot ? (
                     <Button
-                      size="sm"
                       variant="primary"
                       iconStart={iconCart}
                       onPress={onBuyExtraSlot}
@@ -283,7 +284,6 @@ export function MyActivations({ records, onResendCode, className, ref }: MyActiv
                     </Inline>
                     {onResendCode && (
                       <Button
-                        size="sm"
                         variant="secondary"
                         iconStart={iconSend}
                         isDisabled={cooldown > 0}

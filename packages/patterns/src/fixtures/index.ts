@@ -640,12 +640,14 @@ export const sampleBreadcrumbs: readonly BreadcrumbItemData[] = [
   { id: 'bc-3', label: 'سقف‌های فعال‌سازی' },
 ];
 
+const SAMPLE_MASKED_PHONE = maskPhone('+989123456789') ?? '+98912***6789';
+
 export const sampleUserMenu: UserMenuProps = {
-  label: maskPhone('+989123456789') ?? '+98912***6789',
-  'aria-label': 'منوی حساب کاربری',
+  label: SAMPLE_MASKED_PHONE,
+  'aria-label': `حساب کاربری ${SAMPLE_MASKED_PHONE}`,
   ltr: true,
   name: 'دکتر سارا احمدی',
-  subtitle: maskPhone('+989123456789') ?? '+98912***6789',
+  subtitle: SAMPLE_MASKED_PHONE,
   ltrSubtitle: true,
   roles: [
     { id: 'admin', label: 'مدیر ارشد' },

@@ -124,9 +124,10 @@ export function AccountShell({
     </div>
   );
 
+  const RootTag = embedded ? 'article' : 'div';
   return (
-    <div
-      ref={ref}
+    <RootTag
+      ref={ref as never}
       data-nds="AccountShell"
       data-embedded={embedded ? 'true' : 'false'}
       className={cx(styles.shellFrame, className)}
@@ -157,7 +158,7 @@ export function AccountShell({
       {footerGroups && footerGroups.length > 0 && !embedded && (
         <Footer brand={<LogoSlot size="sm" product={productLabel} />} groups={footerGroups} />
       )}
-    </div>
+    </RootTag>
   );
 }
 
@@ -216,7 +217,6 @@ export function AccountContacts({
               <div className={styles.pageHeader}>
                 <Heading level={3}>{shells.mobilesHeading}</Heading>
                 <Button
-                  size="sm"
                   variant="secondary"
                   iconStart={iconPlus}
                   onPress={() => {
@@ -247,7 +247,7 @@ export function AccountContacts({
                       </Inline>
                       {!m.isPrimary && onRemoveMobile && (
                         <DialogTrigger>
-                          <Button size="sm" variant="ghost" iconStart={iconTrash}>
+                          <Button variant="ghost" iconStart={iconTrash}>
                             {shells.removeMobile}
                           </Button>
                           <AlertDialog
@@ -276,7 +276,6 @@ export function AccountContacts({
                     {!otpSent ? (
                       <Inline gap="2">
                         <Button
-                          size="sm"
                           variant="primary"
                           isDisabled={newPhone.trim().length < 10}
                           onPress={() => setOtpSent(true)}
@@ -294,7 +293,6 @@ export function AccountContacts({
                         />
                         <Inline gap="2">
                           <Button
-                            size="sm"
                             variant="primary"
                             isDisabled={otpCode.length < 6}
                             onPress={() => {
@@ -337,7 +335,6 @@ export function AccountContacts({
               {onUpdateEmail && (
                 <Inline gap="2">
                   <Button
-                    size="sm"
                     variant="secondary"
                     isDisabled={emailDraft.trim().length === 0}
                     onPress={() => onUpdateEmail(emailDraft.trim())}
@@ -413,9 +410,10 @@ export function AdminShell({
     </div>
   );
 
+  const RootTag = embedded ? 'article' : 'div';
   return (
-    <div
-      ref={ref}
+    <RootTag
+      ref={ref as never}
       data-nds="AdminShell"
       data-embedded={embedded ? 'true' : 'false'}
       className={cx(styles.shellFrame, className)}
@@ -465,7 +463,7 @@ export function AdminShell({
           </main>
         )}
       </div>
-    </div>
+    </RootTag>
   );
 }
 
@@ -661,7 +659,6 @@ export function NotificationTemplatesEditor({
                       {activeTemplate.variables.map((variable) => (
                         <Button
                           key={variable}
-                          size="sm"
                           variant="secondary"
                           onPress={() => setBody((prev) => `${prev} {{${variable}}}`.trim())}
                         >

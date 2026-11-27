@@ -95,8 +95,13 @@ export const commerceCatalogDoc: ComponentDoc = {
       </State>
       <State label="فهرست علاقه‌مندی‌ها (دارای محصول و حالت خالی)">
         <Stack gap="4">
-          <Wishlist items={sampleProducts.slice(0, 2)} onMoveToCart={() => {}} onRemove={() => {}} />
-          <Wishlist items={[]} />
+          <Wishlist
+            items={sampleProducts.slice(0, 2)}
+            aria-label="فهرست علاقه‌مندی‌ها (دارای محصول)"
+            onMoveToCart={() => {}}
+            onRemove={() => {}}
+          />
+          <Wishlist items={[]} aria-label="فهرست علاقه‌مندی‌ها (خالی)" />
         </Stack>
       </State>
     </div>
@@ -201,7 +206,7 @@ export const commerceCheckoutDoc: ComponentDoc = {
   Gallery: () => (
     <div className={pStyles.stack}>
       <State label="سبد خرید خالی">
-        <Cart items={[]} />
+        <Cart items={[]} aria-label="سبد خرید خالی (گالری)" />
       </State>
       <State label="فرایند تسویهٔ حساب (سفارش فیزیکی با گام‌های کامل)">
         <Checkout

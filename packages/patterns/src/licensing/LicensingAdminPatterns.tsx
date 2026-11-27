@@ -268,6 +268,7 @@ export interface AlertChannelsProps {
   onEndpointChange?: ((id: AlertChannelId, endpoint: string) => void) | undefined;
   onRecipientsChange?: ((primary: string, secondary: string) => void) | undefined;
   onSendTest?: ((id: AlertChannelId) => void) | undefined;
+  'aria-label'?: string | undefined;
   className?: string | undefined;
   ref?: Ref<HTMLElement> | undefined;
 }
@@ -281,6 +282,7 @@ export function AlertChannels({
   onEndpointChange,
   onRecipientsChange,
   onSendTest,
+  'aria-label': ariaLabel,
   className,
   ref,
 }: AlertChannelsProps) {
@@ -293,7 +295,7 @@ export function AlertChannels({
     <section
       ref={ref}
       data-nds="AlertChannels"
-      aria-label={licensing.alertChannelsTitle}
+      aria-label={ariaLabel ?? licensing.alertChannelsTitle}
       className={className}
     >
       <Stack gap="5">
@@ -309,7 +311,6 @@ export function AlertChannels({
                   {licensing.alertChannels[ch.id]}
                 </Switch>
                 <Button
-                  size="sm"
                   variant="secondary"
                   iconStart={iconSend}
                   isDisabled={!ch.enabled}
@@ -428,7 +429,6 @@ export function AuditLog({
       cell: (row) =>
         row.before !== undefined && row.after !== undefined ? (
           <Button
-            size="sm"
             variant="ghost"
             iconStart={iconBell}
             onPress={() => setExpandedId((cur) => (cur === row.id ? null : row.id))}
@@ -442,7 +442,7 @@ export function AuditLog({
   ];
 
   return (
-    <section ref={ref} data-nds="AuditLog" aria-label={label} className={className}>
+    <div ref={ref as Ref<HTMLDivElement>} data-nds="AuditLog" className={className}>
       <Stack gap="4">
         <Heading level={2}>{licensing.auditLogTitle}</Heading>
         <FilterBar
@@ -469,6 +469,6 @@ export function AuditLog({
           </div>
         )}
       </Stack>
-    </section>
+    </div>
   );
 }

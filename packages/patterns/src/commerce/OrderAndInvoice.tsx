@@ -67,7 +67,7 @@ export function OrderDetail({
       ref={ref}
       data-nds="OrderDetail"
       aria-label={`${commerce.orderNumberLabel} ${orderNumber}`}
-      className={className}
+      className={cx(styles.orderDetail, className)}
     >
       <Stack gap="5">
         <Surface>
@@ -106,7 +106,12 @@ export function OrderDetail({
           <Section>
             <Stack gap="4">
               <Heading level={3}>{commerce.orderItemsHeading}</Heading>
-              <div className={styles.invoiceTableWrap}>
+              <section
+                className={styles.invoiceTableWrap}
+                aria-label={`${commerce.orderItemsHeading} — ${orderNumber}`}
+                // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable regions must be keyboard-reachable
+                tabIndex={0}
+              >
                 <table className={styles.invoiceTable}>
                   <thead>
                     <tr>
@@ -127,7 +132,7 @@ export function OrderDetail({
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </section>
               <div className={styles.invoiceTotals}>
                 <div className={styles.summaryRow}>
                   <span>{commerce.subtotalLabel}</span>
@@ -224,7 +229,7 @@ export function Invoice({
           </Text>
           {onPrint && (
             <span className={styles.printOnlyHide}>
-              <Button size="sm" variant="secondary" iconStart={iconPrint} onPress={onPrint}>
+              <Button variant="secondary" iconStart={iconPrint} onPress={onPrint}>
                 {commerce.printInvoice}
               </Button>
             </span>
@@ -243,7 +248,12 @@ export function Invoice({
         </Stack>
       </div>
 
-      <div className={styles.invoiceTableWrap}>
+      <section
+        className={styles.invoiceTableWrap}
+        aria-label={`${commerce.invoiceTitle} — ${invoiceNumber}`}
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable regions must be keyboard-reachable
+        tabIndex={0}
+      >
         <table className={styles.invoiceTable}>
           <thead>
             <tr>
@@ -264,7 +274,7 @@ export function Invoice({
             ))}
           </tbody>
         </table>
-      </div>
+      </section>
 
       <div className={styles.invoiceTotals}>
         <div className={styles.summaryRow}>

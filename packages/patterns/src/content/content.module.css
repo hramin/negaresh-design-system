@@ -216,6 +216,11 @@
     border-radius: var(--nds-radius-md);
   }
 
+  .blockTableWrap:focus-visible {
+    outline: var(--nds-border-width-thick) solid var(--nds-focus-ring);
+    outline-offset: var(--nds-border-width-thick);
+  }
+
   .blockTable {
     inline-size: 100%;
     border-collapse: collapse;

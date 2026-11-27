@@ -82,6 +82,7 @@ export const licensingActivationDoc: ComponentDoc = {
       <State label="حالت تکمیل ظرفیت با اقدام خرید +۱ فعال‌سازی (FR-11)">
         <ActivationFlow
           productName="نرم‌افزار روان‌سنجی نگرش ۴"
+          aria-label="جریان فعال‌سازی (تکمیل ظرفیت)"
           systemCode="SYS-94FA-21BC-08E1"
           defaultSerialValue="N25AG-EMV0K"
           errorKind="limit_reached"
@@ -184,6 +185,7 @@ export const licensingAdminDoc: ComponentDoc = {
       <State label="کانال‌های هشدار (پیامک، ایمیل، تلگرام، بله)">
         <Stack gap="3">
           <AlertChannels
+            aria-label="کانال‌های ارسال هشدار (گالری)"
             channels={sampleAlertChannels}
             primaryRecipient="+989123456789"
             secondaryRecipient="ops@negaresh.ir"

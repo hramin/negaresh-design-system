@@ -112,7 +112,6 @@ export function ProductCard({
           {action ??
             (onAddToCart !== undefined ? (
               <Button
-                size="sm"
                 variant="primary"
                 iconStart={iconCart}
                 onPress={() => onAddToCart(product.id)}
@@ -120,7 +119,7 @@ export function ProductCard({
                 {commerce.addToCart}
               </Button>
             ) : product.href !== undefined ? (
-              <LinkButton size="sm" variant="secondary" href={product.href}>
+              <LinkButton variant="secondary" href={product.href}>
                 {commerce.viewProduct}
               </LinkButton>
             ) : null)}
@@ -135,6 +134,8 @@ export interface WishlistProps {
   items: readonly ProductCardItem[];
   /** Optional section title (defaults to `messages.commerce.wishlistTitle`). */
   title?: ReactNode | undefined;
+  /** Optional unique accessible name when multiple wishlists appear on a page. */
+  'aria-label'?: string | undefined;
   /** Called when moving a saved product to the cart. */
   onMoveToCart?: ((id: string) => void) | undefined;
   /** Called when removing a product from the wishlist. */
@@ -147,6 +148,7 @@ export interface WishlistProps {
 export function Wishlist({
   items,
   title,
+  'aria-label': ariaLabel,
   onMoveToCart,
   onRemove,
   className,
@@ -159,7 +161,7 @@ export function Wishlist({
     <section
       ref={ref}
       data-nds="Wishlist"
-      aria-label={typeof headingText === 'string' ? headingText : commerce.wishlistTitle}
+      aria-label={ariaLabel ?? (typeof headingText === 'string' ? headingText : commerce.wishlistTitle)}
       className={className}
     >
       <Stack gap="4">
@@ -180,7 +182,6 @@ export function Wishlist({
                   <Inline gap="2">
                     {onMoveToCart && (
                       <Button
-                        size="sm"
                         variant="primary"
                         iconStart={iconCart}
                         onPress={() => onMoveToCart(item.id)}
@@ -190,7 +191,6 @@ export function Wishlist({
                     )}
                     {onRemove && (
                       <Button
-                        size="sm"
                         variant="ghost"
                         iconStart={iconTrash}
                         aria-label={`${commerce.removeFromWishlist}: ${item.title}`}

@@ -142,7 +142,6 @@ export function Poll({
               <Inline gap="2">
                 <Button
                   variant="primary"
-                  size="sm"
                   isDisabled={selected.length === 0}
                   onPress={handleVote}
                 >
@@ -429,12 +428,7 @@ export function BlogFeed({
   }, [items, query, selectedType, selectedAuthor]);
 
   return (
-    <section
-      ref={ref}
-      data-nds="BlogFeed"
-      aria-label={content.featuredSliderLabel}
-      className={className}
-    >
+    <div ref={ref as Ref<HTMLDivElement>} data-nds="BlogFeed" className={className}>
       <Stack gap="6">
         {activeSlide && (
           <section className={styles.slider} aria-label={content.featuredSliderLabel}>
@@ -518,7 +512,7 @@ export function BlogFeed({
         )}
 
         <FilterBar
-          aria-label={content.featuredSliderLabel}
+          aria-label={content.allTypesLabel}
           searchValue={query}
           onSearchChange={setQuery}
           onReset={() => {
@@ -589,7 +583,7 @@ export function BlogFeed({
           />
         )}
       </Stack>
-    </section>
+    </div>
   );
 }
 
@@ -661,7 +655,13 @@ export function ContentBlocks({ blocks, className, ref }: ContentBlocksProps) {
             );
           case 'table':
             return (
-              <div key={block.id} className={styles.blockTableWrap}>
+              <section
+                key={block.id}
+                className={styles.blockTableWrap}
+                aria-label={block.caption}
+                // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable regions must be keyboard-reachable
+                tabIndex={0}
+              >
                 <table className={styles.blockTable}>
                   <caption>{block.caption}</caption>
                   <thead>
@@ -685,7 +685,7 @@ export function ContentBlocks({ blocks, className, ref }: ContentBlocksProps) {
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </section>
             );
           case 'quote':
             return (
@@ -747,7 +747,7 @@ export function ContentBlocks({ blocks, className, ref }: ContentBlocksProps) {
                 <Badge tone="accent" size="sm">
                   {content.contentCalloutLabels[block.kind]}
                 </Badge>
-                {block.title && <Heading level={4}>{block.title}</Heading>}
+                {block.title && <Heading level={3}>{block.title}</Heading>}
                 <Text as="p" leading="text">
                   {block.text}
                 </Text>
@@ -934,11 +934,11 @@ export function ArticlePage({
               <Text size="sm" weight="semibold">
                 {content.shareHeading}
               </Text>
-              <CopyButton value={shareUrl} size="sm" variant="secondary">
+              <CopyButton value={shareUrl} variant="secondary">
                 {content.copyArticleLink}
               </CopyButton>
               {onShare && (
-                <Button size="sm" variant="ghost" iconStart={iconShare} onPress={onShare}>
+                <Button variant="ghost" iconStart={iconShare} onPress={onShare}>
                   {content.shareHeading}
                 </Button>
               )}

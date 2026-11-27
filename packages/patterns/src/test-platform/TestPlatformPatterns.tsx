@@ -101,12 +101,7 @@ export function TestCatalog({ tests, onStartOrBuy, className, ref }: TestCatalog
   }, [tests, query]);
 
   return (
-    <section
-      ref={ref}
-      data-nds="TestCatalog"
-      aria-label={testPlatform.catalogTitle}
-      className={className}
-    >
+    <div ref={ref as Ref<HTMLDivElement>} data-nds="TestCatalog" className={className}>
       <Stack gap="4">
         <Heading level={2}>{testPlatform.catalogTitle}</Heading>
         <FilterBar
@@ -153,7 +148,6 @@ export function TestCatalog({ tests, onStartOrBuy, className, ref }: TestCatalog
                     />
                     {onStartOrBuy && (
                       <Button
-                        size="sm"
                         variant="primary"
                         iconStart={iconPlay}
                         onPress={() => onStartOrBuy(test.id)}
@@ -168,7 +162,7 @@ export function TestCatalog({ tests, onStartOrBuy, className, ref }: TestCatalog
           </div>
         )}
       </Stack>
-    </section>
+    </div>
   );
 }
 
@@ -231,7 +225,7 @@ export function TestDashboard({
                   <div className={styles.listRow}>
                     <Text weight="semibold">{unfinishedTestTitle}</Text>
                     {onContinueAttempt && (
-                      <Button size="sm" variant="primary" iconStart={iconPlay} onPress={onContinueAttempt}>
+                      <Button variant="primary" iconStart={iconPlay} onPress={onContinueAttempt}>
                         {testPlatform.continueAttempt}
                       </Button>
                     )}
@@ -261,7 +255,7 @@ export function TestDashboard({
                       <Inline gap="2">
                         <StatusBadge domain="report" status={rep.status} size="sm" />
                         {rep.downloadHref && (
-                          <LinkButton size="sm" variant="secondary" href={rep.downloadHref}>
+                          <LinkButton variant="secondary" href={rep.downloadHref}>
                             {testPlatform.downloadReport}
                           </LinkButton>
                         )}
@@ -291,7 +285,7 @@ export function TestDashboard({
                       <Inline gap="2">
                         <StatusBadge domain="report" status={rep.status} size="sm" />
                         {rep.resultHref && (
-                          <LinkButton size="sm" variant="ghost" href={rep.resultHref}>
+                          <LinkButton variant="ghost" href={rep.resultHref}>
                             {testPlatform.viewResult}
                           </LinkButton>
                         )}
@@ -513,7 +507,6 @@ export function RosterImport({
                     {testPlatform.rosterSummary(parsed.valid.length, parsed.invalid)}
                   </Badge>
                   <Button
-                    size="sm"
                     variant="primary"
                     isDisabled={parsed.valid.length === 0}
                     onPress={() => onImport?.(parsed.valid)}
@@ -708,7 +701,6 @@ export function OrgWallet({
                   {topUpPresets.map((preset) => (
                     <Button
                       key={preset}
-                      size="sm"
                       variant={topUpAmount === preset ? 'primary' : 'secondary'}
                       onPress={() => setTopUpAmount(preset)}
                     >
@@ -813,7 +805,7 @@ export function B2BPanel({
         <Inline gap="3">
           <Heading level={2}>{testPlatform.b2bTitle}</Heading>
           {onCreateKey && (
-            <Button variant="primary" size="sm" iconStart={iconKey} onPress={onCreateKey}>
+            <Button variant="primary" iconStart={iconKey} onPress={onCreateKey}>
               {testPlatform.b2bCreateKeyAction}
             </Button>
           )}
@@ -831,7 +823,7 @@ export function B2BPanel({
                 </Text>
                 <Code>{newlyCreatedKey}</Code>
               </Inline>
-              <CopyButton value={newlyCreatedKey} variant="primary" size="sm" />
+              <CopyButton value={newlyCreatedKey} variant="primary" />
             </div>
           </Stack>
         )}
@@ -860,7 +852,7 @@ export function B2BPanel({
                         </Stack>
                         {onRevokeKey && (
                           <DialogTrigger>
-                            <Button size="sm" variant="danger" iconStart={iconTrash}>
+                            <Button variant="danger" iconStart={iconTrash}>
                               {testPlatform.b2bRevokeKeyAction}
                             </Button>
                             <AlertDialog

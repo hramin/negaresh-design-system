@@ -84,12 +84,7 @@ export function ExpertDirectory({ experts, className, ref }: ExpertDirectoryProp
   }, [experts, query, specialty, mode, city]);
 
   return (
-    <section
-      ref={ref}
-      data-nds="ExpertDirectory"
-      aria-label={content.expertsTitle}
-      className={className}
-    >
+    <div ref={ref as Ref<HTMLDivElement>} data-nds="ExpertDirectory" className={className}>
       <Stack gap="4">
         <Heading level={2}>{content.expertsTitle}</Heading>
         <FilterBar
@@ -206,7 +201,7 @@ export function ExpertDirectory({ experts, className, ref }: ExpertDirectoryProp
                       </Badge>
                     ))}
                     {expert.profileHref && (
-                      <LinkButton size="sm" variant="secondary" href={expert.profileHref}>
+                      <LinkButton variant="secondary" href={expert.profileHref}>
                         {expert.name}
                       </LinkButton>
                     )}
@@ -217,7 +212,7 @@ export function ExpertDirectory({ experts, className, ref }: ExpertDirectoryProp
           </div>
         )}
       </Stack>
-    </section>
+    </div>
   );
 }
 
@@ -539,7 +534,6 @@ export function WriterWorkspace({
                         <Heading level={3}>{content.writerRevisionsHeading}</Heading>
                         {onRestoreRevision && (
                           <Button
-                            size="sm"
                             variant="secondary"
                             onPress={() => onRestoreRevision(activeDoc.id)}
                           >

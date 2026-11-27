@@ -105,6 +105,7 @@ export interface LessonNavProps {
   chapters: readonly CourseChapter[];
   activeLessonId?: string | undefined;
   onSelectLesson?: ((lessonId: string) => void) | undefined;
+  'aria-label'?: string | undefined;
   className?: string | undefined;
   ref?: Ref<HTMLElement> | undefined;
 }
@@ -114,6 +115,7 @@ export function LessonNav({
   chapters,
   activeLessonId,
   onSelectLesson,
+  'aria-label': ariaLabel,
   className,
   ref,
 }: LessonNavProps) {
@@ -123,7 +125,7 @@ export function LessonNav({
     <nav
       ref={ref}
       data-nds="LessonNav"
-      aria-label={courses.lessonNavLabel}
+      aria-label={ariaLabel ?? courses.lessonNavLabel}
       className={className}
     >
       <Accordion allowsMultipleExpanded defaultExpandedKeys={chapters.map((c) => c.id)}>
@@ -264,7 +266,7 @@ export function CoursePlayer({
               title={lessonTitle}
               actions={
                 onResume ? (
-                  <Button size="sm" variant="secondary" onPress={onResume}>
+                  <Button variant="secondary" onPress={onResume}>
                     {courses.resumeAction}
                   </Button>
                 ) : undefined
@@ -309,7 +311,6 @@ export function CoursePlayer({
                     )}
                     {onPreviousLesson && (
                       <Button
-                        size="sm"
                         variant="secondary"
                         iconStart={iconArrowStart}
                         onPress={onPreviousLesson}
@@ -319,7 +320,6 @@ export function CoursePlayer({
                     )}
                     {onNextLesson && (
                       <Button
-                        size="sm"
                         variant="primary"
                         iconEnd={iconArrowEnd}
                         onPress={onNextLesson}
@@ -343,6 +343,7 @@ export function CoursePlayer({
           <LessonNav
             chapters={chapters}
             activeLessonId={activeLessonId}
+            aria-label={`${courseTitle} — ${courses.lessonNavLabel}`}
             {...(onSelectLesson !== undefined ? { onSelectLesson } : {})}
           />
         </Stack>
@@ -475,6 +476,7 @@ export function CoursePage({
           <Heading level={3}>{courses.syllabusHeading}</Heading>
           <LessonNav
             chapters={chapters}
+            aria-label={`${title} — ${courses.syllabusHeading}`}
             {...(onPreviewLesson !== undefined ? { onSelectLesson: onPreviewLesson } : {})}
           />
         </Stack>
@@ -592,7 +594,6 @@ export function MyCourses({ items, onResumeCourse, className, ref }: MyCoursesPr
                 </CardBody>
                 <CardFooter tone="sunken">
                   <Button
-                    size="sm"
                     variant="primary"
                     iconStart={iconPlay}
                     onPress={() => onResumeCourse?.(course.id)}
