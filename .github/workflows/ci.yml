@@ -32,7 +32,7 @@ jobs:
       - name: Lint (Biome + stylelint — logical properties, no raw colours)
         run: pnpm lint
       - name: Unit tests (utils coverage ≥ 95 %, components incl. axe and SSR)
-        run: pnpm test -- --concurrency=2
+        run: pnpm test --concurrency=2
       - run: pnpm build
 
   e2e:
