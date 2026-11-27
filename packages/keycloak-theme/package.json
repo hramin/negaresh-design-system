@@ -35,7 +35,7 @@
     "build:theme": "vite build",
     "build:jar": "vite build && env -u npm_config_cafile keycloakify build",
     "test": "vitest run --config vite.lib.config.ts",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "env -u npm_config_cafile keycloakify update-kc-gen && tsc --noEmit",
     "lint": "biome lint ."
   },
   "dependencies": {

@@ -80,11 +80,16 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: pnpm
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: "21"
-          cache: maven
+      - uses: actions/cache@v6
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-m2-keycloakify-${{ hashFiles('packages/keycloak-theme/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-m2-keycloakify-
       - run: pnpm install --frozen-lockfile
       - name: Build workspace dependencies and package Keycloak 26+ JAR
         run: |

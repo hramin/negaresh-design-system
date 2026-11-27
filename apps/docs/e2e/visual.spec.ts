@@ -281,9 +281,11 @@ for (const theme of THEMES) {
     const trigger = page
       .locator('[data-interactive="tooltip"]')
       .getByRole('button', { name: 'کپی کد فعال‌سازی' });
-    await trigger.evaluate((el) => {
+    await page.keyboard.press('Tab');
+    await trigger.evaluate(async (el) => {
       el.scrollIntoView({ block: 'center' });
       window.scrollTo(0, Math.round(window.scrollY));
+      await new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())));
     });
     await trigger.focus();
     const tooltip = page.locator('[data-nds="Tooltip"]');
